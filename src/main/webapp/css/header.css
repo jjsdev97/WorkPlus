@@ -1,0 +1,192 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.nav_logo, #logo {
+	margin-top: 2px;
+	width: 250px;
+	height: 100%;
+	object-fit: cover;
+}
+
+.sidebar {
+	position: fixed;
+	left: 0;
+	width: 270px;
+	height: 100%;
+	background-color: #284B63;
+	z-index: 40;
+}
+
+.main { /* 페이지 작성 부분 */
+	width: 100%;
+	height: 100%;
+	background-color: #FFFFFF;
+	padding-top: 60px;
+	padding-left: 270px;
+}
+
+.navbar {
+	display: flex;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	background-color: #284B63;
+	z-index: 50;
+	background-color: #284B63;
+}
+
+.navbar-nav {
+	display: flex;
+	margin-left: auto;
+}
+
+.nav-item {
+	margin-top: 2px;
+	margin-right: 5px;
+	overflow: hidden;
+}
+
+.sidebar-menu {
+	width: 80%;
+	margin-top: 50px;
+	display: inline-block;
+	padding: 20px;
+	list-style-type: none;
+}
+
+.nav_logo {
+	text-decoration: none;
+	font-size: 30px;
+	color: white;
+	padding-bottom: 5px;
+}
+
+.sidebar-item {
+	width: 100%;
+	padding: 10px;
+	color: #FFFFFF;
+}
+
+.sidebar-user {
+	visibility: visible;
+}
+
+.sidebar-admin {
+	visibility: hidden;
+}
+
+.sidebar-admin>ul>li:nth-child(1) {
+	font-size: 14pt;
+	font-weight: bold;
+	font-size: 15pt;
+}
+
+.btn_menu {
+	height: 25px;
+	position: absolute;
+	left: -5px;
+	bottom: 10px;
+	color: white;
+	border: 0;
+	background-color: #284B63;
+	font-size: 11pt;
+	font-weight: bold;
+	width: 100%;
+	padding: 0px;
+}
+
+.btn_menu:hover {
+	cursor: pointer;
+}
+
+.sidebar-anchor {
+	display: block;
+	text-decoration: none;
+	font-size: 11pt;
+	color: #FFFFFF;
+}
+
+.sidebar-anchor+.second-menu {
+	list-style-type: none;
+	height: 0px;
+	overflow: hidden;
+	transition: all ease 0.5s;
+}
+
+.second-menu {
+	padding-left: 30px;
+}
+
+.sidebar-anchor-collapse+.second-menu {
+	list-style-type: none;
+	transition: all ease 0.5s;
+}
+
+.coll-arrow {
+	margin-top: 4px;
+	float: right;
+	width: 7%;
+	height: 7%;
+	width: 7%;
+	transition: all ease 0.5s;
+}
+
+.sidebar-anchor-collapse .coll-arrow {
+	margin-top: 4px;
+	float: right;
+	width: 7%;
+	height: 7%;
+	width: 7%;
+	transition: all ease 0.5s;
+	transform: rotate(90deg);
+}
+
+.second-item {
+	font-size: 10pt;
+	margin: 10px;
+}
+
+a.second-anchor {
+	text-decoration: none;
+	font-size: 10pt;
+	color: #FFFFFF;
+}
+
+/* ----------------------모달 시작---------------------- */
+.modal-background {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.8);
+	height: 100vw;
+	width: 100vw;
+	z-index: 5000;
+}
+
+.modal-container {
+	position: fixed;
+	z-index: 5001;
+	display: none;
+	background-color: #FFFFFF;
+	width: 520px;
+	height: 480px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+
+
+
+/* ----------------------모달 종료---------------------- */

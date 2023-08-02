@@ -1,0 +1,12 @@
+<Context> 
+  <Resource 
+   name="jdbc/OracleDB" 
+   auth="Container"
+   type="javax.sql.DataSource" 
+   username="work" 
+   password="plus"
+   driverClassName="oracle.jdbc.driver.OracleDriver"
+   factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+   url="jdbc:oracle:thin:@175.192.130.123:1521:XE"
+  /> 
+</Context>
