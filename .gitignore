@@ -2,6 +2,10 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse
 
 ### Eclipse ###
+/classes/
+.classpath
+.project
+.settings/
 .metadata
 bin/
 tmp/
