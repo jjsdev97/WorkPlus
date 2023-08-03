@@ -16,3 +16,12 @@ M_ADMIN			VARCHAR2(30)	NOT NULL		 		 -- USER(기본값), ADMIN
 );
 
 select * from member;
+
+insert into member
+values(1, '관리자', 'admin', '1', 100001, 'admin@nave.com', NULL , 0, NULL, NULL, NULL , NULL,'ADMIN' );
+insert into member
+values(1, '관리자', 'admin', '1', 100001, 'admin@nave.com', NULL , 0, NULL, NULL, NULL , NULL,'ADMIN' );
+insert into member
+values(1, '관리자', 'admin', '1', 100001, 'admin@nave.com', NULL , 0, NULL, NULL, NULL , NULL,'ADMIN' );
+
+p

@@ -23,11 +23,6 @@
 		location.href = "mainpage.jsp"; 
 	 });
 	 
-	function idPopup(){
-		var popUrl = "find_id.html";
-		var popOption = "top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no";
-        window.open(popUrl, popOption);
-	}
  });
 
 </script>
@@ -64,9 +59,9 @@
       </div>
     </div>
 	<div class="login_process" id="login_process">
- 		<a href="#" class="find_id" onclick="idPopup();"><span class="user_find_id"> 아이디 찾기</span></a>&nbsp;|
- 		<a href="#" class="find_pass"><span class="find_pass"> 비밀번호 찾기</span></a>&nbsp;|
-  		<a href="#" class="join_memeber"><span class="join"> 회원가입</span></a>
+ 		<a href="member/findid.jsp" class="find_id" onclick="idPopup();"><span class="find_id"> 아이디 찾기</span></a>&nbsp;|
+ 		<a href="member/findpass.jsp" class="find_pass"><span class="find_pass"> 비밀번호 찾기</span></a>&nbsp;|
+  		<a href="#" class="join_member"><span class="join"> 회원가입</span></a>
 	</div>
  </form>
  <div class="cafe_login_container">

@@ -1,4 +1,4 @@
-package net.member.action;
+package com.main.action;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-@WebServlet("*.net")
-public class MemberFrontController extends javax.servlet.http.HttpServlet {
+@WebServlet("*.com")
+public class MainFrontController extends javax.servlet.http.HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -41,21 +41,10 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 		Action action = null;
 		
 		switch(command) {
-		case "/login.net" :
-			action = new MemberLoginAction();
+		case "/main.com" :
+			action = new MainAction();
 			break;
 		
-		case "/join.net" :
-			action = new MemberJoinAction();
-			break;
-			
-		case "/loginProcess.net" :
-			action = new MemberLoginProcessAction();
-			break;
-			
-		case "/joinProcess.net" :
-			action = new MemberJoinProcessAction();
-			break;
 			
 		} //switch end
 		
