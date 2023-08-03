@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ChatMainAction implements Action {
+public class ChatListAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -14,8 +14,8 @@ public class ChatMainAction implements Action {
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		
-		// chatmain
-		forward.setPath("chat/chatmain.jsp");
+		//chatList
+		forward.setPath("chat/chatList.jsp");
 		return forward;
 	}
 
