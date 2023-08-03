@@ -133,5 +133,4 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		doProcess(request, response);
 	}
-	
 }
