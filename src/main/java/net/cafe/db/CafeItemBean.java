@@ -1,4 +1,4 @@
-package com.cafe.db;
+package net.cafe.db;
 
 public class CafeItemBean {
     private int ITEM_UID;
@@ -8,7 +8,6 @@ public class CafeItemBean {
     private String ITEM_DETAIL;
     private int ITEM_SOLDOUT;
     private String ITEM_MENU;
-    
     
 	public int getITEM_UID() {
 		return ITEM_UID;
@@ -52,8 +51,7 @@ public class CafeItemBean {
 	public void setITEM_MENU(String iTEM_MENU) {
 		ITEM_MENU = iTEM_MENU;
 	}
-    
-    
-	
 
+   
 }
+

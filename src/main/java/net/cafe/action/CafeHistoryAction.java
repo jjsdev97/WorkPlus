@@ -1,4 +1,4 @@
-package com.cafe.action;
+package net.cafe.action;
 
 import java.io.IOException;
 

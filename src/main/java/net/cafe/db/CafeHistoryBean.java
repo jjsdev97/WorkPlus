@@ -1,6 +1,6 @@
-package com.cafe.db;
+package net.cafe.db;
 
-public class CafeManagerBean {
+public class CafeHistoryBean {
     private int itemUid;
     private String itemName;
     private int itemPrice;
@@ -52,6 +52,5 @@ public class CafeManagerBean {
 	public void setItemMenu(String itemMenu) {
 		this.itemMenu = itemMenu;
 	}
-
 
 }
