@@ -14,8 +14,8 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet{
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String Request = request.getRemoteHost();
-		System.out.println("접속 URI =" + Request);
+		String Request = request.getRemoteHost(); // 호스트값을 반환
+		System.out.println("접속 URI =" + Request); 
 		
 		 /*
 		   * 요청된 전체 URL 중에서 포트 번호 다음부터 마지막 문자열까지 반환합니다.
@@ -47,6 +47,10 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet{
 		     case "/BoardWrite.bo":
 		    	 action = new BoardWriteAction();
 		    	 break;
+		    	 
+		     case "/board/BoardAddAction.bo":
+		    	 action = new BoardAddAction();
+		         break;
 		   /* 
 		     case "/BoardWrite.bo":
 		         action = new BoardWriteAction();
