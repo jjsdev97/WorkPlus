@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.dept.db.Dept;
+import net.dept.db.DeptDAO;
+
 
 public class DeptAdminAction implements Action {
 
@@ -13,6 +16,10 @@ public class DeptAdminAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		Dept d = new Dept();
+		DeptDAO dao = new DeptDAO();
+		
 		
 		
 		ActionForward forward = new ActionForward();

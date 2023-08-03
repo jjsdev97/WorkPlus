@@ -17,7 +17,10 @@
 			<button class="modal-btn">모달버튼</button><!-- 모달창 버튼 -->			
 			
 			<div class="modal-container">
-				<!-- 내부 채우기 -->	
+				<!-- 내부 채우기
+					
+					가능하면 jsp 최상단에 두기
+				 -->	
 			</div>
 	</div>
 </body>

@@ -20,7 +20,7 @@ $(document).ready(function() {
 			var length = $(this).children().length;
 
 			return 27.6 * length + "px";
-		})
+		})	
 	}) // 화살표 접힌 상태에서 클릭
 
 
@@ -46,15 +46,20 @@ $(document).ready(function() {
 	$('.modal-btn').click(function() {
 		$('.modal-background').css('display', 'block');
 		$('.modal-container').css('display', 'block');
+		
+		$('body').css('overflow', 'hidden');
 	})
 
 
 
 	/* ----------------------모달 종료---------------------- */
 
+	
 	$('.modal-background').click(function() {
 		$('.modal-background').css('display', 'none');
 		$('.modal-container').css('display', 'none');
+		
+		$('body').css('overflow', 'auto');
 	})
 
 	
