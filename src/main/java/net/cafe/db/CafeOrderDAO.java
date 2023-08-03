@@ -1,4 +1,4 @@
-package com.cafe.db;
+package net.cafe.db;
 
 public class CafeOrderDAO {
 	

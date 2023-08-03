@@ -1,25 +1,28 @@
-package com.cafe.action;
+package net.cafe.action;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cafe.db.CafeItemBean;
+import net.cafe.db.CafeItemBean;
+import net.cafe.db.CafeItemDAO;
 
-public class CafeTeaAction implements Action {
+public class CafeMainAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CafeItemBean cafeItem = new CafeItemBean();
+		CafeItemDAO idao = new CafeItemDAO();
+		List<CafeItemBean> itemList = idao.getAllItems();
 		
-		request.setAttribute("cafeItem", cafeItem);
+		request.setAttribute("itemList", itemList);
 		
 		ActionForward forward = new ActionForward();
+		forward.setPath("cafe/main.jsp");
 		forward.setRedirect(false);
-		forward.setPath("order/tea.jsp");
 		
 		return forward;
 	}

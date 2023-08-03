@@ -1,4 +1,4 @@
-package com.cafe.action;
+package net.cafe.action;
 
 import java.io.IOException;
 
@@ -6,10 +6,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cafe.db.CafeItemBean;
+import net.cafe.db.CafeItemBean;
 
-public class CafeAdeAction implements Action {
-	
+public class CafeSideAction implements Action {
+
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -19,7 +19,7 @@ public class CafeAdeAction implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("order/ade.jsp");
+		forward.setPath("order/side.jsp");
 		
 		return forward;
 	}
