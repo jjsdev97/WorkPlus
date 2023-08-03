@@ -6,13 +6,13 @@
 <head>
 <jsp:include page="../header.jsp" />
 <meta charset="utf-8">
-<title>메신저 메인</title>
+<title>메신저 chatList</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chat.css">
 </head>
 <body>
-<script src="${pageContext.request.contextPath}/js/chat_main.js"></script>
 	<div class="main">
 		<div class="left">
+		<!-- -------search ----------- -->
 			<div class="search">
 				<input type="text" placeholder="search..."> 
 				<img src="${pageContext.request.contextPath}/img/search.png" 
@@ -20,12 +20,13 @@
 				<img src="${pageContext.request.contextPath}/img/add.png"
 					width="25px" height="25px" style="vertical-align:middle">
 			</div>
+		<!-- -------search ----------- -->
 
 
 			<table class="m_chat_list">
 				<tr>
 					<td><div>
-							<img src="${pageContext.request.contextPath}/img/profile.png" width="40px" height="40px">
+							<img src="${pageContext.request.contextPath}/img/groupProfile.png" width="40px" height="40px">
 						</div></td>
 					<td><div>홍귀동</div></td>
 					<td><div>
@@ -67,6 +68,7 @@
 		</div>
 
 
+<!-- ---------div.right -------- -->
 		<div class="right">
 		  <div class="myProfile">
             <div>
@@ -118,6 +120,8 @@
           </div>
 
 	</div>
+<!-- ---------div.right -------- -->
 </div>
+
 </body>
 </html>
