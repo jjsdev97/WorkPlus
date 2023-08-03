@@ -36,7 +36,10 @@ public class DeptFrontController extends HttpServlet {
 		case "/deptAdmin.dt":
 			action = new DeptAdminAction();
 			break;
-		case "/dept/deptAdd.dt":
+		case "/deptGetList.dt":
+			action = new DeptGetList();
+			break;
+		case "/deptAdd.dt":
 			action = new DeptAddAction(); 
 			break;
 		}

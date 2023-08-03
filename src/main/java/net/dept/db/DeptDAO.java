@@ -2,10 +2,15 @@ package net.dept.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 public class DeptDAO {
 	private DataSource ds;
@@ -43,6 +48,48 @@ public class DeptDAO {
 		
 		return result;
 	}
+
+	public JsonArray getList() {
+		
+		// TODO Auto-generated method stub
+		String sql = "SELECT D_NUM, D_NAME, D_LEVEL, D_COLOR, D_UPPERLEVEL " 
+				   + "FROM DEPT "
+				   + "ORDER BY D_LEVEL, D_NUM ";
+		
+		JsonArray array = new JsonArray();
+		Dept d = new Dept();
+		
+		try(Connection conn = ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			
+			try(ResultSet rs = pstmt.executeQuery();){
+				
+				while(rs.next()) {
+					JsonObject object = new JsonObject();
+					object.addProperty("d_num", rs.getInt(1));
+					object.addProperty("d_name", rs.getString(2));
+					object.addProperty("d_level", rs.getInt(3));
+					object.addProperty("d_color", rs.getString(4));
+					object.addProperty("d_upperlevel", rs.getInt(5));
+					
+					array.add(object);
+				}
+				
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return array;
+	}
+	
+	
 	
 	
 	

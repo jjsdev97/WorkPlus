@@ -162,6 +162,7 @@ a.second-anchor {
 }
 
 /* ----------------------모달 시작---------------------- */
+
 .modal-background {
 	display: none;
 	position: fixed;
@@ -185,7 +186,6 @@ a.second-anchor {
 	left: 50%;
 	transform: translate(-50%, 0);
 }
-
 
 
 
