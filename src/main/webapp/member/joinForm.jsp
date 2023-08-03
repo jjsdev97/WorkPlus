@@ -16,7 +16,7 @@
 <div class="main">
   <h3>회원정보 입력</h3><hr>
   <div class="joincontainer">
-  <form name="joinform" class="joinform">
+  <form name="joinform" class="joinform" action="/joinProcess.net">
   	<div class="joinname">
 	<b>이름</b><br>
 	<input type="text" name="name" value="" id="input_name" placeholder="이름을 입력하세요" required><br>

@@ -1,0 +1,204 @@
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	overflow-x: hidden;
+	background-color: #284B63;
+}
+
+form{
+	background-color: white;
+	width:600px;
+	height:600px;
+	margin:auto;
+}
+	
+h3{
+	padding-top:80px;
+	padding-left:80px;
+	padding-bottom: 20px;
+}
+
+h4{
+	margin-top: 10px;
+}
+
+.verify_email{
+	margin: auto;
+	border: none;
+ 	display: inline-block; 
+	font-size: 16px; 
+ 	background-color: #d9d9d9;
+ 	width:130px;
+ 	height:35px;
+ 	border-radius: 5px;
+	margin-top:20px;
+	margin-right:10px;
+}
+
+.element_pass{
+	padding-left:40px;
+	border:solid 1px gray;
+	margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.element_id{
+	padding-left:40px;
+	border:solid 1px gray;
+	margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    height:200px;
+}
+
+.span_id{
+	padding-top:50px;
+	margin-top:50px;
+}
+
+.element{
+	padding-left:60px;
+	border:solid 1px gray;
+	margin-left: 40px;
+    margin-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.find_passform input[type=text]{
+	width:280px;
+ 	height:35px;
+ 	margin: auto;
+	display:inline-block;
+	border-radius: 5px;
+	margin-top: 10px;
+	border-color:#d9d9d9;
+	box-shadow:0;
+	border-style:solid;
+}
+
+
+.find_idform input[type=text]{
+ 	height:30px;
+ 	margin: auto;
+	display:inline-block;
+	border-radius: 5px;
+	margin-top: 10px;
+	border-color:#d9d9d9;
+	box-shadow:0;
+	border-style:solid;
+}
+
+#email, #domian{
+	width:145px;
+	height:30px;
+ 	margin: auto;
+	display:inline-block;
+	border-radius: 5px;
+	margin-top: 10px;
+	border-color:#d9d9d9;
+	box-shadow:0;
+	border-style:solid;
+	
+}
+
+#input_id, #input_name, #input_empnum{
+	width:350px;
+	height:30px;
+ 	margin: auto;
+	display:inline-block;
+	border-radius: 5px;
+	margin-top: 10px;
+	border-color:#d9d9d9;
+	box-shadow:0;
+	border-style:solid;
+}
+
+.joinform input[type=password]{
+	border-style:solid;
+	width:350px;
+ 	height:30px;
+ 	margin: auto;
+	display:inline-block;
+	border-radius: 5px;
+	margin-top: 10px;
+	border-color:#d9d9d9;
+	box-shadow:0;
+	margin-bottom:10px;
+	
+}
+
+#idcheck{
+ 	margin: auto;
+	display:inline-block;
+	border-radius: 5px;
+	margin-top: 10px;
+	background-color: #D9D9D9;
+ 	width:80px;
+ 	height:30px;
+ 	font-size: 15px; 
+ 	border-style:solid;
+ 	border-color:#d9d9d9;
+}
+
+.clearfix{
+	margin-top: 120px;
+	margin-left: 230px;
+}
+
+.clearfix_p{
+	margin-top: 50px;
+	margin-left: 230px;
+}
+
+.clearfix_id{
+	margin-top: 50px;
+	margin-left: 250px;
+}
+
+
+.submitbtn, .verify{
+	margin: auto;
+	border: none;
+ 	display: inline-block; 
+	font-size: 16px; 
+ 	background-color: #A0C1B9;
+ 	width:60px;
+ 	height:35px;
+ 	border-radius: 5px;
+	margin-top:20px;
+	margin-right:10px;
+}
+
+.cancelbtn{
+	margin: auto;
+	border: none;
+ 	display: inline-block; 
+	font-size: 16px; 
+ 	background-color: #D9D9D9;
+ 	width:60px;
+ 	height:35px;
+ 	border-radius: 5px;
+	margin-top:20px;
+}
+
+
+.btn_menu {
+	height:25px;
+	position: absolute;
+	left: -5px;
+	bottom: 10px;
+	color: white;
+	border: 0;
+	background-color: #284B63;
+	font-size: 11pt;
+	font-weight: bold;
+	width: 100%;
+	padding: 0px;
+}
