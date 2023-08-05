@@ -9,19 +9,12 @@
  $(function(){
 	 
 	 $(".join").click(function(){
-		 location.href = "join.net";
+		 location.href = "join.et";
 	 });
 	 
 	 
-	 const id = '${id}';
-	 if(id){
-		 $("#id").val(id);
-		 $("#remember_id").prop('checked', true);
-	 }
 	 
-	 $("button").click(function(){
-		location.href = "mainpage.jsp"; 
-	 });
+	 
 	 
  });
 
@@ -31,7 +24,7 @@
 <div class="container">
 </div> 
 <div class="user_login">
- <form class="login_form">
+ <form class="loginform" action="loginProcess.et" method="post">
 	<div class="login_logo_container">
 		<img src="img/login_logo.jpg" class="login_logo" id="logo">
 	</div> 
@@ -55,7 +48,7 @@
 		<label class="login_setting_label" for="remember_login">자동 로그인</label>
  	  </div>
       <div class="d-flex justify-content-center mt-3 login_container">
- 		<button type="button" name="button" class="btn login_btn">로그인</button>
+ 		<button type="submit" name="button" class="btn login_btn">로그인</button>
       </div>
     </div>
 	<div class="login_process" id="login_process">

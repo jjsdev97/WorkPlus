@@ -1,4 +1,4 @@
-package net.member.action;
+package et.member.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;

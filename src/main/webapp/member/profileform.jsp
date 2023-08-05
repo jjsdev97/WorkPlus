@@ -16,7 +16,7 @@
 <div class="main">
  <h3>프로필 설정</h3><hr>
  <div class="container">
- <form name="profileform" class="profileform">
+ <form name="profileform" class="profileform" method="post">
  
   <div class="profilesetting">
    <div class="profile_top">

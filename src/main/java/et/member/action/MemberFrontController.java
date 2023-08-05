@@ -1,4 +1,4 @@
-package net.member.action;
+package et.member.action;
 
 import java.io.IOException;
 
@@ -8,9 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import et.member.action.*;
 
 
-@WebServlet("")
+@WebServlet("*.et")
 public class MemberFrontController extends javax.servlet.http.HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -41,9 +42,26 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 		Action action = null;
 		
 		switch(command) {
-			
-			
+		case "/login.et" :
+			action = new MemberLoginAction();
+			break;
 		
+		case "/join.et" :
+			action = new MemberJoinAction();
+			break;
+			
+		case "/loginProcess.et" :
+			action = new MemberLoginProcessAction();
+			break;
+			
+		case "/joinProcess.et" :
+			action = new MemberJoinProcessAction();
+			break;
+			
+		case "/idcheck.et" :
+			action = new MemberIdCheckAction();
+			break;	
+			
 		} //switch end
 		
 		forward = action.execute(request, response);

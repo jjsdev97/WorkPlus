@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -24,7 +26,7 @@ public class MemberDAO {
 	
 	public int isId(String id) {
 		int result = -1; // DB에 해당 id가 없습니다.
-		String sql = "select id from member where M_ID = ? ";
+		String sql = "select M_ID from member where M_ID = ? ";
 		
 		try(Connection con = ds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql);){
@@ -46,11 +48,12 @@ public class MemberDAO {
 
 	public int joininsert(Member m) {
 		int result = 0;
-		String max_sql = "(select nvl(max(board_num),0)+1 from board)";
+		String max_sql = "(select nvl(max(m_num),0)+1 from member)";
 		
 		String sql = "insert into member "
-				+ "values(" + max_sql + "?, ?, ?, ?, ?, "
-						+ ", ?, , ?, ?, ?, ?)";
+				+ "(M_NUM, M_NAME, M_ID, M_PASS, E_NUM, VERIFY_EMAIL, "
+				+ "D_NUM, R_ADMIT, M_STATUS, CHAT_STATUS, M_ADMIN) "
+				+ "values (" + max_sql + ",?,?,?,?,?,?,?,?,?,?) ";
 				
 		try( Connection con = ds.getConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -66,7 +69,7 @@ public class MemberDAO {
 			pstmt.setString(9, m.getCHAT_STATUS());
 			pstmt.setString(10, m.getM_ADMIN());
 			
-				result = pstmt.executeUpdate();	//삽입 성공시 result는 1
+			result = pstmt.executeUpdate();	//삽입 성공시 result는 1
 			 } 	catch (Exception e) {
 					e.printStackTrace();
 			}
@@ -74,10 +77,10 @@ public class MemberDAO {
 				return result;
 	}
 
-	
+	//로그인
 	public int isId(String id, String pass) {
 		int result = -1; //DB에 해당 id가 없습니다.
-		String sql = "select id, password from member where id = ?";
+		String sql = "selec tM_ID, M_PASS from member where M_ID = ?";
 		
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){

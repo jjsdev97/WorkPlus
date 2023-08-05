@@ -24,4 +24,7 @@ values(1, '관리자', 'admin', '1', 100001, 'admin@nave.com', NULL , 0, NULL, N
 insert into member
 values(1, '관리자', 'admin', '1', 100001, 'admin@nave.com', NULL , 0, NULL, NULL, NULL , NULL,'ADMIN' );
 
-p
+delete from member;
+
+
+select M_ID from member where M_ID = 'jspp1';
