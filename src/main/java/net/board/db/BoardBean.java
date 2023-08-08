@@ -12,18 +12,86 @@ import javax.sql.DataSource;
 import net.member.db.Member;
 public class BoardBean {
 
-private int    board_num;    //글번호
-private String board_name;   //글 작성자
-private String board_pass;   //글 비밀번호
-private String board_subject;//글 제목
-private String board_content;//글 내용
-private String board_file;   //첨부될 파일의 이름
-private int    board_re_ref; //답변 글 작성시 참조되는 글의 번호
-private int    board_re_lev; //답변 글의 깊이
-private int    board_re_seq; //답변 글의 순서
-private int    board_readcount;//글의 조회수
-private String board_date;
-private int cnt;
+private int    BOARD_NUM;    //글번호
+private String BOARD_TYPE;   //게시판 종류
+private String BOARD_SUBJECT;//게시판 제목
+private String BOARD_CONTENT;//게시판 내용
+private String BOARD_FILE;   //파일첨부/다운
+private String BOARD_WRITER; //작성자
+private int    BOARD_DATE;   //작성일자
+private int    BOARD_READCOUNT; //조회수 카운팅
+private String BOARD_NOTICE; //
+private int    BOARD_LIKECOUNT;// 좋아요 개수
+public int getBOARD_NUM() {
+	return BOARD_NUM;
+}
+public void setBOARD_NUM(int bOARD_NUM) {
+	BOARD_NUM = bOARD_NUM;
+}
+public String getBOARD_TYPE() {
+	return BOARD_TYPE;
+}
+public void setBOARD_TYPE(String bOARD_TYPE) {
+	BOARD_TYPE = bOARD_TYPE;
+}
+public String getBOARD_SUBJECT() {
+	return BOARD_SUBJECT;
+}
+public void setBOARD_SUBJECT(String bOARD_SUBJECT) {
+	BOARD_SUBJECT = bOARD_SUBJECT;
+}
+public String getBOARD_CONTENT() {
+	return BOARD_CONTENT;
+}
+public void setBOARD_CONTENT(String bOARD_CONTENT) {
+	BOARD_CONTENT = bOARD_CONTENT;
+}
+public String getBOARD_FILE() {
+	return BOARD_FILE;
+}
+public void setBOARD_FILE(String bOARD_FILE) {
+	BOARD_FILE = bOARD_FILE;
+}
+public String getBOARD_WRITER() {
+	return BOARD_WRITER;
+}
+public void setBOARD_WRITER(String bOARD_WRITER) {
+	BOARD_WRITER = bOARD_WRITER;
+}
+public int getBOARD_DATE() {
+	return BOARD_DATE;
+}
+public void setBOARD_DATE(int bOARD_DATE) {
+	BOARD_DATE = bOARD_DATE;
+}
+public int getBOARD_NUMBER() {
+	return BOARD_NUMBER;
+}
+public void setBOARD_NUMBER(int bOARD_NUMBER) {
+	BOARD_NUMBER = bOARD_NUMBER;
+}
+public String getBOARD_NOTICE() {
+	return BOARD_NOTICE;
+}
+public void setBOARD_NOTICE(String bOARD_NOTICE) {
+	BOARD_NOTICE = bOARD_NOTICE;
+}
+public int getBOARD_LIKECOUNT() {
+	return BOARD_LIKECOUNT;
+}
+public void setBOARD_LIKECOUNT(int bOARD_LIKECOUNT) {
+	BOARD_LIKECOUNT = bOARD_LIKECOUNT;
+}
+
+
+/*
+ * private String board_name; //글 작성자 private String board_pass; //글 비밀번호
+ * private String board_subject;//글 제목 private String board_content;//글 내용
+ * private String board_file; //첨부될 파일의 이름 private int board_re_ref; //답변 글 작성시
+ * 참조되는 글의 번호 private int board_re_lev; //답변 글의 깊이 private int board_re_seq;
+ * //답변 글의 순서 private int board_readcount;//글의 조회수 private String board_date;
+ * private int cnt;
+ */
 
 //이곳에서 오른쪽 마우스 버튼 클릭 후 -> Source 
 //-> Generate Getters and Setters(alt + shift + )

@@ -30,7 +30,7 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet{
 		     //contextPath는 "/JspProject" 가 반환됩니다.
 		     
 		     String contextPath = request.getContextPath();
-		     System.out.println("contextPath =" + contextPath);
+		     System.out.println("contextPath=" + contextPath);
 		    		 // 위의 변수명과 동일해야함.
 		     
 		     //RequestURI 에서 컨텍스트 경로 길이 값의 인덱스 위치의 문자부터 마지막 위치 문자까지 추출
