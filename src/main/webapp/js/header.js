@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
 	$('#btn_admin').click(function() {
 		$('.sidebar-admin').css("visibility", "visible");
 		$('.sidebar-user').css("visibility", "hidden");
@@ -11,6 +11,7 @@ $(document).ready(function() {
 	}) // 관리자, 일반페이지 전환
 
 
+
 	$('.sidebar-item').on('click', '.sidebar-anchor', function() {
 		$('.sidebar-anchor-collapse').removeClass('sidebar-anchor-collapse');
 		$('.second-menu').css('height', '0');
@@ -20,7 +21,7 @@ $(document).ready(function() {
 			var length = $(this).children().length;
 
 			return 27.6 * length + "px";
-		})	
+		})
 	}) // 화살표 접힌 상태에서 클릭
 
 
@@ -46,7 +47,7 @@ $(document).ready(function() {
 	$('.modal-btn').click(function() {
 		$('.modal-background').css('display', 'block');
 		$('.modal-container').css('display', 'block');
-		
+
 		$('body').css('overflow', 'hidden');
 	})
 
@@ -54,15 +55,15 @@ $(document).ready(function() {
 
 	/* ----------------------모달 종료---------------------- */
 
-	
+
 	$('.modal-background').click(function() {
 		$('.modal-background').css('display', 'none');
 		$('.modal-container').css('display', 'none');
-		
+
 		$('body').css('overflow', 'auto');
 	})
 
-	
+
 
 
 

@@ -1,4 +1,4 @@
-package net.dept.action;
+package net.approval.action;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("*.dt")
-public class DeptFrontController extends HttpServlet {
+@WebServlet("*.apv")
+public class ApprovalFrontController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,27 +33,8 @@ public class DeptFrontController extends HttpServlet {
 		Action action = null;
 
 		switch (command) {
-		case "/deptAdmin.dt":
-			action = new DeptAdminAction();
-			break;
-		case "/deptGetList.dt":
-			action = new DeptGetList();
-			break;
-		case "/deptAdd.dt":
-			action = new DeptAddAction();
-			break;
-		case "/deptDelete.dt":
-			action = new DeptDeleteAction();
-			break;
-		case "/deptUpdate.dt":
-			action = new DeptUpdateAction();
-			break;
-		case "/deptGetData.dt":
-			action = new DeptGetDataAction();
-			break;
-			// 관리자 기능 ↑ | 사용자 기능 ↓			
-		case "/deptGetChart.dt":
-			action = new DeptUserChartAction();
+		case "/approvalWrite.apv":
+			action = new ApprovalWriteAction();
 			break;
 		}
 
