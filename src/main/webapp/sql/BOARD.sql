@@ -12,6 +12,15 @@ CREATE TABLE BOARD(
      BOARD_LIKECOUNT    NUMBER,           -- 좋아요 개수
      PRIMARY KEY(BOARD_NUM)
 );
+
+게시판 종류
+1    공통게시판  공지사항
+2    공통게시판  자유게시판
+3    팀별게시판
+4
+5
+
+
 -- 게시글이 달린 댓글의 갯수를 구하기 위한 과정입니다.
 select*from board;
 delete from board;

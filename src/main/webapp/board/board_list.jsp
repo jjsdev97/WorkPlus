@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="main">
-	<table class="table table-striped">
+	<table class="table table-striped" >
 	   <thead>
 	     <tr>
 	      <th><div>별</div></th>
@@ -26,11 +26,10 @@
 	     </tr>
 	   </thead>
 	   <tbody>
-	   
+	   <c:set var="num" value="${listcount-(page-1)*limit}"/>
+	   <c:forEach var="b" items="${boardlist}">	
 	   </tbody>
-	         
 	</table>
-	   
 	</div>
 </body>
 </html>

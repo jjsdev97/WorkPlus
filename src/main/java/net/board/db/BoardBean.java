@@ -20,8 +20,9 @@ private String BOARD_FILE;   //파일첨부/다운
 private String BOARD_WRITER; //작성자
 private int    BOARD_DATE;   //작성일자
 private int    BOARD_READCOUNT; //조회수 카운팅
-private String BOARD_NOTICE; //
+private String BOARD_NOTICE; // 공지글 확인
 private int    BOARD_LIKECOUNT;// 좋아요 개수
+private int cnt; // 댓글카운팅
 public int getBOARD_NUM() {
 	return BOARD_NUM;
 }
@@ -64,11 +65,11 @@ public int getBOARD_DATE() {
 public void setBOARD_DATE(int bOARD_DATE) {
 	BOARD_DATE = bOARD_DATE;
 }
-public int getBOARD_NUMBER() {
-	return BOARD_NUMBER;
+public int getBOARD_READCOUNT() {
+	return BOARD_READCOUNT;
 }
-public void setBOARD_NUMBER(int bOARD_NUMBER) {
-	BOARD_NUMBER = bOARD_NUMBER;
+public void setBOARD_READCOUNT(int bOARD_READCOUNT) {
+	BOARD_READCOUNT = bOARD_READCOUNT;
 }
 public String getBOARD_NOTICE() {
 	return BOARD_NOTICE;
@@ -82,6 +83,13 @@ public int getBOARD_LIKECOUNT() {
 public void setBOARD_LIKECOUNT(int bOARD_LIKECOUNT) {
 	BOARD_LIKECOUNT = bOARD_LIKECOUNT;
 }
+public int getCnt() {
+	return cnt;
+}
+public void setCnt(int cnt) {
+	this.cnt = cnt;
+}
+
 
 
 /*
