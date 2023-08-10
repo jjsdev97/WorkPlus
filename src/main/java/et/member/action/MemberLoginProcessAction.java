@@ -45,7 +45,7 @@ public class MemberLoginProcessAction implements Action {
 			 }
 			 
 			 forward.setRedirect(true);
-			 forward.setPath("profileUpdate.et"); //main.com
+			 forward.setPath("main.com");
 			 return forward;
 			 
 		 } else { 	//로그인 실패

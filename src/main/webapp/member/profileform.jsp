@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>프로필 수정</title>
 <link href="/WorkPlus/css/profile.css" rel="stylesheet">
-<jsp:include page="profileheader.jsp" />
+<jsp:include page="../header.jsp" />
 <style>
 
 </style>
