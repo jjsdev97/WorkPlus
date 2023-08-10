@@ -88,6 +88,88 @@ public class DeptDAO {
 		
 		return array;
 	}
+
+	public int delete(int num) {
+		// TODO Auto-generated method stub
+		String sql = "delete from dept where d_num = ? ";
+		int result = 0;
+		
+		try(Connection conn = ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);){
+			
+			pstmt.setInt(1, num);
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public JsonObject select(int num) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT D_NAME, D_LEVEL, D_COLOR, D_UPPERLEVEL " 
+				   + "FROM DEPT "
+				   + "WHERE D_NUM = ? ";
+		
+		JsonObject object = new JsonObject();
+		
+		try(Connection conn = ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql)){
+			
+			pstmt.setInt(1, num);
+			
+			try(ResultSet rs = pstmt.executeQuery()){
+				
+				if(rs.next()) {
+					object.addProperty("dname", rs.getString(1));
+					object.addProperty("dlevel", rs.getInt(2));
+					object.addProperty("dcolor", rs.getString(3));
+					object.addProperty("dupperlevel", rs.getInt(4));
+				}
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return object;
+	}
+
+	public int update(Dept d) {
+		// TODO Auto-generated method stub
+		String sql = "UPDATE DEPT "
+				+ "SET D_NAME = ?, D_LEVEL = ?, D_COLOR = ?, D_UPPERLEVEL =? "
+				+ "WHERE D_NUM = ? ";
+		
+		int result = 0;
+		
+		try(Connection conn = ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql)){
+			
+			pstmt.setString(1, d.getD_name());
+			pstmt.setInt(2, d.getD_level());
+			pstmt.setString(3, d.getD_color());
+			pstmt.setInt(4, d.getD_upperlevel());
+			pstmt.setInt(5, d.getD_num());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		if(result==0) {
+			System.out.println("dept update실패");
+		}
+		
+		
+		return result;
+	}
 	
 	
 	
