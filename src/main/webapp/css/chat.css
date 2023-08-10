@@ -6,6 +6,7 @@ div.left {
 	box-sizing: border-box;
 	height: 100%;
 	position:relative;
+	overflow-y: scroll;
 }
 
 div.right {
@@ -38,9 +39,11 @@ div.search > #Qbtn{
 }
 
 
+
 table.chatMemberList {
 	width: 100%;
 	border-collapse:collapse;
+	
 }
 
 div.left > table > tbody > tr{

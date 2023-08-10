@@ -5,12 +5,19 @@ import java.sql.Date;
 public class ChatBean {
 
 	private int chat_id;
+	private String chat_room_name;
 	private int chat_from;
 	private int chat_to;
 	private String chat_content;
 	private Date chat_create_at;
 	private String chat_file_adr;
 	
+	public String getChat_room_name() {
+		return chat_room_name;
+	}
+	public void setChat_room_name(String chat_room_name) {
+		this.chat_room_name = chat_room_name;
+	}
 	public int getChat_id() {
 		return chat_id;
 	}
