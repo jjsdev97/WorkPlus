@@ -21,7 +21,6 @@ h3{
 	margin-bottom:10px;
 }
 
-
 .joinform input[type=text]{
  	height:30px;
  	margin: auto;
@@ -46,7 +45,7 @@ h3{
 	
 }
 
-#input_id, #input_name, #input_empnum{
+#id, #name, #empnum{
 	width:350px;
 	height:30px;
  	margin: auto;
@@ -70,7 +69,6 @@ h3{
 	border-color:#d9d9d9;
 	box-shadow:0;
 	margin-bottom:10px;
-	
 }
 
 #idcheck{
@@ -85,12 +83,11 @@ h3{
  	border-style:solid;
  	border-color:#d9d9d9;
 }
+
 .clearfix{
 	margin-top: 50px;
 	margin-left:25%;
 }
-
-
 
 .submitbtn{
 	margin: auto;

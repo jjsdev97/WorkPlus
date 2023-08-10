@@ -1,13 +1,15 @@
-package net.member.action;
+package et.member.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.member.db.*;
+import net.member.db.Member;
+import net.member.db.MemberDAO;
 
 
 public class MemberJoinProcessAction implements Action {
@@ -24,7 +26,7 @@ public class MemberJoinProcessAction implements Action {
 		String email = request.getParameter("email");	//이메일(외부 인증 이메일)
 		String domain = request.getParameter("domain");
 		String emailaddr = email + "@" + domain;
-		//Date M_HIREDATE;				//입사일
+		String M_HIREDATE = request.getParameter("M_HIREDATE");				//입사일
 		int D_NUM = 0;					//부서번호(FK DEPT)
 		//String P_NUM = request.getParameter("");			//직책 ENUM 클래스
 		String admit = "1";			//가입승인
@@ -62,7 +64,7 @@ public class MemberJoinProcessAction implements Action {
 		out.println("<script>");
 		if(result == 1) {  //삽입이 된 경우
 			out.println("alert('회원가입을 축하합니다.');");
-			out.println("location.href='main.com';");
+			out.println("location.href='login.et';");
 		}
 		out.println("</script>");
 		out.close();

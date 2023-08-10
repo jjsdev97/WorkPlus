@@ -5,33 +5,30 @@
 <link href="css/login.css" rel="stylesheet">
 <script src="js/jquery-3.7.0.js"></script>
 <script src="js/header.js"></script>
+</head>
+<body>
 <script>
  $(function(){
 	 
 	 $(".join").click(function(){
-		 location.href = "join.net";
+		 location.href = "join.et";
 	 });
 	 
+	 $(".find_pass").click(function(){
+		 location.href = "findpass.et";
+	 });
 	 
-	 const id = '${id}';
-	 if(id){
-		 $("#id").val(id);
-		 $("#remember_id").prop('checked', true);
-	 }
-	 
-	 $("button").click(function(){
-		location.href = "mainpage.jsp"; 
+	 $(".find_id").click(function(){
+		 location.href = "findid.et";
 	 });
 	 
  });
 
 </script>
-</head>
-<body>
 <div class="container">
 </div> 
 <div class="user_login">
- <form class="login_form">
+ <form class="loginform" action="loginProcess.et" method="post">
 	<div class="login_logo_container">
 		<img src="img/login_logo.jpg" class="login_logo" id="logo">
 	</div> 
@@ -48,19 +45,19 @@
  		 </div>
  	  </div>
  	  <div class="login_setting">
-		<input type="checkbox" class="login_setting_input" id="remember_id">
+		<input type="checkbox" class="login_setting_input" id="remember_id" value="store">
 		<label class="login_setting_label" for="remember_id">아이디 기억하기</label>
 		
 		<input type="checkbox" class="login_setting_input" id="remember_login">
 		<label class="login_setting_label" for="remember_login">자동 로그인</label>
  	  </div>
       <div class="d-flex justify-content-center mt-3 login_container">
- 		<button type="button" name="button" class="btn login_btn">로그인</button>
+ 		<button type="submit" name="button" class="btn login_btn">로그인</button>
       </div>
     </div>
 	<div class="login_process" id="login_process">
- 		<a href="member/findid.jsp" class="find_id" onclick="idPopup();"><span class="find_id"> 아이디 찾기</span></a>&nbsp;|
- 		<a href="member/findpass.jsp" class="find_pass"><span class="find_pass"> 비밀번호 찾기</span></a>&nbsp;|
+ 		<a href="#" class="find_id"><span class="find_id"> 아이디 찾기</span></a>&nbsp;|
+ 		<a href="#" class="find_pass"><span class="find_pass"> 비밀번호 찾기</span></a>&nbsp;|
   		<a href="#" class="join_member"><span class="join"> 회원가입</span></a>
 	</div>
  </form>

@@ -82,7 +82,20 @@ input[readonly]{
 	margin-top:5px;
 }
 
-.cancelbtn{
+.logout{
+	margin: auto;
+	border: none;
+ 	display: inline-block; 
+	font-size: 16px; 
+ 	background-color: #D9D9D9;
+ 	width:60px;
+ 	height:35px;
+ 	border-radius: 5px;
+	margin-top: 40px;
+}
+
+
+.cancelbtn {
 	margin: auto;
 	border: none;
  	display: inline-block; 
