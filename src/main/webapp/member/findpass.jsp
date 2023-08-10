@@ -6,12 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<link href="../css/find.css" rel="stylesheet">
+<link href="css/find.css" rel="stylesheet">
 <style>
 
 </style>
 </head>
 <body>
+<script>
+$(function(){
+	
+	$('.cancelbtn').click(function(){
+		 location.href='login.et';
+	 });
+	
+});
+</script>
 <div class="main">
   <div class="container">
   <form name="find_passform" class="find_passform">

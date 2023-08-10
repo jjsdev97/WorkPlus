@@ -14,7 +14,7 @@
 <body>
 <div class="main">
   <div class="container">
-  <form name="find_passform" class="find_passform">
+  <form name="find_passform" class="find_passform" action="passreset.et" method="post">
   <h3>비밀번호 찾기 결과</h3>
   	<div class="element_pass">
   	<div class="newpass">

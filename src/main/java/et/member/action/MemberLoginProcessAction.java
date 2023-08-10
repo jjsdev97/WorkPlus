@@ -45,9 +45,10 @@ public class MemberLoginProcessAction implements Action {
 			 }
 			 
 			 forward.setRedirect(true);
-			 forward.setPath("BoardList.bo");
+			 forward.setPath("profileUpdate.et"); //main.com
 			 return forward;
-		 } else {
+			 
+		 } else { 	//로그인 실패
 			 String message = "비밀번호가 일치하지 않습니다.";
 			 if(result == -1)
 				 message = "아이디가 존재하지 않습니다.";
@@ -56,7 +57,7 @@ public class MemberLoginProcessAction implements Action {
 			 PrintWriter out = response.getWriter();
 			 out.println("<script>");
 			 out.println("alert('" + message + "');");
-			 out.println("location.href='login.et';");
+			 out.println("history.back();");
 			 out.println("</script>");
 			 out.close();
 			 return null;

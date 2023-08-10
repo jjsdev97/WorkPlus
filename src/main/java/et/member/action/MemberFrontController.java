@@ -62,6 +62,52 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 			action = new MemberIdCheckAction();
 			break;	
 			
+		case "/findid.et" :
+			action = new MemberFindIdAction();
+			break;
+			
+		case "/findidprocess.et" :
+			action = new MemberFindIdProcessAction();
+			break;
+			
+		case "/findpass.et" :
+			action = new MemberFindPassAction();
+			break;
+			
+		case "/findpassprocess.et" :
+			action = new MemberFindpassProcessAction();
+			break;
+			
+		case "/passreset.et" :
+			action = new MemberpassResetAction();
+			break;
+			
+		case "/memberList.et" :
+			action = new MemberListAction();
+			break;
+			
+		case "/memberConfirm.et" :
+			action = new MemberConfirmAction();
+			break;
+			
+		case "/memberDelete.et" :
+			action = new MemberDeleteAction();
+			break;
+			
+		case "/memberClearblock.et" :
+			action = new MemberClearblockAction();
+			break;
+			
+		case "/profileUpdate.et" :
+			action = new MemberprofileUpdateAction();
+			break;
+			
+		case "/profileUpdateProcess.et" :
+			action = new MemberUpdateProcessAction();
+			break;
+			
+			
+			
 		} //switch end
 		
 		forward = action.execute(request, response);

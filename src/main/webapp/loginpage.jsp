@@ -5,6 +5,8 @@
 <link href="css/login.css" rel="stylesheet">
 <script src="js/jquery-3.7.0.js"></script>
 <script src="js/header.js"></script>
+</head>
+<body>
 <script>
  $(function(){
 	 
@@ -12,15 +14,17 @@
 		 location.href = "join.et";
 	 });
 	 
+	 $(".find_pass").click(function(){
+		 location.href = "findpass.et";
+	 });
 	 
-	 
-	 
+	 $(".find_id").click(function(){
+		 location.href = "findid.et";
+	 });
 	 
  });
 
 </script>
-</head>
-<body>
 <div class="container">
 </div> 
 <div class="user_login">
@@ -41,7 +45,7 @@
  		 </div>
  	  </div>
  	  <div class="login_setting">
-		<input type="checkbox" class="login_setting_input" id="remember_id">
+		<input type="checkbox" class="login_setting_input" id="remember_id" value="store">
 		<label class="login_setting_label" for="remember_id">아이디 기억하기</label>
 		
 		<input type="checkbox" class="login_setting_input" id="remember_login">
@@ -52,8 +56,8 @@
       </div>
     </div>
 	<div class="login_process" id="login_process">
- 		<a href="member/findid.jsp" class="find_id" onclick="idPopup();"><span class="find_id"> 아이디 찾기</span></a>&nbsp;|
- 		<a href="member/findpass.jsp" class="find_pass"><span class="find_pass"> 비밀번호 찾기</span></a>&nbsp;|
+ 		<a href="#" class="find_id"><span class="find_id"> 아이디 찾기</span></a>&nbsp;|
+ 		<a href="#" class="find_pass"><span class="find_pass"> 비밀번호 찾기</span></a>&nbsp;|
   		<a href="#" class="join_member"><span class="join"> 회원가입</span></a>
 	</div>
  </form>

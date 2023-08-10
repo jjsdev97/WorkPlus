@@ -16,8 +16,14 @@ public class Member {
 	private String M_STATUS;		//이용정지
 	private String CHAT_STATUS;		//접속상태
 	private String M_ADMIN;			//어드민관리 - USER(기본값), ADMIN
+	private String M_PROFILEFILE;	//프로필 파일 저장
 	
-	
+	public String getM_PROFILEFILE() {
+		return M_PROFILEFILE;
+	}
+	public void setM_PROFILEFILE(String m_PROFILEFILE) {
+		M_PROFILEFILE = m_PROFILEFILE;
+	}
 	public String getR_ADMIT() {
 		return R_ADMIT;
 	}

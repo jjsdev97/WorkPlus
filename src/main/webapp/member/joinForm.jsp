@@ -9,7 +9,7 @@
 <jsp:include page="../header.jsp" />
 </head>
 <body>
-<script src="../js/join.js"></script>
+<script src="js/join.js"></script>
 <div class="main">
   <div class="joincontainer">
   <form name="joinform" class="joinform" action="joinProcess.et" method="post">

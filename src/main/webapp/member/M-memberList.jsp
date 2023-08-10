@@ -8,144 +8,156 @@
 <title>사용자 관리</title>
 <link href="/WorkPlus/css/M-memberlist.css" rel="stylesheet">
 <jsp:include page="/header.jsp" />
-
-
-<script>
- $(document).ready(function(){
-	  $('ul.tabs li').click(function(){
-		 var tab_id = $(this).attr('data-tab');
-		 
-		 $('ul.tabs li').removeClass('current');
-		 $('.tab-content').removeClass('current');
-		 
-		 $(this).addClass('current');
-		 $('#'+tab_id).addClass('current');
-	  });
-	  
-	//검색 클릭 후 응답화면에는 검색시 선택한 필드가 선택되도록 합니다.
-		let selectedValue = '${search_field}'
-		if(selectedValue != '-1')
-			$("#viewcount").val(selectedValue);
-		else
-			selectedValue=0;   //선택된 필드가 없는 경우 기본적으로 아이디를 선택하도록 합니다.
-		
-		const $input = $("input[name=search_word]")
-		//검색 후 selectedValue값에 따라 placeholder가 나타나도록 합니다.
-		const message = ["아이디", "이름", "나이", "여 또는 남"]
-		
-		$input.attr("placeholder", message[selectedValue] + " 입력하세요");
-		
-			
-		//검색 버튼 클릭한 경우
-		$("button").click(function(){
-			//검색어 공백 유효성 검사합니다.
-			if($input.val() == ''){
-				alert("검색어를 입력하세요");
-				$input.focus();
-				return false;
-			}
-			
-			const word = $input.val();
-			if(selectedValue === '2'){
-				const pattern = /^[0-9]{2}$/;
-				if(!pattern.test(word)){
-					alert("나이는 형식에 맞게 입력하세요(두자리 숫자)");
-					$input.val('').focus();
-					return false;
-				}
-			} 
-		}); //button click end
-		
-		//검색어 입력창에 placeholder 나타나도록 합니다.
-		$("#viewcount").change(function(){
-			selectedValue = $(this).val();
-			$input.val('').attr("placeholder", message[selectedValue] + " 입력하세요");
-		})//$("#viewcount").change end
-		
-		
-		//회원 목록의 삭제를 클릭한 경우
-		$("tr > td:nth-child(3) > a").click(function(event){
-			 const answer = confirm("정말로 삭제하시겠습니까?");
-			 console.log(answer);	// 취소를 클릭한 경우 - false
-			 if(!answer) {	//취소를 클릭한 경우
-				 event.preventDefault();	//이동하지 않습니다.
-			 }
-		}) //삭제 클릭 end 
-	  
- });
-</script>
-
+<script src="js/m_memberlist.js"></script>
 </head>
 <body>
 <div class="main">
+	<div class="modal-container"> <!-- 수정하기 모달 -->
+		<b>이름</b><input type="text" name="id" value="${m.m_NAME}" ><br>
+		<b>이메일</b><input type="text" name="id" value="${m.VERIFY_EMAIL}" ><br>		
+		<b>부서명</b><input type="text" name="id" value="" ><br>		
+		<b>직책</b><input type="text" name="id" value="" ><br>		
+		<b>사원번호</b><input type="text" name="id" value="${m.e_NUM}"><br>		
+	</div>
  <h3>사용자 관리</h3><hr>
+	
  <div class="container"><%-- tab, 검색 container--%>
    <ul class="tabs">
-   	 <li class="tab-link current" id="waiting" data-tab="tab-1">가입대기</li>
-   	 <li class="tab-link" id="block" data-tab="tab-2">이용중지</li>
-   	 <li class="tab-link" id="completion" data-tab="tab-3">승인완료</li>
+   	 <li class="tab-link current" id="wait" data-tab="tab-1">가입대기[${listcount.wait }]</li>
+   	 <li class="tab-link" id="stop" data-tab="tab-2">이용중지[${listcount.stop}]</li>
+   	 <li class="tab-link" id="complete" data-tab="tab-3">승인완료[${listcount.complete }]</li>
    </ul>
+ </div>
    
-   <form action="memberList.net" method="post">
+   <form action="memberList.et" method="post" name="memberlist" class="search_memberlist">
+		<input type="hidden" id="searchcheck" name="page" value="${page}">	
+		<input type="hidden" id="tab" name="tab" value="${tab}">
 			<div class="input-group">
 				<select id="viewcount" name="search_field">
-					<option value="0" selected>아이디</option>
-					<option value="1">이름</option>
-					<option value="2">나이</option>
-					<option value="3">성별</option>
+					<option value="0" selected>이름</option>
+					<option value="1">사원번호</option>
+					<option value="2">부서</option>
 				</select> 
-				   <input name="search_word" type="text" class="form-control"
-					      placeholder="아이디 입력하세요"    value="${search_word}">
-				  <button class="btn btn-primary" type="submit">검색</button>
+				   <input name="search_word" type="text" name="search_word" class="form-control"
+					         value="${search_word}">
+				   <button class="search_btn" type="submit">검색</button>
 			</div>
-		</form>
+	</form>
    
+   <%-- 표시 내용 --%>
+   <div class="content">
+   <select name="orderby" id="order">
+	   	<option value="name">이름 순</option>
+	   	<option value="empnum">사원번호 순</option>
+	   	<option value="dept">부서 순</option>
+   </select><br>
+  <%--  <c:if test="${listcount > 0 }"> --%>
+   <div id="tab-1" class="tab-content current"> <%-- 가입 대기 --%>
+   	<table class="table table-striped" >
+		 <thead>
+		   <tr>
+		   		<th>이름</th>
+		   		<th>사원번호</th>
+		   		<th>부서</th>
+		   		<th>직책</th>
+		   		<th>이메일</th>
+		   		<th>가입 요청일</th>
+		   		<th>설정</th>
+		   </tr>
+		 </thead>
+		 <tbody>
+		  <c:forEach var="m" items="${totallist1}"> 
+		   <tr>
+		   	   <td>${m.m_NAME}</td>
+		   	   <td>${m.e_NUM}</td>
+		   	   <td>${m.d_NUM}</td>
+		   	   <td>${m.p_NUM}</td>
+		   	   <td>${m.VERIFY_EMAIL}</td>
+		   	   <td>${m.m_HIREDATE}</td>
+		   	   <td>
+			   	   <a href="memberConfirm.et?id=${m.m_ID}&tab=1"><span id="admit" style="color: blue;">[가입승인]</span></a>&nbsp;
+			   	   <a href="memberDelete.et?id=${m.m_ID}&tab=1"><span id="reject" style="color: red;">[가입거절]</span></a>
+		   	   </td>
+		   </tr>
+		  </c:forEach>
+		 </tbody>
+	 </table>
    
-   <div id="tab-1" class="tab-content current">가입대기 내용</div>
-   <div id="tab-2" class="tab-content">이용중지 내용</div>
-   <div id="tab-3" class="tab-content">승인완료 내용</div>
-
+   </div>
+   <div id="tab-2" class="tab-content"> 		<%-- 이용 중지 --%>
+     <table class="table table-striped">
+		 <thead>
+		   <tr>
+		   		<th>이름</th>
+		   		<th>사원번호</th>
+		   		<th>부서</th>
+		   		<th>직책</th>
+		   		<th>이메일</th>
+		   		<th>가입 요청일</th>
+		   		<th>설정</th>
+		   </tr>
+		 </thead>
+		 <tbody>
+		  <c:forEach var="m" items="${totallist2}">
+		   <tr>
+		   	   <td>${m.m_NAME}</td>
+		   	   <td>${m.e_NUM}</td>
+		   	   <td>${m.d_NUM}</td>
+		   	   <td>${m.p_NUM}</td>
+		   	   <td>${m.VERIFY_EMAIL}</td>
+		   	   <td>${m.m_HIREDATE}</td>
+		   	   <td>
+			   	   <a href="memberClearblock.et?id=${m.m_ID}&tab=2"><span id="clear"  style="color: blue;">[중지해제]</span></a>&nbsp; 
+			   	   <a href="memberDelete.et?id=${m.m_ID}&tab=2"><span class="delete" style="color: red;">[계정삭제]</span></a>
+		   	   </td>
+		   </tr>
+		  </c:forEach>
+		 </tbody>
+	 </table>
+   </div>
+   <div id="tab-3" class="tab-content">			<%-- 승인 완료 --%>
+     <table class="table table-striped">
+		 <thead>
+		   <tr>
+		   		<th>이름</th>
+		   		<th>사원번호</th>
+		   		<th>부서</th>
+		   		<th>직책</th>
+		   		<th>이메일</th>
+		   		<th>가입 요청일</th>
+		   		<th>설정</th>
+		   </tr>
+		 </thead>
+		 <tbody>
+		  <c:forEach var="m" items="${totallist3}">
+		   <tr>
+		   	   <td>${m.m_NAME}</td>
+		   	   <td>${m.e_NUM}</td>
+		   	   <td>${m.d_NUM}</td>
+		   	   <td>${m.p_NUM}</td>
+		   	   <td>${m.VERIFY_EMAIL}</td>
+		   	   <td>${m.m_HIREDATE}</td>
+		   	   <td>
+			   	   <span id="update"  style="color: blue;">[수정]</span>&nbsp;
+			   	   <a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: red;">[계정삭제]</span></a>
+		   	   </td>
+		   </tr>
+		  </c:forEach>
+		 </tbody>
+	 </table>
+   </div>
+ <%-- </c:if> --%>
+ </div>
  </div><%-- container end --%>
- 
- <%-- table 시작 --%>
- 
- <table class="table table-striped">
-	 <thead>
-	   <tr>
-	   		<th>이름</th>
-	   		<th>사원번호</th>
-	   		<th>부서</th>
-	   		<th>직책</th>
-	   		<th>이메일</th>
-	   		<th>가입 요청일</th>
-	   		<th>설정</th>
-	   </tr>
-	 </thead>
-	 <tbody>
-	   <tr>
-	   	   <td>김사원</td>
-	   	   <td>100205</td>
-	   	   <td>영업팀</td>
-	   	   <td>사원</td>
-	   	   <td>kim_sw@nave.com</td>
-	   	   <td>2023.08.03</td>
-	   	   <td><span>[가입승인]</span> <span>[가입거절]</span>
-	   	   </td>
-	   </tr>
-	 </tbody>
- </table>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 </div><%-- main end --%>
+<script>
+$('#update').click(function() {
+	$('.modal-background').css('display', 'block');
+	$('.modal-container').css('display', 'block');
+	
+	$('body').css('overflow', 'hidden');
+})
+
+</script>
 </body>
 </html>

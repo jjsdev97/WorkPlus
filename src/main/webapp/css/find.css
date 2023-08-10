@@ -14,6 +14,15 @@ form{
 	height:600px;
 	margin:auto;
 }
+
+.result_id{
+	padding-top:100px;
+	margin-left:50px;
+	margin-right:50px;
+	border:solid 1px gray;
+	padding-bottom:100px;
+	padding-left:30px;
+}
 	
 h3{
 	padding-top:80px;
@@ -23,6 +32,13 @@ h3{
 
 h4{
 	margin-top: 10px;
+}
+
+#idresult{
+	color:red;
+	border:solid 1px gray;
+	padding-left:20px;
+	padding-right:20px;
 }
 
 .verify_email{
@@ -62,7 +78,7 @@ h4{
 	margin-top:50px;
 }
 
-.element{
+.element {
 	padding-left:60px;
 	border:solid 1px gray;
 	margin-left: 40px;
@@ -108,7 +124,7 @@ h4{
 	
 }
 
-#input_id, #input_name, #input_empnum{
+#input_id, #name, #empnum{
 	width:350px;
 	height:30px;
  	margin: auto;
