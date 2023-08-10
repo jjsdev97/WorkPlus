@@ -1,11 +1,11 @@
 package et.member.action;
 
 public enum P_NUM {
-	1("대표이사"),
-	2("기술팀"),
-	3("영업팀"),
-	4("인사팀"),
-	5("개발팀");
+	ceo("대표이사"),
+	GeneralManager("부장"),
+	Manager("과장"),
+	AssistantManager("대리"),
+	staff("사원");
 	
 	
 	

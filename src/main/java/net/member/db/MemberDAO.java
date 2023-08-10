@@ -12,6 +12,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import net.dept.db.Dept;
+
 public class MemberDAO {
 	private DataSource ds;
 	
@@ -228,13 +230,23 @@ public class MemberDAO {
 		//limit : 페이지 당 목록의 수
 		//조건절에 맞는 rnum의 범위만큼 가져오는 쿼리문
 		
-		ArrayList<Member> list = new ArrayList<Member>();
-		String member_list_sql = "select * from(select b.*, rownum rnum "
+		/* 원래 쿼리문
+		   		"select * from(select b.*, rownum rnum "
 				+ "					from(select * from member where M_ID != 'admin' AND " + sql 
 				+ "						 order by M_NAME)b "
 				+ "	  		   where rownum <= ? ) "
 				+ "   where rnum >= ? and rnum <= ? ";
+		 */
 		
+		
+		ArrayList<Member> list = new ArrayList<Member>();
+		String member_list_sql = "select * from(select b.*, rownum rnum "
+				+ "					from(select * from member left outer join dept on member.d_num = dept.d_num where M_ID != 'admin' AND " + sql 
+				+ "						 order by M_NAME)b "
+				+ "	  		   where rownum <= ? ) "
+				+ "   where rnum >= ? and rnum <= ? ";
+		
+		System.out.println();
 		try(Connection con = ds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(member_list_sql);){
 			
@@ -263,6 +275,8 @@ public class MemberDAO {
 					m.setM_STATUS(rs.getString(11));
 					m.setCHAT_STATUS(rs.getString(12));
 					m.setM_ADMIN(rs.getString(13));
+					m.setM_PROFILEFILE(rs.getString(14));
+					m.setD_NAME(rs.getString(16));
 					
 					list.add(m);
 				}
@@ -277,13 +291,14 @@ public class MemberDAO {
 		return list;
 	}
 
-	public int confirm(String id) {
+	public int confirm(int dnum, String id) {
 		int result = 0;
-		String sql = "update member set R_ADMIT = '2' "
+		String sql = "update member set R_ADMIT = '2' , D_NUM = ?"
 				+ "where M_ID = ? ";
 		try(Connection con = ds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql);){
-			pstmt.setString(1, id);
+			pstmt.setInt(1, dnum );
+			pstmt.setString(2, id);
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -432,6 +447,35 @@ public class MemberDAO {
 		
 		return m;
 	}
+	
+	public ArrayList<Dept> deptinfo() {
+		
+		ArrayList<Dept> deptlist = new ArrayList<Dept>();
+		String sql = "select * from dept order by D_LEVEL, D_NUM ";
+		
+		try(Connection con = ds.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql);){
+			
+			try(ResultSet rs = pstmt.executeQuery()){
+				while(rs.next()) {
+					Dept d = new Dept();
+					d.setD_num(rs.getInt(1));
+					d.setD_name(rs.getString(2));
+					d.setD_level(rs.getInt(3));
+					d.setD_color(rs.getString(4));
+					d.setD_upperlevel(rs.getInt(5));
+					
+					deptlist.add(d);
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return deptlist;
+	}
 
 	public int update(Member m) {
 		int result = 0;
@@ -458,6 +502,33 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	public ArrayList<Position> jobinfo() {
+		
+		ArrayList<Position> position = new ArrayList<Position>();
+		String sql = "select * from position ";
+		
+		try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				
+				try(ResultSet rs = pstmt.executeQuery()){
+					while(rs.next()) {
+						Position p = new Position();
+						p.setP_NUM(rs.getString(1));
+						p.setM_JOB(rs.getString(2));
+						position.add(p);
+					}
+				} catch(SQLException e) {
+					e.printStackTrace();
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			
+			return position;
+	}
+
+	
 
 	
 		

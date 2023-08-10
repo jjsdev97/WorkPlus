@@ -67,15 +67,29 @@
 		 </thead>
 		 <tbody>
 		  <c:forEach var="m" items="${totallist1}">
+		  <input type="hidden" value="${m.m_ID}" id="m_id">
 		   <tr>
 		   	   <td>${m.m_NAME}</td>
 		   	   <td>${m.e_NUM}</td>
-		   	   <td>${m.d_NUM}</td>
-		   	   <td>${m.p_NUM}</td>
+		   	   <td><%--부서 선택--%>
+		   	   		<select name="dnum" id="dept">
+					   	<c:forEach var="d" items="${deptlist}">
+					   		<option value="${d.d_num}">${d.d_name}</option>
+					   	</c:forEach>
+		   	   		</select>
+		   	   </td> 
+		   	   <td>
+		   	   		<select name="pnum" id="pnum">
+					   	<c:forEach var="p" items="${position}">
+					   		<option value="${p.p_NUM}">${p.m_JOB}</option>
+					   	</c:forEach>
+		   	   		</select>
+		   	   
+		   	   </td>
 		   	   <td>${m.VERIFY_EMAIL}</td>
 		   	   <td>${m.m_HIREDATE}</td>
 		   	   <td>
-			   	   <a href="memberConfirm.et?id=${m.m_ID}&tab=1"><span id="admit" style="color: blue;">[가입승인]</span></a>&nbsp;
+			   	   <span id="admit" style="color: blue;">[가입승인]</span></a>&nbsp;
 			   	   <a href="memberDelete.et?id=${m.m_ID}&tab=1"><span id="reject" style="color: red;">[가입거절]</span></a>
 		   	   </td>
 		   </tr>
@@ -102,7 +116,13 @@
 		   <tr>
 		   	   <td>${m.m_NAME}</td>
 		   	   <td>${m.e_NUM}</td>
-		   	   <td>${m.d_NUM}</td>
+		   	   <td>
+		   	    	<select name="dept" id="dept">
+					   	<c:forEach var="d" items="${deptlist}">
+					   		<option value="${d.d_num}">${d.d_name}</option>
+					   	</c:forEach>
+		   	   		</select>
+		   	   </td>
 		   	   <td>${m.p_NUM}</td>
 		   	   <td>${m.VERIFY_EMAIL}</td>
 		   	   <td>${m.m_HIREDATE}</td>
@@ -133,7 +153,9 @@
 		   <tr>
 		   	   <td>${m.m_NAME}</td>
 		   	   <td>${m.e_NUM}</td>
-		   	   <td>${m.d_NUM}</td>
+		   	   <td>
+				${m.d_NAME}	
+		   	   </td>
 		   	   <td>${m.p_NUM}</td>
 		   	   <td>${m.VERIFY_EMAIL}</td>
 		   	   <td>${m.m_HIREDATE}</td>

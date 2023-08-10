@@ -9,8 +9,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.dept.db.Dept;
 import net.member.db.Member;
 import net.member.db.MemberDAO;
+import net.member.db.Position;
 
 public class MemberListAction implements Action {
 
@@ -19,7 +21,7 @@ public class MemberListAction implements Action {
 			throws ServletException, IOException {
 		
 		MemberDAO mdao = new MemberDAO();
-		
+		String sql = null;
 		int page = 1;
 		int limit = 10;
 		if(request.getParameter("page")!=null) {
@@ -37,6 +39,8 @@ public class MemberListAction implements Action {
 		ArrayList<Member>  list1 = null;
 		ArrayList<Member>  list2 = null;
 		ArrayList<Member>  list3 = null;
+		ArrayList<Dept> deptlist = null;
+		ArrayList<Position> position = null;
 		
 		// 1)관리자 페이지 - 사용자 관리 클릭한 경우(가입대기인 회원목록 표시)
 		if(request.getParameter("search_word") == null || request.getParameter("search_word").equals("")){
@@ -45,6 +49,9 @@ public class MemberListAction implements Action {
 			list1 = mdao.getList1(page, limit, "R_ADMIT = '1'");  //가입승인
 			list3 = mdao.getList1(page, limit, "R_ADMIT = '2'");  //승인완료
 			list2 = mdao.getList1(page, limit, "M_STATUS = '2'"); //이용중지
+			
+			deptlist = mdao.deptinfo();
+			position = mdao.jobinfo();
 			
 		} else {  //검색을 클릭한 경우 
 			
@@ -79,6 +86,8 @@ public class MemberListAction implements Action {
 		request.setAttribute("totallist2", list2);
 		request.setAttribute("totallist3", list3);
 		request.setAttribute("listcount", map);
+		request.setAttribute("deptlist", deptlist);
+		request.setAttribute("position", position);
 		request.setAttribute("tab", request.getParameter("tab"));
 		actionforward.setPath("member/M-memberList.jsp");
 		actionforward.setRedirect(false);
