@@ -14,42 +14,27 @@
 </head>
 <body>
 	<div class="main">
-	<table class="table table-striped" >
+	<table class="table table-striped">
 	   <thead>
 	     <tr>
 	      <th><div>별</div></th>
-	      <th><div>순번</div>></th>
+	      <th><div>순번</div></th>
 	      <th><div>제목</div></th>
-	      <td><div>작성자</div></td>
-	      <td><div>작성일자</div></td>
-	      <td><div>조회수</div></td>
+	      <th><div>작성자</div></th>
+	      <th><div>작성일자</div></th>
+	      <th><div>조회수</div></th>
 	     </tr>
 	   </thead>
-	   <tbody>
-	   <c:set var="num" value="${listcount-(page-1)*limit}"/>
-	   <c:forEach var="b" items="${boardlist}">	
-<tr>
+	   <tbody> <!-- 아직 이해안됨 -->
+	   <c:set var="num" value="${listcount-(page-1)*limit}"/> 
+	   <c:forEach var="b" items="${boardlist}">
+       <tr>
 	   <td><%--번호 --%>
 		 <c:out value="${num}"/><%-- num 출력 --%>		
 		 <c:set var="num" value="${num-1}"/>	<%-- num=num-1; 의미--%>	
 	   </td>
 	   <td><%--제목 --%>
 	     <div>			
-			<%-- 답변글 제목앞에 여백 처리 부분 
-			      board_re_lev,  board_num, 
-			      board_subject, board_name, board_date, 
-			      board_readcount : property 이름 --%>
-		    <c:if test="${b.board_re_lev != 0}">  <%--  답글인 경우 --%>
-				<c:forEach var="a" begin="0" end="${b.board_re_lev*2}" step="1">
-				&nbsp; 	
-				</c:forEach>		
-				<img src='image/line.gif'>
-			</c:if>  
-			 
-			<c:if test="${b.board_re_lev == 0}">  <%-- 원문인 경우 --%>
-				&nbsp;  
-			</c:if> 			
-			
 			<a href="BoardDetailAction.bo?num=${b.board_num}">
 			   <c:if test="${b.board_subject.length()>=20}">
 				 <c:out value="${b.board_subject.substring(0,20)}..." />
@@ -82,7 +67,7 @@
 				</li> 
 			 </c:if>
 					
-			<c:forEach var="a" begin="${startpage}" end="${endpage}">
+			<c:forEach var="a" begin="${startpage}" end="${endpage}"> <!-- 시작값, 종료값 -->
 				<c:if test="${a == page }">
 					<li class="page-item active" >
 					   <a class="page-link">${a}</a>
@@ -109,7 +94,7 @@
 			</c:if>
 		 </ul>
 	</div>
- </c:if><%-- <c:if test="${listcount > 0 }"> end --%>
+ <%-- <c:if test="${listcount > 0 }"> end --%>
 	
  <%-- 게시글이 없는 경우--%>
  <c:if test="${listcount == 0 }">
