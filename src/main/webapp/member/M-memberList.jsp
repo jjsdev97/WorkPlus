@@ -66,7 +66,7 @@
 		   </tr>
 		 </thead>
 		 <tbody>
-		  <c:forEach var="m" items="${totallist1}"> 
+		  <c:forEach var="m" items="${totallist1}">
 		   <tr>
 		   	   <td>${m.m_NAME}</td>
 		   	   <td>${m.e_NUM}</td>
