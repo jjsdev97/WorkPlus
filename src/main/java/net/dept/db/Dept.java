@@ -6,6 +6,7 @@ public class Dept {
 	private int d_level;
 	private String d_color;
 	private int d_upperlevel;
+	private int memberCnt;
 
 	public int getD_num() {
 		return d_num;
@@ -45,6 +46,14 @@ public class Dept {
 
 	public void setD_upperlevel(int d_upperlevel) {
 		this.d_upperlevel = d_upperlevel;
+	}
+
+	public int getMemberCnt() {
+		return memberCnt;
+	}
+
+	public void setMemberCnt(int memberCnt) {
+		this.memberCnt = memberCnt;
 	}
 
 }

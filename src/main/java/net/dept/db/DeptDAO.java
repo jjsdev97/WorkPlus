@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -11,6 +12,8 @@ import javax.sql.DataSource;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+
+import net.member.db.Member;
 
 public class DeptDAO {
 	private DataSource ds;
@@ -170,6 +173,80 @@ public class DeptDAO {
 		
 		return result;
 	}
+
+	public ArrayList<Member> getMemberList() {
+		// TODO Auto-generated method stub
+		ArrayList<Member> memberlist = new ArrayList<>();
+		
+		String sql = "SELECT M_NAME, D_NUM, P_NUM, M_ID FROM MEMBER";
+		
+		try(Connection conn = ds.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql)){
+			
+			try(ResultSet rs = pstmt.executeQuery();){
+				
+				while(rs.next()){
+					Member m = new Member();
+					m.setM_NAME(rs.getString(1));
+					m.setD_NUM(rs.getInt(2));
+					m.setP_NUM(rs.getString(3));
+					m.setM_ID(rs.getString(4));
+					
+					memberlist.add(m);
+				}
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		return memberlist;
+	}
+
+	public ArrayList<Dept> getDeptName() {
+		// TODO Auto-generated method stub
+		
+		ArrayList<Dept> deptlist = new ArrayList<>();
+
+	
+		String sql = "SELECT D.D_NUM, D.D_NAME, COUNT(M.M_NUM) AS MEMBER_COUNT "
+					+"FROM DEPT D LEFT JOIN MEMBER M ON D.D_NUM = M.D_NUM "
+					+"GROUP BY D.D_NUM, D.D_NAME "
+					+"ORDER BY D.D_NUM ";
+		
+		try(Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+				
+				try(ResultSet rs = pstmt.executeQuery();){
+					
+					while(rs.next()){
+						Dept d = new Dept();
+						d.setD_num(rs.getInt(1));
+						d.setD_name(rs.getString(2));
+						d.setMemberCnt(rs.getInt(3));
+												
+						deptlist.add(d);
+					}
+					
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		
+		return deptlist;
+	}
+	
+
+	
+	
 	
 	
 	

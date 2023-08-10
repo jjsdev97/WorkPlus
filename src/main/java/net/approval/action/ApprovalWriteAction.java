@@ -17,6 +17,7 @@ public class ApprovalWriteAction implements Action {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", "user"); // admin, user
+		session.setAttribute("selectedmenu", "approval");
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

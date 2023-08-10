@@ -10,7 +10,7 @@
 <div class="modal-background"></div>
 
 <nav class="navbar">
-	<a href="mainpage.jsp" class="nav_logo"><img src="${pageContext.request.contextPath}/img/logo.jpg" id="logo"></a>
+	<a href="main.com" class="nav_logo"><img src="${pageContext.request.contextPath}/img/logo.jpg" id="logo"></a>
 	<div class="navbar-nav">
 		<div class="nav-item">
 			<a href="#">로그아웃</a>
@@ -32,8 +32,8 @@
 	<ul class="sidebar-menu">
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">이메일</a></li>
 		<li class="sidebar-item"><a href="deptGetChart.dt" class="sidebar-anchor">조직도</a></li>
-		<li class="sidebar-item"><a href="#" class="sidebar-anchor">게시판<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
-			<ul class="second-menu">
+		<li class="sidebar-item"><a href="#" class="sidebar-anchor" id="board-sidebar">게시판<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
+			<ul class="second-menu" id="board-second-menu">
 				<li class="second-item"><a href="BoardWrite.bo" class="second-anchor">작성하기</a></li>
 				<li class="second-item"><a href="BoardList.bo" class="second-anchor">최근게시물</a></li>
 				<li class="second-item"><a href="BoardList.bo" class="second-anchor">중요게시물</a></li>
@@ -45,8 +45,8 @@
 				<li class="second-item"><a href="BoardList.bo" class="second-anchor">팀2</a></li>
 			</ul></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">일정</a></li>
-		<li class="sidebar-item"><a href="#" class="sidebar-anchor">전자결재<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
-			<ul class="second-menu">
+		<li class="sidebar-item"><a href="#" class="sidebar-anchor" id="approval-sidebar">전자결재<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
+			<ul class="second-menu" id="approval-second-menu">
 				<li class="second-item"><a href="approvalWrite.apv" class="second-anchor">작성하기</a></li>
 				<li class="second-item">-진행 중-</li>
 				<li class="second-item"><a href="#" class="second-anchor">전체</a></li>
@@ -63,8 +63,8 @@
 				<li class="second-item"><a href="#" class="second-anchor">반려</a></li>
 			</ul></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">인사</a></li>
-		<li class="sidebar-item"><a href="#" class="sidebar-anchor">메신저<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
-			<ul class="second-menu">
+		<li class="sidebar-item"><a href="#" class="sidebar-anchor" id="chat-sidebar">메신저<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
+			<ul class="second-menu" id="chat-second-menu">
 				<li class="second-item"><a href="Chatmain.chat" class="second-anchor">메인</a></li>
 				<li class="second-item"><a href="Chatlist.chat" class="second-anchor">채팅</a></li>
 			</ul></li>
@@ -91,6 +91,42 @@
 
 <script>
 	var menu = '<%=(String) session.getAttribute("menu")%>';
+	var selectedmenu = '<%=(String) session.getAttribute("selectedmenu")%>';
+
+
+
+	if (selectedmenu == 'approval') {
+		$('#approval-second-menu').css('transition', 'width 0s');
+		$('#approval-sidebar').addClass('sidebar-anchor-collapse');
+
+		$('#approval-second-menu').css('height', function() {
+			var length = $(this).children().length;
+
+			return 27.6 * length + "px";
+		})
+
+	} else if (selectedmenu == 'board') {
+		$('#board-second-menu').css('transition', 'width 0s');
+		$('#board-sidebar').addClass('sidebar-anchor-collapse');
+
+		$('#board-second-menu').css('height', function() {
+			var length = $(this).children().length;
+
+			return 27.6 * length + "px";
+		})
+
+	} else if (selectedmenu == 'chat') {
+		$('#chat-second-menu').css('transition', 'width 0s');
+		$('#chat-sidebar').addClass('sidebar-anchor-collapse');
+
+		$('#chat-second-menu').css('height', function() {
+			var length = $(this).children().length;
+
+			return 27.6 * length + "px";
+		})
+	}
+
+	/* 어드민, 일반 사용자 메뉴 변경 */
 
 	if (menu == 'admin') {
 		$('.sidebar-user').css("visibility", "hidden");
