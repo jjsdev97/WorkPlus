@@ -14,6 +14,7 @@ M_STATUS		VARCHAR2(3) CHECK(M_STATUS = '1' OR M_STATUS = '2'), -- 이용정지(�
 CHAT_STATUS		VARCHAR2(15),							 -- 접속상태
 M_ADMIN			VARCHAR2(30)	NOT NULL,		 		 -- USER(기본값), ADMIN
 M_PROFILEFILE	VARCHAR2(50)							 -- 첨부될 프로필 사진명
+
 );
 
 drop table member purge;

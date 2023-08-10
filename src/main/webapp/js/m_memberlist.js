@@ -86,6 +86,13 @@
 			});
 		});
 	
+		$(document).on("click", "#admit", function(){
+			let m_id = $("#m_id").val(); 
+			let dnum = $("#dept").val();
+			
+			location.href="memberConfirm.et?dnum=" + dnum + "&id=" + m_id + "&tab=1";
+		});
+	
 	
 	
 	}); //main end
