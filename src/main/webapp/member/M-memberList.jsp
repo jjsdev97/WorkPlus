@@ -52,7 +52,13 @@
 					$input.val('').focus();
 					return false;
 				}
-			} 
+			} else if (selectedValue === '3'){
+				if(word != "남" && word !="여"){
+					alert("남 또는 여를 선택하세요");
+					$input.val('').focus();
+					return false;
+				}
+			}
 		}); //button click end
 		
 		//검색어 입력창에 placeholder 나타나도록 합니다.
@@ -78,7 +84,7 @@
 <body>
 <div class="main">
  <h3>사용자 관리</h3><hr>
- <div class="container"><%-- tab, 검색 container--%>
+ <div class="container">
    <ul class="tabs">
    	 <li class="tab-link current" id="waiting" data-tab="tab-1">가입대기</li>
    	 <li class="tab-link" id="block" data-tab="tab-2">이용중지</li>
@@ -105,46 +111,6 @@
    <div id="tab-3" class="tab-content">승인완료 내용</div>
 
  </div><%-- container end --%>
- 
- <%-- table 시작 --%>
- 
- <table class="table table-striped">
-	 <thead>
-	   <tr>
-	   		<th>이름</th>
-	   		<th>사원번호</th>
-	   		<th>부서</th>
-	   		<th>직책</th>
-	   		<th>이메일</th>
-	   		<th>가입 요청일</th>
-	   		<th>설정</th>
-	   </tr>
-	 </thead>
-	 <tbody>
-	   <tr>
-	   	   <td>김사원</td>
-	   	   <td>100205</td>
-	   	   <td>영업팀</td>
-	   	   <td>사원</td>
-	   	   <td>kim_sw@nave.com</td>
-	   	   <td>2023.08.03</td>
-	   	   <td><span>[가입승인]</span> <span>[가입거절]</span>
-	   	   </td>
-	   </tr>
-	 </tbody>
- </table>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 </div><%-- main end --%>
 </body>
 </html>

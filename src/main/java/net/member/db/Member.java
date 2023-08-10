@@ -12,18 +12,12 @@ public class Member {
 	private Date M_HIREDATE;		//입사일
 	private int D_NUM;				//부서번호(FK DEPT)
 	private String P_NUM;			//직책 ENUM 클래스
-	private String R_ADMIT;		//가입승인
-	private String M_STATUS;		//이용정지
+	private boolean R_ADMIT;		//가입승인
+	private boolean M_STATUS;		//이용정지
 	private String CHAT_STATUS;		//접속상태
 	private String M_ADMIN;			//어드민관리 - USER(기본값), ADMIN
 	
 	
-	public String getR_ADMIT() {
-		return R_ADMIT;
-	}
-	public String getM_STATUS() {
-		return M_STATUS;
-	}
 	public int getM_NUM() {
 		return M_NUM;
 	}
@@ -78,16 +72,16 @@ public class Member {
 	public void setP_NUM(String p_NUM) {
 		P_NUM = p_NUM;
 	}
-	public String isR_ADMIT() {
+	public boolean isR_ADMIT() {
 		return R_ADMIT;
 	}
-	public void setR_ADMIT(String r_ADMIT) {
+	public void setR_ADMIT(boolean r_ADMIT) {
 		R_ADMIT = r_ADMIT;
 	}
-	public String isM_STATUS() {
+	public boolean isM_STATUS() {
 		return M_STATUS;
 	}
-	public void setM_STATUS(String m_STATUS) {
+	public void setM_STATUS(boolean m_STATUS) {
 		M_STATUS = m_STATUS;
 	}
 	public String getCHAT_STATUS() {

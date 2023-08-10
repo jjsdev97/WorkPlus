@@ -1,26 +1,25 @@
-package net.cafe.action;
+package net.chat.action;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import net.cafe.db.CafeItemBean;
-
-public class CafeSideAction implements Action {
+public class ChatStatusUpdateAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CafeItemBean cafeItem = new CafeItemBean();
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
 		
-		request.setAttribute("cafeItem", cafeItem);
+		MemberDAO mdao = new MemberDAO();
+		Member m = mdao.member_status(id);
 		
 		ActionForward forward = new ActionForward();
-		forward.setRedirect(false);
-		forward.setPath("order/side.jsp");
 		
-		return forward;
 	}
+
 }

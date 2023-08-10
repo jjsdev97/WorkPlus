@@ -18,7 +18,7 @@ public class DeptAddAction implements Action {
 		// TODO Auto-generated method stub
 		String dname = request.getParameter("dname");
 		int dlevel = Integer.parseInt(request.getParameter("dlevel"));
-		int dupperlevel = Integer.parseInt(request.getParameter("dupperlevel"));
+		int dupperteam = Integer.parseInt(request.getParameter("dupperteam"));
 		String dcolor = request.getParameter("dcolor");
 
 		Dept d = new Dept();
@@ -26,7 +26,7 @@ public class DeptAddAction implements Action {
 		
 		d.setD_name(dname);
 		d.setD_level(dlevel);
-		d.setD_upperlevel(dupperlevel);
+		d.setD_upperlevel(dupperteam);
 		d.setD_color(dcolor);
 		
 		int result = dao.insert(d);
@@ -42,7 +42,17 @@ public class DeptAddAction implements Action {
 		}
 		
 		
-		response.getWriter().print(result);
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>");
+		
+		if(result==1) {
+			out.println("alert('알럿');");
+			out.println("location.href='DeptAdmin.jsp';");
+		}
+		out.println("</script>");
+		out.close();
+		
 		
 		return null;
 	}

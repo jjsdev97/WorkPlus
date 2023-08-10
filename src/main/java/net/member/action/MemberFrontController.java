@@ -49,14 +49,6 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 			action = new MemberJoinAction();
 			break;
 			
-		case "/loginProcess.net" :
-			action = new MemberLoginProcessAction();
-			break;
-			
-		case "/joinProcess.net" :
-			action = new MemberJoinProcessAction();
-			break;
-			
 		} //switch end
 		
 		forward = action.execute(request, response);

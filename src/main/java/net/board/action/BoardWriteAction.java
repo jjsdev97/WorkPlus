@@ -11,7 +11,7 @@ public class BoardWriteAction implements Action {
 			throws ServletException, IOException {
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false); //포워딩 방식으로 주소가 바뀌지 않아요
-		forward.setPath("board/BoardWrite.jsp");
+		forward.setPath("board/boardWrite.jsp");
 		return forward;
 	}
 } // class end  화면

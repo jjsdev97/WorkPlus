@@ -1,4 +1,4 @@
-package net.cafe.action;
+package com.cafe.action;
 
 public class ActionForward {
 	private boolean redirect = false;

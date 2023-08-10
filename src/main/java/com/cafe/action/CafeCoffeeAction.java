@@ -1,4 +1,4 @@
-package net.cafe.action;
+package com.cafe.action;
 
 import java.io.IOException;
 import java.util.List;
@@ -7,8 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.cafe.db.CafeItemBean;
-import net.cafe.db.CafeItemDAO;
+import com.cafe.db.CafeItemBean;
+import com.cafe.db.CafeItemDAO;
 
 public class CafeCoffeeAction implements Action {
 

@@ -1,4 +1,4 @@
-package net.dept.action;
+package com.cafe.action;
 
 import java.io.IOException;
 
@@ -6,20 +6,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cafe.db.CafeItemBean;
 
-public class DeptAdminAction implements Action {
+public class CafeSideAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		CafeItemBean cafeItem = new CafeItemBean();
 		
+		request.setAttribute("cafeItem", cafeItem);
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("dept/DeptAdmin.jsp");
+		forward.setPath("order/side.jsp");
 		
 		return forward;
 	}
-
 }

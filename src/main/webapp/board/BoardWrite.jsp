@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-	<div class="main"> <!-- BoardWrite.bo로 넘어감 (frontcont에서 받음) -->
+	<div class="main">
 		<form action="BoardWrite.bo" method = "post" 
 		enctype="multipart/form-data" name="boardform">
 				<div class="board_drop" id="board_type">

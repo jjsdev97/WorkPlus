@@ -7,121 +7,99 @@
 <jsp:include page="../header.jsp" />
 <meta charset="utf-8">
 <title>메신저 chatList</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chat.css">
+<link rel="stylesheet" type="text/css" href="/WorkPlus/css/chat.css">
 </head>
 <body>
 	<div class="main">
-		<div class="left">
-		<!-- -------search ----------- -->
-			<div class="search">
+	<div class="parent" style="display:flex">
+		<div class="chatlist" style="flex:0.8">
+		   <div class="search">
 				<input type="text" placeholder="search..."> 
 				<img src="${pageContext.request.contextPath}/img/search.png" 
 					width="25px" height="25px" style="vertical-align:middle">
 				<img src="${pageContext.request.contextPath}/img/add.png"
 					width="25px" height="25px" style="vertical-align:middle">
 			</div>
-		<!-- -------search ----------- -->
-
-
-			<table class="m_chat_list">
+			
+			<table class="chatList">
 				<tr>
-					<td><div>
-							<img src="${pageContext.request.contextPath}/img/groupProfile.png" width="40px" height="40px">
-						</div></td>
-					<td><div>홍귀동</div></td>
-					<td><div>
-							<img src="${pageContext.request.contextPath}/img/online.png" width="40px" height="40px">
-						</div></td>
-					<td><div class="dept">개발2팀</div> </td>
-					<td><div>
-							<img src="${pageContext.request.contextPath}/img/chat.png" width="20px" height="20px">
-						</div>
+					<td>
+					<div>
+						<img src="${pageContext.request.contextPath}/img/profile.png" width="40px" height="40px">
+
+					</div>
+					</td>
+					<td>
+					<div>
+						<p class="chatRoomName">홍귀동</p>
+						<p class="lastMessage">서브웨이 좋아요</p>
+					</div>
 					</td>
 					<td><div>
-							<img src="${pageContext.request.contextPath}/img/star_f.png" width="20px" height="20px">
+							<img src="${pageContext.request.contextPath}/img/pin_f.png" width="20px" height="20px">
 						</div>
 					</td>
 				</tr>
-
-				<tr>
-					<td><div>
-							<img src="${pageContext.request.contextPath}/img/profile.png" width="40px" height="40px">
-						</div></td>
-					<td><div>홍이동</div></td>
-					<td><div>
-							<img src="${pageContext.request.contextPath}/img/brb.png" width="40px" height="40px">
-						</div></td>
-					<td><div class="dept">개발1팀</div> </td>
-					<td><div>
-							<img src="${pageContext.request.contextPath}/img/chat.png" width="20px" height="20px">
-						</div>
-					</td>
-					<td><div>
-							<img src="${pageContext.request.contextPath}/img/star_e.png" width="20px" height="20px">
-						</div>
-					</td>
-				</tr>
-				
-				
 			</table>
-
+			
+		</div>
+		
+		<div class="chatroom" style="flex:1">
+		<div>
+			<img src="${pageContext.request.contextPath}/img/profile.png"
+					width="40px" height="40px">
+			<span style="vertical-align: top;">홍귀동</span>
+		</div>
+		<div class="wrap">
+        <div class="chat ch1">
+            <div class="icon"><i class="fa-solid fa-user"></i></div>
+            <div class="textbox">안녕하세요. 반갑습니다.</div>
+        </div>
+        <div class="chat ch2">
+            <div class="icon"><i class="fa-solid fa-user"></i></div>
+            <div class="textbox">안녕하세요. 친절한효자손입니다. 그동안 잘 지내셨어요?</div>
+        </div>
+        <div class="chat ch1">
+            <div class="icon"><i class="fa-solid fa-user"></i></div>
+            <div class="textbox">넹. 점심으로는 서브웨이 어떠세요?</div>
+        </div>
+        <div class="chat ch2">
+            <div class="icon"><i class="fa-solid fa-user"></i></div>
+            <div class="textbox">서브웨이 좋아요</div>
+        </div>
+    </div>
+    
+    	<div class="inputWindow">
+    		<input type=text>
+    		<img src="${pageContext.request.contextPath}/img/chat_clip.png"
+    			width="30px" height="30px" style="vertical-align:middle">
+    		<img src="${pageContext.request.contextPath}/img/send.png"
+    			width="30px" height="30px" style="vertical-align:middle">
+    	</div>
 		</div>
 
 
-<!-- ---------div.right -------- -->
-		<div class="right">
-		  <div class="myProfile">
-            <div>
-            <img src="${pageContext.request.contextPath}/img/profile.png" 
-            		width="200px" height="200px">
-            </div>
-            <!--// status -->
-            <div>
-              <a href="#layer1" class="btn-example">
-            	<img src="${pageContext.request.contextPath}/img/online.png"
-            		width="30px" height="30px" style="vertical-align: middle;">
-              </a>
-<div id="layer1" class="pop-layer">
-    <div class="pop-container">
-        <div class="pop-conts">
-            <!--content //-->
-            <p class="ctxt mb20">Thank you.<br>
-                Your registration was submitted successfully.<br>
-                Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
-                Hope to see you soon!
-            </p>
 
-            <div class="btn-r">
-                <a href="#" class="btn-layerClose">Close</a>
-            </div>
-            <!--// content-->
-        </div>
-    </div>
-</div>
-            <!--// status -->
-           </div>
-           
-            <div>
-               홍길동
-             </div>
-          </div>
-          
-          <div class="myProfile_desc">
+
+		<div class="profiles" style="flex:1">
+		
+		<div>
+			<div>
+			<img src="${pageContext.request.contextPath}/img/profile.png"
+				width="80px" height="80px">
+			</div>
+			<div>
+			<span style="font-size:13px">홍귀동</span>
+			</div>
+		</div>
+		<div class="participants_desc">
              <div class="dept">개발1팀</div>
              <div class="dept">사원</div>
              <div class="dept" style="width:150px;">gildong@work.com</div>
-          </div>
-          
-          <div>
-          <a href='font_setting.jsp'>
-          	<img src="${pageContext.request.contextPath}/img/settings.png"
-          			width="30px" height="30px">
-          </a>
-          </div>
+        </div>
 
-	</div>
-<!-- ---------div.right -------- -->
+		</div>
 </div>
-
+</div>
 </body>
 </html>
