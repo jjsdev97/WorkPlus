@@ -23,27 +23,29 @@ public class BoardDAO {
 	 
 	public boolean boardInsert(BoardBean board) {
 		int result=0;
-		String max_sql = "(select nvl(max(board_num),0)+1 from board)"; //nvl(x,y) = 
+		String max_sql = "(select nvl(max(board_num),0)+1 from board)";
 		
 		//원문글의 BOARD_RE_REF 필드는 자신의 글번호입니다.
 		String sql = "insert into board "   //내가 값을 넣을 모든 컬럼을 기재 insert into쿼리문 사용
 				+ "(BOARD_NUM, BOARD_TYPE, BOARD_SUBJECT, BOARD_CONTENT, BOARD_FILE, "
-				+ "BORAD_WRITER, BOARD_DATE, BOARD_READCOUNT, BOARD_NOTICE, BOARD_LIKECOUNT) "
-				+ "VALUES("+ max_sql +", ?,?,?,?,?,?,?,?,?)";
+				+ "BOARD_WRITER, BOARD_DATE, BOARD_READCOUNT, BOARD_NOTICE, BOARD_LIKECOUNT) "
+				+ "VALUES("+ max_sql +", ?,?,?,?,?, sysdate,0,0,0)";
 				  // insert into(컬럼1,컬럼2)VALUES(값1, 값2) 컬럼과 값의 1대1 교환 ?와 개수가 맞아야함
 				
 		try (Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);) {  //con에 sql문을 실행하고 그 값을 pstmt 에 저장
 			//새로운 글을 등록하는 부분입니다.
-			pstmt.setString(1,  board.getBoard_subject()); //pstmt 에 setString(값 설정 메서드)실행
-			pstmt.setString(2,  board.getBoard_pass());
-			pstmt.setString(3,  board.getBoard_subject());
-			pstmt.setString(4,  board.getBoard_content());
-			pstmt.setString(5,  board.getBoard_file());
-			
-			//원문의 경우 BOARD_RE_REV, BOARD_RE_SEQ필드 값은 0 입니다.
-		    pstmt.setInt(6,0); //BOARD_READCOUNT 필드
-		    
+			pstmt.setString(1,  board.getBOARD_TYPE()); //게시판 종류
+			pstmt.setString(2,  board.getBOARD_SUBJECT()); // 게시판 제목
+			pstmt.setString(3,  board.getBOARD_CONTENT()); // 게시판 내용
+			pstmt.setString(4,  board.getBOARD_FILE()); //파일첨부
+			pstmt.setString(5,  board.getBOARD_WRITER()); //작성자
+			/*
+			 * pstmt.setInt(6, board.getBOARD_DATE()); //작성일자 pstmt.setInt(7,
+			 * board.getBOARD_READCOUNT()); //조회수 카운팅 pstmt.setString(8,
+			 * board.getBOARD_NOTICE()); // 공지글 pstmt.setInt(9, board.getBOARD_LIKECOUNT());
+			 * // 좋아요 개수
+			 */		    
 		    result = pstmt.executeUpdate(); //sql문이 적용된 행의 갯수
 		    if(result==1) {
 		    	System.out.println("데이터 삽입이 모두 완료되었습니다.");

@@ -12,87 +12,76 @@ import javax.sql.DataSource;
 import net.member.db.Member;
 public class BoardBean {
 
-private int    board_num;    //글번호
-private String board_name;   //글 작성자
-private String board_pass;   //글 비밀번호
-private String board_subject;//글 제목
-private String board_content;//글 내용
-private String board_file;   //첨부될 파일의 이름
-private int    board_re_ref; //답변 글 작성시 참조되는 글의 번호
-private int    board_re_lev; //답변 글의 깊이
-private int    board_re_seq; //답변 글의 순서
-private int    board_readcount;//글의 조회수
-private String board_date;
-private int cnt;
-
-//이곳에서 오른쪽 마우스 버튼 클릭 후 -> Source 
-//-> Generate Getters and Setters(alt + shift + )
-
-public int getBoard_num() {
-	return board_num;
+private int    BOARD_NUM;    //글번호
+private String BOARD_TYPE;   //게시판 종류
+private String BOARD_SUBJECT;//게시판 제목
+private String BOARD_CONTENT;//게시판 내용
+private String BOARD_FILE;   //파일첨부/다운
+private String BOARD_WRITER; //작성자
+private int    BOARD_DATE;   //작성일자
+private int    BOARD_READCOUNT; //조회수 카운팅
+private String BOARD_NOTICE; // 공지글 확인
+private int    BOARD_LIKECOUNT;// 좋아요 개수
+private int cnt; // 댓글카운팅
+public int getBOARD_NUM() {
+	return BOARD_NUM;
 }
-public void setBoard_num(int board_num) {
-	this.board_num = board_num;
+public void setBOARD_NUM(int bOARD_NUM) {
+	BOARD_NUM = bOARD_NUM;
 }
-public String getBoard_name() {
-	return board_name;
+public String getBOARD_TYPE() {
+	return BOARD_TYPE;
 }
-public void setBoard_name(String board_name) {
-	this.board_name = board_name;
+public void setBOARD_TYPE(String bOARD_TYPE) {
+	BOARD_TYPE = bOARD_TYPE;
 }
-public String getBoard_pass() {
-	return board_pass;
+public String getBOARD_SUBJECT() {
+	return BOARD_SUBJECT;
 }
-public void setBoard_pass(String board_pass) {
-	this.board_pass = board_pass;
+public void setBOARD_SUBJECT(String bOARD_SUBJECT) {
+	BOARD_SUBJECT = bOARD_SUBJECT;
 }
-public String getBoard_subject() {
-	return board_subject;
+public String getBOARD_CONTENT() {
+	return BOARD_CONTENT;
 }
-public void setBoard_subject(String board_subject) {
-	this.board_subject = board_subject;
+public void setBOARD_CONTENT(String bOARD_CONTENT) {
+	BOARD_CONTENT = bOARD_CONTENT;
 }
-public String getBoard_content() {
-	return board_content;
+public String getBOARD_FILE() {
+	return BOARD_FILE;
 }
-public void setBoard_content(String board_content) {
-	this.board_content = board_content;
+public void setBOARD_FILE(String bOARD_FILE) {
+	BOARD_FILE = bOARD_FILE;
 }
-public String getBoard_file() {
-	return board_file;
+public String getBOARD_WRITER() {
+	return BOARD_WRITER;
 }
-public void setBoard_file(String board_file) {
-	this.board_file = board_file;
+public void setBOARD_WRITER(String bOARD_WRITER) {
+	BOARD_WRITER = bOARD_WRITER;
 }
-public int getBoard_re_ref() {
-	return board_re_ref;
+public int getBOARD_DATE() {
+	return BOARD_DATE;
 }
-public void setBoard_re_ref(int board_re_ref) {
-	this.board_re_ref = board_re_ref;
+public void setBOARD_DATE(int bOARD_DATE) {
+	BOARD_DATE = bOARD_DATE;
 }
-public int getBoard_re_lev() {
-	return board_re_lev;
+public int getBOARD_READCOUNT() {
+	return BOARD_READCOUNT;
 }
-public void setBoard_re_lev(int board_re_lev) {
-	this.board_re_lev = board_re_lev;
+public void setBOARD_READCOUNT(int bOARD_READCOUNT) {
+	BOARD_READCOUNT = bOARD_READCOUNT;
 }
-public int getBoard_re_seq() {
-	return board_re_seq;
+public String getBOARD_NOTICE() {
+	return BOARD_NOTICE;
 }
-public void setBoard_re_seq(int board_re_seq) {
-	this.board_re_seq = board_re_seq;
+public void setBOARD_NOTICE(String bOARD_NOTICE) {
+	BOARD_NOTICE = bOARD_NOTICE;
 }
-public int getBoard_readcount() {
-	return board_readcount;
+public int getBOARD_LIKECOUNT() {
+	return BOARD_LIKECOUNT;
 }
-public void setBoard_readcount(int board_readcount) {
-	this.board_readcount = board_readcount;
-}
-public String getBoard_date() {
-	return board_date;
-}
-public void setBoard_date(String board_date) {
-	this.board_date = board_date;
+public void setBOARD_LIKECOUNT(int bOARD_LIKECOUNT) {
+	BOARD_LIKECOUNT = bOARD_LIKECOUNT;
 }
 public int getCnt() {
 	return cnt;
@@ -100,6 +89,22 @@ public int getCnt() {
 public void setCnt(int cnt) {
 	this.cnt = cnt;
 }
+
+
+
+/*
+ * private String board_name; //글 작성자 private String board_pass; //글 비밀번호
+ * private String board_subject;//글 제목 private String board_content;//글 내용
+ * private String board_file; //첨부될 파일의 이름 private int board_re_ref; //답변 글 작성시
+ * 참조되는 글의 번호 private int board_re_lev; //답변 글의 깊이 private int board_re_seq;
+ * //답변 글의 순서 private int board_readcount;//글의 조회수 private String board_date;
+ * private int cnt;
+ */
+
+//이곳에서 오른쪽 마우스 버튼 클릭 후 -> Source 
+//-> Generate Getters and Setters(alt + shift + )
+
 }
 
 
+// 수정필요

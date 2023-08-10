@@ -14,7 +14,9 @@
 </head>
 <body>
 	<div class="main">
-
+    <c:if test = "${listcount >0 }">
+    <div class = "rows">
+    
 	</div>
 </body>
 </html>
