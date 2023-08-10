@@ -65,8 +65,8 @@
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">인사</a></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">메신저<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
 			<ul class="second-menu">
-				<li class="second-item"><a href="#" class="second-anchor">메인</a></li>
-				<li class="second-item"><a href="#" class="second-anchor">채팅</a></li>
+				<li class="second-item"><a href="Chatmain.chat" class="second-anchor">메인</a></li>
+				<li class="second-item"><a href="Chatlist.chat" class="second-anchor">채팅</a></li>
 			</ul></li>
 		<li class="sidebar-item"><a href="main.cafe" class="sidebar-anchor">카페</a></li>
 	</ul>
