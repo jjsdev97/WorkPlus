@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.chat.db.ChatDAO;
+import net.member.db.Member;
+
 public class ChatStatusUpdateAction implements Action {
 
 	@Override
@@ -15,11 +18,15 @@ public class ChatStatusUpdateAction implements Action {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
-		MemberDAO mdao = new MemberDAO();
-		Member m = mdao.member_status(id);
+		ChatDAO chatdao = new ChatDAO();
+		Member m = chatdao.memberStatusUpdate(id);
 		
 		ActionForward forward = new ActionForward();
+		forward.setPath("chat/chatmain.jsp");
+		forward.setRedirect(false);
+		request.setAttribute("m", m);
 		
+		return forward;
 	}
 
 }
