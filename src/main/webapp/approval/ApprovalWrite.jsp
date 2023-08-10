@@ -12,7 +12,13 @@
 </head>
 <body>
 	<div class="main">
-		
+
+		<div class="approval-container">
+			<div class="approval-header"></div>
+			<div class="approval-content"></div>
+			<div class="approval-btn-container">
+			</div>
+		</div>
 	</div>
 </body>
 </html>
