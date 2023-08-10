@@ -118,3 +118,40 @@
 .dept-input-item {
 	margin: 40px;
 }
+
+/* 여기서부터 유저 조직도 */
+.dept-table-container {
+	margin: 10px;
+}
+
+.dept-table {
+	width: 60%;
+	height: 10%;
+	text-align: center;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-spacing: 0px;
+	padding: 0px;
+}
+
+.dept-table th {
+	background-color: #A0C1B9;
+}
+
+.dept-table td, th {
+	border-top: 1px solid gray;
+	border-right: 1px solid gray;
+}
+
+.dept-table th:nth-child(1) {
+	width: 22%;
+}
+
+.dept-table th:nth-child(2) {
+	width: 15%;
+}
+
+.dept-table th:nth-child(3) {
+	width: 63%;
+}
+

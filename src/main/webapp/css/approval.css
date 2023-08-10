@@ -1,0 +1,44 @@
+.approval-header {
+	margin:10px;
+	width:70%;
+}
+
+.approval-line-container {
+	width: 95%;
+	height: 300px;
+}
+
+.approval-line {
+	margin: 20px;
+	border-collapse: seperate;
+	width: 70%;
+	height: 100%;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	text-align: center;
+	border-collapse: seperate;
+}
+
+.approval-line tbody td {
+	border: 1px solid gray;
+	width: 11%;
+}
+
+#approval-line-type {
+	width: 15%;
+}
+
+.approval-line tr {
+	height: 20%;
+}
+
+body>div.main>div>div.approval-line-container>table>tbody>tr:nth-child(2) {
+	height: 20%;
+}
+
+.approval-content-container {
+	margin: 10px;
+	width: 75%;
+	height: 600px;
+	background-color: gray;
+}

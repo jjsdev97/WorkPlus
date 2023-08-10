@@ -13,6 +13,7 @@ $(document).ready(function() {
 
 
 	$('.sidebar-item').on('click', '.sidebar-anchor', function() {
+		$('.sidebar-anchor+.second-menu').css('transition','all ease 0.5s');
 		$('.sidebar-anchor-collapse').removeClass('sidebar-anchor-collapse');
 		$('.second-menu').css('height', '0');
 		$(this).addClass('sidebar-anchor-collapse');
