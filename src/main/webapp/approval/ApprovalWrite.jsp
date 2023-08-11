@@ -14,10 +14,34 @@
 <body>
 	<div class="main">
 		<div class="modal-container">
-			<!-- 내부 채우기
-					
-					가능하면 jsp 최상단에 두기
-				 -->
+			<div class="dept-subject">부서 관리</div>
+
+			<div class="modal-content">
+				<div class="dept-input-item">
+					<b>팀 명</b> <input class="dept-input" type='text' size=10 name='dname' id='dname' required>
+				</div>
+				<div class="dept-input-item">
+					<b>팀레벨</b> <select class="dept-select" name='dlevel' id='dlevel'>
+									<option value='1'>1</option>
+									<option value='2'>2</option>
+									<option value='3'>3</option>
+								</select>
+				</div>
+				<div class="dept-input-item">
+					<b>상위팀</b> <select class="dept-select" name='dupperlevel' id='dupperlevel'>
+									<option value='0'>대표이사</option>
+								</select>
+				</div>
+				<div class="dept-input-item">
+					<b>팀 색상</b> <input class="dept-input" type='color' name='dcolor' id='dcolor' required>
+				</div>
+			</div>
+
+			<div class='modal-btn-container'>
+				<button type="submit" class="submitbtn">추가</button>
+				<button type="submit" class="updatebtn">수정</button>
+				<button type="button" class="cancelbtn">취소</button>
+			</div>
 		</div>
 		
 		<form action="#" method="post">
