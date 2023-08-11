@@ -1,6 +1,5 @@
 package net.member.db;
 
-import java.sql.Date;
 
 public class Position {
 	private String P_NUM;				

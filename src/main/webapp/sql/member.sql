@@ -14,12 +14,17 @@ M_STATUS		VARCHAR2(3) CHECK(M_STATUS = '1' OR M_STATUS = '2'), -- 이용정지(�
 CHAT_STATUS		VARCHAR2(15),							 -- 접속상태
 M_ADMIN			VARCHAR2(30)	NOT NULL,		 		 -- USER(기본값), ADMIN
 M_PROFILEFILE	VARCHAR2(50)							 -- 첨부될 프로필 사진명
-
+F_BOOKMARK		
 );
+
+alter table member
+modify P_NUM VARCHAR2(30);
 
 drop table member purge;
 
 select * from member;
+
+delete from member where P_NUM = 3;
 
 insert into member
 values(1, '관리자', 'admin', '1', 100001, 'admin@nave.com', sysdate , 0, NULL, 2, 1 , 'offline','ADMIN', null);
@@ -29,7 +34,10 @@ insert into member
 values(12, '과장', 'k1571', '1', 101242, 'aa456@nave.com', sysdate , 0, NULL, 1, 2 , 'offline','user' , null);
 
 insert into member
-values(3, '이부장', 'lee121', '1', 100003, 'bj456@nave.com', sysdate , 0, NULL, 2, 2 , 'offline','user',null );
+values(25, '강직책', 'kimm211', '1', 102203, 'bj456@nave.com', sysdate , 0, 0, 1, 1 , 'offline','user',null, null );
+
+insert into member
+values(25, '강직책', 'kang211', '1', 106603, 'bj456@nave.com', sysdate , 0, 0, 1, 1 , 'offline','user',null, null );
 
 delete from member;
 

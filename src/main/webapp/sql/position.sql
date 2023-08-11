@@ -6,7 +6,12 @@ M_JOB VARCHAR2(30)
 
 DROP TABLE POSITION PURGE;
 
-select * from POSITION;
+alter table position
+modify P_NUM VARCHAR2(30);
+
+delete position;
+
+select * from POSITION order by P_NUM;
 
 insert into POSITION values('1','대표');
 insert into POSITION values('2','부장');

@@ -89,8 +89,9 @@
 		$(document).on("click", "#admit", function(){
 			let m_id = $("#m_id").val(); 
 			let dnum = $("#dept").val();
+			let pnum = $("#pnum").val();
 			
-			location.href="memberConfirm.et?dnum=" + dnum + "&id=" + m_id + "&tab=1";
+			location.href="memberConfirm.et?dnum=" + dnum + "&pnum=" + pnum + "&id=" + m_id + "&tab=1";
 		});
 	
 	

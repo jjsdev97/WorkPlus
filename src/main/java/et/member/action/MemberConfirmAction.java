@@ -19,9 +19,10 @@ public class MemberConfirmAction implements Action {
 		String id = request.getParameter("id");
 		String tab = request.getParameter("tab");
 		int dnum = Integer.parseInt(request.getParameter("dnum"));
+		String pnum = request.getParameter("pnum");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		int result = mdao.confirm(dnum, id);
+		int result = mdao.confirm(dnum, pnum, id);
 		
 		if(result == 1) {
 			out.println("<script>");
