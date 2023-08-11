@@ -25,22 +25,13 @@ public class ChatDAO {
 		}
 	}
 	
-	public Member memberStatusUpdate(String id) {
+	public Member memberStatusUpdate(String id, String status) {
 
 		String sql = "update member set CHAT_STATUS = ?"
 				+ " where M_ID = ?";
 		
-		String myStatus;
 		
-		/*
-		if( ) {
-			myStatus="online";
-		}else if (src가 offline이면) {
-			myStatus="offline";
-		}else {
-			myStatus="brb";
-		}
-		*/
+		
 		
 		
 		return null;
