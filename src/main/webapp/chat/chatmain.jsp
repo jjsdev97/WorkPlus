@@ -118,17 +118,17 @@
             		<td>
             		<img src="${pageContext.request.contextPath}/img/online.png"
             	width="35px" height="35px"></td>
-            		<td><a href="#" id="online.png"  class="statusOption">온라인</a><td>
+            		<td><a href="ChatStatusUpdate.chat?status=online" id="online.png"  class="statusOption">온라인</a><td>
             	</tr>
             	<tr>
             		<td><img src="${pageContext.request.contextPath}/img/offline.png"
             	width="35px" height="35px"></td>
-            		<td><a href="#" id="offline.png" class="statusOption">오프라인</a><td>
+            		<td><a href="ChatStatusUpdate.chat?status=offline" id="offline.png" class="statusOption">오프라인</a><td>
             	</tr>
             	<tr>
             		<td><img src="${pageContext.request.contextPath}/img/brb.png"
             	width="35px" height="35px"></td>
-            		<td><a href="#" id="brb.png" class="statusOption">자리비움</a><td>
+            		<td><a href="ChatStatusUpdate.chat?status=brb" id="brb.png" class="statusOption">자리비움</a><td>
             	</tr>
             </table>
             <div class="btn-r">
