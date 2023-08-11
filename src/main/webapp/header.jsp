@@ -13,7 +13,7 @@
 	<a href="main.com" class="nav_logo"><img src="${pageContext.request.contextPath}/img/logo.jpg" id="logo"></a>
 	<div class="navbar-nav">
 		<div class="nav-item">
-			<a href="#">로그아웃</a>
+			<a href="logout.et" id="logout">로그아웃</a>
 		</div>
 		<div class="nav-item">
 			<a href="#"><img src="${pageContext.request.contextPath}/img/header-alarm.png" id="header-alarm"></a>

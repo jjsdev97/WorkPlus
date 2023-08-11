@@ -304,6 +304,17 @@
 		 </tbody>
 	 </table>
 	 <%-- 페이지 이전 다음 --%>
+	 <%-- 페이지 처리 변경하기!!!!!!!!! --%>
+    
+    <c:if test="${tab == 1}" >
+			<c:set var="count" value="${listcount.wait}"/>
+    </c:if>
+    <c:if test="${tab == 2}" >
+			<c:set var="count" value="${listcount.stop}"/>
+    </c:if>
+    <c:if test="${tab == 3}" >
+			<c:set var="count" value="${listcount.complete}"/>
+    </c:if>
     
  	 <div>
 		<ul class="pagination justify-content-center">
@@ -314,7 +325,7 @@
 			</c:if>
 			<c:if test="${page3 > 1}">
 				<li class="page-item">
-				 <a href="memberList.et?page3=${page3-1}&search_field=${search_field}&search_word=${search_word}&tab=3" class="page-link">이전&nbsp;</a>
+				 <a href="memberList.et?page3=${page3-1}&search_field=${search_field}&search_word=${search_word}&tab=${tab}" class="page-link">이전&nbsp;</a>
 				</li>
 			</c:if>	
 			<c:set var="maxpage" value="${(listcount.complete + 5 - 1) / 5 }"/>

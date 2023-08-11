@@ -4,7 +4,7 @@ $(function() {
    let checkid = false;
    let checkpass = false;
    let checkempnum = false;
-   let idcheck_value='';
+   let idcheck_value='';  //id 중복검사시 값
 
 
    //id중복검사 부분
@@ -36,6 +36,7 @@ $(function() {
                if (resp == -1) { //db에 해당 id가 없는 경우
                   alert("사용 가능한 아이디 입니다.");
                   checkid = true;
+                  idcheck_value = id_value;
                } else {   //db에 해당 id가 있는 경우(0)
                   alert("사용중인 아이디 입니다.");
                   checkid = false;
@@ -110,7 +111,7 @@ $(function() {
 
       const id = $('#id');
 
-/*
+
       //submit할 때 id값과 id중복검사 때 사용한 id가 다른 경우 메시지 출력
       let submit_id_value = $.trim(id.val());
       if (submit_id_value != idcheck_value) {
@@ -118,7 +119,7 @@ $(function() {
          return false;
       }
 
-*/
+
 
 
       if (!checkempnum) { //사원번호 확인

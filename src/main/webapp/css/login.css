@@ -48,7 +48,7 @@ a{
 	text-align:center;
 }
 
-#input_id{
+#id{
 	width:350px;
  	height:40px;
  	text-align:center;
@@ -59,7 +59,7 @@ a{
 	margin-top: 10px;
 }
 
-#input_pass{
+#pass{
 	width:350px;
  	height:40px;
  	text-align:center;
