@@ -25,7 +25,7 @@
 	      <th><div>조회수</div></th>
 	     </tr>
 	   </thead>
-	   <tbody> <!-- 아직 이해안됨 -->
+	   <tbody> <!-- 아직 이해안됨 이부분은 꼭 봐야함-->
 	   <c:set var="num" value="${listcount-(page-1)*limit}"/> 
 	   <c:forEach var="b" items="${boardlist}">
        <tr>
@@ -35,7 +35,7 @@
 	   </td>
 	   <td><%--제목 --%>
 	     <div>			
-			<a href="BoardDetailAction.bo?num=${b.board_num}">
+			<a href="BoardDetailAction.bo?num=${b.board_num}"> <!-- 엥커태그 위치 프론트컨트롤러 이동 -->
 			   <c:if test="${b.board_subject.length()>=20}">
 				 <c:out value="${b.board_subject.substring(0,20)}..." />
 			   </c:if>
