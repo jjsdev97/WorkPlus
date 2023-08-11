@@ -9,111 +9,111 @@
 
 <jsp:include page="/header.jsp" />
 <link href="css/approval.css" rel="stylesheet">
-
+<script src="js/approvalWrite.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 <body>
 	<div class="main">
 		<div class="modal-container">
-			<div class="dept-subject">부서 관리</div>
+			<div class="approval-subject">결재선 설정</div>
 
 			<div class="modal-content">
-				<div class="dept-input-item">
-					<b>팀 명</b> <input class="dept-input" type='text' size=10 name='dname' id='dname' required>
+
+				<div class="modal-member-list-container">
+					<div class="modal-member-list-subject">제목</div>
+					<div class="modal-member-list">
+						<c:forEach var='dept' items="${deptList}">
+							<div>${dept.d_name }</div>
+							<c:forEach var='member' items="${memberList}">
+								<c:if test="${member.d_NUM eq dept.d_num }">
+									<div class="modal-member-item">ㄴ ${member.p_NUM} | ${member.m_NAME }</div>
+								</c:if>
+							</c:forEach>
+						</c:forEach>
+					</div>
 				</div>
-				<div class="dept-input-item">
-					<b>팀레벨</b> <select class="dept-select" name='dlevel' id='dlevel'>
-									<option value='1'>1</option>
-									<option value='2'>2</option>
-									<option value='3'>3</option>
-								</select>
-				</div>
-				<div class="dept-input-item">
-					<b>상위팀</b> <select class="dept-select" name='dupperlevel' id='dupperlevel'>
-									<option value='0'>대표이사</option>
-								</select>
-				</div>
-				<div class="dept-input-item">
-					<b>팀 색상</b> <input class="dept-input" type='color' name='dcolor' id='dcolor' required>
+				<div class="modal-approval-line-container">
+					<div class="modal-approval-line-subject">제목</div>
+
+					<div class="modal-approval-line">
+						<div class="modal-approval-line-type">
+							<div class="modal-approval-line-type-subject">결재</div>
+							<div class="modal-approval-line-item"></div>
+							<div class="modal-approval-line-item"></div>
+							<div class="modal-approval-line-item"></div>
+							<div class="modal-approval-line-item"></div>
+							<div class="modal-approval-line-item"></div>
+							<div class="modal-approval-line-item"></div>
+							<div class="modal-approval-line-item"></div>
+						</div>
+					</div>
 				</div>
 			</div>
 
 			<div class='modal-btn-container'>
-				<button type="submit" class="submitbtn">추가</button>
-				<button type="submit" class="updatebtn">수정</button>
+				<button type="button" class="submitbtn">확인</button>
 				<button type="button" class="cancelbtn">취소</button>
 			</div>
 		</div>
-		
+
 		<form action="#" method="post">
 			<div class="approval-container">
 				<div class="approval-header">
-					양식 선택 <input type='text' name='approval-form'> 보존 기한 <input type='text' name='approval-period'>
+					양식 선택 <select name='approval-period'>
+						<option value='1'>양식1</option>
+						<option value='2'>양식2</option>
+						<option value='3'>양식3</option>
+					</select> 보존 기한 <select name='approval-period'>
+						<option value='2'>2년</option>
+						<option value='3'>3년</option>
+						<option value='5'>5년</option>
+						<option value='10'>10년</option>
+					</select>
 				</div>
 				<div class="approval-line-container">
 					<table class="approval-line">
 						<tr>
-							<td rowspan='3' id="approval-line-type">결재</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<th rowspan='3' id="approval-line-type">결재</th>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
 						</tr>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td id="approval-line-type">참조</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td id="approval-line-type">수신</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
+							<td id="approval-line-item"></td>
 						</tr>
 					</table>
+
+					<div class="approval-reference-container"></div>
+					<div class="approval-reciever-container"></div>
 
 
 				</div>
 				<!-- 결재선 div -->
-				<button type="button" class="modal-btn">결재선 설정</button>
-				<div class="approval-content-container">
-					제목 : <input type="text" name="approval-subject">
-					<div class="approval-content"></div>
+
+				<div class="modal-start-btn-container">
+					<button type="button" class="modal-btn">결재선 설정</button>
 				</div>
 
-				<div class="approval-btn-container">
-					<button type="submit">작성하기</button>
-					<button type="reset">다시 작성하기</button>
-				</div>
+
 
 			</div>
 		</form>

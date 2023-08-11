@@ -34,15 +34,15 @@
 				</div>
 				<div class="dept-input-item">
 					<b>팀레벨</b> <select class="dept-select" name='dlevel' id='dlevel'>
-									<option value='1'>1</option>
-									<option value='2'>2</option>
-									<option value='3'>3</option>
-								</select>
+						<option value='1'>1</option>
+						<option value='2'>2</option>
+						<option value='3'>3</option>
+					</select>
 				</div>
 				<div class="dept-input-item">
 					<b>상위팀</b> <select class="dept-select" name='dupperlevel' id='dupperlevel'>
-									<option value='0'>대표이사</option>
-								</select>
+						<option value='0'>대표이사</option>
+					</select>
 				</div>
 				<div class="dept-input-item">
 					<b>팀 색상</b> <input class="dept-input" type='color' name='dcolor' id='dcolor' required>
@@ -60,9 +60,11 @@
 
 		<div class="dept-container">
 			<div class="dept-subject">부서 관리</div>
-			<ul class="deptList">
+			<div class="deptList-container">
+				<ul class="deptList">
+				</ul>
+			</div>
 
-			</ul>
 
 
 
