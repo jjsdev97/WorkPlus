@@ -15,6 +15,16 @@ $(document).ready(function( ){
     
     $('.friendProfile_layer').click(function(){
 		var $href = $(this).attr('href');
+		let tr = $(this).parent().parent().parent();
+		let name = tr.find(".name").text();
+		let d_name = tr.find(".dept").text();
+		let status_img = tr.find(".img").text();
+		
+		$("#popup_name").text(name);
+		$("#popup_dname").text(d_name);
+		$("#popup_dname").text(d_name);
+		
+		
 		console.log($href);
 		layer_popup($href);
 	})
@@ -28,6 +38,7 @@ $(document).ready(function( ){
     function layer_popup(el){
 
         var $el = $(el);    //레이어의 id를 $el 변수에 저장
+        
         $el.show();
 
         $el.find('a.btn-layerClose').click(function(){
@@ -55,17 +66,7 @@ $('.star').click(function(){
 
 }); //$('.star').click(function(){
 	
-//------------- status 내 프로필 상태 변경 -------------//
 
-$('.statusOption').click(function(e){
-	
-	var $change_src = e.target.id;
-	console.log("chang_src="+$change_src)
-	
-	document.getElementById('myStatus').setAttribute('src',"img/"+$change_src)
-	
-	
-})
 
 
 });//$(document).ready(function( ){

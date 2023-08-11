@@ -14,9 +14,13 @@
 	<div class="main">
 		<div class="left">
 			<div class="search">
-				<input type="text" placeholder="search...">
-				<img id="Qbtn" src="${pageContext.request.contextPath}/img/search.png" 
-					width="25px" height="25px" style="vertical-align:middle">
+				<form action="ChatMemberSearch.chat" method="post">
+					<input name = "search_word" type="text" placeholder="search..." value="${search_word}">
+					<button type="submit">
+					<img id="Qbtn" src="${pageContext.request.contextPath}/img/search.png" 
+						width="25px" height="25px" style="vertical-align:middle">
+					</button>
+				</form>
 				
 				<img id="addbtn" src="${pageContext.request.contextPath}/img/add.png"
 					width="25px" height="25px" style="vertical-align:middle">
@@ -28,13 +32,25 @@
 					<td><div>
 							<a href="#layer3" class="friendProfile_layer">
 							<img src="${pageContext.request.contextPath}/img/profile.png"
-								width="40px" height="40px"></a>
+								width="40px" height="40px">
+							<!-- m.profilefile 이미지 경로 갖고 오기,,, -->
+							</a>
 						</div></td>
-					<td><div>${m.m_NAME}</div></td>
-					<td><div>
-							<img src="${pageContext.request.contextPath}/img/online.png" width="40px" height="40px">
+					<td><div class="name">${m.m_NAME}</div></td>
+					<td><div class="img">
+							<c:choose>
+								<c:when test="${m.CHAT_STATUS == 'online' }">
+								<img src="${pageContext.request.contextPath}/img/online.png" width="40px" height="40px">
+								</c:when>
+								<c:when test="${m.CHAT_STATUS == 'offline' }">
+								<img src="${pageContext.request.contextPath}/img/offline.png" width="40px" height="40px">
+								</c:when>
+								<c:when test="${m.CHAT_STATUS == 'brb' }">
+								<img src="${pageContext.request.contextPath}/img/brb.png" width="40px" height="40px">
+								</c:when>
+							</c:choose>
 						</div></td>
-					<td><div class="dept">${m.d_NUM }</div> </td>
+					<td><div class="dept">${m.d_NAME }</div> </td>
 					<td><div>
 							<a href="#layer4" class="solChatStart_layer">
 							<img src="${pageContext.request.contextPath}/img/chat.png" width="20px" height="20px">
@@ -64,7 +80,6 @@
 			   </c:forEach>
 			</table>
 			<!-- 상대 프로필 확인 layer -->
-			 <c:forEach var="m" items="${memberlist}">
 			<div id="layer3" class="pop-layer" style="margin-top:10px">
 					<div class="pop-container">
 						<div class="pop-conts">
@@ -74,12 +89,12 @@
 						</div>
 						<div>
 						<img src="${pageContext.request.contextPath}/img/online.png" 
-							width="35px" height="35px" style="vertical-align: middle;"> ${m.m_NAME}
+							width="35px" height="35px" style="vertical-align: middle;"> <span id="popup_name"></span>
 						</div>
 						<div class="frinedProfileDesc">
-						 	<div class="dept">${m.d_NUM }</div>
-           				  	<div class="dept">직책</div>
-            				<div class="dept" style="width:150px;">guidong@work.com</div>
+						 	<div class="dept" id="popup_dname" ></div>
+           				  	<div class="dept"   id="popup_job"></div>
+            				<div class="dept" style="width:150px;" id="popup_id" ></div>
 						</div>
 						</div>
 						<div class="btn-r">
@@ -88,7 +103,6 @@
 						</div>
 					</div>
 			</div>
-			</c:forEach>
 			
 			
 		
@@ -105,9 +119,17 @@
 <!--// status -->
             <div class="layerP">
               <a href="#layer1" class="status_layer" >
-            	<img src="${pageContext.request.contextPath}/img/online.png"
-            		width="30px" height="30px" style="vertical-align: middle;"
-            		id="myStatus">
+            	<c:choose>
+					<c:when test="${m.CHAT_STATUS == 'online' }">
+					<img src="${pageContext.request.contextPath}/img/online.png" width="40px" height="40px">
+					</c:when>
+					<c:when test="${m.CHAT_STATUS == 'offline' }">
+					<img src="${pageContext.request.contextPath}/img/offline.png" width="40px" height="40px">
+					</c:when>
+					<c:when test="${m.CHAT_STATUS == 'brb' }">
+					<img src="${pageContext.request.contextPath}/img/brb.png" width="40px" height="40px">
+					</c:when>
+				</c:choose>
               </a>
 <div id="layer1" class="pop-layer" style="margin-top: 10px;">
     <div class="pop-container">
@@ -147,8 +169,8 @@
           </div>
           
           <div class="myProfile_desc">
-             <div class="dept">부서</div>
-             <div class="dept">직책</div>
+             <div class="dept">${m.d_NAME}</div>
+             <div class="dept">${m.m_JOB }</div>
              <div class="dept" style="width:150px;">${m.m_ID}@work.com</div>
           </div>
           

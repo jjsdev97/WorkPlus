@@ -37,6 +37,10 @@ public class ChatFrontController extends javax.servlet.http.HttpServlet{
 				break;
 			case "/ChatStatusUpdate.chat":
 				action = new ChatStatusUpdateAction();
+				break;
+			case "/ChatMemberSearch.chat":
+				action = new ChatMemberSearchAction();
+				break;
 			
 		}// switch end
 		

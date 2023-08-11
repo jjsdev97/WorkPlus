@@ -18,13 +18,11 @@ public class ChatStatusUpdateAction implements Action {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
-	
-		
 		ChatDAO chatdao = new ChatDAO();
-		Member m = chatdao.memberStatusUpdate(id, 	request.getParameter("status"));
+		Member m = chatdao.memberStatusUpdate(id, request.getParameter("status"));
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("chat/chatmain.jsp");
+		forward.setPath("Chatmain.chat");
 		forward.setRedirect(false);
 		request.setAttribute("m", m);
 		
