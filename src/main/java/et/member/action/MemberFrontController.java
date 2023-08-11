@@ -46,6 +46,10 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 			action = new MemberLoginAction();
 			break;
 		
+		case "/logout.et" :
+			action = new MemberLogoutAction();
+			break;
+			
 		case "/join.et" :
 			action = new MemberJoinAction();
 			break;

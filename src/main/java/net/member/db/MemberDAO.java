@@ -12,6 +12,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.google.gson.JsonObject;
+
 import net.dept.db.Dept;
 
 public class MemberDAO {
@@ -341,10 +343,10 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int getListCount(String field, String search_word) {
+	public int getListCount(String field, String search_word, String tabsql) {
 		int x = 0;
 		String sql = "select count(*) from member "
-				+ "where " + field + " like ? ";
+				+ "where " + field + " like ?  AND " + tabsql ;
 		System.out.println(sql);
 		try(Connection con = ds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql);){
@@ -365,11 +367,12 @@ public class MemberDAO {
 		return x;
 	}
 
-	public List<Member> getList(String field, String search_word, int page, int limit) {
+	public ArrayList<Member> getList(String field, String search_word, int page, int limit, String tabsql) {
 		
-		List<Member> list = new ArrayList<Member>();
+		ArrayList<Member> list = new ArrayList<Member>();
 		String sql = "select * from(select b.*, rownum rnum "
-							+ "					from(select * from member where " + field + "like ? "
+							+ "					from(select * from member where " + field + " like ? "
+							+ "							AND " + tabsql 				
 							+ "						 order by M_NAME)b "
 							+ "	  		   		where rownum <= ? ) "
 							+ "   where rnum >= ? and rnum <= ? ";
@@ -531,6 +534,31 @@ public class MemberDAO {
 			
 			return position;
 	}
+
+	public int getListCount1(String sql) {
+		int result = 0;
+		String countsql = "select count(*) from member "
+				+ "									left join dept on member.d_num = dept.d_num "
+				+ "									left join position on member.p_num = position.p_num "
+				+ "								  where M_ID != 'admin' AND " + sql ;
+		
+		try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(countsql);){
+				
+				try(ResultSet rs = pstmt.executeQuery()){
+					if(rs.next()) {
+						result = rs.getInt(1);
+					}
+				} catch(SQLException e) {
+					e.printStackTrace();
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			
+			return result;
+	}
+
 
 		
 	

@@ -1,7 +1,7 @@
  $(document).ready(function(){
 	 
 	 
-	    let tab_value = $("#tab").val();
+	    let tab_value = $("#tab").val();//1, 2, 3
 	    if(tab_value){
 		    $('ul.tabs li').removeClass('current');
 			 $('.tab-content').removeClass('current');
@@ -18,25 +18,15 @@
 		 
 		 $(this).addClass('current');
 		 $('#'+tab_id).addClass('current');
+		 
+		 console.log(tab_id.substr(4));
+		 $("#tab").val(tab_id.substr(4));
 	  });
 	  
-		//검색 클릭 후 응답화면에는 검색시 선택한 필드가 선택되도록
-		let selectedValue = '${search_field}'
-		if(selectedValue != '-1')
-			$("#viewcount").val(selectedValue);
-		else
-			selectedValue=0;   //선택된 필드가 없는 경우 기본적으로 아이디를 선택하도록 합니다.
-		
+
 			
 		//검색 버튼 클릭한 경우
-		$("button").click(function(){
-			//검색어 공백 유효성 검사합니다.
-			if($input.val() == ''){
-				alert("검색어를 입력하세요");
-				$input.focus();
-				return false;
-			}
-		}); //button click end
+
 		
 		
 		//회원 목록의 승인을 클릭한 경우
@@ -76,7 +66,7 @@
 			 }
 		}) //삭제 클릭 end 
 	
-		$("#viewcount").on("keyup", function(){
+		/*$("#viewcount").on("keyup", function(){
 			const value = $(this).val().toLowerCase();
 			$("table tr").each(function(){
 				console.log($(this).text().toLowerCase().indexOf(value) > -1 )
@@ -85,7 +75,7 @@
 			
 			});
 		});
-	
+	*/
 		$(document).on("click", "#admit", function(){
 			let m_id = $("#m_id").val(); 
 			let dnum = $("#dept").val();
@@ -93,7 +83,23 @@
 			
 			location.href="memberConfirm.et?dnum=" + dnum + "&pnum=" + pnum + "&id=" + m_id + "&tab=1";
 		});
+		
 	
+	
+	$('.update').click(function() {
+		$('.modal-background').css('display', 'block');
+		$('.modal-container').css('display', 'block');
+		
+		$('body').css('overflow', 'hidden');
+		
+		
+		let tr= $(this).parent().parent();
+		$('#name').val(tr.find(".name").text());
+		$('#email').val(tr.find(".email").text());
+		$('#dname').val(tr.find(".dname").text());
+		$('#mjob').val(tr.find(".mjob").text());
+		$('#empnum').val(tr.find(".empnum").text());
+	})
 	
 	
 	}); //main end

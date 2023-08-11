@@ -22,6 +22,12 @@
 		 location.href = "findid.et";
 	 });
 	 
+	 const id = '${id}';
+	 if(id){
+		 $('#id').val(id);
+		 $("#remember").prop('checked',true);
+	 }
+	 
  });
 
 </script>
@@ -36,16 +42,16 @@
 	<div class="login_form_container">
  	  <div class="login_input">
  		 <div class="login_id">
-			<input type="text" name="id" class="id" id="input_id" data-min-width="200" data-min-height="50"
+			<input type="text" name="id" class="id" id="id" data-min-width="200" data-min-height="50"
 			 		data-text-content="true" value="" placeholder="아이디를 입력하세요">
  		 </div>
  		 <div class="login_pass">
- 			<input type="password" name="pass" class="pass" id="input_pass" data-min-width="200" data-min-height="50"
+ 			<input type="password" name="pass" class="pass" id="pass" data-min-width="200" data-min-height="50"
 					data-text-content="true" value="" placeholder="비밀번호를 입력하세요">
  		 </div>
  	  </div>
  	  <div class="login_setting">
-		<input type="checkbox" class="login_setting_input" id="remember_id" value="store">
+		<input type="checkbox" class="login_setting_input" id="remember" name="remember" value="store">
 		<label class="login_setting_label" for="remember_id">아이디 기억하기</label>
 		
 		<input type="checkbox" class="login_setting_input" id="remember_login">
