@@ -28,7 +28,7 @@ public class MemberJoinProcessAction implements Action {
 		String emailaddr = email + "@" + domain;
 		String M_HIREDATE = request.getParameter("M_HIREDATE");				//입사일
 		int D_NUM = 0;					//부서번호(FK DEPT)
-		//String P_NUM = request.getParameter("");			//직책 ENUM 클래스
+		String P_NUM = "0";			
 		String admit = "1";			//가입승인
 		String status = "1";		//이용정지
 		String m_admin = "user";	//사용자 타입 user(기본값)
@@ -41,6 +41,7 @@ public class MemberJoinProcessAction implements Action {
 		m.setE_NUM(empnum);
 		m.setVERIFY_EMAIL(emailaddr);
 		m.setD_NUM(D_NUM);
+		m.setP_NUM(P_NUM);
 		m.setR_ADMIT(admit);
 		m.setM_STATUS(status);
 		m.setCHAT_STATUS(chat_status);

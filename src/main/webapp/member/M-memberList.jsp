@@ -156,7 +156,7 @@
 		   	   <td>
 				${m.d_NAME}	
 		   	   </td>
-		   	   <td>${m.p_NUM}</td>
+		   	   <td>${m.m_JOB}</td>
 		   	   <td>${m.VERIFY_EMAIL}</td>
 		   	   <td>${m.m_HIREDATE}</td>
 		   	   <td>
@@ -164,7 +164,7 @@
 			   	   <a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: red;">[계정삭제]</span></a>
 		   	   </td>
 		   </tr>
-		  </c:forEach>
+		   </c:forEach>
 		 </tbody>
 	 </table>
    </div>

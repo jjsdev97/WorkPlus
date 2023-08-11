@@ -230,23 +230,25 @@ public class MemberDAO {
 		//limit : 페이지 당 목록의 수
 		//조건절에 맞는 rnum의 범위만큼 가져오는 쿼리문
 		
-		/* 원래 쿼리문
-		   		"select * from(select b.*, rownum rnum "
-				+ "					from(select * from member where M_ID != 'admin' AND " + sql 
-				+ "						 order by M_NAME)b "
-				+ "	  		   where rownum <= ? ) "
-				+ "   where rnum >= ? and rnum <= ? ";
+		/*원래 쿼리문
+		 * 
+		 * "select * from(select b.*, rownum rnum "
+							+ "					from(select * from member where M_ID != 'admin' AND " + sql 
+							+ "						 order by M_NAME)b "
+							+ "	  		 	    where rownum <= ? ) "
+							+ "  		   where rnum >= ? and rnum <= ? ";
 		 */
-		
 		
 		ArrayList<Member> list = new ArrayList<Member>();
 		String member_list_sql = "select * from(select b.*, rownum rnum "
-				+ "					from(select * from member left outer join dept on member.d_num = dept.d_num where M_ID != 'admin' AND " + sql 
+				+ "					from(select * from member "
+				+ "									left join dept on member.d_num = dept.d_num "
+				+ "									left join position on member.p_num = position.p_num "
+				+ "								  where M_ID != 'admin' AND " + sql 
 				+ "						 order by M_NAME)b "
 				+ "	  		   where rownum <= ? ) "
 				+ "   where rnum >= ? and rnum <= ? ";
 		
-		System.out.println();
 		try(Connection con = ds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(member_list_sql);){
 			
@@ -276,7 +278,8 @@ public class MemberDAO {
 					m.setCHAT_STATUS(rs.getString(12));
 					m.setM_ADMIN(rs.getString(13));
 					m.setM_PROFILEFILE(rs.getString(14));
-					m.setD_NAME(rs.getString(16));
+					m.setD_NAME(rs.getString(17));
+					m.setM_JOB(rs.getString(22));
 					
 					list.add(m);
 				}
@@ -286,19 +289,20 @@ public class MemberDAO {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("getListCount()에러 : " + ex);
-		}
+		} 
 		
 		return list;
 	}
 
-	public int confirm(int dnum, String id) {
+	public int confirm(int dnum, String pnum, String id) {
 		int result = 0;
-		String sql = "update member set R_ADMIT = '2' , D_NUM = ?"
+		String sql = "update member set R_ADMIT = '2' , D_NUM = ?, P_NUM = ? "
 				+ "where M_ID = ? ";
 		try(Connection con = ds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql);){
 			pstmt.setInt(1, dnum );
-			pstmt.setString(2, id);
+			pstmt.setString(2, pnum );
+			pstmt.setString(3, id);
 			result = pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -506,7 +510,7 @@ public class MemberDAO {
 	public ArrayList<Position> jobinfo() {
 		
 		ArrayList<Position> position = new ArrayList<Position>();
-		String sql = "select * from position ";
+		String sql = "select * from position order by P_NUM ";
 		
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){
@@ -528,9 +532,6 @@ public class MemberDAO {
 			return position;
 	}
 
-	
-
-	
 		
 	
 } //class end

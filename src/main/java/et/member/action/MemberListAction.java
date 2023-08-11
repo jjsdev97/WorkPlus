@@ -42,6 +42,7 @@ public class MemberListAction implements Action {
 		ArrayList<Dept> deptlist = null;
 		ArrayList<Position> position = null;
 		
+		
 		// 1)관리자 페이지 - 사용자 관리 클릭한 경우(가입대기인 회원목록 표시)
 		if(request.getParameter("search_word") == null || request.getParameter("search_word").equals("")){
 			//가입대기인 회원 목록 표시
@@ -49,6 +50,7 @@ public class MemberListAction implements Action {
 			list1 = mdao.getList1(page, limit, "R_ADMIT = '1'");  //가입승인
 			list3 = mdao.getList1(page, limit, "R_ADMIT = '2'");  //승인완료
 			list2 = mdao.getList1(page, limit, "M_STATUS = '2'"); //이용중지
+			
 			
 			deptlist = mdao.deptinfo();
 			position = mdao.jobinfo();
