@@ -114,3 +114,14 @@ BOARD_RE_SEQ asc;
       where rownum<=10
 )
 where rnum>=1 and rnum<=10;
+
+SELECT *
+FROM ( SELECT rownum rnum, j.* 
+   FROM ( SELECT BOARD.*, NVL(cnt, 0) AS cnt 
+      FROM board LEFT OUTER JOIN ( SELECT comment_board_num, COUNT(*) AS cnt 
+                    FROM comm 
+                    GROUP BY comment_board_num ) comm_count 
+      ON board.BOARD_NUM = comm_count.comment_board_num
+      ORDER BY BOARD_NUM desc ) j
+   WHERE rownum <= 11 ) 
+WHERE rnum >= 1 AND rnum <= 11";

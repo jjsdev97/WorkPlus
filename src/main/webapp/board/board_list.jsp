@@ -9,7 +9,6 @@
 
 <jsp:include page="/header.jsp" />
 <style>
-
 </style>
 </head>
 <body>
@@ -27,27 +26,29 @@
 	   </thead>
 	   <tbody> <!-- 아직 이해안됨 이부분은 꼭 봐야함-->
 	   <c:set var="num" value="${listcount-(page-1)*limit}"/> 
-	   <c:forEach var="b" items="${boardlist}">
+	   <c:forEach var="b" items="${boardlist}">  <!-- DB에서 데이터를 뽑아오는 과정 반복-->
        <tr>
+        <td>★
+       </td>
 	   <td><%--번호 --%>
 		 <c:out value="${num}"/><%-- num 출력 --%>		
 		 <c:set var="num" value="${num-1}"/>	<%-- num=num-1; 의미--%>	
 	   </td>
 	   <td><%--제목 --%>
 	     <div>			
-			<a href="BoardDetailAction.bo?num=${b.board_num}"> <!-- 엥커태그 위치 프론트컨트롤러 이동 -->
-			   <c:if test="${b.board_subject.length()>=20}">
-				 <c:out value="${b.board_subject.substring(0,20)}..." />
+			<a href="BoardDetailAction.bo?num=${b.BOARD_NUM}"> <!-- 엥커태그 위치 프론트컨트롤러 이동 -->
+			   <c:if test="${b.BOARD_SUBJECT.length()>=20}">
+				 <c:out value="${b.BOARD_SUBJECT.substring(0,20)}..." />
 			   </c:if>
-			   <c:if test="${b.board_subject.length()<20}">
-				 <c:out value="${b.board_subject}" />
+			   <c:if test="${b.BOARD_SUBJECT.length()<20}">
+				 <c:out value="${b.BOARD_SUBJECT}" />
 			   </c:if>
-			</a>[${b.cnt}]  
+			</a>[${b.cnt}]  <!-- cnt는 게시글이 가진 댓글의 갯수 -->
 		  </div>
 		</td>
-		<td><div>${b.board_name}</div></td>
-		<td><div>${b.board_date}</div></td>	
-		<td><div>${b.board_readcount}</div></td>
+		<td><div>${b.BOARD_NAME}</div></td>
+		<td><div>${b.BOARD_DATE}</div></td>	
+		<td><div>${b.BOARD_READCOUNT}</div></td>
 	   </tr>
 	  </c:forEach>
 	 </tbody>	
@@ -101,7 +102,7 @@
 	<h3 style="text-align:center">등록된 글이 없습니다.</h3>
  </c:if>
 
- <button type="button" class="btn btn-info float-right">글 쓰 기</button>
+<button type="button" class="btn btn-info float-right">글 쓰 기</button>
 </div>  <%-- <div class="container"> end --%>
 </body>
 </html>

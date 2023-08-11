@@ -64,13 +64,13 @@ public class BoardDAO {
 	
 	//글의 갯수 구하기
 		public int getListCount() {
-			String sql = "select count(*) from board";
+			String sql = "select count(*) from board"; 
 			int x = 0;
 			 try (Connection con = ds.getConnection();
-				  PreparedStatement pstmt = con.prepareStatement(sql);){
+				  PreparedStatement pstmt = con.prepareStatement(sql);){ 
 				 
-				 try(ResultSet rs = pstmt.executeQuery()){
-					  if(rs.next()) {
+					try (ResultSet rs = pstmt.executeQuery()) { /* pstmt의 sql문을 실행 */
+						if (rs.next()) { /* rs의 다음 값이 있을 시 */
 						  x =rs.getInt(1);
 					  }
 				 } catch (SQLException e) {
@@ -82,6 +82,62 @@ public class BoardDAO {
 			 }
 			return x;
 		}// getListCount() end
+		
+		public List<BoardBean> getBoardList(int page, int limit){
+			
+			// page : 페이지
+			// limit : 페이지 당 목록의 수
+			// board_re_ref desc, board_re_seq asc에 의해 정렬한 것을
+			// 조건절에 맞는 rnum의 범위 만큼 가져오는 쿼리문입니다.
+			
+			String board_list_sql = "select * "
+					+ "FROM (SELECT rownum rnum, j.* "
+					+ "		FROM (SELECT BOARD.*, NVL(cnt, 0) AS cnt "
+					+ "				FROM board LEFT OUTER JOIN ( SELECT comment_board_num, COUNT(*) AS cnt "
+					+ "							 				 FROM comm  "
+					+ "											GROUP BY comment_board_num ) comm_count "
+					+ "				ON board.BOARD_NUM = comm_count.comment_board_num "
+					+ "				ORDER BY BOARD_NUM desc ) j "
+					+ "				WHERE rownum <= ? ) "
+					+ "WHERE rnum >= ? AND rnum <= ?";
+		
+			List<BoardBean> list = new ArrayList<BoardBean>();
+			// 한 페이지당 10개씩 목록인 경우 1페이지, 2페이지, 3페이지, 4페이지 ....
+			int startrow = (page - 1) * limit + 1;	// 읽기 시작할 row 번호(1 11 21 31 ...
+			int endrow = startrow + limit - 1; 		// 읽을 마지막 row 번호(10 20 30 40 ...
+			try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(board_list_sql);){
+				pstmt.setInt(1, endrow);
+				pstmt.setInt(2, startrow);
+				pstmt.setInt(3, endrow);
+				
+				 try(ResultSet rs = pstmt.executeQuery()){
+					 
+					 //DB에서 가져온 데이터를 BoardBean에 담습니다.
+					 while(rs.next()) {
+						 BoardBean board = new BoardBean();
+						 board.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+						 board.setBOARD_TYPE(rs.getString("BOARD_TYPE"));
+						 board.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+						 board.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
+						 board.setBOARD_FILE(rs.getString("BOARD_FILE"));
+						 board.setBOARD_WRITER(rs.getString("BOARD_WRITER"));
+						 board.setBOARD_DATE(rs.getInt("BOARD_DATE"));
+						 board.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
+						 board.setBOARD_NOTICE(rs.getString("BOARD_NOTICE"));
+						 board.setBOARD_LIKECOUNT(rs.getInt("BOARD_LIKECOUNT"));
+						 board.setCnt(rs.getInt("cnt"));
+						 list.add(board);	//값을 담은 객체를 리스트에 저장합니다.
+					 }
+				 } catch (SQLException e) {
+					 e.printStackTrace();
+				 }
+			 } catch (Exception ex) {
+				 ex.printStackTrace();
+				 System.out.println("getListCount() 에러: " + ex);
+			 }
+			return list;	
+		} //getBoardList end
 		
 		/*
 		 * //글 목록 보기 public List<BoardBean> getBoardList(int page, int limit){
