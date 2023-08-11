@@ -22,16 +22,14 @@ public class ChatMainAction implements Action {
 		HttpSession session = request.getSession();
 		session.setAttribute("menu","user");
 		
-		//나의 프로필 
-		MemberDAO mdao = new MemberDAO();
+		// 프로필 
+		ChatDAO chatdao = new ChatDAO();
 		String id = (String) session.getAttribute("id");
-		Member m = mdao.memberinfo(id);
+		Member m = chatdao.memberinfo(id);
 		
 		
 		//친구 리스트
-		ChatDAO chatdao = new ChatDAO();
 		List<Member> memberlist = new ArrayList<Member>();
-		//멤버 리스트 받아오기 
 		memberlist = chatdao.getMemberList();
 		request.setAttribute("memberlist", memberlist);		
 		
