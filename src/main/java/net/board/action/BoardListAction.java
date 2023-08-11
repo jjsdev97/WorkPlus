@@ -109,7 +109,7 @@ public class BoardListAction implements Action{
 			forward.setRedirect(false);
 
 			// 글 목록 페이지로 이동하기 위해 경로를 설정합니다.
-			forward.setPath("board/boardList.jsp");
+			forward.setPath("board/board_list.jsp");
 			return forward; // BoardFrontController.java로 리턴됩니다.
 			
 		}else {

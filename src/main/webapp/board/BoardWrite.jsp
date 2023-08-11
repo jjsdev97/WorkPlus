@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +10,7 @@
 <title>Insert title here</title>
 
 <jsp:include page="../header.jsp" />
-<style>
-</style>
+<link href="css/B_BoardWrite.css" rel="stylesheet">
 </head>
 <body>
 	<div class="main">
@@ -22,23 +22,20 @@
 					<option>공통 게시판</option>
 					<option>팀별 게시판</option>
 				</select>
-			</div>
-			<div class="board_drop" id="borad_type2">
 				게시판 선택 <select class="select_option" id="select_board2" name ="BOARD_TYPE">
-				    
 					<option value = "notification">공지사항</option>
 					<option value = "free">자유게시판</option>
 					<option value = "strategy">전략기획팀</option>
 					<option value = "HRM">인사노무팀</option>
 					<option value = "accounting">경리회계팀</option>
-					
 				</select>
 			</div>
-
-			<div class="board_drop">제 목</div>
-			<input type="text" id="board_subject" name="BOARD_SUBJECT"
+			<div class="board_subject">제 목
+			<input type="text" id="board_inputsubject" name="BOARD_SUBJECT"
 				placeholder="제목을 입력하세요">
-
+			</div>
+			
+            
 			<!-- 글씨체, 폰트, 등 조절하는 라벨 한줄 끌어올 예정 -->
 
 			<textarea id="board_content" name="BOARD_CONTENT" cols="60" rows="30"></textarea>
