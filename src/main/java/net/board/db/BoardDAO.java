@@ -122,7 +122,7 @@ public class BoardDAO {
 						 board.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
 						 board.setBOARD_FILE(rs.getString("BOARD_FILE"));
 						 board.setBOARD_WRITER(rs.getString("BOARD_WRITER"));
-						 board.setBOARD_DATE(rs.getInt("BOARD_DATE"));
+						 board.setBOARD_DATE(rs.getString("BOARD_DATE"));
 						 board.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
 						 board.setBOARD_NOTICE(rs.getString("BOARD_NOTICE"));
 						 board.setBOARD_LIKECOUNT(rs.getInt("BOARD_LIKECOUNT"));
@@ -138,6 +138,49 @@ public class BoardDAO {
 			 }
 			return list;	
 		} //getBoardList end
+		
+		public BoardBean getDetail(int num) {
+			BoardBean board = null;
+			String sql = "select * from board where BOARD_NUM = ? ";
+			try (Connection con = ds.getConnection();
+				 PreparedStatement pstmt = con.prepareStatement(sql);){
+				 pstmt.setInt(1, num);
+				 try (ResultSet rs = pstmt.executeQuery()){
+					if (rs.next()) {
+						 board = new BoardBean();
+						 board.setBOARD_NUM(rs.getInt("BOARD_NUM"));
+						 board.setBOARD_SUBJECT(rs.getString("BOARD_SUBJECT"));
+						 board.setBOARD_WRITER(rs.getString("BOARD_WRITER"));
+						 board.setBOARD_TYPE(rs.getString("BOARD_TYPE"));
+						 board.setBOARD_READCOUNT(rs.getInt("BOARD_READCOUNT"));
+						 board.setBOARD_CONTENT(rs.getString("BOARD_CONTENT"));
+						 board.setBOARD_DATE(rs.getString("BOARD_DATE"));
+						 board.setBOARD_FILE(rs.getString("BOARD_FILE"));
+				 } 
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception ex) {
+				System.out.println("getDetail() 에러: " + ex);
+		}
+			return board;
+		}
+		
+		// 조회수 업데이트 - 글번호에 해당하는 조회수를 1 증가합니다.
+		public void setReadCountUpdate(int num) {
+			
+			String sql = "update board "
+						+ "set BOARD_READCOUNT = BOARD_READCOUNT+1 "
+						+ "where BOARD_NUM = ? ";
+			try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setInt(1, num);
+				pstmt.executeUpdate();
+			} catch (SQLException ex) {
+				System.out.println("setReadCountUpdate() 에러: " + ex);
+			}
+		} //setReadCountUpdate()메서드 end
+		
 		
 		/*
 		 * //글 목록 보기 public List<BoardBean> getBoardList(int page, int limit){

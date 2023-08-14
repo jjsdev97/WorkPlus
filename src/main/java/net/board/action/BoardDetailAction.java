@@ -9,14 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.board.db.BoardBean;
 import net.board.db.BoardDAO;
-import net.member.action.Action;
-import net.member.action.ActionForward;
 
  public class BoardDetailAction implements Action {
 	 public ActionForward execute(HttpServletRequest request,
 			 HttpServletResponse response) throws ServletException, IOException { 
 		 
-		 BoardDAO boarddao = new BoardDAO(); 
+		BoardDAO boarddao = new BoardDAO(); 
 	   	BoardBean boarddata = new BoardBean();
 	   	
 	   	//글번호 파라미터 값을 num변수에 저장합니다.
