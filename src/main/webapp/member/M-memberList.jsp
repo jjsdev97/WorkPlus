@@ -128,9 +128,9 @@
 								</td>
 								<td>${m.VERIFY_EMAIL}</td>
 								<td>${m.m_HIREDATE}</td>
-								<td><span id="admit" style="color: blue;">[가입승인]</span></a>&nbsp;
+								<td><span class="admit" style="color: blue;">[가입승인]</span></a>&nbsp;
 									<a href="memberDelete.et?id=${m.m_ID}&tab=1"><span
-											id="reject" style="color: red;">[가입거절]</span></a></td>
+											class="reject" style="color: red;">[가입거절]</span></a></td>
 							  </tr>
 							</c:forEach>
 					</tbody>
@@ -228,7 +228,7 @@
 									<td>${m.VERIFY_EMAIL}</td>
 									<td>${m.m_HIREDATE}</td>
 									<td><a href="memberClearblock.et?id=${m.m_ID}&tab=2"><span
-											id="clear" style="color: blue;">[중지해제]</span></a>&nbsp; <a
+											class="clear" style="color: blue;">[중지해제]</span></a>&nbsp; <a
 										href="memberDelete.et?id=${m.m_ID}&tab=2"><span
 											class="delete" style="color: red;">[계정삭제]</span></a></td>
 								</tr>
@@ -293,6 +293,7 @@
 		 		</c:if>
 			</div>
 
+
 			<div id="tab-3" class="tab-content">
 				<%-- 승인 완료 --%>
 				<c:if test="${listcount.complete > 0 }">
@@ -351,7 +352,8 @@
 							</c:if>
 							<c:forEach var="a" begin="${startpage}" end="${endpage}">
 								<c:if test="${ a == page3 }">
-									<li class="page-item active"><a class="page-link">${a}</a>
+									<li class="page-item active">
+										<a class="page-link">${a}</a>
 									</li>
 								</c:if>
 								<c:if test="${a != page3}">
@@ -367,17 +369,19 @@
 							</c:forEach>
 
 							<c:if test="${page3 >= maxpage }">
-								<li class="page-item"'><a class="page-link gray">&nbsp;다음</a>
+								<li class="page-item hidden">
+									<a class="page-link hidden">&nbsp;다음</a>
 								</li>
 							</c:if>
 							<c:if test="${page3 < maxpage }">
-								<c:url var="next" value="memberList.net">
+								<c:url var="next" value="memberList.et">
 									<c:param name="search_field" value="${search_field}" />
 									<c:param name="search_word" value="${search_word}" />
 									<c:param name="page3" value="${page3+1}" />
 									<c:param name="tab" value="3" />
 								</c:url>
-								<li class="page-item"><a href="${next}" class="page-link">&nbsp;다음</a>
+								<li class="page-item">
+								<a href="${next}" class="page-link">&nbsp;다음</a>
 								</li>
 							</c:if>
 						</ul>

@@ -135,19 +135,32 @@ public class MemberDAO {
 		return member;
 		}
 
-	public int resetPass(String pass) {
+	public int resetPass(String pass, String email) {
 		
 		int result = 0;
-		String sql = "update member set M_PASS = ? "
-				+ " where VERIFY_EMAIL = ? ";
+		String sql = "update member "
+				+ "	set M_PASS = ? "
+				+ " where VERIFY_EMAIL = ? "
+				+ " and R_ADMIT = '2' ";
 		
-		return 0;
+		try(Connection con = ds.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql);){
+			
+			pstmt.setString(1, pass);
+			pstmt.setString(2, email);
+			result = pstmt.executeUpdate();
+			
+		 } catch(Exception e) {
+			e.printStackTrace();
+		 }
+		
+		return result;
 	}
 
 	public HashMap<String, Integer> getListCountAdmit() {
-		String sql = "select (SELECT COUNT(*) 		FROM MEMBER		WHERE R_ADMIT = '1' and  M_ID != 'admin' ) wait"
-				+ "       , (SELECT COUNT(*)   	 FROM MEMBER    WHERE M_STATUS = '2' and  M_ID != 'admin' ) stop"
-				+ "       , (SELECT COUNT(*)		FROM MEMBER		WHERE R_ADMIT = '2' and  M_ID != 'admin' ) complete"
+		String sql = "select (SELECT COUNT(*) FROM MEMBER WHERE R_ADMIT = '1' and  M_ID != 'admin' ) wait"
+				+ "       ,  (SELECT COUNT(*) FROM MEMBER WHERE M_STATUS = '2' and R_ADMIT ='2' and  M_ID != 'admin' ) stop"
+				+ "       ,  (SELECT COUNT(*) FROM MEMBER WHERE R_ADMIT = '2' and M_STATUS ='1' and M_ID != 'admin' ) complete"
 				+ " FROM DUAL   ";
 		
 		HashMap<String, Integer> map = new HashMap<String, Integer>();
@@ -622,6 +635,27 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 		
+		return result;
+	}
+
+	public int isEmpnum(int empnum) {
+		int result = -1; // DB에 해당 id가 없습니다.
+		String sql = "select E_NUM from member where E_NUM = ? ";
+		
+		try(Connection con = ds.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setInt(1, empnum);
+			
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					result = 0; // DB에 해당 id가 있습니다.
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return result;
 	}
 

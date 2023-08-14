@@ -28,7 +28,7 @@
 		
 		<div class="joinempnum"> <%-- 사원번호 입력 --%>
 			<b>사원번호</b><br>
-			<input type="text" name="empnum" id="empnum" placeholder="사원번호를 입력하세요" required><br>
+			<input type="text" name="empnum" id="empnum" placeholder="사원번호 6자리 숫자를 입력하세요" required><br>
 			<span id="empnum_message"></span>
 		</div>
 	
@@ -43,10 +43,11 @@
 					<option value="gmail.com">gmail.com</option>
 					<option value="nate.com">nate.com</option>
 			</select>
-				<button type="button" id="verify_emailbtn">인증번호 받기</button>	
+				<button type="button" class="verify_emailbtn" id="verify_emailbtn">인증번호 받기</button>	
 			<br>
-			<input type="text" name="verifynum" id="verifynum" placeholder="인증번호 6자리 숫자 입력">
-				<button type="button" id="verify">확인</button>
+			<input type="text" name="verifynum" class="verifynum" id="verifynum" placeholder="인증번호 6자리 숫자 입력">
+				<button type="button" class="verify" id="verify">확인</button>
+				<input type="hidden" class="authRadnum" id="authRadnum" name="authRadnum" />
 		</div>
 	
 		<div class="input_pass"> <%-- 비밀번호 입력 --%>
