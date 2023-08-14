@@ -45,6 +45,8 @@ full outer join CHAT_FRIEND_BOOKMARK on member.m_id = CHAT_FRIEND_BOOKMARK.c_obj
 and c_subject = 'gwono12'
 where member.m_id != 'admin'
 and member.m_id != 'gwono12'
+and r_admit='2'
+and m_status='1'
 order by M_NAME;
 
 select m_profilefile, m_name, chat_status, d_name, m_job, m_id , c_object
