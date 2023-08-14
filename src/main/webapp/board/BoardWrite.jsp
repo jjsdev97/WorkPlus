@@ -17,18 +17,23 @@
 		<!-- BoardWrite.bo로 넘어감 (frontcont에서 받음) --> <!-- 입력된 값을 액션 서블릿으로 넘김 -->
 		<form action="BoardAddAction.bo" method="post"   
 			enctype="multipart/form-data" name="boardform">
-			<div class="board_drop" id="board_type">
-				게시판 종류 <select class="select_option" id="select_board1">
+			
+			 <div class="board_drop" id="board_type">
+               <div>게시판 종류</div>
+				<select class="select_option" id="select_board1">
 					<option>공통 게시판</option>
 					<option>팀별 게시판</option>
 				</select>
-				게시판 선택 <select class="select_option" id="select_board2" name ="BOARD_TYPE">
+				
+				<label>게시판 선택</label>
+				<select class="select_option" id="select_board2" name ="BOARD_TYPE">
 					<option value = "notification">공지사항</option>
 					<option value = "free">자유게시판</option>
 					<option value = "strategy">전략기획팀</option>
 					<option value = "HRM">인사노무팀</option>
 					<option value = "accounting">경리회계팀</option>
 				</select>
+
 			</div>
 			<div class="board_subject">제 목
 			<input type="text" id="board_inputsubject" name="BOARD_SUBJECT"
