@@ -18,6 +18,8 @@ public class ChatStatusUpdateAction implements Action {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
 		
+		
+		
 		ChatDAO chatdao = new ChatDAO();
 		Member m = chatdao.memberStatusUpdate(id, request.getParameter("status"));
 		

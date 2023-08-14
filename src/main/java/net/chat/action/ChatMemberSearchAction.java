@@ -17,6 +17,8 @@ public class ChatMemberSearchAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		
+		
 		HttpSession session = request.getSession();
 		
 		ActionForward forward = new ActionForward();

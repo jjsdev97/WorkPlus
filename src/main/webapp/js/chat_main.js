@@ -1,5 +1,7 @@
 $(document).ready(function( ){
 
+
+
 //-------------- 팝업 시작 ----------------------//
 	$('.status_layer').click(function(){
         var $href = $(this).attr('href');

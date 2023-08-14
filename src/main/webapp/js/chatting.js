@@ -10,6 +10,8 @@ $(document).ready(function() {
     messageTextArea.val(messageTextArea.val() + "Server Disconnect...\n");
   };
 
+
+
   webSocket.onerror = function() {
     messageTextArea.val(messageTextArea.val() + "error...\n");
   };

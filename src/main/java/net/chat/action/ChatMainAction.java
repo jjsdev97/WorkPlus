@@ -19,6 +19,8 @@ public class ChatMainAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", "user");
 		session.setAttribute("selectedmenu", "chatmain");

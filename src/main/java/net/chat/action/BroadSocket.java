@@ -15,6 +15,8 @@ import javax.websocket.server.ServerEndpoint;
 // WebSocket 호스트 설정
 @ServerEndpoint("/broadsocket")
 public class BroadSocket {
+	
+	
   // 접속 된 클라이언트 WebSocket session 관리 리스트
   private static List<Session> sessionUsers = Collections.synchronizedList(new ArrayList<>());
   // 메시지에서 유저 명을 취득하기 위한 정규식 표현

@@ -8,6 +8,8 @@ create table chat {
  	 CHAT_ROOM_NAME    VARCHAR2(100)
 }
 
+
+
 select * from chat;
 
 ALTER TABLE chat MODIFY CHAT_FROM VARCHAR2(30);

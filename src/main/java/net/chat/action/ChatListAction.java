@@ -24,6 +24,10 @@ public class ChatListAction implements Action {
 		session.setAttribute("selectedmenu", "chatlist");
 
 		
+		
+		
+		
+		
 		ActionForward forward = new ActionForward();
 		
 		//나의 정보
