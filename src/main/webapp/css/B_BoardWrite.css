@@ -4,10 +4,14 @@
 클래스선택자 .id
 속성선택자   id[src]
  */
+
+ 
+ 
 form {  /* 페이지 상단, 좌우 여백 */
+position : fixed;
 margin : 0px 80px;
 }
-
+ 
 .board_select {
 	display : inline-block;
 	margin : 40px 0px 40px 0px;
@@ -15,6 +19,7 @@ margin : 0px 80px;
 }
 
 .select_option {
+	font-size : 16px;
 	width: 230px;
 	height: 40px;
 	margin : 0px 80px;
