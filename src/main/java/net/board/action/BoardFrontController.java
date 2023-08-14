@@ -55,6 +55,10 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet{
 		     case "/BoardList.bo":
 		    	 action = new BoardListAction();
 		    	 break;
+		    	 
+		     case "/BoardDetailAction.bo":
+		    	 action = new BoardDetailAction();
+		         break;
 		   /* 
 		         
 		     case "/BoardDetailAction.bo":

@@ -46,7 +46,7 @@
 			</a>[${b.cnt}]  <!-- cnt는 게시글이 가진 댓글의 갯수 -->
 		  </div>
 		</td>
-		<td><div>${b.BOARD_NAME}</div></td>
+		<td><div>${b.BOARD_WRITER}</div></td>
 		<td><div>${b.BOARD_DATE}</div></td>	
 		<td><div>${b.BOARD_READCOUNT}</div></td>
 	   </tr>
@@ -102,7 +102,13 @@
 	<h3 style="text-align:center">등록된 글이 없습니다.</h3>
  </c:if>
 
-<button type="button" class="btn btn-info float-right">글 쓰 기</button>
+<button type="button" id="board_write">글 쓰 기</button>
 </div>  <%-- <div class="container"> end --%>
+<script>
+$('#board_write').click(function(){
+location.href = "BoardWrite.bo";
+});
+/* 버튼을 누르면 액션이 일어나도록 */
+</script>
 </body>
 </html>

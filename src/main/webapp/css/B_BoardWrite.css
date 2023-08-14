@@ -4,83 +4,45 @@
 클래스선택자 .id
 속성선택자   id[src]
  */
-
-div label { 
+form {  /* 페이지 상단, 좌우 여백 */
+margin : 0px 80px;
 }
 
-.select_option { /* 게시판 드롭다운 글씨크기 */
-font-size : 20px;
+.board_select {
+	display : inline-block;
+	margin : 40px 0px 40px 0px;
+	letter-spacing : 5px;
 }
 
-option {
-font-size : 20px;
-}
- 
-.board_drop {
-	height : 100px; 
-	font-size: 15px;
-	width : 100%
+.select_option {
+	width: 230px;
+	height: 40px;
+	margin : 0px 80px;
+	text-align : center;
+	border-color : #c0c0c0;
 }
 
-#select_subject {
-	height : 200px;
+.board_subject {
+	display: inline-block;
+	width: 200px;
+	margin: 20px 0px;
+	letter-spacing : 33px;
+}
+
+.board_subject_main {
+	width:1000px;
+	height:40px;
+	text-align : center;
+	border-color : #c0c0c0;
 }
 
 #board_inputsubject {
-	width : 600px;
+	width: 500px;
+	height : 40px;
 }
 
-.main-content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: calc(100vh - 120px);
-}
-
-.cafe-image-container {
-	position: relative;
-	border: 3px solid #333;
-	border-radius: 10px;
-	background-color: #fff;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	margin-bottom: 20px; /* 이미지와 버튼 사이의 간격 조정 */
-}
-
-.cafe-image-container img {
-	width: 300px;
-	height: 300px;
-	border-radius: 10px;
-	cursor: pointer;
-}
-
-.cafe-link {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	cursor: pointer;
-}
-
-.footer {
-	background-color: #4CAF50;
-	padding: 10px;
-	text-align: center;
-	color: white;
-}
-
-.btn_menu {
-	padding: 10px 20px;
-	background-color: #284B63;
-	color: white;
-	text-decoration: none;
-	font-size: 14px;
-	border-radius: 5px;
-	width: 120px; /* 적당한 길이로 조정 */
-	transition: background-color 0.3s;
-}
-
-.btn_menu:hover {
-	background-color: #203845;
-	cursor: pointer;
+textarea {
+	margin-top : 60px; 
+	width : 1200px;
+	height : 500px;
 }
