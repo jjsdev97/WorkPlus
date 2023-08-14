@@ -1,5 +1,17 @@
 $(document).ready(function() {
 
+	function modalOpen() {
+		$('.modal-background').css('display', 'block');
+		$('.modal-container').css('display', 'block');
+		
+		$('body').css('overflow', 'hidden');
+	}
+	function modalClose() {
+		$('.modal-background').css('display', 'none');
+		$('.modal-container').css('display', 'none');
+
+		$('body').css('overflow', 'auto');
+	}
 
 	$('#dlevel').on("change", function() {
 		$('#dupperlevel').empty();
@@ -96,18 +108,17 @@ $(document).ready(function() {
 		$('.submitbtn').css("display", "inline-block");
 		$('.updatebtn').css("display", "none");
 
-
 		$('#dupperlevel').empty().append('<option value="0">대표이사</option>');
-		
-		$('#dlevel option:eq(0)').prop('selected' ,true);
+
+		$('#dlevel option:eq(0)').prop('selected', true);
 		$('.modal-container input').val('');
 	}) /* 모달창 시작 */
 
 
 
 	$('.cancelbtn').click(function() {
-		$('.modal-background').css('display', 'none');
-		$('.modal-container').css('display', 'none');
+
+		modalClose();
 	}) /* 취소 버튼 */
 
 
@@ -135,13 +146,13 @@ $(document).ready(function() {
 			type: 'post',
 			success: function(rdata) {
 				if (rdata == 1) {
-					$('.modal-background').css('display', 'none');
-					$('.modal-container').css('display', 'none');
+					modalClose();
 					getDept();
 
 				}
 			}
 		})//ajax
+
 
 	})// 확인 버튼
 
@@ -154,9 +165,8 @@ $(document).ready(function() {
 		$('.submitbtn').css("display", "none");
 		$('.updatebtn').css("display", "inline-block");
 
-		$('.modal-background').css('display', 'block');
-		$('.modal-container').css('display', 'block');
-
+		modalOpen();
+		
 		$.ajax({
 			url: 'deptGetData.dt',
 			data: {
@@ -214,8 +224,7 @@ $(document).ready(function() {
 			},
 			type: 'post',
 			success: function() {
-				$('.modal-background').css('display', 'none');
-				$('.modal-container').css('display', 'none');
+				modalClose();
 				getDept();
 			}
 		})//ajax

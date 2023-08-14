@@ -18,7 +18,7 @@ private String BOARD_SUBJECT;//게시판 제목
 private String BOARD_CONTENT;//게시판 내용
 private String BOARD_FILE;   //파일첨부/다운
 private String BOARD_WRITER; //작성자
-private int    BOARD_DATE;   //작성일자
+private String    BOARD_DATE;   //작성일자
 private int    BOARD_READCOUNT; //조회수 카운팅
 private String BOARD_NOTICE; // 공지글 확인
 private int    BOARD_LIKECOUNT;// 좋아요 개수
@@ -59,10 +59,10 @@ public String getBOARD_WRITER() {
 public void setBOARD_WRITER(String bOARD_WRITER) {
 	BOARD_WRITER = bOARD_WRITER;
 }
-public int getBOARD_DATE() {
+public String getBOARD_DATE() {
 	return BOARD_DATE;
 }
-public void setBOARD_DATE(int bOARD_DATE) {
+public void setBOARD_DATE(String bOARD_DATE) {
 	BOARD_DATE = bOARD_DATE;
 }
 public int getBOARD_READCOUNT() {
