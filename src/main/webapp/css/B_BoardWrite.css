@@ -4,9 +4,20 @@
 클래스선택자 .id
 속성선택자   id[src]
  */
+
+div label { 
+}
+
+.select_option { /* 게시판 드롭다운 글씨크기 */
+font-size : 20px;
+}
+
+option {
+font-size : 20px;
+}
+ 
 .board_drop {
 	height : 100px; 
-	text-indent: 50px; /* 들여쓰기 */
 	font-size: 15px;
 	width : 100%
 }
