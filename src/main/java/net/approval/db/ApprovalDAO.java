@@ -69,7 +69,9 @@ public class ApprovalDAO {
 		// TODO Auto-generated method stub
 		ArrayList<Member> memberlist = new ArrayList<>();
 		
-		String sql = "SELECT M_NAME, D_NUM, P_NUM, M_NUM FROM MEMBER";
+		String sql = "SELECT M_NAME, D_NUM, POSITION.M_JOB, M_NUM "
+				+ "FROM MEMBER LEFT JOIN POSITION "
+				+ "ON MEMBER.P_NUM = POSITION.P_NUM";
 		
 		try(Connection conn = ds.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -96,6 +98,39 @@ public class ApprovalDAO {
 		
 		
 		return memberlist;
+	}
+
+	public Member getMemberDetail(String session_id) {
+		Member m = new Member();
+
+		String sql = "SELECT M.M_NAME, D.D_NAME, P.M_JOB "
+				+ "FROM MEMBER M "
+				+ "JOIN POSITION P ON M.P_NUM = P.P_NUM "
+				+ "JOIN DEPT D ON M.D_NUM = D.D_NUM "
+				+ "WHERE M.M_ID = ?";
+		
+		try(Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql)){
+				
+			pstmt.setString(1, session_id);
+			
+				try(ResultSet rs = pstmt.executeQuery();){
+					
+					if(rs.next()){
+						m.setM_NAME(rs.getString(1));
+						m.setM_ID(rs.getString(2));
+						m.setP_NUM(rs.getString(3));
+					}
+					
+				}catch(SQLException e) {
+					e.printStackTrace();
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		
+		return m;
 	}
 	
 }

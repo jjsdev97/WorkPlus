@@ -51,15 +51,10 @@
 				<li class="second-item">-진행 중-</li>
 				<li class="second-item"><a href="#" class="second-anchor">전체</a></li>
 				<li class="second-item"><a href="#" class="second-anchor">대기</a></li>
-				<li class="second-item"><a href="#" class="second-anchor">확인</a></li>
-				<li class="second-item"><a href="#" class="second-anchor">예정</a></li>
 				<li class="second-item"><a href="#" class="second-anchor">진행</a></li>
 				<li class="second-item">-완료-</li>
 				<li class="second-item"><a href="#" class="second-anchor">전체</a></li>
-				<li class="second-item"><a href="#" class="second-anchor">기안</a></li>
 				<li class="second-item"><a href="#" class="second-anchor">결재</a></li>
-				<li class="second-item"><a href="#" class="second-anchor">수신</a></li>
-				<li class="second-item"><a href="#" class="second-anchor">회람</a></li>
 				<li class="second-item"><a href="#" class="second-anchor">반려</a></li>
 			</ul></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">인사</a></li>
@@ -90,9 +85,13 @@
 </div>
 
 <script>
+	var admin_check = '<%=(String) session.getAttribute("id")%>';
 	var menu = '<%=(String) session.getAttribute("menu")%>';
 	var selectedmenu = '<%=(String) session.getAttribute("selectedmenu")%>';
 
+	if(admin_check!='admin'){
+		$('.btn_menu').css('display','none');
+	}
 
 
 	if (selectedmenu == 'approval') {
