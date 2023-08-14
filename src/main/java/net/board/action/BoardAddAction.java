@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -17,6 +18,9 @@ public class BoardAddAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+
+		String session_id = (String) session.getAttribute("id");
 		BoardDAO boarddao = new BoardDAO();
 		BoardBean boarddata = new BoardBean();
 		ActionForward forward = new ActionForward();
@@ -38,27 +42,18 @@ public class BoardAddAction implements Action {
 					new DefaultFileRenamePolicy());
 
 			// BoardBean 객체에 글 동록 폼에서 입력 받은 정보들을 저장합니다.
-//	    boarddata.setBOARD_TYPE(multi.getParameter("BOARD_TYPE")); //게시판 종류 (1)
 			boarddata.setBOARD_TYPE(multi.getParameter("BOARD_TYPE")); // 게시판 종류 (1)
 			boarddata.setBOARD_SUBJECT(multi.getParameter("BOARD_SUBJECT")); // 게시판 제목 (2)
 			boarddata.setBOARD_CONTENT(multi.getParameter("BOARD_CONTENT")); // 게시판 내용 (3)
-			boarddata.setBOARD_WRITER(multi.getParameter("BOARD_WRITER")); // 작성자 (4)
+			boarddata.setBOARD_WRITER(session_id); // 작성자 (4)
 			/*
-			 * boarddata.setBOARD_DATE(Integer.parseInt(multi.getParameter("BOARD_DATE")));
-			 * // 작성일자 (5)
-			 * 
-			 * 
-			 * boarddata.setBOARD_READCOUNT(Integer.parseInt(multi.getParameter(
-			 * "BOARD_READCOUNT"))); //좋아요 카운팅 (6)
-			 * 
 			 * boarddata.setBOARD_NOTICE(multi.getParameter("BOARD_NOTICE")); //공지글 (7)
 			 * boarddata.setBOARD_LIKECOUNT(Integer.parseInt(multi.getParameter(
 			 * "BOARD_LIKECOUNT"))); // 좋아요 개수 (8)
 			 */
 			// 시스템 상에 업로드된 실제 파일명을 얻어옵니다.
-			String filename = multi.getFilesystemName("BOARD_FILE"); // 파일명을 얻어오는 메서드
-//			boarddata.setBOARD_FILE(filename); // 첨부파일명 (9)
-			boarddata.setBOARD_FILE("임시"); // 첨부파일명 (9)
+			String filename = multi.getFilesystemName("board_file"); // 파일명을 얻어오는 메서드
+			boarddata.setBOARD_FILE(filename); // 첨부파일명 (9)
 
 			// 글등록 처리를 위해 DAO의 boardInsert()메서드를 호출합니다.
 			// 글 등록 폼에서 입력한 정보가 저장되어 있는 boarddata객체를 전달합니다.
@@ -85,7 +80,7 @@ public class BoardAddAction implements Action {
 			request.setAttribute("message", "게시판 업로드 실패입니다.");
 			forward.setRedirect(false);
 			return forward;
-			
+
 		} // catch end
 	} // execute end 넘어가는 과정*/
 }
