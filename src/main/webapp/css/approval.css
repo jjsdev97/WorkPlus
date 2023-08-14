@@ -44,7 +44,7 @@
 	height: 20%;
 }
 
-#approval-line-tall {
+#approval-line-second {
 	height: 40%;
 }
 
@@ -222,3 +222,14 @@ ul {
 .approval-submitbtn {
 	float: right;
 }
+
+/* 결재선 input 관련 */
+
+#input-ref-item, #input-rec-item {
+	
+}
+
+#input-approval-item {
+	width:50px;
+}
+/* 결재선 input 관련 */

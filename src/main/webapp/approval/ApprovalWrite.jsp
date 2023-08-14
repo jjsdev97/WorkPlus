@@ -52,7 +52,13 @@
 					<div class="modal-approval-line">
 						<div class="modal-approval-line-type">
 							<div class="modal-approval-line-type-subject">결재</div>
-							<div class="modal-approval-line-item filled">${writer.m_ID}${writer.p_NUM }${writer.m_NAME}</div>
+							<div class="modal-approval-line-item filled">
+								<div class="approval-line-item-detail">
+									<div class="item-deptname">${writer.m_ID}</div>
+									<div class="item-pname">${writer.p_NUM }</div>
+									<div class="item-mname">${writer.m_NAME}</div>
+								</div>
+							</div>
 							<div class="modal-approval-line-item"></div>
 							<div class="modal-approval-line-item"></div>
 							<div class="modal-approval-line-item"></div>
@@ -77,19 +83,19 @@
 
 
 
-		<form action="#" method="post">
+		<form action="approvalAddAction.apv" method="post" id="approvalForm">
 			<div class="approval-container">
 
 				<div class="approval-header">
 					<div class="approval-header-select">
-						양식 선택 <select name='approval-period'>
-							<option value='1'>양식1</option>
-							<option value='2'>양식2</option>
-							<option value='3'>양식3</option>
+						양식 선택 <select name='approval-template' class='approval-select' id='select-template'>
+							<c:forEach var='at' items='${atList}'>
+								<option value='${at.a_template_num}'>${at.a_template_name}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="approval-header-select">
-						보존 기한 <select name='approval-period'>
+						보존 기한 <select name='approval-period' class='approval-select'>
 							<option value='2'>2년</option>
 							<option value='3'>3년</option>
 							<option value='5'>5년</option>
@@ -101,7 +107,7 @@
 				<div class="approval-line-container">
 
 					<table class="approval-line">
-						<tr>
+						<tr id="approval-line-first">
 							<th rowspan='3' id="approval-line-type">결재</th>
 							<td id="approval-line-item">${writer.m_ID }</td>
 							<!-- 부서 번호 형식때매 임시 -->
@@ -112,8 +118,9 @@
 							<td id="approval-line-item"></td>
 							<td id="approval-line-item"></td>
 						</tr>
-						<tr id="approval-line-tall">
-							<td id="approval-line-item">${writer.m_NAME}</td>
+						<tr id="approval-line-second">
+
+							<td id="approval-line-item"><input type='text' name='input-approval-item' id='input-approval-item' value='${writer.m_NAME}' readOnly></td>
 							<td id="approval-line-item"></td>
 							<td id="approval-line-item"></td>
 							<td id="approval-line-item"></td>
@@ -121,7 +128,7 @@
 							<td id="approval-line-item"></td>
 							<td id="approval-line-item"></td>
 						</tr>
-						<tr>
+						<tr id="approval-line-third">
 							<td id="approval-line-item">${writer.p_NUM }</td>
 							<td id="approval-line-item"></td>
 							<td id="approval-line-item"></td>
@@ -131,6 +138,8 @@
 							<td id="approval-line-item"></td>
 						</tr>
 					</table>
+
+
 
 					<div class="approval-reference-container">참조 :</div>
 					<div class="approval-reciever-container">수신 :</div>
@@ -145,14 +154,25 @@
 			</div>
 			<!-- 결재선 div -->
 
+			
 
-			<div class="approval-content-container"></div>
+			<div class="approval-content-container">
+				<div class="approval-content"></div>
+				<!-- 템플릿 양식에 따른 input값들 -->
+			</div>
+			
+			<input type="hidden" id="hiddenField" name="hiddenContent" value="">
 
 			<div class="approval-btn-container">
 				<button class='approval-submitbtn' type="submit">작성완료</button>
 			</div>
 
+
 		</form>
 	</div>
+
+	<script>
+		
+	</script>
 </body>
 </html>

@@ -48,7 +48,7 @@ $(document).ready(function() {
 	$('.modal-btn').click(function() {
 		$('.modal-background').css('display', 'block');
 		$('.modal-container').css('display', 'block');
-
+		
 		$('body').css('overflow', 'hidden');
 	})
 
@@ -60,7 +60,7 @@ $(document).ready(function() {
 	$('.modal-background').click(function() {
 		$('.modal-background').css('display', 'none');
 		$('.modal-container').css('display', 'none');
-
+		
 		$('body').css('overflow', 'auto');
 	})
 
