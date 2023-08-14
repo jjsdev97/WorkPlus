@@ -1,58 +1,36 @@
 package net.cafe.db;
 
 public class CafeOrderBean {
-    private int itemUid;
-    private String itemName;
-    private int itemPrice;
-    private String itemImgPath;
-    private String itemDetail;
+    private int ORDER_UID;
+    private int M_NUM;
+    private int TOTAL_PRICE;
+    private String ORDER_TIME;
     
     
-    public int getItemUid() {
-		return itemUid;
+	public int getORDER_UID() {
+		return ORDER_UID;
 	}
-	public void setItemUid(int itemUid) {
-		this.itemUid = itemUid;
+	public void setORDER_UID(int oRDER_UID) {
+		ORDER_UID = oRDER_UID;
 	}
-	public String getItemName() {
-		return itemName;
+	public int getM_NUM() {
+		return M_NUM;
 	}
-	public void setItemName(String itemName) {
-		this.itemName = itemName;
+	public void setM_NUM(int m_NUM) {
+		M_NUM = m_NUM;
 	}
-	public int getItemPrice() {
-		return itemPrice;
+	public int getTOTAL_PRICE() {
+		return TOTAL_PRICE;
 	}
-	public void setItemPrice(int itemPrice) {
-		this.itemPrice = itemPrice;
+	public void setTOTAL_PRICE(int tOTAL_PRICE) {
+		TOTAL_PRICE = tOTAL_PRICE;
 	}
-	public String getItemImgPath() {
-		return itemImgPath;
+	public String getORDER_TIME() {
+		return ORDER_TIME;
 	}
-	public void setItemImgPath(String itemImgPath) {
-		this.itemImgPath = itemImgPath;
+	public void setORDER_TIME(String oRDER_TIME) {
+		ORDER_TIME = oRDER_TIME;
 	}
-	public String getItemDetail() {
-		return itemDetail;
-	}
-	public void setItemDetail(String itemDetail) {
-		this.itemDetail = itemDetail;
-	}
-	public int getItemSoldOut() {
-		return itemSoldOut;
-	}
-	public void setItemSoldOut(int itemSoldOut) {
-		this.itemSoldOut = itemSoldOut;
-	}
-	public String getItemMenu() {
-		return itemMenu;
-	}
-	public void setItemMenu(String itemMenu) {
-		this.itemMenu = itemMenu;
-	}
-	private int itemSoldOut;
-    private String itemMenu;
-
-    // 생성자, getter, setter 메서드 생략
-
+    
+   
 }

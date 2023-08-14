@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax"></script>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>결제위젯 샘플</title>
+    <script src="https://js.tosspayments.com/v1/payment-widget"></script>
+  </head>
+  <body>
+    <div id="payment-method"></div>
+    <button id="payment-request-button">결제하기</button>
+    <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: 'coffee.cafe',
+            method: 'POST',
+            data: { fetchCart: true },
+            dataType: 'json',
+            success: function(data) {
+                const totalPrice = data.totalPrice;
+                const cartItemList = data.cartItemNames;
+
+                // 결제 위젯 로직 시작
+                const paymentWidget = PaymentWidget(
+                    "test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq",
+                    PaymentWidget.ANONYMOUS
+                );
+
+                // paymentWidget.renderPaymentMethods 호출 시 값을 동적으로 전달
+                paymentWidget.renderPaymentMethods("#payment-method", { value: totalPrice });
+
+                const paymentRequestButton = document.getElementById("payment-request-button");
+                paymentRequestButton.addEventListener("click", () => {
+                    paymentWidget.requestPayment({
+                        orderId: generateRandomString(),
+                        orderName: cartItemList,
+                        successUrl: window.location.origin + "/cafe_project/payments/success.jsp",
+                        failUrl: window.location.origin + "/fail.jsp",
+                    });
+                });
+
+                function generateRandomString() {
+                    return window.btoa(Math.random()).slice(0, 20);
+                }
+                // 결제 위젯 로직 끝
+            }
+        });
+    });
+
+    </script>
+  </body>
+</html>
