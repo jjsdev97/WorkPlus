@@ -35,14 +35,7 @@
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor" id="board-sidebar">게시판<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
 			<ul class="second-menu" id="board-second-menu">
 				<li class="second-item"><a href="BoardWrite.bo" class="second-anchor">작성하기</a></li>
-				<li class="second-item"><a href="BoardList.bo" class="second-anchor">최근게시물</a></li>
-				<li class="second-item"><a href="BoardList.bo" class="second-anchor">중요게시물</a></li>
-				<li class="second-item">-공통게시판-</li>
-				<li class="second-item"><a href="BoardList.bo" class="second-anchor">공지사항</a></li>
-				<li class="second-item"><a href="BoardList.bo" class="second-anchor">자유게시판</a></li>
-				<li class="second-item">-팀별게시판-</li>
-				<li class="second-item"><a href="BoardList.bo" class="second-anchor">팀1</a></li>
-				<li class="second-item"><a href="BoardList.bo" class="second-anchor">팀2</a></li>
+				<li class="second-item"><a href="BoardList.bo" class="second-anchor">전체게시물</a></li>
 			</ul></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">일정</a></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor" id="approval-sidebar">전자결재<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
@@ -87,12 +80,12 @@
 <script>
 	var admin_check = '<%=(String) session.getAttribute("id")%>';
 	var menu = '<%=(String) session.getAttribute("menu")%>';
-	var selectedmenu = '<%=(String) session.getAttribute("selectedmenu")%>';
+	var selectedmenu = '<%=(String) session.getAttribute("selectedmenu")%>
+	';
 
-	if(admin_check!='admin'){
-		$('.btn_menu').css('display','none');
+	if (admin_check != 'admin') {
+		$('.btn_menu').css('display', 'none');
 	}
-
 
 	if (selectedmenu == 'approval') {
 		$('#approval-second-menu').css('transition', 'width 0s');
