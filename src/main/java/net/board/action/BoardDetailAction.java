@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.board.db.BoardBean;
 import net.board.db.BoardDAO;
@@ -14,6 +15,11 @@ import net.board.db.BoardDAO;
 	 public ActionForward execute(HttpServletRequest request,
 			 HttpServletResponse response) throws ServletException, IOException { 
 		 
+		HttpSession session = request.getSession();
+		String session_id = (String)session.getAttribute("id");
+	
+		request.setAttribute("session_id", session_id);
+		
 		BoardDAO boarddao = new BoardDAO(); 
 	   	BoardBean boarddata = new BoardBean();
 	   	

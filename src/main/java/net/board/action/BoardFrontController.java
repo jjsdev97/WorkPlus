@@ -59,36 +59,20 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet{
 		     case "/BoardDetailAction.bo":
 		    	 action = new BoardDetailAction();
 		         break;
-		   /* 
 		         
-		     case "/BoardDetailAction.bo":
-		    	 action = new BoardDetailAction();
-		         break;
-		         
+		     case "/BoardDeleteAction.bo" :
+					action = new BoardDeleteAction();
+					break;
+		     case "/BoardFileDown.bo":
+		    	  action = new BoardFileDownAction();
+		    	  break;
 		     case "/BoardModifyView.bo":
 		    	 action = new BoardModifyView();
 		    	 break;
-		    	 
 		     case "/BoardModifyAction.bo":
 		     	  action = new BoardModifyAction();
 		          break;
 		         
-		     case "/BoardReplyView.bo":
-		          action= new BoardReplyView();
-		          break;
-		          
-		     case "/BoardReplyAction.bo":
-		          action= new BoardReplyAction();
-		          break;
-		      
-		     case "/BoardDeleteAction.bo":
-		    	  action= new BoardDeleteAction();
-		    	  break;
-		    	  
-		     case "/BoardFileDown.bo":
-		    	  action = new BoardFileDownAction();
-		    	  break;
-		    	  
 		     case "/CommentList.bo":
 		     	  action = new CommentList();
 		          break;
@@ -108,7 +92,10 @@ public class BoardFrontController extends javax.servlet.http.HttpServlet{
 		     case "/CommentReply.bo":
 		     	  action = new CommentReply();
 		          break;
-		          */
+		    	 
+		 
+		    	  
+		   
 		     }// switch end  /*
 		     forward = action.execute(request, response);
 		     

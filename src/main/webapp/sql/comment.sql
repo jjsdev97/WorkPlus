@@ -2,7 +2,7 @@ drop table comm cascade constraints purge;
 create table comm(
    num           number          primary key,
    id            varchar2(30),     -- references member(m_id) 나중에 확인 
-   contend       varchar2(200),
+   content       varchar2(200),
    reg_date      date,
    comment_board_num   number references board(board_num) on delete cascade, --comm 테이블참조
    comment_re_lev number(1) check(comment_re_lev in (0,1,2)), -- 원문이면 0 답글이면 1
@@ -26,7 +26,7 @@ create table comm(
 
 CREATE TABLE COMM(
  NUM NUMBER PRIMARY KEY,
- ID VARCHAR2(30) REFERENCES MEMBER(ID),
+ ID VARCHAR2(30),
  CONTENT VARCHAR2(200),
  REG_DATE DATE,
  COMMENT_BOARD_NUM NUMBER REFERENCES BOARD(BOARD_NUM) ON DELETE CASCADE,

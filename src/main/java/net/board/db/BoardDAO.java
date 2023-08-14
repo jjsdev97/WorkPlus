@@ -181,6 +181,52 @@ public class BoardDAO {
 			}
 		} //setReadCountUpdate()메서드 end
 		
+		public int boardDelete(int num) {
+			String board_delete_sql = "delete from board "
+									+ "WHERE BOARD_NUM = ? ";
+			int result = 0;
+			
+			try (Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(board_delete_sql);){
+				
+				pstmt.setInt(1, num);
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (Exception ex) {
+				System.out.println("boardDelete() 에러: " + ex);
+				ex.printStackTrace();
+			}
+			
+			
+			return result;
+		}//boardDelete() 메서드 end
+		
+		public boolean boardModify(BoardBean modifyboard) {
+			String sql = "update board "
+						+ "set board_subject =? , board_content =?, board_file = ? "
+						+ "where board_num = ? ";
+			int result = 0;
+			
+			try(Connection con = ds.getConnection();
+					PreparedStatement pstmt = con.prepareStatement(sql);){
+					pstmt.setString(1, modifyboard.getBOARD_SUBJECT());
+					pstmt.setString(2, modifyboard.getBOARD_CONTENT());
+					pstmt.setString(3, modifyboard.getBOARD_FILE());
+					pstmt.setInt(4, modifyboard.getBOARD_NUM());
+					
+					result = pstmt.executeUpdate();
+					
+					if(result == 1) {
+						System.out.println("성공 업데이트");
+						return true;
+					}
+				 } catch (Exception ex) {
+					 System.out.println("boardModify() 에러: " + ex);
+				 }
+				return false;
+		}//boardModify() 메서드 end
+		
 		
 		/*
 		 * //글 목록 보기 public List<BoardBean> getBoardList(int page, int limit){

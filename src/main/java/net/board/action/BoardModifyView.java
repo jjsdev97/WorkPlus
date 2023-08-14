@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.board.db.BoardBean;
 import net.board.db.BoardDAO;
-import net.member.action.Action;
-import net.member.action.ActionForward;
 
 public class BoardModifyView implements Action {
 	 public ActionForward execute(HttpServletRequest request,
@@ -20,7 +18,7 @@ public class BoardModifyView implements Action {
 		   	BoardBean boarddata=new BoardBean();
 		   	
 		   	//파라미터로 전달받은 수정할 글 번호를 num변수에 저장합니다.
-			int num=Integer.parseInt(request.getParameter("num"));
+			int num=Integer.parseInt(request.getParameter("modify-num"));
 			
 			//글 내용을 불러와서 boarddata객체에 저장합니다.
 		   	boarddata=boarddao.getDetail(num);
@@ -41,7 +39,7 @@ public class BoardModifyView implements Action {
 		   	request.setAttribute("boarddata", boarddata);
 		   	forward.setRedirect(false);
 		   	//글 수정 폼 페이지로 이동하기위해 경로를 설정합니다.
-	   		forward.setPath("board/boardModify2.jsp");
+	   		forward.setPath("board/BoardModify.jsp");
 	   		return forward;
 	 }
 }

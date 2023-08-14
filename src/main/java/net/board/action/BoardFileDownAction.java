@@ -11,9 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.member.action.Action;
-import net.member.action.ActionForward;
-
 public class BoardFileDownAction implements Action {
 
 	@Override
