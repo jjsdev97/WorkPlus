@@ -75,9 +75,16 @@
 						</div>
 					</div></td>
 					<td><div>
-						<a class="star" href="ChatFBookMark.chat?f_id=${m.m_ID}">
+						
+						<a class="star" href="ChatFBookMarkAdd.chat?f_id=${m.m_ID}">
+						    <c:if test="${empty m.c_object }">
+							<img  src="${pageContext.request.contextPath}/img/star_e.png"
+								 width="20px" height="20px">
+						   </c:if>
+						   <c:if test="${!empty m.c_object }">
 							<img  src="${pageContext.request.contextPath}/img/star_f.png"
 								 width="20px" height="20px">
+						   </c:if>
 						</a>
 						</div>
 					</td>
@@ -127,13 +134,13 @@
               <a href="#layer1" class="status_layer" >
             	<c:choose>
 					<c:when test="${m.CHAT_STATUS == 'online' }">
-					<img src="${pageContext.request.contextPath}/img/online.png" width="40px" height="40px">
+					<img style="vertical-align: text-bottom;" src="${pageContext.request.contextPath}/img/online.png" width="40px" height="40px">
 					</c:when>
 					<c:when test="${m.CHAT_STATUS == 'offline' }">
-					<img src="${pageContext.request.contextPath}/img/offline.png" width="40px" height="40px">
+					<img style="vertical-align: text-bottom;" src="${pageContext.request.contextPath}/img/offline.png" width="40px" height="40px">
 					</c:when>
 					<c:when test="${m.CHAT_STATUS == 'brb' }">
-					<img src="${pageContext.request.contextPath}/img/brb.png" width="40px" height="40px">
+					<img style="vertical-align: text-bottom;" src="${pageContext.request.contextPath}/img/brb.png" width="40px" height="40px">
 					</c:when>
 				</c:choose>
               </a>
@@ -169,7 +176,7 @@
             <!--// status -->
            </div>
            
-            <div>
+            <div style="vertical-align: super;">
                ${m.m_NAME}
              </div>
           </div>

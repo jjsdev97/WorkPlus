@@ -22,13 +22,6 @@ public class ChatListAction implements Action {
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", "user"); // admin, user
 		session.setAttribute("selectedmenu", "chatlist");
-
-		
-		
-		
-		
-		
-		
 		
 		ActionForward forward = new ActionForward();
 		

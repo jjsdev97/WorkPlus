@@ -53,11 +53,13 @@ public class ChatDAO {
 	
 	public List<Member> getMemberList(String id) {
 		
-		String member_list_sql = "select m_profilefile, m_name, chat_status, d_name, m_job, m_id  "
+		String member_list_sql = "select m_profilefile, m_name, chat_status, d_name, m_job, m_id , c_object  "
 				+ "from member  "
 				+ "left join dept on member.d_num = dept.d_num  "
 				+ "left join position on member.p_num = position.p_num  "
-				+ "where member.m_id != ? "
+				+ "full outer join CHAT_FRIEND_BOOKMARK on member.m_id = CHAT_FRIEND_BOOKMARK.c_object \r\n"
+				+ "where member.m_id !=  'admin' "
+				+ "and member.m_id != ? "
 				+ "order by M_NAME";
 		
 		List<Member> list = new ArrayList<Member>();
@@ -66,6 +68,7 @@ public class ChatDAO {
 			PreparedStatement pstmt = con.prepareStatement(member_list_sql);){
 			
 			pstmt.setString(1, id);
+			
 
 			try(ResultSet rs = pstmt.executeQuery()){
 				
@@ -78,6 +81,7 @@ public class ChatDAO {
 					m.setD_NAME(rs.getString(4));
 					m.setM_JOB(rs.getString(5));
 					m.setM_ID(rs.getString(6));
+					m.setC_object(rs.getString(7));
 					
 					list.add(m);
 				}
@@ -173,30 +177,38 @@ public class ChatDAO {
 		
 		return list;
 	}
+
 	
 	//친구 즐겨찾기
-//	public Member addFBookMark(String id, String f_id) {
-//		int result = 0;
-//		String max_sql = "(select nvl(max(m_num),0)+1 from chat)";
-//		
-//		String sql = "insert into CHAT_FRIEND_BOOKMARK "
-//				+ "(FBOOKMARK_NUM, C_SUBJECT, C_OBJECT) "
-//				+ "values (1,  ?, ? )";
-//		
-//		try( Connection con = ds.getConnection();
-//				 PreparedStatement pstmt = con.prepareStatement(sql);) {
-//				
-//				pstmt.setString(1, id);
-//				pstmt.setString(2, f_id);
-//				
-//				
-//				result = pstmt.executeUpdate();	//삽입 성공시 result는 1
-//				 } 	catch (Exception e) {
-//						e.printStackTrace();
-//				}
-//
-//		return null;
-//	}
+	public Member addFBookMark(String id, String f_id) {
+		int result = 0;
+		
+		String sql = "insert into CHAT_FRIEND_BOOKMARK  "
+				+ "(FBOOKMARK_NUM, C_SUBJECT, C_OBJECT)  "
+				+ "values ( fbookmark_seq.nextval , ?  , ? )";
+		
+		try( Connection con = ds.getConnection();
+				 PreparedStatement pstmt = con.prepareStatement(sql);) {
+				
+				pstmt.setString(1, id);
+				pstmt.setString(2, f_id);
+				
+				
+				result = pstmt.executeUpdate();	//삽입 성공시 result는 1
+				if(result==1) {
+					System.out.println("FBookMark 삽입 성공");
+				}else {
+					System.out.println("FBookMark 삽입 실패");
+				}
+				
+				 } 	catch (Exception e) {
+						e.printStackTrace();
+				}
+		
+
+		return null;
+	}
+	
 //
 //	public void createRoom(String id, String f_id) {
 //		int result = 0;
@@ -220,6 +232,35 @@ public class ChatDAO {
 //					
 //		
 //	}
+	//친구 즐겨찾기 삭제
+	public Member removeFBookMark(String id, String f_id) {
+	int result = 0;
+		
+		String sql = "delete from CHAT_FRIEND_BOOKMARK "
+				+ "where C_SUBJECT = ? "
+				+ "and C_OBJECT = ? ";
+		
+		try( Connection con = ds.getConnection();
+				 PreparedStatement pstmt = con.prepareStatement(sql);) {
+				
+				pstmt.setString(1, id);
+				pstmt.setString(2, f_id);
+				
+				
+				result = pstmt.executeUpdate();	//삽입 성공시 result는 1
+				
+				if(result==1) {
+					System.out.println("FBookMark 삭제 성공");
+				}else {
+					System.out.println("FBookMark 삭제 실패");
+				}
+				
+				 } 	catch (Exception e) {
+						e.printStackTrace();
+				}
+
+		return null;
+	}
 
 	
 }

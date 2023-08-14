@@ -3,22 +3,25 @@ package net.chat.action;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
+import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
  
 // WebSocket 호스트 설정
-@ServerEndpoint("/broadsocket")
+@ServerEndpoint(value="/chat/{room}")
 public class BroadSocket {
 	
-	
-	
-	
+
+  private static Map<Integer, List<Session>> rooms = new HashMap<>();	
   // 접속 된 클라이언트 WebSocket session 관리 리스트
   private static List<Session> sessionUsers = Collections.synchronizedList(new ArrayList<>());
   // 메시지에서 유저 명을 취득하기 위한 정규식 표현
@@ -26,11 +29,27 @@ public class BroadSocket {
   // WebSocket으로 브라우저가 접속하면 요청되는 함수	
   
   @OnOpen
-  public void handleOpen(Session userSession) {
-    // 클라이언트가 접속하면 WebSocket세션을 리스트에 저장한다.
-    sessionUsers.add(userSession);
+  public void handleOpen(Session session, @PathParam("room") String roomNoStr) {
+    // 새로운 세션이 접속할 때 호출
+	  System.out.println("Client is now connected to room " + roomNoStr);
+	  
+	  try {
+		  int roomNo = Integer.parseInt(roomNoStr);
+		  
+		  if(!rooms.containsKey(roomNo)) {
+			  rooms.put(roomNo, new ArrayList<>());
+		  }
+		  
+		  //방에 세션 추가
+		  List<Session> roomSessions = rooms.get(roomNo);
+		  roomSessions.add(session);
+		  
+	  } catch(NumberFormatException e) {
+		  e.printStackTrace();
+	  }
+	  
     // 콘솔에 접속 로그를 출력한다.
-    System.out.println("client is now connected...");
+    System.out.println("client is now connected..." );
   }
   // WebSocket으로 메시지가 오면 요청되는 함수
   
