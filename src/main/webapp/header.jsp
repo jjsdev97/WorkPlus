@@ -80,8 +80,7 @@
 <script>
 	var admin_check = '<%=(String) session.getAttribute("id")%>';
 	var menu = '<%=(String) session.getAttribute("menu")%>';
-	var selectedmenu = '<%=(String) session.getAttribute("selectedmenu")%>
-	';
+	var selectedmenu = '<%=(String) session.getAttribute("selectedmenu")%>';
 
 	if (admin_check != 'admin') {
 		$('.btn_menu').css('display', 'none');
