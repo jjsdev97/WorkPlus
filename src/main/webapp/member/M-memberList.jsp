@@ -140,7 +140,7 @@
 				<%-- 페이지 이전 다음 --%>
 				<div>
 					<ul class="pagination justify-content-center">
-					<c:if test="${tab == 1}" >
+					
 						<c:set var="count" value="${listcount.wait}"/>
     
 					<c:if test="${page1 <= 1}">
@@ -155,15 +155,11 @@
 						</li>
 					</c:if>
 					
-					<c:set var="maxpage" value="${(listcount.wait + 10 - 1) / 10 }" />
-					<c:set var="startpage" value="${((page1 - 1) / 10) * 10 + 1 }" />
-					<c:set var="endpage" value="${startpage + 10 - 1}" />
-					
-					<c:if test="${endpage > maxpage }">
-						<c:set var="endpage" value="${maxpage}" />
+					<c:if test="${endpage1 > maxpage1 }">
+						<c:set var="endpage" value="${maxpage1}" />
 					</c:if>
 					
-					<c:forEach var="a" begin="${startpage}" end="${endpage}">
+					<c:forEach var="a" begin="${startpage1}" end="${endpage1}">
 						<c:if test="${ a == page1 }">
 							<li class="page-item active"><a class="page-link">${a}</a>
 							</li>
@@ -180,11 +176,11 @@
 						</c:if>
 					</c:forEach>
 
-							<c:if test="${page1 >= maxpage }">
-								<li clss="page-item"'><a class="page-link gray">&nbsp;다음</a>
+							<c:if test="${page1 >= maxpage1 }">
+								<li class="page-item"><a class="page-link gray">&nbsp;다음</a>
 								</li>
 							</c:if>
-							<c:if test="${page1 < maxpage }">
+							<c:if test="${page1 < maxpage1 }">
 								<c:url var="next" value="memberList.net">
 									<c:param name="search_field" value="${search_field}" />
 									<c:param name="search_word" value="${search_word}" />
@@ -197,7 +193,7 @@
 							</c:if>
 						</ul>
 					</div>
-				</c:if>
+				
 				<c:if test="${listcount.wait == 0 }">
      			<span class="nodata">데이터가 존재하지 않습니다.</span>  
  				</c:if>
@@ -248,13 +244,10 @@
 									href="memberList.et?page2=${page2-1}&search_field=${search_field}&search_word=${search_word}&tab=2"
 									class="page-link">이전&nbsp;</a></li>
 							</c:if>
-							<c:set var="maxpage" value="${(listcount.stop + 10 - 1) / 10 }" />
-							<c:set var="startpage" value="${((page2 - 1) / 10) * 10 + 1 }" />
-							<c:set var="endpage" value="${startpage + 10 - 1}" />
-							<c:if test="${endpage > maxpage }">
-								<c:set var="endpage" value="${maxpage}" />
+							<c:if test="${endpage2 > maxpage2 }">
+								<c:set var="endpage" value="${maxpage2}" />
 							</c:if>
-							<c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:forEach var="a" begin="${startpage2}" end="${endpage2}">
 								<c:if test="${ a == page2 }">
 									<li class="page-item active"><a class="page-link">${a}</a>
 									</li>
@@ -271,11 +264,11 @@
 								</c:if>
 							</c:forEach>
 
-							<c:if test="${page2 >= maxpage }">
+							<c:if test="${page2 >= maxpage2 }">
 								<li class="page-item"><a class="page-link gray">&nbsp;다음</a>
 								</li>
 							</c:if>
-							<c:if test="${page2 < maxpage }">
+							<c:if test="${page2 < maxpage2 }">
 								<c:url var="next" value="memberList.net">
 									<c:param name="search_field" value="${search_field}" />
 									<c:param name="search_word" value="${search_word}" />
@@ -343,14 +336,10 @@
 									href="memberList.et?page3=${page3-1}&search_field=${search_field}&search_word=${search_word}&tab=3"
 									class="page-link">이전&nbsp;</a></li>
 							</c:if>
-							<c:set var="maxpage"
-								value="${(listcount.complete + 10 - 1) / 10 }" />
-							<c:set var="startpage" value="${((page3 - 1) / 10) * 10 + 1 }" />
-							<c:set var="endpage" value="${startpage + 10 - 1}" />
-							<c:if test="${endpage > maxpage }">
-								<c:set var="endpage" value="${maxpage}" />
+							<c:if test="${endpage3 > maxpage3 }">
+								<c:set var="endpage" value="${maxpage3}" />
 							</c:if>
-							<c:forEach var="a" begin="${startpage}" end="${endpage}">
+							<c:forEach var="a" begin="${startpage3}" end="${endpage3}">
 								<c:if test="${ a == page3 }">
 									<li class="page-item active">
 										<a class="page-link">${a}</a>
@@ -368,12 +357,12 @@
 								</c:if>
 							</c:forEach>
 
-							<c:if test="${page3 >= maxpage }">
+							<c:if test="${page3 >= maxpage3 }">
 								<li class="page-item hidden">
 									<a class="page-link hidden">&nbsp;다음</a>
 								</li>
 							</c:if>
-							<c:if test="${page3 < maxpage }">
+							<c:if test="${page3 < maxpage3 }">
 								<c:url var="next" value="memberList.et">
 									<c:param name="search_field" value="${search_field}" />
 									<c:param name="search_word" value="${search_word}" />
