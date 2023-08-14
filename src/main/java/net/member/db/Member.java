@@ -20,7 +20,14 @@ public class Member {
 	private String D_NAME;			//조인 부서명
 	private String M_JOB;			//조인 직책명
 	private String c_object;		//조인 bookmark 친구 
+	private String c_subject;		//조인 bookmark 본인 
 	
+	public String getC_subject() {
+		return c_subject;
+	}
+	public void setC_subject(String c_subject) {
+		this.c_subject = c_subject;
+	}
 	public String getC_object() {
 		return c_object;
 	}

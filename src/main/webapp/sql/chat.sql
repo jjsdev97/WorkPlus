@@ -9,9 +9,6 @@ create table chat {
 }
 
 
-
-
-
 select * from CHAT_FRIEND_BOOKMARK;
 
 ALTER TABLE chat MODIFY CHAT_FROM VARCHAR2(30);
@@ -21,7 +18,7 @@ insert into CHAT_FRIEND_BOOKMARK
 (CHAT_ID, CHAT_FROM, CHAT_TO)
 values (1,  'gws12', 'nois12' );
 
-TRUNCATE table CHAT_FRIEND_BOOKMARK;
+TRUNCATE table chat;
 
 create table CHAT_FRIEND_BOOKMARK(
     FBOOKMARK_NUM NUMBER(20) PRIMARY KEY, 
@@ -40,6 +37,16 @@ fbookmark_seq.nextva
 select fbookmark_seq.currval from CHAT_FRIEND_BOOKMARK
 TRUNCATE table CHAT_FRIEND_BOOKMARK;
 
+select m_profilefile, m_name, chat_status, d_name, m_job, m_id , c_object, c_subject
+from member 
+left join dept on member.d_num = dept.d_num 
+left join position on member.p_num = position.p_num
+full outer join CHAT_FRIEND_BOOKMARK on member.m_id = CHAT_FRIEND_BOOKMARK.c_object 
+and c_subject = 'gwono12'
+where member.m_id != 'admin'
+and member.m_id != 'gwono12'
+order by M_NAME;
+
 select m_profilefile, m_name, chat_status, d_name, m_job, m_id , c_object
 from member 
 left join dept on member.d_num = dept.d_num 
@@ -50,7 +57,16 @@ and member.m_id != 'gjs12'
 order by M_NAME;
 
 
+select m_profilefile, m_name, chat_status, d_name, m_job, m_id , c_object
+from member 
+left join dept on member.d_num = dept.d_num 
+left join position on member.p_num = position.p_num
+full outer join CHAT_FRIEND_BOOKMARK on member.m_id = CHAT_FRIEND_BOOKMARK.c_object 
+where member.m_id != 'admin'
+and member.m_id != 'gjs12'
+order by M_NAME;
 
+TRUNCATE table CHAT_FRIEND_BOOKMARK;
 
 
 CREATE SEQUENCE fbookmark_seq;
