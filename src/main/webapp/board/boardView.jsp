@@ -16,92 +16,34 @@
 	<div class="main">
 	<input type="hidden" id="loginid" value="${id}" name="loginid"><%--view.js에서 사용하기 위해 추가합니다. --%>
 	<div class="container">
-		<table class="table">
-		    <tr>
-		       <td><div><c:out value="${boarddata.BOARD_SUBJECT}" /></div></td><!-- 제목 -->
-		    </tr>
-		    <tr>
-		       <td><div><c:out value="${boarddata.BOARD_WRITER}"/></div></td> <!-- 작성자  -->
-		       <td><div><c:out value="${boarddata.BOARD_TYPE}"/></div></td> <!-- 게시판 종류-->
-		       <td><div><c:out value="${boarddata.BOARD_READCOUNT}"/></div></td> <!-- 조회수 -->
-		       <td><div><button type=submit>수정</button></div></td>
-		       <td><div><button type=submit>삭제</button></div></td>
-		    </tr>
-		    
-		    <tr>
-		       <td><div><textarea>${boarddata.BOARD_CONTENT}</textarea></div></td> <!-- 내용 -->
-		       <td><div><c:out value="${boarddata.BOARD_DATE}"/></div></td> <!-- 작성일자 -->
-		    </tr>
-		       
-		  <%--  <c:if test="${boarddata.board_re_lev==0}"> 
-				원문글인 경우에만 첨부파일을 추가 할 수 있습니다.
-				<tr>
-					<td><div>첨부파일</div></td>
+		      <div><c:out value="${boarddata.BOARD_SUBJECT}" /></div><!-- 제목 -->
+		      <div><c:out value="${boarddata.BOARD_WRITER}"/></div> <!-- 작성자  -->
+		      <%-- <div><c:out value="${boarddata.BOARD_TYPE}"/></div> --%> <!-- 게시판 종류-->
+		      <div>조회수 :<c:out value="${boarddata.BOARD_READCOUNT}"/></div> <!-- 조회수 -->
+		      <div><button>수정</button></div>
+		      <div><button>삭제</button></div>
+    </div>
+    <div>
+		      <div><textarea>${boarddata.BOARD_CONTENT}</textarea></div> <!-- 내용 -->
+		      <div><c:out value="${boarddata.BOARD_DATE}"/></div> <!-- 작성일자 -->
+	</div>	       
+					<div>첨부파일</div>
 					
-					파일을 첨부한 경우
 					<c:if test="${!empty boarddata.BOARD_FILE}">
-						<td><img src="image/down.png" width="10px"> 
-							<a href="BoardFileDown.bo?filename=${boarddata.board_file}">${boarddata.board_file}</a></td>
+						<div><img src="image/down.png" width="10px"> 
+							<a href="BoardFileDown.bo?filename=${boarddata.BOARD_FILE}">${boarddata.BOARD_FILE}</a></div>
 					</c:if>
 					
-					파일을 첨부하지 않은 경우
 					<c:if test="${empty boarddata.BOARD_FILE}">
-						 <td></td>
+						 <div></div>
 					</c:if>
-				</tr>
-			</c:if> --%>
-
-			<tr>
-				<td colspan="2" class="center">
-				   <c:if test="${boarddata.board_name == id || id == 'admin' }">
-						<a href="BoardModifyView.bo?num=${boarddata.board_num}">
-							<button class="btn btn-info">수정</button>
-						</a>
-						<%-- href의 주소를 #으로 설정합니다. --%>
-						<a href="#">
-							<button class="btn btn-danger" data-toggle="modal"
-								data-target="#myModal">삭제</button>
-						</a>
-					</c:if> 
-					 <a href="BoardList.bo">
+					
+					
+					 <div><a href="BoardList.bo">
 						<button class="btn btn-warning">목록</button>
 				     </a> 
-				     <a href="BoardReplyView.bo?num=${boarddata.board_num}">
-						<button class="btn btn-success">답변</button>
-				    </a>
-				 </td>
-			</tr>
-		</table>
+				    </div>
 		<%-- 게시판 view  end --%>
-
-		<%-- modal 시작 --%>
-		<div class="modal" id="myModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<%-- Modal body --%>
-					<div class="modal-body">
-						<form name="deleteForm" action="BoardDeleteAction.bo"	method="post">
-							<%--http://localhost:8088/Board/BoardDetailAction.bo?num=22
-				                                주소를 보면 num을 파라미터로 넘기고 있습니다. 
-				                                 이 값을 가져와서  ${param.num}를 사용
-				                                 또는 ${boarddata.board_num}
-			                 --%>
-							<input type="hidden" name="num" value="${param.num}"  
-							                     id="comment_board_num">
-							<div class="form-group">
-								<label for="pwd">비밀번호</label> 
-								<input type="password"
-									   class="form-control" placeholder="Enter password"
-									   name="board_pass" id="board_pass">
-							</div>
-							<button type="submit" class="btn btn-primary">전송</button>
-							<button type="button" class="btn btn-danger" data-dismiss="modal">취소</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<%-- id="myModal" end --%>
 
 		<div class="comment-area">
 			<div class="comment-head">
@@ -129,6 +71,5 @@
 			</div><%--comment-write end--%>
 		</div><%-- comment-area end--%>
 	</div> <%-- class="container" end --%>
-	</div>
 </body>
 </html>

@@ -39,20 +39,21 @@
 				</div>
 			</div>
 			<div>
-			<div>
-				<div class="board_subject">제 목</div> 
-				<input class="board_subject_main" type="text" id="board_subject" name="BOARD_SUBJECT"
-					placeholder="제목을 입력하세요">
+				<div>
+					<div class="board_subject">제 목</div>
+					<input class="board_subject_main" type="text" id="board_subject"
+						name="BOARD_SUBJECT" placeholder="제목을 입력하세요">
+				</div>
 			</div>
-            </div>
 
 			<!-- 글씨체, 폰트, 등 조절하는 라벨 한줄 끌어올 예정 -->
 
 			<textarea id="board_content" name="BOARD_CONTENT" cols="60" rows="30"></textarea>
 
 			<div>
-				<button type=submit class="btn_file" id="add_file">파일첨부</button>
-				<input type=text id="file_info" placeholder="이곳에 파일명이 작성됩니다.">
+				<label> 파일 첨부 <img src="image/attach.png" alt="파일첨부">
+					<input type="file" id="upfile" name="board_file">
+				</label> <span id="filevalue"></span>
 			</div>
 
 			<div class="board_main_buttons">
@@ -66,6 +67,17 @@
 	</div>
 	<!-- main -->
 	<script>
+		$(document).ready(function() {
+
+			$("#upfile").change(function() {
+				console.log($(this).val())
+				const inputfile = $(this).val().split('\\');
+				$('#fileValue').text(inputfile[inputfile.length - 1]);
+			});
+
+		})
+		
+		
 		function board_noti() {
 			if (!confirm("공지글로 등록 하시겠습니까?")) {
 				alert("취소 되었습니다.");
