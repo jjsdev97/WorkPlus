@@ -3,6 +3,125 @@ table caption {
 	text-align: center
 }
 
+.modaltable th{
+	width:100px;
+	
+}
+h4{
+	margin-left:50px;
+	margin-top:40px;
+	
+}
+.modify_modal table{
+	margin-top:30px;
+	text-align:left;
+	margin-left:50px;
+	text-indent: initial;
+    border-spacing: 2px;
+    border-color: gray;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td, .table th {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    text-align:center;
+}
+
+select {
+    word-wrap: normal;
+}
+
+.clearfix{
+	text-align:center;
+	margin-top:50px;
+}
+
+button, select {
+    text-transform: none;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+select {
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    outline: none;
+}
+
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+#tab-1, #tab-2, #tab-3{
+	margin-left:20px;
+	margin-top:20px;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.nodata{
+	text-align:center;
+	color:gray;
+}
+
+ul.tabs{
+	margin-left:20px;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.input-group{
+	margin-top:30px;
+	margin-right:50px;
+	text-align:right;
+}
+
+
 a{
   text-decoration: none;
    color: white;
@@ -50,11 +169,12 @@ body>div>table>tbody>tr>td:last-child>a {
 	color: red
 }
 
-form {
+.search_memberlist{
 	margin: auto;
 	width: 80%;
 	text-align: center;
 	display:inline-block;
+	height:80px;
 }
 
 select {
@@ -88,7 +208,7 @@ table{
 	border-bottom-color:gray;
 	font-size:16px;
 	margin-bottom:16px;
-	width:800px;
+	width:1000px;
 }
 
 th{

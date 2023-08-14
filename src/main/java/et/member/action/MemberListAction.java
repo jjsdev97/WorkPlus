@@ -26,8 +26,8 @@ public class MemberListAction implements Action {
 		int page1 = 1;
 		int page2 = 1;
 		int page3 = 1;
-		
 		int limit = 10;
+		
 		if(request.getParameter("page1")!=null) {
 			page1 = Integer.parseInt(request.getParameter("page1"));
 		}
@@ -37,12 +37,6 @@ public class MemberListAction implements Action {
 		if(request.getParameter("page3")!=null) {
 			page3 = Integer.parseInt(request.getParameter("page3"));
 		}
-		
-		
-		
-		
-		
-		
 		
 		
 		System.out.println("넘어온 페이지 = " + page1);
@@ -71,10 +65,9 @@ public class MemberListAction implements Action {
 		if(request.getParameter("search_word") == null || request.getParameter("search_word").equals("")){
 			//가입대기인 회원 목록 표시
 			map = mdao.getListCountAdmit();
-			list1 = mdao.getList1(page1, limit, "R_ADMIT = '1'");  //가입승인
-			list2 = mdao.getList1(page2, limit, "M_STATUS = '2'"); //이용중지
-			list3 = mdao.getList1(page3, 5, "R_ADMIT = '2'");  //승인완료
-			
+			list1 = mdao.getList1(page1, 10, "R_ADMIT = '1'");  //가입승인
+			list2 = mdao.getList1(page2, 10, "M_STATUS = '2'"); //이용중지
+			list3 = mdao.getList1(page3, 10, "R_ADMIT = '2'");  //승인완료
 			
 			deptlist = mdao.deptinfo();
 			position = mdao.jobinfo();
@@ -82,7 +75,7 @@ public class MemberListAction implements Action {
 		} else {  //검색을 클릭한 경우 
 			
 			index = Integer.parseInt(request.getParameter("search_field")); //목록의 값 index로 가져오기
-			String[] search_field = new String[] {"M_NAME", "E_NUM", "D_NUM"};
+			String[] search_field = new String[] {"M_NAME", "E_NUM" , "D_NAME"};
 			String[] status = new String[] {"R_ADMIT = '1'",  "M_STATUS = '2'", "R_ADMIT = '2'" };
 			search_word = request.getParameter("search_word");
 			String tab = request.getParameter("tab");

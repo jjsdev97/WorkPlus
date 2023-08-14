@@ -18,37 +18,23 @@
 			<!-- 수정하기 모달 -->
 		<div class="modal-container">
 			<form class="modify_modal" name="adminmodifyform" action="adminModify.et" method="post">
-				<h4>사용자 정보수정</h4>
-				<hr>
-				<table class="modaltable">
-				<tr>
-					<th>이름</th><td><input type="text" name="name" id="name" value=""></td>
-				</tr>
-				<tr>
-					<th>이메일</th><td><input type="text" name="email" id="email" value="" readOnly></td>
-				</tr>
-				<tr>
-					<th>부서명</th> 
-						<td><select name="dname" id="dname">
-							<c:forEach var="d" items="${deptlist}">
-								<option value="${d.d_num}">${d.d_name}</option>
-							</c:forEach>
-							</select>
-						</td>
-				</tr>	
-				<tr>	 
-				<th>직책</th>
-					<td><select name="mjob" id="mjob">
+				<h4>사용자 정보수정</h4><hr>
+				<div><b>이름</b><input type="text" name="name" id="name" value=""></div>
+				<b>이메일</b><input type="text" name="email" id="email" value=""><br>
+				<b>부서명</b> 
+					<select name="dname" id="dname">
+						<c:forEach var="d" items="${deptlist}">
+							<option value="${d.d_num}">${d.d_name}</option>
+						</c:forEach>
+					</select><br>  
+				<b>직책</b>
+					<select name="mjob" id="mjob">
 						<c:forEach var="p" items="${position}">
 							<option value="${p.p_NUM}">${p.m_JOB}</option>
 						</c:forEach>
 					</select>
-					</td>
-				</tr>	
-				<tr>	
-					<th>사원번호</th><td><input type="text" name="empnum" id="empnum" value=""></td>
-				</tr>
-			</table>	
+				<br>
+				<b>사원번호</b><input type="text" name="empnum" id="empnum" value=""><br>
 				
 				<div class="clearfix">
 					<button type="submit" class="submitbtn">저장</button>
@@ -59,11 +45,8 @@
 		<!-- 수정하기 모달 end -->
 
 
-
-
-		<h3>사용자 관리</h3><hr>
-		
-		<%-- 검색 --%>
+		<h3>사용자 관리</h3>
+		<hr>
 		<form action="memberList.et" method="get" name="memberlist"
 			class="search_memberlist">
 			<input type="hidden" id="searchcheck" name="page" value="${page}">
@@ -73,15 +56,14 @@
 					<option value="0" selected>이름</option>
 					<option value="1">사원번호</option>
 					<option value="2">부서</option>
-				</select> 
-				<input name="search_word" type="text" name="search_word"
+				</select> <input name="search_word" type="text" name="search_word"
 					class="form-control" value="${search_word}">
 				<button class="search_btn" type="submit">검색</button>
 			</div>
 		</form>
 
 		<div class="container">
-			<%-- tab container--%>
+			<%-- tab, 검색 container--%>
 			<ul class="tabs">
 				<li class="tab-link current" id="wait" data-tab="tab-1">가입대기[${listcount.wait }]</li>
 				<li class="tab-link" id="stop" data-tab="tab-2">이용중지[${listcount.stop}]</li>
@@ -90,12 +72,20 @@
 		</div>
 
 
-			<%-- 표시내용 --%>
+
+		<%-- 표시 내용 --%>
+		<div class="content">
+			<select name="orderby" id="order">
+				<option value="name">이름 순</option>
+				<option value="empnum">사원번호 순</option>
+				<option value="dept">부서 순</option>
+			</select><br>
+
 			<div id="tab-1" class="tab-content current">
 				<%-- 가입 대기 --%>
 				<c:if test="${listcount.wait > 0 }">
 					<table class="table table-striped">
-					<thead>
+						<thead>
 							<tr>
 								<th>이름</th>
 								<th>사원번호</th>
@@ -105,80 +95,74 @@
 								<th>가입 요청일</th>
 								<th>설정</th>
 							</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="m" items="${totallist1}">
-							<input type="hidden" value="${m.m_ID}" id="m_id">
-							  <tr>
-								<td>${m.m_NAME}</td>
-								<td>${m.e_NUM}</td>
-								<td> <%--부서 설정--%> 
-								<select name="dnum" id="dept">
-									<c:forEach var="d" items="${deptlist}">
-									<option value="${d.d_num}">${d.d_name}</option>
-									</c:forEach>
-								</select>
-								</td>
-								<td> <%--직책 설정--%> 
-								<select name="pnum" id="pnum">
-									<c:forEach var="p" items="${position}">
-									<option value="${p.p_NUM}">${p.m_JOB}</option>
-									</c:forEach>
-								</select>
-								</td>
-								<td>${m.VERIFY_EMAIL}</td>
-								<td>${m.m_HIREDATE}</td>
-								<td><span id="admit" style="color: blue;">[가입승인]</span></a>&nbsp;
-									<a href="memberDelete.et?id=${m.m_ID}&tab=1"><span
+						</thead>
+						<tbody>
+							<c:forEach var="m" items="${totallist1}">
+								<input type="hidden" value="${m.m_ID}" id="m_id">
+								<tr>
+									<td>${m.m_NAME}</td>
+									<td>${m.e_NUM}</td>
+									<td>
+										<%--부서 설정--%> 
+										<select name="dnum" id="dept">
+											<c:forEach var="d" items="${deptlist}">
+												<option value="${d.d_num}">${d.d_name}</option>
+											</c:forEach>
+									</select>
+									</td>
+									<td>
+										<%--직책 설정--%> 
+										<select name="pnum" id="pnum">
+											<c:forEach var="p" items="${position}">
+												<option value="${p.p_NUM}">${p.m_JOB}</option>
+											</c:forEach>
+										</select>
+									</td>
+									<td>${m.VERIFY_EMAIL}</td>
+									<td>${m.m_HIREDATE}</td>
+									<td><span id="admit" style="color: blue;">[가입승인]</span></a>&nbsp;
+										<a href="memberDelete.et?id=${m.m_ID}&tab=1"><span
 											id="reject" style="color: red;">[가입거절]</span></a></td>
-							  </tr>
+								</tr>
 							</c:forEach>
-					</tbody>
-				</table>
+						</tbody>
+					</table>
 
+					<%-- 페이지 이전 다음 --%>
 
-				<%-- 페이지 이전 다음 --%>
-				<div>
-					<ul class="pagination justify-content-center">
-					<c:if test="${tab == 1}" >
-						<c:set var="count" value="${listcount.wait}"/>
-    
-					<c:if test="${page1 <= 1}">
-						<li class="page-item">
-							<a class="page-link gray">이전&nbsp;</a>
-						</li>
-					</c:if>
-					<c:if test="${page1 > 1}">
-						<li class="page-item">
-							<a href="memberList.et?page=${page1-1}&search_field=${search_field}&search_word=${search_word}&tab=1"
-									class="page-link">이전</a>&nbsp;
-						</li>
-					</c:if>
-					
-					<c:set var="maxpage" value="${(listcount.wait + 10 - 1) / 10 }" />
-					<c:set var="startpage" value="${((page1 - 1) / 10) * 10 + 1 }" />
-					<c:set var="endpage" value="${startpage + 10 - 1}" />
-					
-					<c:if test="${endpage > maxpage }">
-						<c:set var="endpage" value="${maxpage}" />
-					</c:if>
-					
-					<c:forEach var="a" begin="${startpage}" end="${endpage}">
-						<c:if test="${ a == page1 }">
-							<li class="page-item active"><a class="page-link">${a}</a>
-							</li>
-						</c:if>
-						<c:if test="${a != page1}">
-							<c:url var="go" value="memberList.et">
-								<c:param name="search_field" value="${search_field}" />
-								<c:param name="search_word" value="${search_word}" />
-								<c:param name="page1" value="${a}" />
-								<c:param name="tab" value="1" />
-							</c:url>
-							<li class="page-item"><a href="${go}" class="page-link">${a}</a>
-							</li>
-						</c:if>
-					</c:forEach>
+					<div>
+						<ul class="pagination justify-content-center">
+							<c:if test="${page1 <= 1}">
+								<li class="page-item"><a class="page-link gray">이전&nbsp;</a>
+								</li>
+							</c:if>
+							<c:if test="${page1 > 1}">
+								<li class="page-item"><a
+									href="memberList.et?page=${page1-1}&search_field=${search_field}&search_word=${search_word}&tab=1"
+									class="page-link">이전&nbsp;</a></li>
+							</c:if>
+							<c:set var="maxpage" value="${(listcount.wait + 10 - 1) / 10 }" />
+							<c:set var="startpage" value="${((page1 - 1) / 10) * 10 + 1 }" />
+							<c:set var="endpage" value="${startpage + 10 - 1}" />
+							<c:if test="${endpage > maxpage }">
+								<c:set var="endpage" value="${maxpage}" />
+							</c:if>
+							<c:forEach var="a" begin="${startpage}" end="${endpage}">
+								<c:if test="${ a == page1 }">
+									<li class="page-item active"><a class="page-link">${a}</a>
+									</li>
+								</c:if>
+								<c:if test="${a != page1}">
+									<c:url var="go" value="memberList.et">
+										<c:param name="search_field" value="${search_field}" />
+										<c:param name="search_word" value="${search_word}" />
+										<c:param name="page1" value="${a}" />
+										<c:param name="tab" value="1" />
+									</c:url>
+									<li class="page-item"><a href="${go}" class="page-link">${a}</a>
+									</li>
+								</c:if>
+							</c:forEach>
 
 							<c:if test="${page1 >= maxpage }">
 								<li clss="page-item"'><a class="page-link gray">&nbsp;다음</a>
@@ -194,13 +178,12 @@
 								<li class="page-item"><a href="${next}" class="page-link">&nbsp;다음</a>
 								</li>
 							</c:if>
-							</c:if>
 						</ul>
 					</div>
 				</c:if>
 				<c:if test="${listcount.wait == 0 }">
-     			<span class="nodata">데이터가 존재하지 않습니다.</span>  
- 				</c:if>
+     데이터가 존재하지 않습니다.  
+ </c:if>
 
 			</div>
 			<div id="tab-2" class="tab-content">
@@ -289,8 +272,8 @@
 					</div>
 				</c:if>
 				<c:if test="${listcount.stop == 0 }">
-		   			  <span class="nodata">데이터가 존재하지 않습니다. </span> 
-		 		</c:if>
+     데이터가 존재하지 않습니다.  
+ </c:if>
 			</div>
 
 			<div id="tab-3" class="tab-content">
@@ -384,8 +367,8 @@
 					</div>
 				</c:if>
 				<c:if test="${listcount.complete == 0 }">
-    				 <span class="nodata">데이터가 존재하지 않습니다.</span>
- 				</c:if>
+     데이터가 존재하지 않습니다.  
+ </c:if>
 			</div>
 		</div>
 	</div>
