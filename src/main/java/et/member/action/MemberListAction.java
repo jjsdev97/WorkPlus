@@ -90,17 +90,28 @@ public class MemberListAction implements Action {
 		    searchlist = mdao.getList(search_field[index], search_word, page1, limit,  status[tab_int]);
 		}
 		
-		int maxpage1 = (listcount1 + limit - 1) / limit;
-		int maxpage2 = (listcount2 + limit - 1) / limit;
-		int maxpage3 = (listcount3 + limit - 1) / limit;
+		int maxpage1 = (map.get("wait") + limit - 1) / limit;
+		int maxpage2 = (map.get("stop") + limit - 1) / limit;
+		int maxpage3 = (map.get("complete") + limit - 1) / limit;
+		
+		System.out.println(maxpage1);
+		System.out.println(maxpage2);
+		System.out.println(maxpage3);
+		
 		//System.out.println("총 페이지 수 = " + maxpage );
 		
-		//int startpage = ((page - 1) / 10) * 10 + 1;
-		//int endpage = startpage + 10 - 1;
+		int startpage1 = ((page1 - 1) / 10) * 10 + 1;
+		int startpage2 = ((page2 - 1) / 10) * 10 + 1;
+		int startpage3 = ((page3 - 1) / 10) * 10 + 1;
+		int endpage1 = startpage1 + 10 - 1;
+		int endpage2 = startpage2 + 10 - 1;
+		int endpage3 = startpage3 + 10 - 1;
 		//System.out.println("현재 페이지에 보여줄 마지막 페이지 수: " + endpage);
 		//System.out.println("현재 페이지에 보여줄 시작 페이지 수: " + startpage);
 		
-		//if( endpage > maxpage ) endpage = maxpage;
+		if( endpage1 > maxpage1 ) endpage1 = maxpage1;
+		if( endpage2 > maxpage2 ) endpage2 = maxpage2;
+		if( endpage3 > maxpage3 ) endpage3 = maxpage3;
 		
 		request.setAttribute("page1", page1); //현재 페이지 수
 		request.setAttribute("page2", page2); //현재 페이지 수
@@ -109,9 +120,14 @@ public class MemberListAction implements Action {
 		request.setAttribute("maxpage2", maxpage2); //최대 페이지 수
 		request.setAttribute("maxpage3", maxpage3); //최대 페이지 수
 		
-		//request.setAttribute("startpage", startpage);
-		//request.setAttribute("endpage", endpage);
-		//request.setAttribute("listcount", listcount);
+		request.setAttribute("startpage1", startpage1);
+		request.setAttribute("startpage2", startpage2);
+		request.setAttribute("startpage3", startpage3);
+		
+		request.setAttribute("endpage1", endpage1);
+		request.setAttribute("endpage2", endpage2);
+		request.setAttribute("endpage3", endpage3);
+		
 		request.setAttribute("search_field", index);
 		request.setAttribute("search_word", search_word);
 		
