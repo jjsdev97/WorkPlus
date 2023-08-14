@@ -14,7 +14,7 @@
 	<div class="main">
 		<div class="left">
 			<div class="search">
-				<form action="ChatMemberSearch.chat" method="post">
+				<form action="Chatmain.chat" method="post">
 					<input name = "search_word" type="text" placeholder="search..." value="${search_word}">
 					<button type="submit">
 					<img id="Qbtn" src="${pageContext.request.contextPath}/img/search.png" 
@@ -37,19 +37,21 @@
 							</a>
 						</div></td>
 					<td><div class="name">${m.m_NAME}</div></td>
-					<td><div class="img">
+					<td><div>
 							<c:choose>
 								<c:when test="${m.CHAT_STATUS == 'online' }">
-								<img src="${pageContext.request.contextPath}/img/online.png" width="40px" height="40px">
+								<img class="status_img" src="${pageContext.request.contextPath}/img/online.png" width="40px" height="40px">
 								</c:when>
 								<c:when test="${m.CHAT_STATUS == 'offline' }">
-								<img src="${pageContext.request.contextPath}/img/offline.png" width="40px" height="40px">
+								<img class="status_img" src="${pageContext.request.contextPath}/img/offline.png" width="40px" height="40px">
 								</c:when>
 								<c:when test="${m.CHAT_STATUS == 'brb' }">
-								<img src="${pageContext.request.contextPath}/img/brb.png" width="40px" height="40px">
+								<img class="status_img" src="${pageContext.request.contextPath}/img/brb.png" width="40px" height="40px">
 								</c:when>
 							</c:choose>
 						</div></td>
+					<td><div class="f_job" style="display:none">${m.m_JOB}</div> </td>
+					<td><div class="f_id" style="display:none">${m.m_ID}</div> </td>
 					<td><div class="dept">${m.d_NAME }</div> </td>
 					<td><div>
 							<a href="#layer4" class="solChatStart_layer">
@@ -59,8 +61,9 @@
 						<div id="layer4" class="pop-layer" style="margin-top:10px">
 							<div class="pop-container">
 								<div class="pop-conts">
+								<div id="f_id">${m.m_ID}</div>
 								<div class="btn-r">
-           					     	<a href="Chatlist.chat" class="btn-layerClose" style="background-color: #A0C1B9;">이동</a>
+           					     	<a class="moveHref" href="Chatlist.chat?f_id=${f_id}"  style="background-color: #A0C1B9;">이동</a>
            						</div>
 								<div class="btn-r">
 									<a href="#" class="btn-layerClose">닫기</a>
@@ -70,7 +73,7 @@
 						</div>
 					</div></td>
 					<td><div>
-						<a class="star">
+						<a class="star" href="ChatFBookMark.chat?f_id=${m.m_ID}">
 							<img  src="${pageContext.request.contextPath}/img/star_f.png"
 								 width="20px" height="20px">
 						</a>
@@ -88,8 +91,9 @@
 							<img src="${pageContext.request.contextPath}/img/profile.png" width="120px" width="120px">
 						</div>
 						<div>
-						<img src="${pageContext.request.contextPath}/img/online.png" 
-							width="35px" height="35px" style="vertical-align: middle;"> <span id="popup_name"></span>
+						<img id="popup_img" src="${pageContext.request.contextPath}/img/online.png" 
+							width="35px" height="35px" style="vertical-align: middle;"> 
+							<span id="popup_name"></span>
 						</div>
 						<div class="frinedProfileDesc">
 						 	<div class="dept" id="popup_dname" ></div>

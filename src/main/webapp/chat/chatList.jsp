@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/WorkPlus/css/chat.css">
 </head>
 <body>
+<script src="${pageContext.request.contextPath}/js/chatting.js"></script>
 	<div class="main">
 	<div class="parent" style="display:flex">
 		<div class="chatlist" style="flex:0.8">
@@ -50,31 +51,18 @@
 					width="40px" height="40px">
 			<span style="vertical-align: top;">홍귀동</span>
 		</div>
-		<div class="wrap">
-        <div class="chat ch1">
-            <div class="icon"><i class="fa-solid fa-user"></i></div>
-            <div class="textbox">안녕하세요. 반갑습니다.</div>
-        </div>
-        <div class="chat ch2">
-            <div class="icon"><i class="fa-solid fa-user"></i></div>
-            <div class="textbox">안녕하세요. 친절한효자손입니다. 그동안 잘 지내셨어요?</div>
-        </div>
-        <div class="chat ch1">
-            <div class="icon"><i class="fa-solid fa-user"></i></div>
-            <div class="textbox">넹. 점심으로는 서브웨이 어떠세요?</div>
-        </div>
-        <div class="chat ch2">
-            <div class="icon"><i class="fa-solid fa-user"></i></div>
-            <div class="textbox">서브웨이 좋아요</div>
-        </div>
-    </div>
-    
+		<textarea id="messageTextArea" class="message-area" rows="30" cols="72"></textarea>
     	<div class="inputWindow">
-    		<input type=text>
-    		<img src="${pageContext.request.contextPath}/img/chat_clip.png"
-    			width="30px" height="30px" style="vertical-align:middle">
+    		<form>
+    		<input id="user" type=text value="${m.m_ID}">
+    		<input id="textMessage" type="text">
+    		<button type="button" id="sendButton">
     		<img src="${pageContext.request.contextPath}/img/send.png"
     			width="30px" height="30px" style="vertical-align:middle">
+    		</button>
+    		<img src="${pageContext.request.contextPath}/img/chat_clip.png"
+    			width="30px" height="30px" style="vertical-align:middle">
+    		</form>
     	</div>
 		</div>
 
