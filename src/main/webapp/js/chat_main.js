@@ -1,5 +1,9 @@
 $(document).ready(function( ){
 
+
+
+
+
 //-------------- 팝업 시작 ----------------------//
 	$('.status_layer').click(function(){
         var $href = $(this).attr('href');
@@ -13,16 +17,23 @@ $(document).ready(function( ){
         layer_popup($href); //layer_popup(#layer2)
     });
     
-    $('.friendProfile_layer').click(function(){
+ 	$('.friendProfile_layer').click(function(){
 		var $href = $(this).attr('href');
 		let tr = $(this).parent().parent().parent();
+		
 		let name = tr.find(".name").text();
 		let d_name = tr.find(".dept").text();
-		let status_img = tr.find(".img").text();
+		let status_img = tr.find(".status_img").attr("src");
+		let m_job = tr.find(".f_job").text();
+		console.log("m_job = " + m_job);
+		let m_id = tr.find(".f_id").text();
+		console.log("f_id =" + m_id)
 		
 		$("#popup_name").text(name);
 		$("#popup_dname").text(d_name);
-		$("#popup_dname").text(d_name);
+		$("#popup_img").attr("src", status_img);
+		$("#popup_job").text(m_job);
+		$("#popup_id").text(m_id + "@work.com");
 		
 		
 		console.log($href);
@@ -31,6 +42,18 @@ $(document).ready(function( ){
 
     $('.solChatStart_layer').click(function(){
 		var $href = $(this).attr('href');
+		let tr = $(this).parent().parent().parent();
+		let f_id = tr.find(".f_id").text();
+		$("#f_id").text(f_id);
+		console.log("f_id =" + f_id)
+		
+		let $hrefValue = $(this).siblings('#layer4').find(".moveHref").attr('href'); 
+   		console.log("hrefValue = " + $hrefValue);
+		console.log("f_id=" + f_id)
+		
+		$(this).siblings('#layer4').find(".moveHref").attr('href','Chatlist.chat?f_id='+f_id);
+		
+		
 		console.log($href);
 		layer_popup($href);
 	})

@@ -24,6 +24,10 @@ public class ChatFrontController extends javax.servlet.http.HttpServlet{
 		String command = RequestURI.substring(contextPath.length());
 		System.out.println("command = " + command);
 		
+		
+		
+		
+		
 		//초기화
 		ActionForward forward = null;
 		Action action = null;
@@ -40,6 +44,9 @@ public class ChatFrontController extends javax.servlet.http.HttpServlet{
 				break;
 			case "/ChatMemberSearch.chat":
 				action = new ChatMemberSearchAction();
+				break;
+			case "/ChatFBookMark.chat":
+				action = new ChatFBookMarkAction();
 				break;
 			
 		}// switch end

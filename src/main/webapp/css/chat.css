@@ -9,6 +9,10 @@ div.left {
 	overflow-y: scroll;
 }
 
+
+
+
+
 div.right {
    width: 70%;
    float: right;
@@ -336,6 +340,16 @@ div.inputWindow > img:nth-child(2){
 	margin-left:10px;
 }
 
+#sendButton{
+	background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.right-aligned{
+	text-align: right;
+}
 /*-------- 참가자 프로필 div.profiles-------*/
 
 

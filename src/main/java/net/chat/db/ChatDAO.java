@@ -13,6 +13,10 @@ import javax.sql.DataSource;
 
 import net.member.db.Member;
 
+
+
+
+
 public class ChatDAO {
 	private DataSource ds;
 	
@@ -25,6 +29,7 @@ public class ChatDAO {
 		}
 	}
 	
+	//chatstatus
 	public Member memberStatusUpdate(String id, String status) {
 		int result = 0;
 		String sql = "update member set CHAT_STATUS = ? "
@@ -46,14 +51,13 @@ public class ChatDAO {
 	}
 
 	
-	public List<Member> getMemberList() {
+	public List<Member> getMemberList(String id) {
 		
-		String member_list_sql = "select m_profilefile, m_name, chat_status, d_name, m_job "
-				+ "from member "
-				+ "left join dept "
-				+ "on member.d_num = dept.d_num "
-				+ "left join position "
-				+ "on member.p_num = position.p_num "
+		String member_list_sql = "select m_profilefile, m_name, chat_status, d_name, m_job, m_id  "
+				+ "from member  "
+				+ "left join dept on member.d_num = dept.d_num  "
+				+ "left join position on member.p_num = position.p_num  "
+				+ "where member.m_id != ? "
 				+ "order by M_NAME";
 		
 		List<Member> list = new ArrayList<Member>();
@@ -61,15 +65,19 @@ public class ChatDAO {
 		try (Connection con = ds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(member_list_sql);){
 			
+			pstmt.setString(1, id);
+
 			try(ResultSet rs = pstmt.executeQuery()){
 				
 				while(rs.next()) {
+					
 					Member m = new Member();
 					m.setM_PROFILEFILE(rs.getString(1));
 					m.setM_NAME(rs.getString(2));
 					m.setCHAT_STATUS(rs.getString(3));
 					m.setD_NAME(rs.getString(4));
 					m.setM_JOB(rs.getString(5));
+					m.setM_ID(rs.getString(6));
 					
 					list.add(m);
 				}
@@ -127,7 +135,7 @@ public class ChatDAO {
 			return m;
 		}
 
-	public List<Member> getMemberList(String search_word) {
+	public List<Member> getMemberList(String id, String search_word) {
 		String member_list_sql = "select m_profilefile, m_name, chat_status, d_name, m_job "
 				+ "from member "
 				+ "left join dept on member.d_num = dept.d_num "
@@ -165,5 +173,53 @@ public class ChatDAO {
 		
 		return list;
 	}
+	
+	//친구 즐겨찾기
+//	public Member addFBookMark(String id, String f_id) {
+//		int result = 0;
+//		String max_sql = "(select nvl(max(m_num),0)+1 from chat)";
+//		
+//		String sql = "insert into CHAT_FRIEND_BOOKMARK "
+//				+ "(FBOOKMARK_NUM, C_SUBJECT, C_OBJECT) "
+//				+ "values (1,  ?, ? )";
+//		
+//		try( Connection con = ds.getConnection();
+//				 PreparedStatement pstmt = con.prepareStatement(sql);) {
+//				
+//				pstmt.setString(1, id);
+//				pstmt.setString(2, f_id);
+//				
+//				
+//				result = pstmt.executeUpdate();	//삽입 성공시 result는 1
+//				 } 	catch (Exception e) {
+//						e.printStackTrace();
+//				}
+//
+//		return null;
+//	}
+//
+//	public void createRoom(String id, String f_id) {
+//		int result = 0;
+//		String max_sql = "(select nvl(max(m_num),0)+1 from chat)";
+//		
+//		String sql = "insert into chat  "
+//				+ "(CHAT_ID, CHAT_FROM, CHAT_TO) "
+//				+ "values (1,  ?, ? )";
+//		
+//		try( Connection con = ds.getConnection();
+//				 PreparedStatement pstmt = con.prepareStatement(sql);) {
+//				
+//				pstmt.setString(1, id);
+//				pstmt.setString(2, f_id);
+//				
+//				
+//				result = pstmt.executeUpdate();	//삽입 성공시 result는 1
+//				 } 	catch (Exception e) {
+//						e.printStackTrace();
+//				}
+//					
+//		
+//	}
+
 	
 }
