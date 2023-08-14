@@ -57,9 +57,18 @@ public class CafeFrontController extends javax.servlet.http.HttpServlet{
 		case "/history.cafe":
 			action = new CafeHistoryAction();
 			break;	
-		case "/admin.cafe":
-			action = new CafeAdminAction();
-			break;	
+//		case "/admin.cafe":
+//			action = new CafeAdminAction();
+//			break;	// itemlist 
+//		case "/itemwrite.cafe":
+//			action = new CafeWriteAction();
+//			break;	
+//		case "/itemadd.cafe":
+//			action = new CafeAddAction();
+//			break;		
+//		case "/itemdetail.cafe":
+//			action = new CafeItemDetail();
+//			break;		
 		}
 		
 		forward = action.execute(request, response);

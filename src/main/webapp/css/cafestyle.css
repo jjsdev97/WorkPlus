@@ -1,0 +1,108 @@
+.cafe-image-container {
+    flex: 1;
+    padding: 20px;
+    margin-left: 700px;
+}
+
+.cafe-image-container img {
+    margin-top: 100px;
+}
+
+.btn_cafe_menu {
+    display: block;
+    width: 150px;
+    height: 40px;
+    margin-left: 750px;
+    background-color: #3C6E71;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+}
+
+.btn_menu_select {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    margin-top: 100px;
+    margin-right: 20px;
+    background-color: #3C6E71;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+}
+.btn_menu_select:last-child {
+    margin-right: 0; /* 마지막 메뉴 선택 버튼의 오른쪽 마진 제거 */
+}
+
+#btn_coffee {
+    margin-left: 0;
+}
+
+#btn_order {
+    margin-top: 200px;
+}
+
+#btn_payment {
+    margin-left: 680px;
+}
+
+table {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table th {
+    background-color: #284B63;
+    color: white;
+    padding: 12px 8px;
+    text-align: left;
+}
+
+table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.cafe-main-content .cart-table {
+    margin-top: 30px;
+    background-color: #ebebeb;
+}
+
+.cafe-main-content .cart-table th {
+    background-color: #284B63;
+}
+
+.cafe-main-content .cart-table tr:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
+body > div.cafe-main-content {
+    margin-left: 0;
+    width: 100%;
+    text-align: center; /* 중앙 정렬 */
+}
+
+a {
+    color: #353535;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

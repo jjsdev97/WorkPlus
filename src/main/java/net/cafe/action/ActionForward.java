@@ -4,7 +4,6 @@ public class ActionForward {
 	private boolean redirect = false;
 	private String path = null;
 	
-	
 	public ActionForward() {
 		
 	}
