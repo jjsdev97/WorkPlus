@@ -1,18 +1,31 @@
 .approval-header {
 	margin: 10px;
 	width: 70%;
+	
 }
 
+.approval-container {
+	width: 100%;
+	height: 400px;
+	background-color: skyblue;
+}
+
+.approval-header-select {
+	display:inline-block;
+	margin-left:20px;
+}
 .approval-line-container {
 	width: 70%;
-	height: 300px;
+	height: 40%;
 }
+
+
+/* 작성창 결재선 테이블 시작 */
 
 .approval-line {
 	margin: 20px;
-	border-collapse: seperate;
-	width: 100%;
-	height: 100%;
+	width: 700px;
+	height: 160px;
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	text-align: center;
@@ -31,18 +44,14 @@
 	height: 20%;
 }
 
-body>div.main>div>div.approval-line-container>table>tbody>tr:nth-child(2) {
-	height: 20%;
+#approval-line-tall {
+	height: 40%;
 }
 
-.approval-content-container {
-	margin: 10px;
-	width: 75%;
-	height: 600px;
-	background-color: gray;
-}
 
-.approval-subject {
+/* 작성창 결재선 테이블 끝 */
+
+.modal-subject {
 	background-color: #A0C1B9;
 	font-weight: bold;
 	font-size: 15pt;
@@ -63,19 +72,19 @@ body>div.main>div>div.approval-line-container>table>tbody>tr:nth-child(2) {
 	text-align: center;
 }
 
-.cancelbtn, .updatebtn, .submitbtn {
+.modal-cancelbtn, .modal-submitbtn {
 	display: inline-block;
 	border: none;
 	box-sizing: border-box;
 }
 
-.submitbtn {
+.modal-submitbtn {
 	background-color: #A0C1B9;
 	width: 60px;
 	height: 35px;
 }
 
-.cancelbtn {
+.modal-cancelbtn {
 	background-color: #D9D9D9;
 	width: 60px;
 	height: 35px;
@@ -91,7 +100,6 @@ body>div.main>div>div.approval-line-container>table>tbody>tr:nth-child(2) {
 .modal-container {
 	width: 900px;
 }
-
 
 .modal-member-list-container {
 	float: left;
@@ -117,7 +125,8 @@ body>div.main>div>div.approval-line-container>table>tbody>tr:nth-child(2) {
 .modal-member-item {
 	box-sizing: border-box;
 	padding-left: 5px;
-	width: 90%;
+	width: 100%;
+	display: flex;
 }
 
 .modal-approval-line-container {
@@ -139,40 +148,77 @@ ul {
 }
 
 .modal-approval-line-type {
-	border:1px solid blue;
+	border: 1px solid blue;
 	margin: 1%;
 	width: 98%;
 	height: 30%;
 	background-color: green;
-	box-sizing:bordering-box;
-	
+	box-sizing: bordering-box;
 }
 
-.modal-approval-line-type-subject{
-	float:left;
-	border:1px solid black;
-	display:flex;	
-	text-align:center;
-	align-items:center;
-	width:5%;
-	height:100%;	
+.modal-approval-line-type-subject {
+	float: left;
+	border: 1px solid black;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	width: 5%;
+	height: 100%;
 }
 
 .modal-approval-line-item {
-	float:left;
-	width:13.2%;
-	height:100%;
+	float: left;
+	width: 13.2%;
+	height: 100%;
 	border: 1px solid red;
 }
 
 .approval-reference-container, .approval-reciever-container {
-	background-color:gray;
-	width:70%;
-	height:20%;
-	margin: 10px;
+	background-color: gray;
+	width: 100%;
+	height: 35%;
+	margin: 20px;
 }
 
 .modal-start-btn-container {
-	width:70%;
-	height:10%;
+	width: 70%;
+	height: 10%;
+	padding-left: 20px;
+}
+
+.modal-approval-reference, .modal-approval-reciever {
+	width: 98%;
+	height: 25%;
+	margin: 1%;
+	margin-top: 10px;
+	background-color: white;
+	display:flex;
+}
+
+.modal-approval-type-btn-container {
+	display: flex;
+	margin-left: auto;
+}
+
+.modal-approval-type-btn {
+	font-size: 10px;
+	padding: 0px;
+}
+
+.approval-content-container { /* 결재선 본문 컨테이너*/
+	width: 100%;
+	height: 650px;
+	background-color: skyblue;
+	margin-top: 30px;
+}
+
+.approval-btn-container {
+	width: 70%;
+	height: 50px;
+	background-color: skyblue;
+	margin-top: 30px;
+}
+
+.approval-submitbtn {
+	float: right;
 }

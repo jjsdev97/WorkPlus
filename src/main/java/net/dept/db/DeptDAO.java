@@ -178,7 +178,9 @@ public class DeptDAO {
 		// TODO Auto-generated method stub
 		ArrayList<Member> memberlist = new ArrayList<>();
 		
-		String sql = "SELECT M_NAME, D_NUM, P_NUM, M_ID FROM MEMBER";
+		String sql = "SELECT M_NAME, D_NUM, POSITION.M_JOB, M_ID "
+				+ "FROM MEMBER LEFT JOIN POSITION "
+				+ "ON MEMBER.P_NUM = POSITION.P_NUM";
 		
 		try(Connection conn = ds.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql)){
