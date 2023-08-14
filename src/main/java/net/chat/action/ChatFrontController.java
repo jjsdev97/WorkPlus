@@ -45,9 +45,13 @@ public class ChatFrontController extends javax.servlet.http.HttpServlet{
 			case "/ChatMemberSearch.chat":
 				action = new ChatMemberSearchAction();
 				break;
-			case "/ChatFBookMark.chat":
-				action = new ChatFBookMarkAction();
+			case "/ChatFBookMarkAdd.chat":
+				action = new ChatFBookMarkAddAction();
 				break;
+			case "/ChatFBookMarkRemove.chat":
+				action = new ChatFBookMarkRemoveAction();
+				break;
+			
 			
 		}// switch end
 		

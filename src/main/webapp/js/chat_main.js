@@ -75,18 +75,34 @@ $(document).ready(function( ){
 	
 
 //------------- 즐겨찾기 -------------//
-$('.star').click(function(){
+$('.star').click(function(e){
+	
 	var $src = $(this).find("img").attr('src');
 	console.log($src);
+	
+	//a태그의 href 값 가져오기	
+	var $href = $(this).attr('href');
+	console.log($href);
+	
+	//?앞의 값까지만 분리
+	$shref = $href.split("?")[0];
+	console.log($shref);
+	$f_id = $href.split("?")[1];
+	console.log($f_id);
+	
 	///WorkPlus/img/star_f.png
 	if($src.lastIndexOf("/star_f.png") > -1 ){
 		$src = "star_e.png"
+		$shref = "ChatFBookMarkRemove.chat"
 	} else {
 		$src = "star_f.png"
+		$shref = "ChatFBookMarkAdd.chat"
 	}
 	
 	$(this).find("img").attr('src', "img/"+$src)
-
+	$(this).attr('href', $shref + "?" +$f_id )
+	console.log("a");
+	
 }); //$('.star').click(function(){
 	
 

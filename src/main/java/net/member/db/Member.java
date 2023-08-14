@@ -19,8 +19,14 @@ public class Member {
 	private String M_PROFILEFILE;	//프로필 파일 저장
 	private String D_NAME;			//조인 부서명
 	private String M_JOB;			//조인 직책명
+	private String c_object;		//조인 bookmark 친구 
 	
-	
+	public String getC_object() {
+		return c_object;
+	}
+	public void setC_object(String c_object) {
+		this.c_object = c_object;
+	}
 	public String getM_JOB() {
 		return M_JOB;
 	}

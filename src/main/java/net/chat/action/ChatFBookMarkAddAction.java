@@ -10,10 +10,7 @@ import javax.servlet.http.HttpSession;
 import net.chat.db.ChatDAO;
 import net.member.db.Member;
 
-public class ChatFBookMarkAction implements Action {
-
-	
-	
+public class ChatFBookMarkAddAction implements Action {
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -28,7 +25,7 @@ public class ChatFBookMarkAction implements Action {
         String f_id = request.getParameter("f_id");
         System.out.println("bookmark를 위한 f_id =" + f_id);
         
-//        Member m = chatdao.addFBookMark(id, f_id);
+        m = chatdao.addFBookMark(id, f_id);
 		
 		ActionForward forward = new ActionForward();
 		forward.setPath("Chatmain.chat");

@@ -18,10 +18,6 @@ public class ChatMainAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		
-		
-		
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", "user");
@@ -49,7 +45,8 @@ public class ChatMainAction implements Action {
 		forward.setPath("chat/chatmain.jsp");
 		forward.setRedirect(false);
 		request.setAttribute("m", m);
-
+		
+		
 		return forward;
 	}
 

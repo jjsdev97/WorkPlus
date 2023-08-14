@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-@WebServlet("")
+//@WebServlet("")
 public class MemberFrontController extends javax.servlet.http.HttpServlet {
 
 	private static final long serialVersionUID = 1L;
