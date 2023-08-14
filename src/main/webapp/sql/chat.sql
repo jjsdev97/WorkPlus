@@ -10,6 +10,8 @@ create table chat {
 
 
 
+
+
 select * from chat;
 
 ALTER TABLE chat MODIFY CHAT_FROM VARCHAR2(30);

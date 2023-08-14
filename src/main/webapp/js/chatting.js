@@ -12,6 +12,8 @@ $(document).ready(function() {
 
 
 
+
+
   webSocket.onerror = function() {
     messageTextArea.val(messageTextArea.val() + "error...\n");
   };

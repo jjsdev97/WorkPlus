@@ -9,6 +9,8 @@
 <title>메신저 chatList</title>
 <link rel="stylesheet" type="text/css" href="/WorkPlus/css/chat.css">
 </head>
+
+
 <body>
 <script src="${pageContext.request.contextPath}/js/chatting.js"></script>
 	<div class="main">

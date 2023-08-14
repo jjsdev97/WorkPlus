@@ -28,6 +28,8 @@ public class ChatListAction implements Action {
 		
 		
 		
+		
+		
 		ActionForward forward = new ActionForward();
 		
 		//나의 정보

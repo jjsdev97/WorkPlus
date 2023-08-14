@@ -15,6 +15,8 @@ import net.member.db.Member;
 
 
 
+
+
 public class ChatDAO {
 	private DataSource ds;
 	

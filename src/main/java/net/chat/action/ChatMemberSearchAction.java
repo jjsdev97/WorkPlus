@@ -19,6 +19,8 @@ public class ChatMemberSearchAction implements Action {
 		
 		
 		
+		
+		
 		HttpSession session = request.getSession();
 		
 		ActionForward forward = new ActionForward();

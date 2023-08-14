@@ -21,6 +21,8 @@ public class ChatMainAction implements Action {
 
 		
 		
+		
+		
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", "user");
 		session.setAttribute("selectedmenu", "chatmain");

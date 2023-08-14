@@ -10,6 +10,8 @@ public class ActionForward {
 	
 	
 	
+	
+	
 	//property redirect의 is 메소드
 	public boolean isRedirect() {
 		//프로퍼티 타입이 boolean일 경우 get 대신 is를 앞에 붙일 수 있습니다.

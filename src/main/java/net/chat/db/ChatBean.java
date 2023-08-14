@@ -6,6 +6,8 @@ public class ChatBean {
 
 	
 	
+	
+	
 	private int chat_id;
 	private String chat_room_name;
 	private int chat_from;
