@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import net.approval.db.ApprovalDAO;
+import net.approval.db.ApprovalTemplate;
 import net.dept.db.Dept;
 import net.member.db.Member;
 
@@ -21,11 +22,14 @@ public class ApprovalWriteAction implements Action {
 
 		ArrayList<Dept> deptList = new ArrayList<>();
 		ArrayList<Member> memberList = new ArrayList<>();
+		ArrayList<ApprovalTemplate> atList = new ArrayList<>();
+		
 		Member member = new Member();
 		ApprovalDAO dao = new ApprovalDAO();
 
 		deptList = dao.getDeptList();
 		memberList = dao.getMemberList();
+		atList = dao.getTemplateList();
 
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", "user"); // admin, user
@@ -37,6 +41,8 @@ public class ApprovalWriteAction implements Action {
 		request.setAttribute("writer", member);
 		request.setAttribute("deptList", deptList);
 		request.setAttribute("memberList", memberList);
+		request.setAttribute("atList", atList);
+		
 
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

@@ -36,10 +36,15 @@ public class ApprovalFrontController extends HttpServlet {
 		case "/approvalWrite.apv":
 			action = new ApprovalWriteAction();
 			break;
+		case "/approvalAddAction.apv":
+			action = new ApprovalAddAction();
+			break;
 		case "/approvalGetMemberList.apv":
 			action = new ApprovalGetMemberListAction();
 			break;
-
+		case "/approvalGetTemplate.apv":
+			action = new ApprovalGetTemplateAction();
+			break;
 		}
 
 		forward = action.execute(request, response);
