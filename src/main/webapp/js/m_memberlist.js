@@ -23,24 +23,10 @@
 		 $("#tab").val(tab_id.substr(4));
 	  });
 	  
-
-			
-		//검색 버튼 클릭한 경우
-
-		
-		
-		//회원 목록의 승인을 클릭한 경우
-		$(document).on("click", "#admit" ,function(event){
-			 const answer = confirm("정말로 승인하시겠습니까?");
-			 console.log(answer);	// 취소를 클릭한 경우 - false
-			 if(!answer) {	//취소를 클릭한 경우
-				 event.preventDefault();	//이동하지 않습니다.
-			 }
-		}); //삭제 클릭 end 
 		
 		//이용중지 해제를 클릭한 경우
 		$(document).on("click", "#clear", function(event){
-			 const answer = confirm("정말로 승인하시겠습니까?");
+			 const answer = confirm("중지해제 하시겠습니까?");
 			 console.log(answer);	// 취소를 클릭한 경우 - false
 			 if(!answer) {	//취소를 클릭한 경우
 				 event.preventDefault();	//이동하지 않습니다.
@@ -65,6 +51,30 @@
 				 event.preventDefault();	//이동하지 않습니다.
 			 }
 		}) //삭제 클릭 end 
+		
+		//모달 수정하기 저장 확인
+		$(document).on("click", ".submitbtn",function(event){
+			 const answer = confirm("수정 하시겠습니까?");
+			 console.log(answer);	// 취소를 클릭한 경우 - false
+			 if(!answer) {	//취소를 클릭한 경우
+				 event.preventDefault();	//이동하지 않습니다.
+			 }
+		}) //수정 확인 end
+	
+		//승인완료 탭에서 이용중지 클릭한 경우
+		$(document).on("click", ".block",function(event){
+			 const answer = confirm("이용중지 하시겠습니까?");
+			 console.log(answer);	// 취소를 클릭한 경우 - false
+			 if(!answer) {	//취소를 클릭한 경우
+				 event.preventDefault();	//이동하지 않습니다.
+			 }
+		}) //수정 확인 end
+	
+	
+	
+	
+	
+	 //수정 확인 end
 	
 		/*$("#viewcount").on("keyup", function(){
 			const value = $(this).val().toLowerCase();
@@ -77,11 +87,22 @@
 		});
 	*/
 		$(document).on("click", "#admit", function(){
+		
+				 const answer = confirm("정말로 승인하시겠습니까?");
+			 console.log(answer);	// 취소를 클릭한 경우 - false
+			 if(!answer) {	//취소를 클릭한 경우
+				 event.preventDefault();	//이동하지 않습니다.
+			 } else{
+		
 			let m_id = $("#m_id").val(); 
 			let dnum = $("#dept").val();
 			let pnum = $("#pnum").val();
 			
 			location.href="memberConfirm.et?dnum=" + dnum + "&pnum=" + pnum + "&id=" + m_id + "&tab=1";
+			 }
+		
+		
+		
 		});
 		
 	
@@ -96,9 +117,20 @@
 		let tr= $(this).parent().parent();
 		$('#name').val(tr.find(".name").text());
 		$('#email').val(tr.find(".email").text());
-		$('#dname').val(tr.find(".dname").text());
-		$('#mjob').val(tr.find(".mjob").text());
+		//$('#dname').val(tr.find(".dname").text());
+		//$('#mjob').val(tr.find(".mjob").text());
 		$('#empnum').val(tr.find(".empnum").text());
+		
+		let hiddnum = tr.find(".hiddnum").val();
+		let hidpnum = tr.find(".hidpnum").val();
+		
+		//$('#dname option[value="' + hiddnum + '"]').prop('selected', true);
+		//$('#mjob option[value="' + hidpnum + '"]').prop('selected', true);
+		
+		$('#dname option[value="' + hiddnum + '"]').prop('selected', true);
+		$('#mjob option[value="' + hidpnum + '"]').prop('selected', true);
+	
+	
 	})
 	
 	

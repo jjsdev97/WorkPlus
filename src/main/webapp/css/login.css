@@ -11,6 +11,11 @@ body {
  form{
 	 justify-content: center;
  	 align-items: center;
+ 	 width:500px;
+ 	 text-align:center;
+ 	 margin:auto;
+ 	 display: flex;
+ 	 flex-direction: column;
 }
 
 .login_container{
@@ -70,12 +75,16 @@ a{
 	margin-top: 5px;
 }
 
-
 .login_setting{
 	text-align:center;
  	margin: auto;
 	display:block;
 	color:white;
+	font-size:14px;
+	text-align:left;
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-left:5px;
 }
 
 .login_process{
@@ -87,9 +96,6 @@ a{
 	
 }
 
-.login_setting{
-	margin-top: 10px;
-}
 
 .login_btn{
 	margin: auto;

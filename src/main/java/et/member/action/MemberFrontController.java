@@ -102,6 +102,10 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 			action = new MemberClearblockAction();
 			break;
 			
+		case "/memberBlock.et" :
+			action = new MemberBlockAction();
+			break;
+			
 		case "/profileUpdate.et" :
 			action = new MemberprofileUpdateAction();
 			break;
@@ -110,6 +114,9 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 			action = new MemberUpdateProcessAction();
 			break;
 			
+		case "/adminModify.et" :
+			action = new MemberAdminModifyAction();
+			break;
 			
 			
 		} //switch end

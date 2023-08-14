@@ -345,8 +345,9 @@ public class MemberDAO {
 
 	public int getListCount(String field, String search_word, String tabsql) {
 		int x = 0;
-		String sql = "select count(*) from member "
-				+ "where " + field + " like ?  AND " + tabsql ;
+		String sql = "select count(*) from member join dept "
+				+ "on member.d_num = dept.d_num where " + field + " like ?  AND " + tabsql ;
+		
 		System.out.println(sql);
 		try(Connection con = ds.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql);){
@@ -371,9 +372,12 @@ public class MemberDAO {
 		
 		ArrayList<Member> list = new ArrayList<Member>();
 		String sql = "select * from(select b.*, rownum rnum "
-							+ "					from(select * from member where " + field + " like ? "
+							+ "					from(select * from member "
+							+ "						 	left join dept on member.d_num = dept.d_num "
+							+ "							left join position on member.p_num = position.p_num "
+							+ "							where " + field + " like ? "
 							+ "							AND " + tabsql 				
-							+ "						 order by M_NAME)b "
+							+ "						    order by M_NAME)b "
 							+ "	  		   		where rownum <= ? ) "
 							+ "   where rnum >= ? and rnum <= ? ";
 		
@@ -407,6 +411,9 @@ public class MemberDAO {
 					m.setM_STATUS(rs.getString(11));
 					m.setCHAT_STATUS(rs.getString(12));
 					m.setM_ADMIN(rs.getString(13));
+					m.setM_PROFILEFILE(rs.getString(14));
+					m.setD_NAME(rs.getString(17));
+					m.setM_JOB(rs.getString(22));
 					
 					list.add(m);
 				}
@@ -557,6 +564,65 @@ public class MemberDAO {
 			}
 			
 			return result;
+	}
+
+	public int adminmodify(String name, int dnum, String pnum, int empnum) {
+		
+		int result = 0;
+		String sql = "update member "
+				+ "set M_NAME = ? , D_NUM = ?, P_NUM =? , E_NUM = ? "
+				+ "where E_NUM = ? ";
+		
+		try(Connection con = ds.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql);){
+				pstmt.setString(1, name);
+				pstmt.setInt(2, dnum);
+				pstmt.setString(3, pnum);
+				pstmt.setInt(4, empnum);
+				pstmt.setInt(5, empnum);
+				result = pstmt.executeUpdate();
+				
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+//참고용 		String department_name=getDepartmentName(m.getD_NUM());
+	private String getDepartmentName(int d_num) {
+		String sql ="select d_name from dept where d_num= ?";
+		String department_name="";
+		try(Connection con = ds.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setInt(1, d_num);
+			
+			try(ResultSet rs = pstmt.executeQuery()){
+				if(rs.next()) {
+					department_name = rs.getString(1);
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return department_name;
+	}
+
+	public int block(String id) {
+		int result = 0;
+		String sql = "update member set M_STATUS = '2' "
+				+ "where M_ID = ? ";
+		try(Connection con = ds.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(sql);){
+			pstmt.setString(1, id);
+			result = pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 
