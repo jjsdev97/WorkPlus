@@ -20,7 +20,7 @@ $("#gologin").click(function(){
 </script>
 <div class="main">
   <div class="container">
-  <form name="find_idresultform"  method="post" class="find_idresultform">
+  <form name="find_idresultform"  method="post" class="find_idresultform" >
   <h3>아이디 찾기 결과</h3>
   	<div class="result_id">
   	<table>

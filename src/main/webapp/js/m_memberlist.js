@@ -1,6 +1,73 @@
  $(document).ready(function(){
 	 
 	 
+	 function setPaging(href, digit){
+		 let active="";
+		 let gray ="";
+		 if(href ==""){ //href가 빈문자열인 경우
+		 	if(isNaN(digit)){
+				 gray="gray";
+			 } else {
+				 active="active";
+			 }
+		 }
+		 let output = `<li class="page-item ${active}">`;
+		 let anchor = `<a class="page-link ${gray}" ${href} > ${digit}</a></li>`;
+		 output += anchor;
+		 return output;
+		 
+	 }//setpaging end
+	 
+	 function ajax(sdata){
+		 console.log(sdata);
+		 
+		 $,ajax({
+			 type : "post",
+			 data : sdata,
+			 url : "memberList.et",
+			 dataType : "json",
+			 cache : false,
+			 success : function(data){
+				 $("#viewcount").val(data.limit);
+				 $("thead").find("span").text(data.listcount);
+				 
+				 let digit = '이전&nbsp;'
+				 let href="";
+				 if(data.page > 1){
+					 href = 'href=javascript:go(' + (data.page - 1) + ')';
+				 } 
+				 output += setPaging(href, digit);
+				 
+				 for(let i = data.startpage; i <= data.endpage; i++){
+					 digit = i;
+					 href = "";
+					 if(i != data.page){
+						 href = 'href=javascript:go(' + i + ')';
+					 } 
+					 output += setPaging(href, digit);
+				 }
+				 
+				 digit = '&nbsp;다음&nbsp;';
+				 href="";
+				 if(data.page < data.maxpage){
+					 href = 'href=javascript:go(' + (data.page + 1) + ')';
+				 }
+				 output += setPaging(href,digit);
+				 
+				 $('.pagination').append(output)
+			 },
+			 error : function(){
+				 console.log('에러')
+			 }
+			 
+		 })
+	 }
+	 
+	 $('#viewpoint').change(function(){
+		 go(1);
+	 })
+	 
+	 
 	    let tab_value = $("#tab").val();//1, 2, 3
 	    if(tab_value){
 		    $('ul.tabs li').removeClass('current');
@@ -25,7 +92,7 @@
 	  
 		
 		//이용중지 해제를 클릭한 경우
-		$(document).on("click", "#clear", function(event){
+		$(document).on("click", ".clear", function(event){
 			 const answer = confirm("중지해제 하시겠습니까?");
 			 console.log(answer);	// 취소를 클릭한 경우 - false
 			 if(!answer) {	//취소를 클릭한 경우
@@ -35,7 +102,7 @@
 	  
 	 
 	//회원 목록의 거절을 클릭한 경우
-		$(document).on("click", "#reject", function(event){
+		$(document).on("click", ".reject", function(event){
 			 const answer = confirm("정말로 거절하시겠습니까?");
 			 console.log(answer);	// 취소를 클릭한 경우 - false
 			 if(!answer) {	//취소를 클릭한 경우
@@ -62,7 +129,7 @@
 		}) //수정 확인 end
 	
 		//승인완료 탭에서 이용중지 클릭한 경우
-		$(document).on("click", ".block",function(event){
+		$(document).on("click", ".block", function(event){
 			 const answer = confirm("이용중지 하시겠습니까?");
 			 console.log(answer);	// 취소를 클릭한 경우 - false
 			 if(!answer) {	//취소를 클릭한 경우
@@ -86,7 +153,7 @@
 			});
 		});
 	*/
-		$(document).on("click", "#admit", function(){
+		$(document).on("click", ".admit", function(){
 		
 				 const answer = confirm("정말로 승인하시겠습니까?");
 			 console.log(answer);	// 취소를 클릭한 경우 - false
@@ -94,14 +161,13 @@
 				 event.preventDefault();	//이동하지 않습니다.
 			 } else{
 		
-			let m_id = $("#m_id").val(); 
-			let dnum = $("#dept").val();
-			let pnum = $("#pnum").val();
+		 	let tr = $(this).parent().parent();
+			let m_id = tr.prev().val(); 
+			let dnum = tr.find("#dept").val();
+			let pnum = tr.find("#pnum").val();
 			
 			location.href="memberConfirm.et?dnum=" + dnum + "&pnum=" + pnum + "&id=" + m_id + "&tab=1";
 			 }
-		
-		
 		
 		});
 		

@@ -24,9 +24,6 @@ public class MemberListAction implements Action {
 	      session.setAttribute("menu", "admin"); // admin, user
 	      session.setAttribute("selectedmenu", "memberlist");
 		
-		
-		
-		
 		ActionForward actionforward = new ActionForward();
 		MemberDAO mdao = new MemberDAO();
 		
@@ -45,10 +42,9 @@ public class MemberListAction implements Action {
 			page3 = Integer.parseInt(request.getParameter("page3"));
 		}
 		
-		
-		System.out.println("넘어온 페이지 = " + page1);
-		System.out.println("넘어온 페이지 = " + page2);
-		System.out.println("넘어온 페이지 = " + page3);
+		System.out.println("넘어온 페이지1 = " + page1);
+		System.out.println("넘어온 페이지2 = " + page2);
+		System.out.println("넘어온 페이지3 = " + page3);
 		
 		int listcount_search = 0;
 		int index = -1;   //search_field에 존재하지 않는 값으로 초기화
@@ -72,9 +68,9 @@ public class MemberListAction implements Action {
 		if(request.getParameter("search_word") == null || request.getParameter("search_word").equals("")){
 			//가입대기인 회원 목록 표시
 			map = mdao.getListCountAdmit();
-			list1 = mdao.getList1(page1, 10, "R_ADMIT = '1'");  //가입승인
-			list2 = mdao.getList1(page2, 10, "M_STATUS = '2'"); //이용중지
-			list3 = mdao.getList1(page3, 10, "R_ADMIT = '2'");  //승인완료
+			list1 = mdao.getList1(page1, 10, "R_ADMIT = '1' ");  //가입승인
+			list2 = mdao.getList1(page2, 10, "M_STATUS = '2' and R_ADMIT= '2' "); //이용중지
+			list3 = mdao.getList1(page3, 10, "R_ADMIT = '2' and M_STATUS = '1' ");  //승인완료
 			
 			deptlist = mdao.deptinfo();
 			position = mdao.jobinfo();
@@ -94,7 +90,9 @@ public class MemberListAction implements Action {
 		    searchlist = mdao.getList(search_field[index], search_word, page1, limit,  status[tab_int]);
 		}
 		
-		//int maxpage = (listcount + limit - 1) / limit;
+		int maxpage1 = (listcount1 + limit - 1) / limit;
+		int maxpage2 = (listcount2 + limit - 1) / limit;
+		int maxpage3 = (listcount3 + limit - 1) / limit;
 		//System.out.println("총 페이지 수 = " + maxpage );
 		
 		//int startpage = ((page - 1) / 10) * 10 + 1;
@@ -107,7 +105,9 @@ public class MemberListAction implements Action {
 		request.setAttribute("page1", page1); //현재 페이지 수
 		request.setAttribute("page2", page2); //현재 페이지 수
 		request.setAttribute("page3", page3); //현재 페이지 수
-		//request.setAttribute("maxpage", maxpage); //최대 페이지 수
+		request.setAttribute("maxpage1", maxpage1); //최대 페이지 수
+		request.setAttribute("maxpage2", maxpage2); //최대 페이지 수
+		request.setAttribute("maxpage3", maxpage3); //최대 페이지 수
 		
 		//request.setAttribute("startpage", startpage);
 		//request.setAttribute("endpage", endpage);

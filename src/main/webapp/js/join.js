@@ -5,7 +5,7 @@ $(function() {
    let checkpass = false;
    let checkempnum = false;
    let idcheck_value='';  //id 중복검사시 값
-
+   let verifyemailcheck = false;
 
    //id중복검사 부분
    $("#idcheck").click(function() {
@@ -64,21 +64,32 @@ $(function() {
 
 
    //사원번호 유효성 검사
-   $("#empnum").on('keyup',
-      function() {
+   $("#empnum").on('keyup', function() {
          const empnum = $("#empnum").val();
          const pattern = /^[0-9]{6}$/;
 
          if (!pattern.test(empnum)) {
-            $("#empnum_message").css('font-size', '11px')
-               .html("올바른 사원번호를 입력해주세요.(6자리 숫자)");
             checkempnum = false;
-         } else {
-            $("#empnum_message").html("");
-            checkempnum = true;
-         }
-      }
-   ); //empnum end
+         } 
+         
+        $.ajax({
+			url : "empnumcheck.et",
+			data : {"empnum" : empnum},
+			success : function(resp){
+				if(resp == -1){ //db에 해당 사원번호가 없는 경우
+				$("#empnum_message").css('font-size', '11px')
+               						.html("사용가능한 사원번호 입니다.");
+               		checkempnum = true;				
+				} else {
+					$("#empnum_message").css('font-size', '11px')
+									.css('color', 'red')
+               						.html("사용중인 사원번호 입니다.");
+               		checkempnum = false;				
+				}
+			}
+		});
+		
+      }); //empnum end
 
 
 
@@ -98,11 +109,53 @@ $(function() {
             checkpass = false;
          } else {
             $("#pass_message").css('color', 'black')
+               .css('font-size', '11px')
                .html('비밀번호가 일치합니다.');
             checkpass = true;
          }
       }
    ); //pass end
+
+
+	$('.verify_emailbtn').click(function(){
+		const email = $("input[name=email]").val();
+		const domain = $("input[name=domain]").val();
+		const emailaddr = email + "@" + domain;
+			console.log("emailaddr:", emailaddr);
+		alert('인증번호가 발송되었습니다.');
+			
+		$.ajax({
+			url : "joinverifyemail.et",
+			data : {"email" : email,
+					"domain" : domain },
+			success : function(resp){
+				$("#authRadnum").val(resp); 
+			 }
+		}); //ajax end	
+		
+		
+		
+		 $('.verify').click(function(){
+		 var inputAuthnum = $("input[name=verifynum]").val();
+		 
+		 if(inputAuthnum === ''){
+			 alert('인증번호를 입력하세요');
+			 verifyemailcheck = false;
+			 return;
+		 } else{
+			 if(inputAuthnum == $("#authRadnum").val()){
+				 alert("인증에 성공하였습니다.");
+				 verifyemailcheck = true;
+				 
+			 } else {
+				 alert("인증에 실패하였습니다.");
+				 verifyemailcheck = false;
+			 }
+		 }
+	 }); //verify click end
+		
+	});
+
 
 
 
@@ -118,8 +171,6 @@ $(function() {
          alert("ID 중복검사를 하세요.");
          return false;
       }
-
-
 
 
       if (!checkempnum) { //사원번호 확인
@@ -155,6 +206,14 @@ $(function() {
          return false;
       }
 
+	 if (verifyemailcheck) {
+		        // verifyemailcheck가 true일 경우 폼을 제출합니다.
+		        return true;
+		    } else {
+		        // verifyemailcheck가 false일 경우 폼 제출을 막습니다.
+		        alert("이메일 인증을 완료해주세요.");
+		        return false;
+		    }
 
    });//form submit end
 

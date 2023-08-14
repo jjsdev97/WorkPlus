@@ -66,6 +66,10 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 			action = new MemberIdCheckAction();
 			break;	
 			
+		case "/empnumcheck.et" :
+			action = new MemberEmpnumCheckAction();
+			break;	
+			
 		case "/findid.et" :
 			action = new MemberFindIdAction();
 			break;
@@ -76,6 +80,14 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 			
 		case "/findpass.et" :
 			action = new MemberFindPassAction();
+			break;
+			
+		case "/verifyemail.et" :
+			action = new MemberverifyEmailAction();
+			break;
+			
+		case "/joinverifyemail.et" :
+			action = new MemberJoinverifyEmailAction();
 			break;
 			
 		case "/findpassprocess.et" :
