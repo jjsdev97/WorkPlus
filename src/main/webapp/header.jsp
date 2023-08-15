@@ -20,7 +20,7 @@
 			<a href="#"><img src="${pageContext.request.contextPath}/img/header-alarm.png" id="header-alarm"></a>
 		</div>
 		<div class="nav-item">
-			<a href="profileUpdate.et" id="profile"><img src="http://via.placeholder.com/55x55" alt="">홍길동</a>
+			<a href="profileUpdate.et" id="profile"><img src="${pageContext.request.contextPath}/img/navprofile.png" id="navprofile" alt="">홍길동</a>
 		</div>
 		<div class="nav-item">
 			<a href="#"><img src="${pageContext.request.contextPath}/img/header-setting.png" id="header-setting"></a>
