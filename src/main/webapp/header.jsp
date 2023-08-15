@@ -57,7 +57,7 @@
 				<li class="second-item"><a href="Chatmain.chat" class="second-anchor" id="anchor-chatmain">메인</a></li>
 				<li class="second-item"><a href="Chatlist.chat" class="second-anchor" id="anchor-chatlist">채팅</a></li>
 			</ul></li>
-		<li class="sidebar-item" id="sidebar-cafe"><a href="main.cafe" class="sidebar-anchor">카페</a></li>
+		<li class="sidebar-item" id="sidebar-cafe"><a href="main.cafe" class="sidebar-anchor" id="anchor-cafemain">카페</a></li>
 	</ul>
 
 	<button class="btn_menu" id="btn_admin">관리자 페이지</button>
