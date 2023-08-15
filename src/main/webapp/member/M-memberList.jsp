@@ -64,7 +64,7 @@
 		<h3>사용자 관리</h3><hr>
 		
 		<%-- 검색 --%>
-		<form action="memberList.et" method="get" name="memberlist"
+		<form action="memberList.et" method="post" name="memberlist"
 			class="search_memberlist">
 			<input type="hidden" id="searchcheck" name="page" value="${page}">
 			<input type="hidden" id="tab" name="tab" value="${tab}">
@@ -128,9 +128,9 @@
 								</td>
 								<td>${m.VERIFY_EMAIL}</td>
 								<td>${m.m_HIREDATE}</td>
-								<td><span class="admit" style="color: blue;">[가입승인]</span></a>&nbsp;
-									<a href="memberDelete.et?id=${m.m_ID}&tab=1"><span
-											class="reject" style="color: red;">[가입거절]</span></a></td>
+								<td><button class="okbtn"><span class="admit" style="color: blue;">가입승인</span></button>&nbsp;
+									<button class="cancelbtn"><a href="memberDelete.et?id=${m.m_ID}&tab=1">
+									<span class="reject" style="color: red;">가입거절</span></a></button></td>
 							  </tr>
 							</c:forEach>
 					</tbody>
@@ -223,10 +223,11 @@
 									<td>${m.m_JOB}</td>
 									<td>${m.VERIFY_EMAIL}</td>
 									<td>${m.m_HIREDATE}</td>
-									<td><a href="memberClearblock.et?id=${m.m_ID}&tab=2"><span
-											class="clear" style="color: blue;">[중지해제]</span></a>&nbsp; <a
-										href="memberDelete.et?id=${m.m_ID}&tab=2"><span
-											class="delete" style="color: red;">[계정삭제]</span></a></td>
+									<td>
+									<button class=""><a href="memberClearblock.et?id=${m.m_ID}&tab=2">
+									<span class="clear" style="color: blue;">중지해제</span></a></button>&nbsp; 
+									<button class=""><a href="memberDelete.et?id=${m.m_ID}&tab=2"><span
+											class="delete" style="color: red;">계정삭제</span></a></button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -316,9 +317,9 @@
 									<td>${m.m_HIREDATE}</td>
 									<td><input type="hidden" name="dnum" id="hiddnum" class="hiddnum" value="${m.d_NUM}"> 
 									<input type="hidden" name="pnum" id="hidpnum" class="hidpnum" value="${m.p_NUM}"> 
-									<span class="update" style="color: blue;">[수정]</span>&nbsp; 
-									<a href="memberBlock.et?id=${m.m_ID}&tab=3"><span class="block"style="color: black;">[이용중지]</span></a>
-									<a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: red;">[계정삭제]</span></a></td>
+									<button class=""><span class="update" style="color: blue;">수정</span></button>&nbsp; 
+									<button class=""><a href="memberBlock.et?id=${m.m_ID}&tab=3"><span class="block"style="color: black;">이용중지</span></a></button>
+									<button class=""><a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: red;">계정삭제</span></a></button></td>
 								</tr>
 							</c:forEach>
 						</tbody>

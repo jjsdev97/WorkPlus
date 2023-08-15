@@ -40,6 +40,13 @@ $(function(){
 		location.href = "main.com";
 	});
 	
+	$('.submitbtn').click(function(){
+		const answer = confirm('수정된 내용을 저장하시겠습니까?');
+		if(!answer) {	//취소를 클릭한 경우
+			 event.preventDefault();	//이동하지 않습니다.
+		 }
+	});
+	
 	
 });
 
@@ -94,10 +101,8 @@ $(function(){
   </div>
   
   <div class="clearfix">
-  <ul>
   	<button type="submit" class="submitbtn">저장</button>
   	<button type="button" class="cancelbtn">취소</button>
-  </ul>
   </div>
   
  </form>

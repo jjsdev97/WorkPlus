@@ -7,12 +7,19 @@
 
 <jsp:include page="/header.jsp" />
 <style>
+.fakemain{
+ max-width: 80%;
+  height: auto;
+  display: block;
+  margin: 0;
+  
+}
 
 </style>
 </head>
 <body>
 	<div class="main">
-	메인페이지!!!
+		<img src="img/fakemain.png" class="fakemain" id="fakemain">
 	</div>
 </body>
 </html>
