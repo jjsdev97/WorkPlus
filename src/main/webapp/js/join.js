@@ -67,11 +67,13 @@ $(function() {
    $("#empnum").on('keyup', function() {
          const empnum = $("#empnum").val();
          const pattern = /^[0-9]{6}$/;
-
-         if (!pattern.test(empnum)) {
-			 alert("형식에 맞는 번호를 입력해주세요.");
-            checkempnum = false;
-         } 
+         
+         if (!pattern.test(empnum)){
+						$("#empnum_message").css('font-size', '11px')
+										.css('color', 'red')
+	               						.html("형식에 맞는 사원번호를 입력해주세요.");
+						checkempnum = false;
+						} 
          
         $.ajax({
 			url : "empnumcheck.et",
@@ -83,12 +85,15 @@ $(function() {
                						.html("사용가능한 사원번호 입니다.");
                		checkempnum = true;				
 				} else {
-					$("#empnum_message").css('font-size', '11px')
-									.css('color', 'red')
-               						.html("사용중인 사원번호 입니다.");
-               		checkempnum = false;				
+					
+						$("#empnum_message").css('font-size', '11px')
+										.css('color', 'red')
+	               						.html("사용중인 사원번호 입니다.");
+	               		checkempnum = false;				
+						
+						
+					}
 				}
-			}
 		});
 		
       }); //empnum end

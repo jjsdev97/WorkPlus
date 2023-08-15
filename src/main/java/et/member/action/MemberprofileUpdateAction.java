@@ -17,6 +17,9 @@ public class MemberprofileUpdateAction implements Action {
 			throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+	      session.setAttribute("menu", "admin"); // admin, user
+	      session.setAttribute("selectedmenu", "profile");
+		
 		String id = (String) session.getAttribute("id");
 		
 		MemberDAO mdao = new MemberDAO();

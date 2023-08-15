@@ -12,7 +12,7 @@
 <div class="user_login">
  <form class="loginform" action="loginProcess.et" method="post">
 	<div class="login_logo_container">
-		<img src="img/login_logo.jpg" class="login_logo" id="logo">
+		<img src="img/loginmainlogo.png" class="login_logo" id="logo">
 	</div> 
 	
 	<div class="login_form_container">
@@ -30,11 +30,10 @@
 		<input type="checkbox" class="login_setting_input" id="remember" name="remember" value="store">
 		<label class="login_setting_label" for="remember_id">아이디 기억하기</label>
 		
-		<%-- 자동 로그인은 파이널 때 ...
-		
+		<%-- 자동 로그인은 파이널 때 ...--%>
 			<input type="checkbox" class="login_setting_input" id="remember_login">
 			<label class="login_setting_label" for="remember_login">자동 로그인</label>
-		--%>
+		
  	  </div>
       <div class="d-flex justify-content-center mt-3 login_container">
  		<button type="submit" name="button" class="btn login_btn">로그인</button>

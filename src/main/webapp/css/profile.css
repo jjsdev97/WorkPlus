@@ -36,7 +36,6 @@ img{
 }
 
 .profilephoto{
-	margin-left:5%;
 	margin-top:30px;
 	margin-bottom:20px;
 }
@@ -52,7 +51,6 @@ img{
 .profile_left {
 	margin-top:30px;
 	float:left;
-	margin-left:5%;
 }
 
 input[readonly]{
@@ -61,8 +59,9 @@ input[readonly]{
 }
 .clearfix{
 	display: block; 
-	position:relative;
 	white-space:nowrap;
+	margin-top:30px;
+	
 }
 
 .container{
@@ -250,7 +249,9 @@ input[readonly]{
 	transform: rotate(90deg);
 }
 
-
+.profileform{
+	margin-left:5%;
+}
 	
 .second-item {
 	font-size: 10pt;

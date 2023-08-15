@@ -55,11 +55,9 @@ $(function(){
 	         $("#new_passcheck").val('').focus();
 	         return false;
 	      }
-	      
 			if(checkpass){
 				alert("새로운 비밀번호가 설정되었습니다.");
 			}
-		
 	});
 	
 	

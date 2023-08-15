@@ -61,12 +61,23 @@ select {
     outline: none;
 }
 
+.search_btn{
+	background-color:#A0C1B9;
+    border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+}
+
+
 .pagination {
     display: -ms-flexbox;
     display: flex;
     padding-left: 0;
     list-style: none;
     border-radius: 0.25rem;
+  justify-content: left;
+  list-style: none;
+  padding: 0;
+  margin: 50px 0 20px 400px;
 }
 
 dl, ol, ul {
@@ -94,15 +105,12 @@ ul {
 	color:gray;
 }
 
-ul.tabs{
-	margin-left:20px;
-}
 
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #A0C1B9;
+    border-color: #A0C1B9;
 }
 .page-link {
     position: relative;
@@ -110,7 +118,7 @@ ul.tabs{
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #007bff;
+    color: #A0C1B9;
     background-color: #fff;
     border: 1px solid #dee2e6;
 }
@@ -238,6 +246,7 @@ ul.tabs{
 	margin:0px;
 	padding:0px;
 	list-style:none;
+	margin-left:35px;
 }
 
 ul.tabs li{
@@ -297,6 +306,8 @@ ul.tabs li.current{
  	border-radius: 5px;
 	margin-top:5px;
 }
+
+
 
 
 .nav_logo, #logo {
