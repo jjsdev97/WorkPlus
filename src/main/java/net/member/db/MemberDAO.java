@@ -29,7 +29,7 @@ public class MemberDAO {
 		}
 	}
 	
-	public int isId(String id) {
+	public int isId(String id) { //회원가입 아이디 유효성 검사 체크
 		int result = -1; // DB에 해당 id가 없습니다.
 		String sql = "select M_ID from member where M_ID = ? ";
 		
@@ -82,10 +82,11 @@ public class MemberDAO {
 				return result;
 	}
 
-	//로그인
-	public int isId(String id, String pass) {
+	
+	public int isId(String id, String pass) {   //로그인 유효성 검사
 		int result = -1; //DB에 해당 id가 없습니다.
-		String sql = "select M_ID, M_PASS from member where M_ID = ? ";
+		String sql = "select M_ID, M_PASS, R_ADMIT, M_STATUS "
+				+ " from member where M_ID = ? ";
 		
 		try(Connection con = ds.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql);){
@@ -93,10 +94,23 @@ public class MemberDAO {
 			
 			try(ResultSet rs = pstmt.executeQuery()){
 				if(rs.next()) {
-					if(rs.getString(2).equals(pass)) {
-						result = 1; //아이디와 비밀번호 일치하는 경우
+					if(rs.getString(2).equals(pass)) { //아이디와 비밀번호 일치하는 경우
+						if(rs.getString(3).equals("2")) { //R_ADMIT = '2'  가입승인 완료 된 경우
+							if(rs.getString(4).equals("1")) {	//M_STATUS = '1' 이용중지가 아닌 경우
+								result = 1; //로그인 성공
+								System.out.println("로그인 결과" + result);
+								} 
+							else if(rs.getString(4).equals("2")){ //M_STATUS ='2' 이용중지인 경우
+								result = 2;
+								System.out.println("로그인 결과" + result);
+								} //M_STATUS = '2'
+						} else {
+							result = 3; //R_ADMIT ='2'가 아닌 경우
+							System.out.println("로그인 결과" + result);
+						}
 					} else {
 						result = 0;	//비밀번호가 일치하지 않는 경우
+						System.out.println("로그인 결과" + result);
 					}
 				}
 			} catch (SQLException e) {

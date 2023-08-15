@@ -69,6 +69,7 @@ $(function() {
          const pattern = /^[0-9]{6}$/;
 
          if (!pattern.test(empnum)) {
+			 alert("형식에 맞는 번호를 입력해주세요.");
             checkempnum = false;
          } 
          
@@ -78,6 +79,7 @@ $(function() {
 			success : function(resp){
 				if(resp == -1){ //db에 해당 사원번호가 없는 경우
 				$("#empnum_message").css('font-size', '11px')
+									.css('color', 'black')
                						.html("사용가능한 사원번호 입니다.");
                		checkempnum = true;				
 				} else {

@@ -36,6 +36,11 @@ $(function(){
 		}
 	})//change()
 	
+	$('.cancelbtn').click(function(){
+		location.href = "main.com";
+	});
+	
+	
 });
 
 </script>

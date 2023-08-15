@@ -71,6 +71,8 @@
 		 $('#id').val(id);
 		 $("#remember").prop('checked',true);
 	 }
+	 
+	 
  });
 
 </script>

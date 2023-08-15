@@ -50,8 +50,17 @@ public class MemberLoginProcessAction implements Action {
 			 
 		 } else { 	//로그인 실패
 			 String message = "비밀번호가 일치하지 않습니다.";
-			 if(result == -1)
+			 if(result == -1) {
 				 message = "아이디가 존재하지 않습니다.";
+			 }
+			 else if(result == 2){
+				 message =  "이용 중지된 계정입니다.";
+			 } 
+			 else if (result == 3) {
+				 message = "가입승인이 완료되지 않았습니다.";
+			}else if (result == 0) {
+				message = "비밀번호가 일치하지 않습니다.";
+			}
 			 
 			 response.setContentType("text/html;charset=utf-8");
 			 PrintWriter out = response.getWriter();
