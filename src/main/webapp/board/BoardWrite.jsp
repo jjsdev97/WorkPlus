@@ -16,7 +16,6 @@
 	<div class="main">
 		<!-- BoardWrite.bo로 넘어감 (frontcont에서 받음) -->
 		<!-- 입력된 값을 액션 서블릿으로 넘김 -->
-
 		<form action="BoardAddAction.bo" method="post"
 			enctype="multipart/form-data" name="boardform">
 			<div class="board_drop" id="board_type">
@@ -40,9 +39,10 @@
 			</div>
 			<div>
 				<div>
-					<div class="board_subject">제 목</div>
+					<div class="board_subject">제 목
 					<input class="board_subject_main" type="text" id="board_subject"
 						name="BOARD_SUBJECT" placeholder="제목을 입력하세요">
+						</div>
 				</div>
 			</div>
 

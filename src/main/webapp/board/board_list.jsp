@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <jsp:include page="/header.jsp" />
+<link href="css/B_BoardList.css" rel="stylesheet">
 <style>
 </style>
 </head>
@@ -55,7 +55,7 @@
 	</table>
 		
 	<div class="center-block">
-		  <ul class="pagination justify-content-center">		
+		  <ul class="pagination">		
 			 <c:if test="${page <= 1 }">
 				<li class="page-item">
 				  <a class="page-link gray">이전&nbsp;</a>
@@ -108,6 +108,7 @@
 $('#board_write').click(function(){
 location.href = "BoardWrite.bo";
 });
+
 /* 버튼을 누르면 액션이 일어나도록 */
 </script>
 </body>
