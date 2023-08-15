@@ -1,123 +1,93 @@
-/* <a> 태그에 마우스를 올렸을 때 밑줄이 생기지 않도록 설정 */
-.navbar .nav-item a:hover,
-.sidebar .sidebar-menu .sidebar-item a:hover,
-.sidebar .sidebar-menu .second-menu .second-item a:hover {
-    text-decoration: none;
-}
-
-.cafe-image-container {
-    flex: 1;
-    padding: 20px;
-    margin-left: 700px;
-}
-
-.cafe-image-container img {
-    margin-top: 100px;
-}
-
-.btn_cafe_menu {
-    display: block;
-    width: 150px;
-    height: 40px;
-    margin-left: 750px;
-    background-color: #3C6E71;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 40px;
-    text-decoration: none;
-}
-
-.btn_menu_select {
-    display: inline-block;
-    width: 150px;
-    height: 40px;
-    margin-top: 100px;
-    margin-right: 20px;
-    background-color: #3C6E71;
-    color: #FFFFFF;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 40px;
-    text-decoration: none;
-}
-.btn_menu_select:last-child {
-    margin-right: 0; /* 마지막 메뉴 선택 버튼의 오른쪽 마진 제거 */
-}
-
-#btn_coffee {
-    margin-left: 0;
-}
-
-#btn_order {
-    margin-top: 0px;
-}
-
-#btn_payment {
-    margin-left: 680px;
-}
-
-table {
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 600px;
-    border-collapse: collapse;
+/* 공통 스타일 */
+body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f2f2f2; /* 살짝 회색배경으로 세련된 느낌 */
+    padding-left: 280px; /* 사이드바 너비 + 추가 여백 10px */
+}
+
+a {
+    transition: 0.3s; /* 부드러운 전환 효과 추가 */
+}
+
+/* 제목 영역 */
+h3 {
+    color: #353535; 
+    font-size: 24px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #3C6E71; 
+    margin-top: 50px;
+}
+
+/* 메뉴 선택 버튼 */
+.btn_menu_select:hover {
+    background-color: #353535;
+}
+
+/* 메뉴 테이블 */
+table {
+	border: 2px solid #3C6E71; 
+    border-radius: 5px; /* 테이블 모서리 둥글게 */
+    margin-left: 450px;
+    margin-right: auto;
+    width: 350px; /* 270px 사이드바 너비 + 추가 여백 10px를 제외한 최대 너비 */
 }
 
 table th {
-    background-color: #284B63;
-    color: #FFFFFF;
-    padding: 12px 8px;
-    text-align: left;
+    padding: 15px 8px;
 }
 
 table td {
-    padding: 10px 8px;
-    border-bottom: 1px solid #ddd;
+    padding: 12px 8px;
 }
 
-table tr:nth-child(odd) {
-    background-color: #f2f2f2;
+/* 장바구니 영역 */
+.cart-table {
+    border: 2px solid #3C6E71; 
+    margin-top: 50px;
+    margin-left: 450px;
+    margin-right: auto;
 }
 
-.cafe-main-content .cart-table {
-    margin-top: 30px;
-    background-color: #ebebeb;
-}
-
-.cafe-main-content .cart-table th {
-    background-color: #284B63;
-}
-
-.cafe-main-content .cart-table tr:nth-child(odd) {
-    background-color: #FFFFFF;
-}
-
-body > div.cafe-main-content {
-    margin-left: 0;
-    width: 100%;
-    text-align: center; /* 중앙 정렬 */
-}
-.item-link {
-	color: #353535;
-}
-
-.item-link:hover {
-    text-decoration: underline;
-}
-
-.delete-item {
+#totalPrice {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
     color: #353535;
 }
 
-.delete-item:hover {
-    text-decoration: underline;
+/* 결제하기 버튼 */
+#btn_payment {
+    margin-top: 0px;
+    background-color: #3C6E71;
+    color: #FFFFFF;
+    border: none;
+    margin-left: 500px;
+    border-radius: 5px; /* 버튼 모서리 둥글게 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+    width: 200px;       /* 버튼의 너비를 지정합니다. */
+    height: 65px;       /* 버튼의 높이를 지정합니다. */
+    font-size: 24px;    /* 텍스트 크기를 조절합니다. */
+    line-height: 60px;  /* 버튼 높이와 일치시켜 텍스트를 버튼 중앙에 위치시킵니다. */
+    text-align: center; /* 텍스트를 버튼 중앙에 위치시킵니다. */
+    text-decoration: none;
 }
 
+#btn_payment:hover {
+    background-color: #353535;
+}
 
+/* 아이템 선택시 밑줄 */
+.item-link {
+    display: block; 
+    padding: 5px; 
+    border-radius: 3px; 
+}
+
+.item-link:hover {
+    background-color: #3C6E71;
+    color: #FFFFFF;
+}
+
+.delete-item:hover {
+    color: #3C6E71;
+}

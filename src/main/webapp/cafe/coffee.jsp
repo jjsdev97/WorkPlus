@@ -57,7 +57,7 @@
 		});
 
     </script>
-    <jsp:include page="../header.jsp" />
+	<jsp:include page="../header.jsp" /> 
 
     <div class="cafe-main-content">
     
