@@ -68,6 +68,21 @@ where member.m_id != 'admin'
 and member.m_id != 'gjs12'
 order by M_NAME;
 
+SELECT m_profilefile, m_name, chat_status, d_name, m_job, m_id, c_object,
+ c_subject, m_status, r_admit
+FROM member
+LEFT JOIN dept ON member.d_num = dept.d_num
+LEFT JOIN position ON member.p_num = position.p_num
+FULL OUTER JOIN CHAT_FRIEND_BOOKMARK ON member.m_id = CHAT_FRIEND_BOOKMARK.c_object
+                                      AND c_subject = 'gjs12'
+WHERE member.m_id != 'admin'
+AND member.m_id != 'gjs12'
+AND r_admit = '2'
+AND m_status = '1'
+ORDER BY
+ c_subject NULLS LAST, 
+ m_name;
+
 TRUNCATE table CHAT_FRIEND_BOOKMARK;
 
 
