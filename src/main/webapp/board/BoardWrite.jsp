@@ -48,20 +48,21 @@
 
 			<!-- 글씨체, 폰트, 등 조절하는 라벨 한줄 끌어올 예정 -->
 
-			<textarea id="board_content" name="BOARD_CONTENT" cols="60" rows="30"></textarea>
-
-			<div>
-				<label> 파일 첨부 <img src="image/attach.png" alt="파일첨부">
-					<input type="file" id="upfile" name="board_file">
-				</label> <span id="filevalue"></span>
-			</div>
-
+			<textarea id="board_content" name="BOARD_CONTENT" cols="60" rows="30">
+			</textarea>
+            
+			
+            <div class="file_select">
+				<input type="file" id="upfile" name="board_file">
+				<!-- <span id="filevalue"></span> -->
+            </div>
+            
 			<div class="board_main_buttons">
-				<button onclick="board_noti()" type="submit" id="board_notification">공지로
-					등록</button>
-				<button type="reset" id="board_cancel">취소</button>
+				<button class="B_button" onclick="board_noti()" type="submit" id="board_notification">
+				공지로 등록</button>
+				<button class="B_button" type="reset" id="board_cancel">취소</button>
 				<!-- <button type=submit id="sub_save">임시보관</button> -->
-				<button type="submit" id="board_save">저장</button>
+				<button class="B_button" type="submit" id="board_save">저장</button>
 			</div>
 		</form>
 	</div>
