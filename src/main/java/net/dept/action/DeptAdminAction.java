@@ -23,6 +23,7 @@ public class DeptAdminAction implements Action {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", "admin"); // admin, user
+		session.setAttribute("selectedmenu", "deptadmin");
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);

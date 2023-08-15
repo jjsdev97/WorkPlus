@@ -33,7 +33,7 @@ public class ApprovalWriteAction implements Action {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("menu", "user"); // admin, user
-		session.setAttribute("selectedmenu", "approval");
+		session.setAttribute("selectedmenu", "approvalwrite");
 		
 		String session_id = (String) session.getAttribute("id");
 		member = dao.getMemberDetail(session_id);

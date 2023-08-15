@@ -7,11 +7,17 @@ body {
 	overflow-x: hidden;
 }
 
-.nav_logo, #logo {
-	margin-top: 2px;
-	width: 250px;
+.nav-logo-container {
+	width: 270px;
 	height: 100%;
+}
+
+#logo {
+	padding: 10px; max-width : 90%;
+	height: auto;
+	margin-top: 2px;
 	object-fit: cover;
+	max-width: 90%;
 }
 
 .sidebar {
@@ -41,7 +47,6 @@ body {
 	height: 60px;
 	background-color: #284B63;
 	z-index: 50;
-	background-color: #284B63;
 }
 
 .navbar-nav {
@@ -61,24 +66,35 @@ body {
 }
 
 .sidebar-menu {
-	width: 80%;
-	margin-top: 50px;
+	width: 100%;
+	margin-top: 60px;
 	display: inline-block;
-	padding: 20px;
+	padding: 0px;
 	list-style-type: none;
 }
 
 .nav_logo {
+	display: block;
+	width: 100%;
+	height: 100%;
 	text-decoration: none;
 	font-size: 30px;
 	color: white;
 	padding-bottom: 5px;
+	text-decoration: none;
 }
 
 .sidebar-item {
 	width: 100%;
+	margin-top: 5px;
 	padding: 10px;
+	padding-left: 30px;
 	color: #FFFFFF;
+	box-sizing: border-box;
+}
+
+.sidebar-active {
+	background-color: #153243;
 }
 
 .sidebar-user {
@@ -127,6 +143,7 @@ body {
 	transition: all ease 0.5s;
 }
 
+
 .second-menu {
 	padding-left: 30px;
 }
@@ -164,6 +181,11 @@ a.second-anchor {
 	text-decoration: none;
 	font-size: 10pt;
 	color: #FFFFFF;
+}
+
+a.anchor-active {
+	color: #70A0AF;
+	font-weight:bold;
 }
 
 /* ----------------------모달 시작---------------------- */
