@@ -26,7 +26,7 @@
 <body>
 	<div class="main">
 		<div class="modal-container">
-			<div class="dept-subject">부서 관리</div>
+			<div class="dept-modal-subject">부서 관리</div>
 
 			<div class="modal-content">
 				<div class="dept-input-item">
@@ -83,7 +83,10 @@
 		</ul>
 
 
-		<div id="chart"></div>
+		<div class="dept-admin-chart-container">
+			<div class="dept-chart-subject">조직도</div>
+			<div id="chart"></div>
+		</div>
 
 
 

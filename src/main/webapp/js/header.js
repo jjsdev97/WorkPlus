@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	
 	$('#btn_admin').click(function() {
 		$('.sidebar-admin').css("visibility", "visible");
 		$('.sidebar-user').css("visibility", "hidden");
@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 
 	$('.sidebar-item').on('click', '.sidebar-anchor', function() {
-		$('.sidebar-anchor+.second-menu').css('transition','all ease 0.5s');
+		$('.sidebar-anchor+.second-menu').css('transition', 'all ease 0.5s');
 		$('.sidebar-anchor-collapse').removeClass('sidebar-anchor-collapse');
 		$('.second-menu').css('height', '0');
 		$(this).addClass('sidebar-anchor-collapse');
@@ -48,7 +48,7 @@ $(document).ready(function() {
 	$('.modal-btn').click(function() {
 		$('.modal-background').css('display', 'block');
 		$('.modal-container').css('display', 'block');
-		
+
 		$('body').css('overflow', 'hidden');
 	})
 
@@ -60,12 +60,14 @@ $(document).ready(function() {
 	$('.modal-background').click(function() {
 		$('.modal-background').css('display', 'none');
 		$('.modal-container').css('display', 'none');
-		
+
 		$('body').css('overflow', 'auto');
 	})
 
 
 
+
+	
 
 
 });

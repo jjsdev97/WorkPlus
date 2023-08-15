@@ -9,7 +9,9 @@
 <div class="modal-background"></div>
 
 <nav class="navbar">
-	<a href="main.com" class="nav_logo"><img src="${pageContext.request.contextPath}/img/logo.jpg" id="logo"></a>
+	<div class='nav-logo-container'>
+		<a href="main.com" class="nav_logo"><img src="${pageContext.request.contextPath}/img/logo.png" id="logo"></a>
+	</div>
 	<div class="navbar-nav">
 		<div class="nav-item">
 			<a href="logout.et" id="logout">로그아웃</a>
@@ -30,16 +32,16 @@
 <div class="sidebar sidebar-user">
 	<ul class="sidebar-menu">
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">이메일</a></li>
-		<li class="sidebar-item"><a href="deptGetChart.dt" class="sidebar-anchor">조직도</a></li>
-		<li class="sidebar-item"><a href="#" class="sidebar-anchor" id="board-sidebar">게시판<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
+		<li class="sidebar-item" id="sidebar-deptuser"><a href="deptGetChart.dt" class="sidebar-anchor" id="anchor-deptuser">조직도</a></li>
+		<li class="sidebar-item" id="sidebar-board"><a href="#" class="sidebar-anchor" id="board-sidebar">게시판<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
 			<ul class="second-menu" id="board-second-menu">
-				<li class="second-item"><a href="BoardWrite.bo" class="second-anchor">작성하기</a></li>
-				<li class="second-item"><a href="BoardList.bo" class="second-anchor">전체게시물</a></li>
+				<li class="second-item"><a href="BoardWrite.bo" class="second-anchor" id="anchor-board_write">작성하기</a></li>
+				<li class="second-item"><a href="BoardList.bo" class="second-anchor" id="anchor-board_list">전체게시물</a></li>
 			</ul></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">일정</a></li>
-		<li class="sidebar-item"><a href="#" class="sidebar-anchor" id="approval-sidebar">전자결재<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
+		<li class="sidebar-item" id="sidebar-approval"><a href="#" class="sidebar-anchor" id="approval-sidebar">전자결재<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
 			<ul class="second-menu" id="approval-second-menu">
-				<li class="second-item"><a href="approvalWrite.apv" class="second-anchor">작성하기</a></li>
+				<li class="second-item"><a href="approvalWrite.apv" class="second-anchor" id="anchor-approvalwrite">작성하기</a></li>
 				<li class="second-item">-진행 중-</li>
 				<li class="second-item"><a href="#" class="second-anchor">전체</a></li>
 				<li class="second-item"><a href="#" class="second-anchor">대기</a></li>
@@ -50,12 +52,12 @@
 				<li class="second-item"><a href="#" class="second-anchor">반려</a></li>
 			</ul></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">인사</a></li>
-		<li class="sidebar-item"><a href="#" class="sidebar-anchor" id="chat-sidebar">메신저<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
+		<li class="sidebar-item" id="sidebar-chat"><a href="#" class="sidebar-anchor" id="chat-sidebar">메신저<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
 			<ul class="second-menu" id="chat-second-menu">
-				<li class="second-item"><a href="Chatmain.chat" class="second-anchor">메인</a></li>
-				<li class="second-item"><a href="Chatlist.chat" class="second-anchor">채팅</a></li>
+				<li class="second-item"><a href="Chatmain.chat" class="second-anchor" id="anchor-chatmain">메인</a></li>
+				<li class="second-item"><a href="Chatlist.chat" class="second-anchor" id="anchor-chatlist">채팅</a></li>
 			</ul></li>
-		<li class="sidebar-item"><a href="main.cafe" class="sidebar-anchor">카페</a></li>
+		<li class="sidebar-item" id="sidebar-cafe"><a href="main.cafe" class="sidebar-anchor">카페</a></li>
 	</ul>
 
 	<button class="btn_menu" id="btn_admin">관리자 페이지</button>
@@ -66,8 +68,8 @@
 <div class="sidebar sidebar-admin">
 	<ul class="sidebar-menu">
 		<li class="sidebar-item">&nbsp;관리자 페이지</li>
-		<li class="sidebar-item"><a href="deptAdmin.dt" class="sidebar-anchor">조직 관리</a></li>
-		<li class="sidebar-item"><a href="memberList.et" class="sidebar-anchor">사용자 관리</a></li>
+		<li class="sidebar-item" id="sidebar-deptadmin"><a href="deptAdmin.dt" class="sidebar-anchor" id="anchor-deptadmin">조직 관리</a></li>
+		<li class="sidebar-item" id="sidebar-memberlist"><a href="memberList.et" class="sidebar-anchor" id="anchor-memberlist">사용자 관리</a></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">전자결재 관리</a></li>
 		<li class="sidebar-item"><a href="#" class="sidebar-anchor">카페 직원 관리</a></li>
 	</ul>
@@ -81,23 +83,58 @@
 	var menu = '<%=(String) session.getAttribute("menu")%>';
 	var selectedmenu = '<%=(String) session.getAttribute("selectedmenu")%>';
 
+	function activeAnchor(selectedmenu) {
+		var anchor = '#anchor-' + selectedmenu;
+		$('.sidebar-anchor').removeClass('anchor-active');
+		$(anchor).addClass('anchor-active');
+	}
+	
+	activeAnchor(selectedmenu);
+	
 	if (admin_check != 'admin') {
 		$('.btn_menu').css('display', 'none');
 	}
+	
+	if (selectedmenu == 'deptuser'){
+		$('.sidebar-item').removeClass('sidebar-active');
+		$('#sidebar-deptuser').addClass('sidebar-active');
+	}
+	
+	if (selectedmenu == 'cafemain'){
+		$('.sidebar-item').removeClass('sidebar-active');
+		$('#sidebar-cafe').addClass('sidebar-active');
+	}
+	
+	if (selectedmenu == 'deptadmin'){
+		$('.sidebar-item').removeClass('sidebar-active');
+		$('#sidebar-deptadmin').addClass('sidebar-active');
+	}
+	
+	if (selectedmenu == 'memberlist'){
+		$('.sidebar-item').removeClass('sidebar-active');
+		$('#sidebar-memberlist').addClass('sidebar-active');
+	}
 
-	if (selectedmenu == 'approval') {
+
+	if (selectedmenu == 'approvalwrite') {
 		$('#approval-second-menu').css('transition', 'width 0s');
 		$('#approval-sidebar').addClass('sidebar-anchor-collapse');
-
+		
+		$('.sidebar-item').removeClass('sidebar-active');
+		$('#sidebar-approval').addClass('sidebar-active');
+		
 		$('#approval-second-menu').css('height', function() {
 			var length = $(this).children().length;
 
 			return 27.6 * length + "px";
 		})
 
-	} else if (selectedmenu == 'board') {
+	} else if (selectedmenu == 'board_write' || selectedmenu == 'board_list') {
 		$('#board-second-menu').css('transition', 'width 0s');
 		$('#board-sidebar').addClass('sidebar-anchor-collapse');
+		
+		$('.sidebar-item').removeClass('sidebar-active');
+		$('#sidebar-board').addClass('sidebar-active');
 
 		$('#board-second-menu').css('height', function() {
 			var length = $(this).children().length;
@@ -105,9 +142,12 @@
 			return 27.6 * length + "px";
 		})
 
-	} else if (selectedmenu == 'chat') {
+	} else if (selectedmenu == 'chatmain' || selectedmenu == 'chatlist') {
 		$('#chat-second-menu').css('transition', 'width 0s');
 		$('#chat-sidebar').addClass('sidebar-anchor-collapse');
+		
+		$('.sidebar-item').removeClass('sidebar-active');
+		$('#sidebar-chat').addClass('sidebar-active');
 
 		$('#chat-second-menu').css('height', function() {
 			var length = $(this).children().length;
