@@ -12,7 +12,7 @@
 <div class="user_login">
  <form class="loginform" action="loginProcess.et" method="post">
 	<div class="login_logo_container">
-		<img src="img/loginmainlogo.png" class="login_logo" id="logo">
+		<img src="img/logo.png" class="login_logo" id="logo">
 	</div> 
 	
 	<div class="login_form_container">
