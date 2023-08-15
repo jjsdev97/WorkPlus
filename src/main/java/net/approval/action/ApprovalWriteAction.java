@@ -19,6 +19,8 @@ public class ApprovalWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
 
 		ArrayList<Dept> deptList = new ArrayList<>();
 		ArrayList<Member> memberList = new ArrayList<>();
@@ -43,7 +45,6 @@ public class ApprovalWriteAction implements Action {
 		request.setAttribute("memberList", memberList);
 		request.setAttribute("atList", atList);
 		
-
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
 		forward.setPath("approval/ApprovalWrite.jsp");

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.approval.db.Approval;
 import net.approval.db.ApprovalDAO;
 import net.approval.db.ApprovalLine;
 
@@ -23,20 +24,56 @@ public class ApprovalAddAction implements Action {
 		HttpSession session = request.getSession();
 		String session_id = (String) session.getAttribute("id");
 
-		String period = request.getParameter("approval-period");
+		int period = Integer.parseInt(request.getParameter("approval-period"));
 		String subject = request.getParameter("approval-subject");
-		String templatetype = request.getParameter("approval-template");
+		int templatetype = Integer.parseInt(request.getParameter("approval-template"));
 		String content = request.getParameter("hiddenContent");
 
-		String approval[] = request.getParameterValues("input-approval-item");
-		String reference[] = request.getParameterValues("input-ref-item");
-		String receiver[] = request.getParameterValues("input-rec-item");
-
-		ArrayList<ApprovalLine> al = new ArrayList<>();
+		String approvalArr[] = request.getParameterValues("input-approval-item");
+		String referenceArr[] = request.getParameterValues("input-ref-item");
+		String receiverArr[] = request.getParameterValues("input-rec-item");
 		
 		
+		Approval app = new Approval();
+		app.setApproval_template(templatetype);
+		app.setApproval_period(period);
+		app.setApproval_subject(subject);
+		app.setApproval_writer(session_id);
+		app.setApproval_content(content);
 
-		return null;
+		ArrayList<ApprovalLine> alList = new ArrayList<>();
+		
+		boolean result = false;
+		
+		for (String appitem : approvalArr) {
+		    ApprovalLine al = new ApprovalLine(); // 새로운 객체 생성
+		    al.setA_line_target(appitem);
+		    al.setA_line_type("결재");
+		    alList.add(al);
+		}
+
+		for (String refitem : referenceArr) {
+		    ApprovalLine al = new ApprovalLine(); // 새로운 객체 생성
+		    al.setA_line_target(refitem);
+		    al.setA_line_type("참조");
+		    alList.add(al);
+		}
+
+		for (String recitem : receiverArr) {
+		    ApprovalLine al = new ApprovalLine(); // 새로운 객체 생성
+		    al.setA_line_target(recitem);
+		    al.setA_line_type("수신");
+		    alList.add(al);
+		}
+		
+		System.out.println("배열 이동 완료");
+		
+		result = dao.insertApproval(app, alList);
+		
+		ActionForward forward = new ActionForward();
+		forward.setRedirect(true);
+		forward.setPath("approvalList.apv");
+		return forward;
 	}
 
 }
