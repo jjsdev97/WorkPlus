@@ -29,7 +29,6 @@
 					</select>
 				</div>
 
-
 				<div class="board_select">
 					게시판 선택 <select class="select_option" id="select_board2"
 						name="BOARD_TYPE">
