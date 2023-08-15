@@ -7,33 +7,17 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 .footer-nav {
-    height: auto;  /* 높이는 자동으로 설정하되, 내용에 따라 조절됩니다. */
-    max-height: 300px; /* 원하는 최대 높이를 설정. 여기에서는 300px로 예시 */
-    width: 200px;  /* 사이드바의 너비 지정 */
-    position: fixed; /* 고정 위치 */
-    top: 50%;  /* 화면 중앙에서 시작 */
-    transform: translateY(-50%); /* 세로 방향으로 중앙 정렬 */
-    right: 0; /* 오른쪽에 고정 */
-    left: auto; /* 추가 */
-    background: #3C6E71; /* 배경색 변경 */
-    overflow-y: auto; /* 내용이 많아지면 스크롤바 추가 */
-}
-
-.footer-nav .navbar {
-    flex-wrap: nowrap; /* 이 속성을 추가하여 항목들이 강제로 다음 줄로 넘어가지 않도록 합니다. */
+    /* ... 기존의 스타일 ... */
+    background-color: #353535;
+    top: 0;  /* 상단에서 시작 */
+    bottom: auto;  /* 이전의 fixed-bottom 속성 때문에 명시적으로 지정 */
+    position: static;  
+    transform: none;  /* 중앙 정렬 제거 */
 }
 
 .footer-nav .navbar-nav .nav-item {
     margin-right: 10px; /* 각 nav-item 사이의 간격 */
 }
-
-.navbar {
-    flex-direction: column; /* 항목들을 세로로 배치 */
-    margin-right: 0; /* 마진 제거 */
-    padding-right: 1em; /* 패딩 값 조정 */
-}
-
-
 
 body > nav.navbar {
 	justify-content: flex-end; /* 오른쪽 정렬 */

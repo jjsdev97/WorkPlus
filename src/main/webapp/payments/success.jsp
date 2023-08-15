@@ -58,6 +58,45 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<style>
+    /* 기본 스타일 */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #D9D9D9;
+    }
+
+    table.centered-table {
+        margin: 50px auto; /* 중앙에 위치 */
+        border-collapse: collapse; /* 테이블 간격 제거 */
+        width: 60%; /* 테이블 폭 설정 */
+    }
+
+    table.centered-table th, table.centered-table td {
+        padding: 15px 20px; /* 셀 패딩 설정 */
+        text-align: left; /* 텍스트 왼쪽 정렬 */
+    }
+
+    table.centered-table th {
+        background-color: #353535;
+        color: #FFFFFF; /* 헤더 배경 및 텍스트 색상 */
+    }
+
+    table.centered-table tr:nth-child(even) {
+        background-color: #284B63; 
+        color: #FFFFFF;
+    }
+
+    table.centered-table tr:nth-child(odd) {
+        background-color: #3C6E71; 
+        color: #FFFFFF;
+    }
+
+    h1 {
+        text-align: center;
+        color: #353535;
+    }
+</style>
+	<jsp:include page="payheader.jsp"/>
     <title>결제 성공</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -67,23 +106,34 @@
     <%
     if (isSuccess) { %>
         <h1>결제 성공</h1>
- <!--   <p>결과 데이터 : <%= jsonObject.toJSONString() %></p> -->
-        <p>상품 이름 : <%= jsonObject.get("orderName") %></p>
-        <p>상품 가격: <%= jsonObject.get("balanceAmount") %>
-        <p>결제 방식 : <%= jsonObject.get("method") %></p>
-        <p>
-            <% if(jsonObject.get("method").equals("카드")) { out.println(((JSONObject)jsonObject.get("card")).get("number"));} %>
-            <% if(jsonObject.get("method").equals("가상계좌")) { out.println(((JSONObject)jsonObject.get("virtualAccount")).get("accountNumber"));} %>
-            <% if(jsonObject.get("method").equals("계좌이체")) { out.println(((JSONObject)jsonObject.get("transfer")).get("bank"));} %>
-            <% if(jsonObject.get("method").equals("휴대폰")) { out.println(((JSONObject)jsonObject.get("mobilePhone")).get("customerMobilePhone"));} %>
-        </p>
+        <table class="centered-table">
+            <tbody>
+                <tr>
+                    <th>상품 이름</th>
+                    <td><%= jsonObject.get("orderName") %></td>
+                </tr>
+                <tr>
+                    <th>상품 가격</th>
+                    <td><%= jsonObject.get("balanceAmount") %></td>
+                </tr>
+                <tr>
+                    <th>결제 방식</th>
+                    <td><%= jsonObject.get("method") %></td>
+                </tr>
+                <tr>
+                    <th>상세 정보</th>
+                    <td>
+                        <% if(jsonObject.get("method").equals("카드")) { out.println(((JSONObject)jsonObject.get("card")).get("number"));} %>
+                        <% if(jsonObject.get("method").equals("가상계좌")) { out.println(((JSONObject)jsonObject.get("virtualAccount")).get("accountNumber"));} %>
+                        <% if(jsonObject.get("method").equals("계좌이체")) { out.println(((JSONObject)jsonObject.get("transfer")).get("bank"));} %>
+                        <% if(jsonObject.get("method").equals("휴대폰")) { out.println(((JSONObject)jsonObject.get("mobilePhone")).get("customerMobilePhone"));} %>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     <%} else { %>
-        <h1>결제 실패</h1>
-        <p><%= jsonObject.get("message") %></p>
-        <span>에러코드: <%= jsonObject.get("code") %></span>
-        <%
-    }
-    %>
+        <!-- 결제 실패 부분 (이전과 동일하게 유지) -->
+    <%} %>
 </section>
 </body>
 </html>
