@@ -39,7 +39,7 @@ public class DeptUserChartAction implements Action {
 
         HttpSession session = request.getSession();
 		session.setAttribute("menu", "user"); // admin, user
-		session.setAttribute("selectedmenu", "deptchart");
+		session.setAttribute("selectedmenu", "deptuser");
 		
         request.setAttribute("jsonData", jsonData);
         

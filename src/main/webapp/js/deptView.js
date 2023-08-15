@@ -108,7 +108,7 @@ $(document).ready(function() {
 		$('.submitbtn').css("display", "inline-block");
 		$('.updatebtn').css("display", "none");
 
-		$('#dupperlevel').empty().append('<option value="0">대표이사</option>');
+		$('#dupperlevel').empty().append('<option value="1">대표이사</option>');
 
 		$('#dlevel option:eq(0)').prop('selected', true);
 		$('.modal-container input').val('');
@@ -146,8 +146,9 @@ $(document).ready(function() {
 			type: 'post',
 			success: function(rdata) {
 				if (rdata == 1) {
-					modalClose();
 					getDept();
+					modalClose();
+					
 
 				}
 			}
@@ -224,8 +225,8 @@ $(document).ready(function() {
 			},
 			type: 'post',
 			success: function() {
-				modalClose();
 				getDept();
+				modalClose();
 			}
 		})//ajax
 
