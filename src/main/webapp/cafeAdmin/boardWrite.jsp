@@ -2,14 +2,28 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-	<jsp:include page="cafefooter.jsp"/>
+	<jsp:include page="cafeadminheader.jsp"/>
 <meta charset="UTF-8">
 <style>
-	h1{font-size: 1.5rem; text-align: center; color: #1a92b9}
+	
+	body {
+		background-color: #D9D9D9;
+	}
+	
+	h1{font-size: 1.5rem; text-align: center; color: #353535}
 	
 	.container {
 		width: 60%
 	}
+	
+	.btn-primary {
+		background-color: #3C6E71;
+	}
+	
+	.btn-danger {
+		background-color: #284B63;
+	}
+	
 	
 	label {
 		font-weight: bold;

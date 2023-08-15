@@ -8,11 +8,12 @@
 <style>
 .footer-nav {
     /* ... 기존의 스타일 ... */
-    background-color: #353535;
+    background-color: #284B63;
     top: 0;  /* 상단에서 시작 */
     bottom: auto;  /* 이전의 fixed-bottom 속성 때문에 명시적으로 지정 */
     position: static;  
     transform: none;  /* 중앙 정렬 제거 */
+    margin-bottom: 15px;
 }
 
 .footer-nav .navbar-nav .nav-item {
@@ -55,12 +56,10 @@ textarea {
     					<a class="dropdown-item" href="ItemList.ca">게시판</a>
 					</div>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="main.cafe">home</a></li>
+	<!-- 				
+		    <li class="nav-item"><a class="nav-link" href="main.cafe">home</a></li>
+	 -->				
 			</c:if>
 		</c:if>
 	</ul>
 </nav>
-
-
-
-

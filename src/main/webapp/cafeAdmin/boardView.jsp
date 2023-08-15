@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <jsp:include page="cafefooter.jsp"/>
+    <jsp:include page="cafeadminheader.jsp"/>
     <link rel="stylesheet" href="css/cafeitemview.css" type="text/css">
     <meta charset="UTF-8">
  <!-- <script src="js/view.js"></script> -->      

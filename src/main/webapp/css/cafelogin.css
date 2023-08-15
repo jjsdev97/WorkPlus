@@ -1,8 +1,30 @@
-@charset "EUC-KR";
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #3C6E71; 
+}
 
-input{border-radius:3px;border:1px solid lightgray}
+.container {
+    margin: 2em auto;  /* 위아래 여백 줄임 */
+    border: none;
+    width: 500px;
+    height: 600px; /* 원하는 높이로 설정 */
+    padding: 30px 25px;
+}
+
+form {
+    background-color: #D9D9D9;
+    margin: 5% auto;  /* 여백을 줄여서 폼의 크기를 더 크게 만듦 */
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    width: 100%;      /* 폼의 너비를 늘림 */
+    height: 500px;
+}
+
+input {
+    border-radius: 3px;
+    border: 1px solid lightgray;
+}
+
 input[type=text], input[type=password] {
     width: 100%;
     padding: 10px;
@@ -10,70 +32,73 @@ input[type=text], input[type=password] {
     display: inline-block;
 }
 
-
 input[type=text]:focus, input[type=password]:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
     outline: none;
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #284B63;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
-    cursor: pointer; /* �հ��� Ŀ�� ��� */
+    border-radius: 5px;
+    cursor: pointer; 
     width: 100%;
     opacity: 0.9;
-}
-button:nth-child(1){border-radius:3px 0 0 3px}
-button:nth-child(2){border-radius:0 3px 3px 0px}
-button:hover {
-    opacity:1;
-    
-}
-button:focus{
-   outline:none;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
-/* ��� ��ư*/
-.join{
+button:hover {
+    opacity: 1;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:focus {
+    outline: none;
+}
+
+.join {
     padding: 14px 20px;
-    background-color: #f44336;
+    background-color: #353535;
 }
 
 .join, .submitbtn {
-  height:45px;
-  float: left;
-  width: 50%;
+    height: 45px;
+    float: left;
+    width: 50%;
 }
-a{color:white;text-decoration:none;}
 
-form {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid lightgray;
-    width: 500px; /* Could be more or less, depending on screen size */
-    padding: 16px;
+a {
+    color: white;
+    text-decoration: none;
 }
+
+
 
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
- 
- h1{text-align:center}
 
-/* Clear floats */
+h1 {
+    text-align: center;
+}
+
 .clearfix::after {
     content: "";
     clear: both;
-    display: table; 
+    display: table;
 }
-span{vertical-align: top}
+
+span {
+    vertical-align: top;
+}
 
 @media screen and (max-width: 300px) {
     .join, .signupbtn {
-       width: 100%;
+        width: 100%;
     }
 }

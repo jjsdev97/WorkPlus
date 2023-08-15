@@ -32,9 +32,9 @@
 	})
 </script>
 </head>
-<style>
-    .container{margin:3em auto; border:1px solid lightgray; width:500px}
-</style>
+ <!-- <style>
+ container{margin:3em auto; border:1px solid lightgray; width:500px}
+</style> -->
 <body>
 	<div class="container">
 		<form action="loginProcess.cnet" method="post" name="loginform" class="border-light p-5">

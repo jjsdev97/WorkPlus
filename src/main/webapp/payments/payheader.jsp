@@ -11,7 +11,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 .footer-nav {
-	background-color: #353535;  /* 배경색을 #353535로 설정 */
+	background-color: #284B63;  /* 배경색을 #353535로 설정 */
 	position: relative;         /* 상대적 위치 지정 */
 	width: 100%;                /* 너비를 전체로 설정 */
 	padding: 10px 0;           /* 상단과 하단에 패딩 추가 */
@@ -42,10 +42,8 @@ textarea {
 	class="navbar navbar-expand-sm right-block navbar-dark fixed-bottom footer-nav">
 	<ul class="navbar-nav">
 		<li class="nav-item"><a class="nav-link" href="#">주문내역</a></li>
-		<li class="nav-item"><a class="nav-link" href="main.cafe">cafemain</a></li>
+		<li class="nav-item"><a class="nav-link" href="WorkPlus/main.cafe">cafemain</a></li>
 	</ul>
 </nav>
-
-
 
 
