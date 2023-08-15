@@ -81,12 +81,12 @@ public class CafeTeaAction implements Action {
 		    }
 
 		    responseMap.put("cartItemNames", cartItemNames.toString());
-		    response.setContentType("application/json");
+		    response.setContentType("application/json; charset=utf-8");
 		    response.getWriter().write(new Gson().toJson(responseMap));
 		    return null; 
 		}  else if(ajaxRequest != null) {
 			// AJAX 요청 처리
-            response.setContentType("application/json");
+            response.setContentType("application/json; charset=utf-8");
             response.getWriter().write(new Gson().toJson(cartItemList));
             return null; 
         }
