@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>회원관리 시스템 관리자모드(회원 목록 보기)</title>
-<jsp:include page="/cafeAdmin/cafefooter.jsp" />
+<jsp:include page="/cafeAdmin/cafeadminheader.jsp" />
 <%--
 1. 검색어를 입력한 후 다시 memberList.net으로 이동한  경우 검색 필드와 검색어가 나타나도록 합니다.
 

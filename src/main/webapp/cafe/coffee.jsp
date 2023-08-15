@@ -66,6 +66,7 @@
 	<a href="ade.cafe" class="btn_menu_select" id="btn_ade">Ade</a>
 	<a href="side.cafe" class="btn_menu_select" id="btn_side">Side</a>
 	
+	<h3>Coffee</h3>
     <table>
         <tr>
             <th>메뉴</th>

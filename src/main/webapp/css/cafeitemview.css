@@ -2,22 +2,44 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: #353535;
+    background-color: #D9D9D9;
+}
+
+table.table td.center {
+    text-align: center;
+    background-color: #FFFFFF;
 }
 
 .container {
     width: 80%;
-    margin: 20px auto;
+    margin: 100px auto 20px auto;  /* 여기에서 top 마진을 100px로 변경하였습니다. */
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 8px; 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+textarea.form-control {
+    width: 80%; /* 여기에서 원하는 길이로 조절 가능합니다. */
+}
+
+.btn-info {
+	background-color: #3C6E71;
+}
+.btn-danger {
+	background-color: #353535;
+}
+.btn-warning {
+	background-color: #284B63;
+	color: #FFFFFF;
+}
 /* 테이블 스타일 */
 table.table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #FFFFFF;
     border: none;
+    border-radius: 10px; /* 둥근 정도를 조절할 수 있습니다. */
+    overflow: hidden; /* 이 설정으로 내부 내용이 둥근 부분을 넘어가지 않게 합니다. */
 }
 
 table.table th, table.table td {

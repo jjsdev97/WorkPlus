@@ -1,3 +1,10 @@
+/* <a> 태그에 마우스를 올렸을 때 밑줄이 생기지 않도록 설정 */
+.navbar .nav-item a:hover,
+.sidebar .sidebar-menu .sidebar-item a:hover,
+.sidebar .sidebar-menu .second-menu .second-item a:hover {
+    text-decoration: none;
+}
+
 .cafe-image-container {
     flex: 1;
     padding: 20px;
@@ -29,7 +36,7 @@
     margin-top: 100px;
     margin-right: 20px;
     background-color: #3C6E71;
-    color: white;
+    color: #FFFFFF;
     font-size: 14px;
     font-weight: bold;
     text-align: center;
@@ -45,7 +52,7 @@
 }
 
 #btn_order {
-    margin-top: 200px;
+    margin-top: 0px;
 }
 
 #btn_payment {
@@ -65,7 +72,7 @@ table {
 
 table th {
     background-color: #284B63;
-    color: white;
+    color: #FFFFFF;
     padding: 12px 8px;
     text-align: left;
 }
@@ -97,12 +104,20 @@ body > div.cafe-main-content {
     width: 100%;
     text-align: center; /* 중앙 정렬 */
 }
-
-a {
-    color: #3C6E71;
-    text-decoration: none;
+.item-link {
+	color: #353535;
 }
 
-a:hover {
+.item-link:hover {
     text-decoration: underline;
 }
+
+.delete-item {
+    color: #353535;
+}
+
+.delete-item:hover {
+    text-decoration: underline;
+}
+
+

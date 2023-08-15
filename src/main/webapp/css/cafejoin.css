@@ -1,5 +1,6 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	background-color: #3C6E71;
 }
 
 * {
@@ -30,7 +31,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 button {
-	background-color: #4CAF50;
+	background-color: #284B63;
 	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
@@ -41,17 +42,16 @@ button {
 
 button:hover {
 	opacity: 1;
-	cursor: pointer; /* 손가락 커서 모양 */
+	cursor: pointer; 
 }
 
 button:focus {
 	outline: none;
 }
 
-/* 취소 버튼*/
 .cancelbtn {
 	padding: 14px 20px;
-	background-color: #f44336;
+	background-color: #353535;
 }
 
 .cancelbtn, .submitbtn {

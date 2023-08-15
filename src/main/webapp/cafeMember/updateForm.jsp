@@ -16,7 +16,7 @@ input[type=file] {
 </style>
 </head>
 <body>
-	<jsp:include page="../cafeAdmin/cafefooter.jsp"/>
+	<jsp:include page="../cafeAdmin/cafeadminheader.jsp"/>
    <form name="joinform" action="updateProcess.cnet" method="post"
    		 enctype="multipart/form-data" >
    <h3>회원 정보 수정</h3>

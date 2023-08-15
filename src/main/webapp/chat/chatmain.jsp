@@ -10,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chat.css">
 </head>
 
-
 <body>
 <script src="${pageContext.request.contextPath}/js/chat_main.js"></script>
 	<div class="main">
