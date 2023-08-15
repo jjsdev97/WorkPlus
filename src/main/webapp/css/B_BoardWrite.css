@@ -5,7 +5,7 @@
 속성선택자   id[src]
  */
 
- 
+
  
 form {  /* 페이지 상단, 좌우 여백 */
 position : fixed;
@@ -13,14 +13,15 @@ margin : 0px 80px;
 }
  
 .board_select {
+	font-size : 20px;
 	display : inline-block;
 	margin : 40px 0px 40px 0px;
 	letter-spacing : 5px;
 }
 
 .select_option {
-	font-size : 16px;
-	width: 230px;
+	font-size : 20px;
+	width: 350px;
 	height: 40px;
 	margin : 0px 80px;
 	text-align : center;
@@ -28,6 +29,7 @@ margin : 0px 80px;
 }
 
 .board_subject {
+	font-size : 20px;
 	display: inline-block;
 	width: 200px;
 	margin: 20px 0px;
@@ -35,7 +37,8 @@ margin : 0px 80px;
 }
 
 .board_subject_main {
-	width:1000px;
+	font-size : 20;
+	width:1100px;
 	height:40px;
 	text-align : center;
 	border-color : #c0c0c0;
@@ -48,6 +51,6 @@ margin : 0px 80px;
 
 textarea {
 	margin-top : 60px; 
-	width : 1200px;
+	width : 1400px;
 	height : 500px;
 }
