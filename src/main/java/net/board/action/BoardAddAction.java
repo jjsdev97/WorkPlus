@@ -20,6 +20,7 @@ public class BoardAddAction implements Action {
 
 		HttpSession session = request.getSession();
 
+		
 		String session_id = (String) session.getAttribute("id");
 		BoardDAO boarddao = new BoardDAO();
 		BoardBean boarddata = new BoardBean();

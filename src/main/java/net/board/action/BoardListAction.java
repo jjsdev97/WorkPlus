@@ -21,6 +21,7 @@ public class BoardListAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		
 		BoardDAO boarddao = new BoardDAO();
 		List<BoardBean> boardlist = new ArrayList<BoardBean>();
 

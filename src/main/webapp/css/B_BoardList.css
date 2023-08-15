@@ -1,0 +1,49 @@
+/* css/style.css */
+/* 선택자종류
+아이디선택자 #id
+클래스선택자 .id
+속성선택자   id[src]
+ */
+
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+  justify-content: left;
+  list-style: none;
+  padding: 0;
+  margin: 50px 0 20px 400px; /* 상단 여백은 20px, 왼쪽 여백은 50px, 나머지 여백은 하단 20px으로 조정 */
+}
+
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    
+}
