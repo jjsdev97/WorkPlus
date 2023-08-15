@@ -1,8 +1,7 @@
 
 /*--------[chatmain.jsp]: 메신저메인-------*/
 div.left {
-	width: 30%;
-	float: left;
+	flex:1;
 	box-sizing: border-box;
 	height: 100%;
 	position:relative;
@@ -10,31 +9,27 @@ div.left {
 }
 
 
-
-
-
 div.right {
-   width: 70%;
-   float: right;
+	flex:2;
    box-sizing: border-box;
    height: 100%;
    border-left: 3px solid lightgray;
 }
 
-body > div.main > div.left > div.search {
+body > div.main > div > div.left > div.search {
 	width:100%;
 	height: 60px;
 	border-bottom: 3px solid lightgray;
 }
 
-body > div.main > div.left > div.search > form > input[type=text]{
+body > div.main > div > div.left > div.search> form > input[type=text]{
 	height: 30px;
 	width:300px;
 	margin-left:10px;
 	margin-top:10px;
 }
 
-body > div.main > div.left > div.search > form > button{
+body > div.main > div > div.left > div.search > form > button{
 	background:none;
 	border: none;
 	padding: 0;
@@ -45,12 +40,12 @@ body > div.main > div.left > div.search > form{
 	display: inline-block;
 }
 
-div.search > #Qbtn{
-	margin-left:10%;
+body > div.main > div > div.left > div.search > form > button{
+	margin-left:10px;
 }
 
 #addbtn{
-	margin-left:5%;
+	margin-left:10px;
 }
 
 
@@ -202,7 +197,9 @@ a.btn-layerClose {
 div.btn-r{
 	display:inline-block;
 }
-
+#layer1 > div > div > table a{
+	color:black;
+}
 #chatsubmitbtn{
 	background-color: #A0C1B9;
 	width:60px;
