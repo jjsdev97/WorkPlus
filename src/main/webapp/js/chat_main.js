@@ -1,9 +1,4 @@
 $(document).ready(function( ){
-
-
-
-
-
 //-------------- 팝업 시작 ----------------------//
 	$('.status_layer').click(function(){
         var $href = $(this).attr('href');
@@ -19,7 +14,7 @@ $(document).ready(function( ){
     
  	$('.friendProfile_layer').click(function(){
 		var $href = $(this).attr('href');
-		let tr = $(this).parent().parent().parent();
+		let tr = $(this).closest('tr');//가장 가까운 부모 tr을 찾음
 		
 		let name = tr.find(".name").text();
 		let d_name = tr.find(".dept").text();
@@ -37,7 +32,12 @@ $(document).ready(function( ){
 		
 		
 		console.log($href);
-		layer_popup($href);
+		
+		//클릭한 tr요소의 옆에 레이어 추가
+		var newLayer3 = $('#layer3').clone().addClass('active');
+		tr.after(newLayer3);
+		
+		layer_popup(newLayer3);
 	})
 
     $('.solChatStart_layer').click(function(){

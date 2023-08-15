@@ -14,9 +14,11 @@
 <body>
 <script src="${pageContext.request.contextPath}/js/chat_main.js"></script>
 	<div class="main">
-		<div class="left">
+	<div class="parent" style="display:flex">
+	
+		<div class="left" >
 			<div class="search">
-				<form action="Chatmain.chat" method="post">
+				<form action="Chatmain.chat" method="post" style="display: inline-block;">
 					<input name = "search_word" type="text" placeholder="search..." value="${search_word}">
 					<button type="submit">
 					<img id="Qbtn" src="${pageContext.request.contextPath}/img/search.png" 
@@ -33,7 +35,7 @@
 				<tr>
 					<td><div>
 							<a href="#layer3" class="friendProfile_layer">
-							<img src="${pageContext.request.contextPath}/img/profile.png"
+								<img src="${pageContext.request.contextPath}/img/profile.png"
 								width="40px" height="40px">
 							<!-- m.profilefile 이미지 경로 갖고 오기,,, -->
 							</a>
@@ -91,33 +93,6 @@
 				</tr>
 			   </c:forEach>
 			</table>
-			<!-- 상대 프로필 확인 layer -->
-			<div id="layer3" class="pop-layer" style="margin-top:10px">
-					<div class="pop-container">
-						<div class="pop-conts">
-						<div>
-						<div>
-							<img src="${pageContext.request.contextPath}/img/profile.png" width="120px" width="120px">
-						</div>
-						<div>
-						<img id="popup_img" src="${pageContext.request.contextPath}/img/online.png" 
-							width="35px" height="35px" style="vertical-align: middle;"> 
-							<span id="popup_name"></span>
-						</div>
-						<div class="frinedProfileDesc">
-						 	<div class="dept" id="popup_dname" ></div>
-           				  	<div class="dept"   id="popup_job"></div>
-            				<div class="dept" style="width:150px;" id="popup_id" ></div>
-						</div>
-						</div>
-						<div class="btn-r">
-							<a href="#" class="btn-layerClose">닫기</a>
-						</div>
-						</div>
-					</div>
-			</div>
-			
-			
 		
 		</div>
 		
@@ -231,6 +206,35 @@
 </div>
           </div>
 
+	</div>
+	
+				<!-- 상대 프로필 확인 layer -->
+			<div id="layer3" class="pop-layer" style="margin-top:10px">
+					<div class="pop-container">
+						<div class="pop-conts">
+						<div>
+						<div>
+							<img src="${pageContext.request.contextPath}/img/profile.png" width="120px" width="120px">
+						</div>
+						<div>
+						<img id="popup_img" src="${pageContext.request.contextPath}/img/online.png" 
+							width="35px" height="35px" style="vertical-align: middle;"> 
+							<span id="popup_name"></span>
+						</div>
+						<div class="frinedProfileDesc">
+						 	<div class="dept" id="popup_dname" ></div>
+           				  	<div class="dept"   id="popup_job"></div>
+            				<div class="dept" style="width:150px;" id="popup_id" ></div>
+						</div>
+						</div>
+						<div class="btn-r">
+							<a href="#" class="btn-layerClose">닫기</a>
+						</div>
+						</div>
+					</div>
+			</div>
+	
+	
 	</div>
 </div>
 </body>
