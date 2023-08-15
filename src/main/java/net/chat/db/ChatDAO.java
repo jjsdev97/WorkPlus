@@ -53,15 +53,20 @@ public class ChatDAO {
 	
 	public List<Member> getMemberList(String id) {
 		
-		String member_list_sql = "select m_profilefile, m_name, chat_status, d_name, m_job, m_id , c_object, c_subject "
-				+ "from member  "
-				+ "left join dept on member.d_num = dept.d_num  "
-				+ "left join position on member.p_num = position.p_num "
-				+ "full outer join CHAT_FRIEND_BOOKMARK on member.m_id = CHAT_FRIEND_BOOKMARK.c_object "
-				+ "and c_subject = ? "
-				+ "where member.m_id != 'admin' "
-				+ "and member.m_id != ? "
-				+ "order by M_NAME ";
+		String member_list_sql = "SELECT m_profilefile, m_name, chat_status, d_name, m_job, m_id, c_object, "
+				+ " c_subject, m_status, r_admit "
+				+ "FROM member "
+				+ "LEFT JOIN dept ON member.d_num = dept.d_num "
+				+ "LEFT JOIN position ON member.p_num = position.p_num "
+				+ "FULL OUTER JOIN CHAT_FRIEND_BOOKMARK ON member.m_id = CHAT_FRIEND_BOOKMARK.c_object "
+				+ "                                      AND c_subject = ? "
+				+ "WHERE member.m_id != 'admin' "
+				+ "AND member.m_id != ? "
+				+ "AND r_admit = '2' "
+				+ "AND m_status = '1' "
+				+ "ORDER BY "
+				+ " c_subject NULLS LAST, "
+				+ " m_name ";
 		
 		List<Member> list = new ArrayList<Member>();
 		
