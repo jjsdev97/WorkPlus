@@ -23,13 +23,17 @@ $(document).ready(function( ){
 		console.log("m_job = " + m_job);
 		let m_id = tr.find(".f_id").text();
 		console.log("f_id =" + m_id)
+		var $src = $(this).find("img").attr('src');
+		console.log("img src = " + $src)///WorkPlus/img/profile/gjsProfile.jpg
+		$src = $src.split('/').pop(); // /로 분리하고 마지막 요소만 남게
+		
 		
 		$("#popup_name").text(name);
 		$("#popup_dname").text(d_name);
 		$("#popup_img").attr("src", status_img);
 		$("#popup_job").text(m_job);
 		$("#popup_id").text(m_id + "@work.com");
-		
+		$("#popup_profileimg").attr("src", 'img/profile/' + $src)
 		
 		console.log($href);
 		

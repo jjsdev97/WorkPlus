@@ -217,13 +217,9 @@ div.btn-r{
 	height: 100%;
 }
 
- div.main > div > div.chatlist{
-	flex:1;
-	height: 100%;
-}
 
 div.main > div > div.chatroom{
-	flex:1;
+	flex:0.8;
 	border-left:2px solid lightgray;
 	height: 100%;
 }
@@ -234,6 +230,48 @@ div.main > div > div.profiles{
 	height: 100%;
 }
 
+body > div.main > div > div.chatroom > div:nth-child(1) > span{
+	font-weight: bold;
+    font-size: 23px;
+}
+body > div.main > div > div.chatroom > div:nth-child(1) > span:nth-child(3){
+	font-size: 18px;
+	font-weight: 500;
+}
+
+ .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .rules-list {
+    padding: 0;
+  }
+
+  .rules-list li {
+    margin-bottom: 10px;
+  }
+
+  .footer {
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+.chatroom {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;;
+  }
 /*------ 채팅방: div.chatroom ----*/
 a {
     text-decoration: none;
@@ -355,8 +393,8 @@ div.chatroom > div:nth-child(1) > span{
 }
 
 div.profiles > div:nth-child(1) {
-	 margin-top: 20px;
-	 margin-left: 10px;
+	 margin-top: 62px;
+	 margin-left: 20px;
 	 display:inline-block;
 }
 

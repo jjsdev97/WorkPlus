@@ -34,9 +34,14 @@
 				<tr>
 					<td><div>
 							<a href="#layer3" class="friendProfile_layer">
+							 <c:if test="${empty m.m_PROFILEFILE }">
 								<img src="${pageContext.request.contextPath}/img/profile.png"
-								width="40px" height="40px">
-							<!-- m.profilefile 이미지 경로 갖고 오기,,, -->
+								 width="40px" height="40px" >
+						   	 </c:if>
+						     <c:if test="${!empty m.m_PROFILEFILE }">
+								<img src="${pageContext.request.contextPath}/img/profile/${m.m_PROFILEFILE}"
+								 width="40px" height="40px" style=" border-radius: 50%;">
+						     </c:if>
 							</a>
 						</div></td>
 					<td><div class="name">${m.m_NAME}</div></td>
@@ -99,8 +104,14 @@
 		<!-- 내 프로필 -->
 		  <div class="myProfile">
             <div>
-            <img src="${pageContext.request.contextPath}/img/profile.png" 
-            		width="200px" height="200px">
+              <c:if test="${empty m.m_PROFILEFILE }">
+				<img src="${pageContext.request.contextPath}/img/profile.png"
+					width="200px" height="200px">
+			  </c:if>
+			  <c:if test="${!empty m.m_PROFILEFILE }">
+				<img src="${pageContext.request.contextPath}/img/profile/${m.m_PROFILEFILE}"
+					width="200px" height="200px" style=" border-radius: 50%;">
+			  </c:if>
             </div>
             
 <!--// status -->
@@ -213,7 +224,14 @@
 						<div class="pop-conts">
 						<div>
 						<div>
-							<img src="${pageContext.request.contextPath}/img/profile.png" width="120px" width="120px">
+							<c:if test="${empty m.m_PROFILEFILE }">
+								<img src="${pageContext.request.contextPath}/img/profile.png"
+								 width="120px" height="120px" >
+						   	 </c:if>
+						     <c:if test="${!empty m.m_PROFILEFILE }">
+								<img id = "popup_profileimg" src="${pageContext.request.contextPath}/img/profile/${m.m_PROFILEFILE}"
+								 width="120px" height="120px" style=" border-radius: 50%;">
+						     </c:if>
 						</div>
 						<div>
 						<img id="popup_img" src="${pageContext.request.contextPath}/img/online.png" 
