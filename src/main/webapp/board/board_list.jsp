@@ -13,10 +13,10 @@
 </head>
 <body>
 	<div class="main">
-	<form>
+	<form id="b-main">
 	<div class="board_recent"> 최근게시물</div>
-	<table class="table table-striped">
-	   <thead>
+	<table class="board_table">
+	   <thead id="t-head">
 	     <tr class="List_subject">
 	      <th><div class="list">★</div></th>
 	      <th><div>순번</div></th>
@@ -56,10 +56,7 @@
 	 </tbody>	
 	</table>
 		
-		<div class="List-end">
 		<div><button type="button" id="board_write">글 쓰 기</button></div>
-		<div class="sc">검색</div>
-		</div>
 		
 	<div class="center-block">
 		  <ul class="pagination">		

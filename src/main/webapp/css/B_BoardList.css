@@ -5,18 +5,19 @@
 속성선택자   id[src]
  */
 
-form {
+#b-main {
 	margin-top:20px;
 	margin-left:80px
 }
 
-table {
+.board_table {
+	border-collapse: collapse;
 	text-align:center;
 }
 
 .board_recent{
 	padding:10px;
-	width: 10%;
+    width: 10%;
     height: 20px;
     text-align: center;
     margin: 30px;
@@ -24,7 +25,7 @@ table {
     border-width: 0px 0px 1px 0px;
 }
 	
-table div {
+.board_table div {
 	margin:30px;
 }
 
@@ -43,9 +44,20 @@ table div {
 .board_subject {
 	border:1px solid black;
 }
-thead>tr {
+#t-head > tr {
 	border:1px solid black;
+	border-width: 0px 0px 1px 0px;
 }
+
+.board_table tr:last-child {
+	border:1px solid black;
+	border-width: 0px 0px 1px 0px;
+}
+
+#board_write {
+	margin:20px;
+}
+
 .pagination {
     display: -ms-flexbox;
     display: flex;
@@ -59,7 +71,7 @@ thead>tr {
 }
 
 
-ul {
+.pagination ul {
     display: block;
     list-style-type: disc;
     margin-block-start: 1em;
@@ -79,7 +91,7 @@ margin-top: 0;
 }
 .page-link {
     position: relative;
-    display: block;
+/*     display: block; */
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
     line-height: 1.25;
@@ -87,3 +99,5 @@ margin-top: 0;
     background-color: #fff;
     border: 1px solid #dee2e6;
 }
+
+
