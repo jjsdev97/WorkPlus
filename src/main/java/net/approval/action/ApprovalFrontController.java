@@ -45,6 +45,9 @@ public class ApprovalFrontController extends HttpServlet {
 		case "/approvalGetTemplate.apv":
 			action = new ApprovalGetTemplateAction();
 			break;
+		case "/approvalList.apv":
+			action = new ApprovalListAction();
+			break;
 		}
 
 		forward = action.execute(request, response);

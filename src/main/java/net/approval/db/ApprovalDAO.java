@@ -10,8 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.google.gson.JsonObject;
-
 import net.dept.db.Dept;
 import net.member.db.Member;
 
@@ -151,14 +149,12 @@ public class ApprovalDAO {
 
 	public String getTemplate(String tnum) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT A_TEMPLATE_CONTENT FROM APPROVALTEMPLATE "
-				+ "WHERE A_TEMPLATE_NUM = ?";
-		
+		String sql = "SELECT A_TEMPLATE_CONTENT FROM APPROVALTEMPLATE " + "WHERE A_TEMPLATE_NUM = ?";
+
 		String result = "";
 
-		try (Connection conn = ds.getConnection(); 
-			 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-				pstmt.setString(1, tnum);
+		try (Connection conn = ds.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, tnum);
 			try (ResultSet rs = pstmt.executeQuery();) {
 
 				if (rs.next()) {
@@ -174,6 +170,110 @@ public class ApprovalDAO {
 		}
 
 		return result;
+	}
+
+	public boolean insertApproval(Approval app, ArrayList<ApprovalLine> alList) {
+		// TODO Auto-generated method stub
+		String sql_num = "(SELECT NVL(MAX(APPROVAL_NUM), 0) + 1 FROM APPROVAL)";
+
+		int app_num = 0;
+		int insert_result = 0;
+		boolean lineResult = false;
+		try (Connection conn = ds.getConnection(); 
+			 PreparedStatement pstmt = conn.prepareStatement(sql_num)) {
+
+			try (ResultSet rs = pstmt.executeQuery();) {
+
+				if (rs.next()) {
+					app_num = rs.getInt(1);
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("전자결재 글넘버 : "+app_num);
+
+		String insert_sql = "INSERT INTO APPROVAL "
+				+ "VALUES ("+app_num+", ?, ?, sysdate, ?, ?, "
+				+ "			(( select a_template_name "
+				+ "			   from approvaltemplate "
+				+ "			   where a_template_num = ? ) || '-' || TO_CHAR(sysdate, 'YYYYMMDD') "
+				+ "									      || '-' || (SELECT COUNT(*)+1 "
+				+ "													 FROM APPROVAL "
+				+ "													 WHERE TO_CHAR(APPROVAL_DATE, 'YYYYMMDD') = TO_CHAR(sysdate, 'YYYYMMDD') "
+				+ "													 AND APPROVAL_TEMPLATE = ?)),  ?) ";
+		
+
+
+		
+		try (Connection conn = ds.getConnection(); PreparedStatement pstmt = conn.prepareStatement(insert_sql)) {
+			
+			conn.setAutoCommit(false);
+			
+			int template_num = app.getApproval_template();
+			pstmt.setString(1, app.getApproval_subject());
+			pstmt.setString(2, app.getApproval_writer());
+			pstmt.setInt(3, app.getApproval_period());
+			pstmt.setInt(4, template_num);
+			pstmt.setInt(5, template_num);
+			pstmt.setInt(6, template_num);
+			pstmt.setString(7, app.getApproval_content());
+			
+			insert_result = pstmt.executeUpdate();
+
+			
+			if(insert_result==0) {
+				System.out.println("전자결재 insert 실패");
+				return false;
+			}
+			
+			
+			lineResult = insertAppLine(conn, app_num, alList);
+				
+			
+			if(lineResult) {
+				conn.commit();
+				conn.setAutoCommit(true);
+			}else {
+				conn.rollback();	
+				return false;
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
+	
+	
+
+	private boolean insertAppLine(Connection conn, int app_num, ArrayList<ApprovalLine> alList) throws SQLException {
+		// TODO Auto-generated method stub
+		String insert_sql = "INSERT INTO APPROVALLINE "
+				+ "VALUES(APPROVAL_LINE_SEQ.NEXTVAL, "+app_num+", ?, ?, '', '대기')";
+		
+		
+		try(PreparedStatement pstmt = conn.prepareStatement(insert_sql);){
+				
+			for(int i=0;i<alList.size();i++) {
+				pstmt.setString(1, alList.get(i).getA_line_target());
+				pstmt.setString(2, alList.get(i).getA_line_type());
+				
+				pstmt.addBatch();
+			}
+			
+			int[] result = pstmt.executeBatch();
+			
+		}
+		return true;
+		
 	}
 
 }

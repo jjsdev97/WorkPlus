@@ -20,7 +20,7 @@
 			<div class="modal-content">
 
 				<div class="modal-member-list-container">
-					<div class="modal-member-list-subject">제목</div>
+					<div class="modal-member-list-subject">사원 목록</div>
 					<div class="modal-member-list">
 						<c:forEach var='dept' items="${deptList}">
 							<div class="deptname" data-value="${dept.d_name}">${dept.d_name}
@@ -47,7 +47,7 @@
 					</div>
 				</div>
 				<div class="modal-approval-line-container">
-					<div class="modal-approval-line-subject">제목</div>
+					<div class="modal-approval-line-subject">결재선 설정</div>
 
 					<div class="modal-approval-line">
 						<div class="modal-approval-line-type">
@@ -154,13 +154,14 @@
 			</div>
 			<!-- 결재선 div -->
 
-			
+
 
 			<div class="approval-content-container">
+				제목 : <input type='text' name='approval-subject'>
 				<div class="approval-content"></div>
 				<!-- 템플릿 양식에 따른 input값들 -->
 			</div>
-			
+
 			<input type="hidden" id="hiddenField" name="hiddenContent" value="">
 
 			<div class="approval-btn-container">
