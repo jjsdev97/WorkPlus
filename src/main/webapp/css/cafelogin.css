@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #3C6E71; 
+    background-color: #284B63; 
 }
 
 .container {
@@ -38,7 +38,7 @@ input[type=text]:focus, input[type=password]:focus {
 }
 
 button {
-    background-color: #284B63;
+    background-color: #3C6E71;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;

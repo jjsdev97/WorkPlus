@@ -23,7 +23,7 @@ public class BoardAddAction implements Action {
 
 		String realFolder = "";
 
-		String saveFolder = "boardupload";
+		String saveFolder = "cafeitemupload";
 
 		int fileSize = 5 * 1024 * 1024;
 

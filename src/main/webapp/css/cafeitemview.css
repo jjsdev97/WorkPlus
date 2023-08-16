@@ -2,12 +2,12 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #D9D9D9;
+    background-color: #FFFFFF;
 }
 
 table.table td.center {
     text-align: center;
-    background-color: #FFFFFF;
+    background-color: #D9D9D9;
 }
 
 .container {
@@ -36,7 +36,7 @@ textarea.form-control {
 table.table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #FFFFFF;
+    background-color: #D9D9D9;
     border: none;
     border-radius: 10px; /* 둥근 정도를 조절할 수 있습니다. */
     overflow: hidden; /* 이 설정으로 내부 내용이 둥근 부분을 넘어가지 않게 합니다. */
@@ -53,7 +53,7 @@ table.table thead th {
 }
 
 table.table tbody tr:hover {
-    background-color: #f4f4f4;
+    background-color: #3C6E71;
 }
 
 table.table td:first-child {

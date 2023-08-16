@@ -6,31 +6,34 @@
 <meta charset="UTF-8">
 <style>
 body {
-	background-color: #D9D9D9;
+	background-color: #FFFFFF;
 	text-decoration: none;
 }
 .rows span {
 	color: #353535;
 }
 .table thead tr {
-	background-color: #353535;
+	background-color: #A0C1B9;
 	color: #FFFFFF;
 }
 
 .table tbody tr td a {
- 	color: #FFFFFF; /* 원하는 색상으로 변경하세요 */
+ 	color: #353535; /* 원하는 색상으로 변경하세요 */
  	text-decoration: none;
+}
+.table tbody tr td a:hover {
+ 	color: #3C6E71; /* 원하는 색상으로 변경하세요 */
 }
 
 .table tbody tr td {
-	color: #FFFFFF; /* 이 값은 흰색입니다. 원하는 색상으로 변경할 수 있습니다. */
+	color: #353535; /* 이 값은 흰색입니다. 원하는 색상으로 변경할 수 있습니다. */
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-	background-color: #284B63; /* 변경할 색상을 여기에 지정 */
+	background-color: #D9D9D9; /* 변경할 색상을 여기에 지정 */
 }
 .table-striped tbody tr:nth-of-type(even) {
-	background-color: #3C6E71; /* 변경할 색상을 여기에 지정 */
+	background-color: #D9D9D9; /* 변경할 색상을 여기에 지정 */
 }
 
 select.form-control {
@@ -44,7 +47,7 @@ select.form-control {
 }
 
 .btn-item-add {
-	background-color: #3C6E71;
+	background-color: #A0C1B9;
 	color: FFFFFF;
 	border: none;
 	padding: 10px 20px;
