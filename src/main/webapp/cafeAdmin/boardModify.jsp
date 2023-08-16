@@ -69,11 +69,11 @@
 	<%-- 원문글일 경우만 파일첨부 가능 --%>
 	<div class="form-group">
 		<label>파일첨부
-			<img src="image/attach.png" alt="파일첨부" width="20px">
+			<img src="img/attach.png" alt="파일첨부" width="20px">
 			<input type="file" id="upfile" name="ITEM_IMG_PATH">
 		</label>
 			<span id="filevalue">${boarddata.ITEM_IMG_PATH}</span>
-			<img src="image/remove.png" alt="파일삭제" width="10px" class="remove">
+			<img src="img/remove.png" alt="파일삭제" width="10px" class="remove">
 	</div>
 	
     <div class="form-group">

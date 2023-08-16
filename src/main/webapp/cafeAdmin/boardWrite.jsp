@@ -72,7 +72,7 @@
 	</div>
 	<div class="form-group">
 		<label>파일첨부
-			<img src="image/attach.png" alt="파일첨부">
+			<img src="img/attach.png" alt="파일첨부">
 			<input type="file" id="upfile" name="ITEM_IMG_PATH">
 		</label>
 			<span id="filevalue"></span>
