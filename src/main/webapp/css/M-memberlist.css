@@ -210,7 +210,7 @@ table{
 	border-bottom-color:gray;
 	font-size:16px;
 	margin-bottom:16px;
-	width:1000px;
+	width:1100px;
 }
 
 th{
@@ -221,15 +221,6 @@ th{
 	padding-top:12px;
 }
 
-/**/
-html, body {
-	width: 100%;
-	height: 100%;
-}
-
-body {
-	overflow-x: hidden;
-}
 
 h3{
 	margin-top:50px;
@@ -301,161 +292,42 @@ ul.tabs li.current{
 	margin-top:5px;
 }
 
-
-
-
-.nav_logo, #logo {
-	margin-top: 2px;
-	width: 250px;
-	height: 100%;
-	object-fit: cover;
+.admitbtn{
+	margin: auto;
+	border: none;
+ 	display: inline-block; 
+ 	background-color: #A0C1B9;
+ 	border-radius: 5px;
+ 	height:30px;
 }
-
-.sidebar {
-	position: fixed;
-	left: 0;
-	width: 270px;
-	height: 100%;
-	background-color: #284B63;
-	z-index: 40;
+.rejectbtn{
+	margin: auto;
+	border: none;
+ 	display: inline-block; 
+ 	background-color: #D9D9D9;
+ 	border-radius: 5px;
+ 	height:30px;
 }
-
-.main { /* 페이지 작성 부분 */
-	width: 100%;
-	height: 100%;
-	background-color: #FFFFFF;
-	padding-top: 60px;
-	padding-left: 270px;
+.blockbtn{
+	margin: auto;
+	border: none;
+ 	display: inline-block; 
+ 	background-color: #D9D9D9;
+ 	border-radius: 5px;
+ 	height:30px;
 }
-
-.navbar {
-	display: flex;
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 0;
-	width: 100%;
-	height: 60px;
-	background-color: #284B63;
-	z-index: 50;
-	background-color: #284B63;
-}
-
-.navbar-nav {
-	display: flex;
-	margin-left: auto;
-}
-
-.nav-item {
-	margin-top: 2px;
-	margin-right: 5px;
-	overflow: hidden;
-}
-
-.sidebar-menu {
-	width: 80%;
-	margin-top: 50px;
-	display: inline-block;
-	padding: 20px;
-	list-style-type: none;
-}
-
-.nav_logo {
-	text-decoration: none;
-	font-size: 30px;
-	color: white;
-	padding-bottom: 5px;
-}
-
-.sidebar-item {
-	width: 100%;
-	padding: 10px;
-	color: #FFFFFF;
-}
-
-.sidebar-user {
-	visibility: visible;
-}
-
-.sidebar-admin {
-	visibility: hidden;
-}
-
-.sidebar-admin>ul>li:nth-child(1) {
-	font-size: 14pt;
-	font-weight: bold;
-	font-size: 15pt;
-}
-
-.btn_menu {
-	height:25px;
-	position: absolute;
-	left: -5px;
-	bottom: 10px;
-	color: white;
-	border: 0;
-	background-color: #284B63;
-	font-size: 11pt;
-	font-weight: bold;
-	width: 100%;
-	padding: 0px;
-}
-
-.btn_menu:hover {
-	cursor: pointer;
+.modifybtn{
+	margin: auto;
+	border: none;
+ 	display: inline-block; 
+ 	background-color: #A0C1B9;
+ 	border-radius: 5px;
+ 	height:30px;
 }
 
 
-.sidebar-anchor {
-	display: block;
-	text-decoration: none;
-	font-size: 11pt;
-	color: #FFFFFF;
-}
-
-.sidebar-anchor + .second-menu {
-	list-style-type: none;
-	height:0px;
-	overflow:hidden;
-	transition: all ease 0.5s;
-
-}
-
-.second-menu {
-	padding-left: 30px;	
-}
-.sidebar-anchor-collapse + .second-menu {
-	list-style-type: none;
-	transition: all ease 0.5s;
-}
-
-.coll-arrow {
-	margin-top: 4px;
-	float: right; width : 7%;
-	height: 7%;
-	width: 7%;
-	transition: all ease 0.5s;
-}
-
-.sidebar-anchor-collapse .coll-arrow{
-	margin-top: 4px;
-	float: right; width : 7%;
-	height: 7%;
-	width: 7%;
-	transition: all ease 0.5s;
-	transform: rotate(90deg);
-}
 
 
-	
-.second-item {
-	font-size: 10pt;
-	margin: 10px;
-}
-
-a.second-anchor {
-	text-decoration: none;
-	font-size: 10pt;
-	color: #FFFFFF;
-	
+a{
+  text-decoration: none;
 }
