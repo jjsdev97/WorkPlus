@@ -57,7 +57,7 @@
             </div>
             
 			<div class="board_main_buttons">
-				<button class="B_button" onclick="board_noti()" type="submit" id="board_notification">
+				<button class="B_button" onclick="board_noti()" type="submit" id="board_notification" style="background-color:#cad5bd;">
 				공지로 등록</button>
 				<button class="B_button" type="reset" id="board_cancel">취소</button>
 				<!-- <button type=submit id="sub_save">임시보관</button> -->

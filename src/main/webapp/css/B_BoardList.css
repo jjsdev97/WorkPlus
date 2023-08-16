@@ -1,18 +1,26 @@
-/* css/style.css */
+css/style.css
 /* 선택자종류
 아이디선택자 #id
 클래스선택자 .id
 속성선택자   id[src]
  */
-
-#b-main {
-	margin-top:20px;
-	margin-left:80px
+.an {
+	text-decoration:none;
 }
 
+#b-main {
+	margin-left:6%;
+	margin-top:30px;
+}
+
+h4 {
+	margin-bottom: 30px;
+}
 .board_table {
+	margin-top:30px;
 	border-collapse: collapse;
 	text-align:center;
+	width:1100px;
 }
 
 .board_recent{
@@ -20,13 +28,13 @@
     width: 10%;
     height: 20px;
     text-align: center;
-    margin: 30px;
-    border: 1px solid black;
-    border-width: 0px 0px 1px 0px;
+    margin: 5px;
+    border: 1px solid gray;
+    border-width: 0px;
 }
 	
 .board_table div {
-	margin:30px;
+	margin:15px;
 }
 
 .List-end div {
@@ -35,22 +43,35 @@
 }
 
 #board_write {
+	color:white;
 	margin-left:20px;
+    border: none;
+    display: inline-block; 
+    font-size: 16px; 
+    background-color: #A0C1B9;
+    width:90px;
+    height:35px;
+    border-radius: 5px;
+    margin-top:5px;
 }
 .sc {
 	margin-left: 44%;
 }
 
+#b-main > table > tbody > tr {
+border-top:1px solid #ccc;
+}
+
 .board_subject {
-	border:1px solid black;
+	border:1px solid gray;
 }
 #t-head > tr {
-	border:1px solid black;
-	border-width: 0px 0px 1px 0px;
+	border:1px solid gray; 
+		border-width: 0px 0px 1px 0px;
 }
 
 .board_table tr:last-child {
-	border:1px solid black;
+	border:1px solid gray;
 	border-width: 0px 0px 1px 0px;
 }
 
@@ -86,16 +107,16 @@ margin-top: 0;
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #A0C1B9;
+    border-color: #A0C1B9;
 }
 .page-link {
     position: relative;
-/*     display: block; */
+    display: block;
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
     line-height: 1.25;
-    color: #007bff;
+    color: #A0C1B9;
     background-color: #fff;
     border: 1px solid #dee2e6;
 }

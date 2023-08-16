@@ -38,15 +38,9 @@ function getList(state){//현재 선택한 댓글 정렬방식을 저장합니�
 						}else if(lev==2){
 							comment_reply = ' comment-list-item--reply lev2';
 						}
-						const profile=this.memberfile;
-						let src='image/profile.png';
-						if(profile){
-							src='memberupload/'+profile;
-						}
 						
 						output += '<li id="' + this.num + '" class="comment-list-item' + comment_reply + '">'
 							   + '   <div class="comment-nick-area">'
-							   + '    <img  src="' + src +'" alt="프로필 사진" width="36" height="36">'
 							   + '    <div class="comment-box">'
 							   + '      <div class="comment-nick-box">'
 							   + '            <div class="comment-nick-info">'
