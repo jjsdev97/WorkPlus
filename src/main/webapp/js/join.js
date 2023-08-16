@@ -69,10 +69,7 @@ $(function() {
          const pattern = /^[0-9]{6}$/;
          
          if (!pattern.test(empnum)){
-						$("#empnum_message").css('font-size', '11px')
-										.css('color', 'red')
-	               						.html("형식에 맞는 사원번호를 입력해주세요.");
-						checkempnum = false;
+				checkempnum = false;
 						} 
          
         $.ajax({

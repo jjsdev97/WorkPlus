@@ -8,8 +8,9 @@ table caption {
 	
 }
 h4{
-	margin-left:50px;
+	margin-left:40px;
 	margin-top:40px;
+	margin-bottom:40px;
 	
 }
 .modify_modal table{
@@ -65,7 +66,19 @@ select {
 	background-color:#A0C1B9;
     border: 1px solid #ced4da;
 	border-radius: 0.25rem;
+	height:30px;
+	color:white;
 }
+
+#search_word{
+	height:25px;
+	display:inline-block;
+	border-radius: 5px;
+	box-shadow:0;
+	border-style:solid;
+	border: 1px solid #ced4da;
+}
+
 
 
 .pagination {
@@ -80,16 +93,13 @@ select {
   margin: 50px 0 20px 400px;
 }
 
-dl, ol, ul {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
+
 
 #tab-1, #tab-2, #tab-3{
-	margin-left:20px;
-	margin-top:20px;
+	margin-left:35px;
 }
 
+/*
 ul {
     display: block;
     list-style-type: disc;
@@ -99,6 +109,12 @@ ul {
     margin-inline-end: 0px;
     padding-inline-start: 40px;
 }
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+*/
 
 .nodata{
 	text-align:center;
@@ -125,8 +141,13 @@ ul {
 
 .input-group{
 	margin-top:30px;
-	margin-right:50px;
-	text-align:right;
+	margin-left:35px;
+	text-align:left;
+	margin-bottom: 3em;
+}
+
+#viewcount{
+	height:28px;
 }
 
 #order{
@@ -197,9 +218,6 @@ td:nth-child(1) {
 	width: 100px;
 }
 
-.input-group {
-	margin-bottom: 3em
-}
 
 .table{
 	margin-bottom:1rem;
@@ -232,6 +250,8 @@ ul.tabs{
 	padding:0px;
 	list-style:none;
 	margin-left:35px;
+	border-bottom:1px solid #ccc;
+	width:1100px;
 }
 
 ul.tabs li{
@@ -240,16 +260,32 @@ ul.tabs li{
 	display:inline-block;
 	padding:10px 15px;
 	cursor:pointer;
+	border-bottom:none;
+	border : 1px solid #ccc;
+	border-radius:5px 5px 0 0;
 }
 
 ul.tabs li.current{
 	background: #ededed;
 	color:#222;
+	border:1px solid #ccc;
+	border-bottom:none;
+	border-radius:5px 5px 0 0; 
+}
+
+ul.tabs li:not(.current) {
+    background: none;
+    color: #222;
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-bottom: none; /* Remove the bottom border for non-current tabs */
+    border-radius: 5px 5px 0 0;
 }
 
 .tab-content{
 	display:none;
-	padding:15px;
 }
 
 .tab-content.current{

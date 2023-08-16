@@ -21,7 +21,6 @@ form{
 	margin-right:50px;
 	border:solid 1px gray;
 	padding-bottom:100px;
-	padding-left:30px;
 	text-align:center;
 }
 	
@@ -43,8 +42,9 @@ h4{
 #idresult{
 	color:red;
 	border:solid 1px gray;
-	padding-left:20px;
-	padding-right:20px;
+	padding:2px 15px;
+	margin-left:10px;
+	margin-right:10px;
 }
 
 .verify_email{
