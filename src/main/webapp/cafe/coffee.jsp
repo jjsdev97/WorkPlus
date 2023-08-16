@@ -28,6 +28,11 @@
                         $('.cart-table tbody').append('<tr><td>' + item.ITEM_NAME + '</td><td>' + item.ITEM_PRICE + '</td><td><a href="#" class="delete-item" data-id="' + item.ITEM_UID + '">삭제</a></td></tr>');
                     });
                     $('p#totalPrice').text('총 가격: ' + total); // 총 가격 업데이트
+                 	// 반짝이는 효과 추가
+                    $('p#totalPrice').addClass('flash');
+                    setTimeout(function() {
+                        $('p#totalPrice').removeClass('flash');
+                    }, 1000); // 0.5초 후에 애니메이션 종료
                 }
             });
         });
@@ -48,7 +53,8 @@
 		                total += item.ITEM_PRICE;
 		                $('.cart-table tbody').append('<tr><td>' + item.ITEM_NAME + '</td><td>' + item.ITEM_PRICE + '</td><td><a href="#" class="delete-item" data-id="' + item.ITEM_UID + '">삭제</a></td></tr>');
 		            });
-		            $('p#totalPrice').text('총 가격: ' + total); // 여기를 수정
+		            $('p#totalPrice').text('총 가격: ' + total); 
+		            $('p#totalPrice').addClass('flash');
 		        },
 		        error: function() {
 		            alert('아이템 삭제 실패');
@@ -61,10 +67,12 @@
 
     <div class="cafe-main-content">
     
-    <a href="coffee.cafe" class="btn_menu_select" id="btn_coffee">Coffee</a>
-	<a href="tea.cafe" class="btn_menu_select" id="btn_tea">Tea</a>
-	<a href="ade.cafe" class="btn_menu_select" id="btn_ade">Ade</a>
-	<a href="side.cafe" class="btn_menu_select" id="btn_side">Side</a>
+    <div class="btn_item_menu">
+    <a href="coffee.cafe" class="btn_cafe_menu" id="btn_coffee">Coffee</a>
+	<a href="tea.cafe" class="btn_cafe_menu" id="btn_tea">Tea</a>
+	<a href="ade.cafe" class="btn_cafe_menu" id="btn_ade">Ade</a>
+	<a href="side.cafe" class="btn_cafe_menu" id="btn_side">Side</a>
+	</div>
 	
 	<h3>Coffee</h3>
     <table>
@@ -101,6 +109,14 @@
 	</table>
     <p id="totalPrice">총 가격: ${totalPrice}</p>
 	</div>
-	<a href="payment.cafe" class="btn_cafe_menu" id="btn_payment">결제하기</a>
+	<a href="payment.cafe" class="btn_cafe_pay" id="btn_payment">결제하기</a>
+	<script>
+	$('#btn_payment').click(function(e) {
+	    e.preventDefault();
+	    // 팝업 창 열기
+	    window.open('payment.cafe', 'popup', 'width=600,height=600,left=580,top=200');
+	    window.location.href = 'main.cafe';
+	});
+	</script>
 </body>
 </html>

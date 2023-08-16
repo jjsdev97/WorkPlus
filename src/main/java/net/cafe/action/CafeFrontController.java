@@ -57,6 +57,9 @@ public class CafeFrontController extends javax.servlet.http.HttpServlet{
 		case "/history.cafe":
 			action = new CafeHistoryAction();
 			break;	
+		case "/cartclear.cafe":
+			action = new CafeCartClear();
+			break;
 //		case "/admin.cafe":
 //			action = new CafeAdminAction();
 //			break;	// itemlist 
