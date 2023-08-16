@@ -17,7 +17,7 @@
 			<a href="#"><img src="${pageContext.request.contextPath}/img/header-alarm.png" id="header-alarm"></a>
 		</div>
 		<div class="nav-item">
-			<a href="profileUpdate.et" id="navprofile"><img src="${pageContext.request.contextPath}/img/navprofile.png" class="navprofile" alt="">&nbsp;홍길동</a>
+			<a href="profileUpdate.et" id="navprofile"><img src="${pageContext.request.contextPath}/img/navprofile.png" class="navprofile" alt="">&nbsp;<%=session.getAttribute("id") %></a>
 		</div>
 		<div class="nav-item">
 			<a href="logout.et" id="navlogout"><img src="${pageContext.request.contextPath}/img/logout.png" class="navlogout"></a>
@@ -44,11 +44,11 @@
 		<li class="sidebar-item" id="sidebar-approval"><a href="#" class="sidebar-anchor" id="approval-sidebar">전자결재<img class="coll-arrow" src="${pageContext.request.contextPath}/img/collapse-arrow.png"></a>
 			<ul class="second-menu" id="approval-second-menu">
 				<li class="second-item"><a href="approvalWrite.apv" class="second-anchor" id="anchor-approvalwrite">작성하기</a></li>
-				<li class="second-item">-진행 중-</li>
-				<li class="second-item"><a href="#" class="second-anchor">전체</a></li>
+				<li class="second-item">&nbsp;&nbsp;&nbsp;진행 중</li>
+				<li class="second-item"><a href="approvalList.apv" class="second-anchor" id="anchor-approvallist">전체</a></li>
 				<li class="second-item"><a href="#" class="second-anchor">대기</a></li>
 				<li class="second-item"><a href="#" class="second-anchor">진행</a></li>
-				<li class="second-item">-완료-</li>
+				<li class="second-item">&nbsp;&nbsp;&nbsp;완료</li>
 				<li class="second-item"><a href="#" class="second-anchor">전체</a></li>
 				<li class="second-item"><a href="#" class="second-anchor">결재</a></li>
 				<li class="second-item"><a href="#" class="second-anchor">반려</a></li>
@@ -84,47 +84,51 @@
 	var admin_check = '<%=(String) session.getAttribute("id")%>';
 	var menu = '<%=(String) session.getAttribute("menu")%>';
 	var selectedmenu = '<%=(String) session.getAttribute("selectedmenu")%>';
-
+	
+	if (selectedmenu == 'memberjoin') {
+		$('.sidebar-menu').css('display', 'none');
+		$('.navbar-nav').css('display', 'none');
+	}
 	function activeAnchor(selectedmenu) {
 		var anchor = '#anchor-' + selectedmenu;
 		$('.sidebar-anchor').removeClass('anchor-active');
 		$(anchor).addClass('anchor-active');
 	}
-	
+
 	activeAnchor(selectedmenu);
-	
+
 	if (admin_check != 'admin') {
 		$('.btn_menu').css('display', 'none');
 	}
-	
-	if (selectedmenu == 'deptuser'){
+
+	if (selectedmenu == 'deptuser') {
 		$('.sidebar-item').removeClass('sidebar-active');
 		$('#sidebar-deptuser').addClass('sidebar-active');
 	}
-	
-	if (selectedmenu == 'cafemain'){
+
+	if (selectedmenu == 'cafemain') {
 		$('.sidebar-item').removeClass('sidebar-active');
 		$('#sidebar-cafe').addClass('sidebar-active');
 	}
-	
-	if (selectedmenu == 'deptadmin'){
+
+	if (selectedmenu == 'deptadmin') {
 		$('.sidebar-item').removeClass('sidebar-active');
 		$('#sidebar-deptadmin').addClass('sidebar-active');
 	}
-	
-	if (selectedmenu == 'memberlist'){
+
+	if (selectedmenu == 'memberlist') {
 		$('.sidebar-item').removeClass('sidebar-active');
 		$('#sidebar-memberlist').addClass('sidebar-active');
 	}
 
 
-	if (selectedmenu == 'approvalwrite') {
+	if (selectedmenu == 'approvalwrite' || selectedmenu == 'approvallist') {
 		$('#approval-second-menu').css('transition', 'width 0s');
 		$('#approval-sidebar').addClass('sidebar-anchor-collapse');
-		
+
 		$('.sidebar-item').removeClass('sidebar-active');
 		$('#sidebar-approval').addClass('sidebar-active');
-		
+
 		$('#approval-second-menu').css('height', function() {
 			var length = $(this).children().length;
 
@@ -134,7 +138,7 @@
 	} else if (selectedmenu == 'board_write' || selectedmenu == 'board_list') {
 		$('#board-second-menu').css('transition', 'width 0s');
 		$('#board-sidebar').addClass('sidebar-anchor-collapse');
-		
+
 		$('.sidebar-item').removeClass('sidebar-active');
 		$('#sidebar-board').addClass('sidebar-active');
 
@@ -147,7 +151,7 @@
 	} else if (selectedmenu == 'chatmain' || selectedmenu == 'chatlist') {
 		$('#chat-second-menu').css('transition', 'width 0s');
 		$('#chat-sidebar').addClass('sidebar-anchor-collapse');
-		
+
 		$('.sidebar-item').removeClass('sidebar-active');
 		$('#sidebar-chat').addClass('sidebar-active');
 
@@ -167,4 +171,5 @@
 		$('.sidebar-user').css("visibility", "visible");
 		$('.sidebar-admin').css("visibility", "hidden");
 	}
+
 </script>

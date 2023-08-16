@@ -28,6 +28,7 @@ public class MemberLoginProcessAction implements Action {
 		 if(result == 1) {
 			 HttpSession session = request.getSession();
 			 session.setAttribute("id", id);
+		     session.setAttribute("selectedmenu", "loginsuccess");
 			 
 			 String IDStore = request.getParameter("remember");
 			 Cookie cookie = new Cookie("id", id);

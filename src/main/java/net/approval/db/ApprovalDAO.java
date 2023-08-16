@@ -276,4 +276,36 @@ public class ApprovalDAO {
 		
 	}
 
+	public ArrayList<Approval> getApprovalList() {
+		// TODO Auto-generated method stub
+		String sql = "SELECT A.APPROVAL_DOCUMENT, A.APPROVAL_SUBJECT, M.M_NAME, A.APPROVAL_DATE "
+				+ "FROM APPROVAL A LEFT JOIN MEMBER M "
+				+ "ON A.APPROVAL_WRITER = M.M_ID ";
+		ArrayList<Approval> appList = new ArrayList<>();
+		
+		try (Connection conn = ds.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			try (ResultSet rs = pstmt.executeQuery();) {
+
+				while (rs.next()) {
+					Approval app = new Approval();
+					app.setApproval_document(rs.getString(1));
+					app.setApproval_subject(rs.getString(2));
+					app.setApproval_writer(rs.getString(3));
+					app.setApproval_date(rs.getString(4));
+					
+					appList.add(app);
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return appList;
+	}
+
 }
