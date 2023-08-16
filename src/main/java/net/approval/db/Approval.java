@@ -9,6 +9,9 @@ public class Approval {
 	private int approval_template;
 	private String approval_document;
 	private String approval_content;
+	
+	private String approval_template_str;
+	
 
 	public int getApproval_num() {
 		return approval_num;
@@ -72,6 +75,14 @@ public class Approval {
 
 	public void setApproval_content(String approval_content) {
 		this.approval_content = approval_content;
+	}
+
+	public String getApproval_template_str() {
+		return approval_template_str;
+	}
+
+	public void setApproval_template_str(String approval_template_str) {
+		this.approval_template_str = approval_template_str;
 	}
 
 }

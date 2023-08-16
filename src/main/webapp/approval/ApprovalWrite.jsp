@@ -84,26 +84,27 @@
 
 
 		<form action="approvalAddAction.apv" method="post" id="approvalForm">
-			<div class="approval-container">
 
-				<div class="approval-header">
-					<div class="approval-header-select">
-						양식 선택 <select name='approval-template' class='approval-select' id='select-template'>
-							<c:forEach var='at' items='${atList}'>
-								<option value='${at.a_template_num}'>${at.a_template_name}</option>
-							</c:forEach>
-						</select>
-					</div>
-					<div class="approval-header-select">
-						보존 기한 <select name='approval-period' class='approval-select'>
-							<option value='2'>2년</option>
-							<option value='3'>3년</option>
-							<option value='5'>5년</option>
-							<option value='10'>10년</option>
-						</select>
-					</div>
+			<div class="approval-header">
+				<div class="approval-header-select">
+					양식 선택 <select name='approval-template' class='approval-select' id='select-template'>
+						<c:forEach var='at' items='${atList}'>
+							<option value='${at.a_template_num}'>${at.a_template_name}</option>
+						</c:forEach>
+					</select>
+				</div>
+				<div class="approval-header-select">
+					보존 기한 <select name='approval-period' class='approval-select'>
+						<option value='2'>2년</option>
+						<option value='3'>3년</option>
+						<option value='5'>5년</option>
+						<option value='10'>10년</option>
+					</select>
 				</div>
 
+			</div>
+
+			<div class="approval-container">
 				<div class="approval-line-container">
 
 					<table class="approval-line">
@@ -155,9 +156,13 @@
 			<!-- 결재선 div -->
 
 
+			<div class="approval-content-subject">
+				<div>제목 :</div>
+				<input type='text' name='approval-subject' id='approval-subject'>
+			</div>
 
 			<div class="approval-content-container">
-				제목 : <input type='text' name='approval-subject'>
+
 				<div class="approval-content"></div>
 				<!-- 템플릿 양식에 따른 input값들 -->
 			</div>

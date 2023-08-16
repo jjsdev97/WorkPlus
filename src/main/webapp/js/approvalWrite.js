@@ -167,16 +167,22 @@ $(document).ready(function() {
 			}
 		})
 	}
-	
-	
-	 $("#approvalForm").submit(function(event) {
-            event.preventDefault(); 
-            
-            var divContent = $(".approval-content").html();
 
-            $("#hiddenField").val(divContent);
+	$('.approval-content-container').on('keyup', '#approval-content-item-input', function() {
+		var inputValue = $(this).val();
 
-            $(this).unbind("submit").submit(); 
-        });
+		$(this).html(inputValue);
+	})
+
+
+	$("#approvalForm").submit(function(event) {
+		event.preventDefault();
+
+		var divContent = $(".approval-content").text();
+
+		$("#hiddenField").val(divContent);
+
+		$(this).unbind("submit").submit();
+	});
 
 });
