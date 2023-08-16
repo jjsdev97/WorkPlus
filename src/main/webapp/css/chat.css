@@ -255,6 +255,7 @@ body > div.main > div > div.chatroom > div:nth-child(1) > span:nth-child(3){
 
   .rules-list {
     padding: 0;
+    list-style-type: none;
   }
 
   .rules-list li {
