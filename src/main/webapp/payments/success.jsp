@@ -82,8 +82,7 @@
             font-size: 1.5rem;
             margin-bottom: 20px;
         }
-	
-		
+        
     	
         table.centered-table {
             width: 100%; /* 테이블 폭 설정 */
@@ -99,11 +98,12 @@
 
         table.centered-table th {
             background-color: #3C6E71;
+            width: 25%;
             color: #FFFFFF; /* 헤더 배경 및 텍스트 색상 */
         }
 
         table.centered-table tr:nth-child(even) {
-            background-color: #FFFFFF; 
+            background-color: #FFFFFF;
             color: #353535;
         }
 
@@ -120,6 +120,8 @@
             margin-top: 20px;
             border-radius: 12px;
         }
+        
+        
     </style>
     <title>결제 완료</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
@@ -131,30 +133,31 @@
     if (isSuccess) { %>
         <h1>결제 완료</h1>
         <table class="centered-table">
-            <tbody>
-                <tr>
-                    <th>상품 이름</th>
-                    <td><%= jsonObject.get("orderName") %></td>
-                </tr>
-                <tr>
-                    <th>상품 가격</th>
-                    <td><%= jsonObject.get("balanceAmount") %></td>
-                </tr>
-                <tr>
-                    <th>결제 방식</th>
-                    <td><%= jsonObject.get("method") %></td>
-                </tr>
-                <tr>
-                    <th>상세 정보</th>
-                    <td>
-                        <% if(jsonObject.get("method").equals("카드")) { out.println(((JSONObject)jsonObject.get("card")).get("number"));} %>
-                        <% if(jsonObject.get("method").equals("가상계좌")) { out.println(((JSONObject)jsonObject.get("virtualAccount")).get("accountNumber"));} %>
-                        <% if(jsonObject.get("method").equals("계좌이체")) { out.println(((JSONObject)jsonObject.get("transfer")).get("bank"));} %>
-                        <% if(jsonObject.get("method").equals("휴대폰")) { out.println(((JSONObject)jsonObject.get("mobilePhone")).get("customerMobilePhone"));} %>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <tbody>
+        <tr>
+            <th>상품이름</th>
+            <td><%= jsonObject.get("orderName") %></td>
+        </tr>
+        <tr>
+            <th>상품가격</th>
+            <td><%= jsonObject.get("balanceAmount") %></td>
+        </tr>
+        <tr>
+            <th>결제방식</th>
+            <td><%= jsonObject.get("method") %></td>
+        </tr>
+        <tr>
+            <th>상세정보</th>
+            <td>
+                <% if(jsonObject.get("method").equals("카드")) { out.println(((JSONObject)jsonObject.get("card")).get("number"));} %>
+                <% if(jsonObject.get("method").equals("가상계좌")) { out.println(((JSONObject)jsonObject.get("virtualAccount")).get("accountNumber"));} %>
+                <% if(jsonObject.get("method").equals("계좌이체")) { out.println(((JSONObject)jsonObject.get("transfer")).get("bank"));} %>
+                <% if(jsonObject.get("method").equals("휴대폰")) { out.println(((JSONObject)jsonObject.get("mobilePhone")).get("customerMobilePhone"));} %>
+            </td>
+        </tr>
+    </tbody>
+	</table>
+
     <%} else { %>
         <h1>결제 실패</h1>
         <div class="error-message">

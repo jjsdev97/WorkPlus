@@ -23,7 +23,7 @@ public class BoardModifyAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		String realFolder = "";
-		String saveFolder = "boardupload";
+		String saveFolder = "cafeitemupload";
 		
 		int fileSize = 5 * 1024 * 1024; // 업로드 할 파일의 최대 사이즈(5MB)
 		
@@ -48,7 +48,8 @@ public class BoardModifyAction implements Action {
 			System.out.println("check: " + check);
 			if (check != null) {
 				boarddata.setITEM_IMG_PATH(check);
-			} else {
+			} 
+			else {
 				String filename = multi.getFilesystemName("ITEM_IMG_PATH");
 				boarddata.setITEM_IMG_PATH(filename);
 			}

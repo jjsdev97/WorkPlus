@@ -74,21 +74,20 @@
 	<a href="side.cafe" class="btn_cafe_menu" id="btn_side">Side</a>
 	</div>
 	
-	<h3>Coffee</h3>
-    <table>
-        <tr>
-        	<th></th>
-            <th>메뉴</th>
-            <th>가격</th>
-        </tr>
+    <h3>Coffee</h3>
+    <div class="menu-item-container">
         <c:forEach items="${coffeeItemList}" var="item">
-            <tr class="item" data-id="${item.ITEM_UID}"> <!-- data-id 속성과 .item 클래스를 추가 -->
-            	<td><img src="${item.ITEM_IMG_PATH}" alt="${item.ITEM_NAME}" width="100" height="100"></td> <!-- 이미지 추가 -->
-            	<td><a href="#" class="item-link" data-id="${item.ITEM_UID}">${item.ITEM_NAME}</a></td>
-            	<td><a href="#" class="item-link" data-id="${item.ITEM_UID}">${item.ITEM_PRICE}</a></td>
-            </tr>
+            <div class="menu-item" data-id="${item.ITEM_UID}">
+            <img src="${pageContext.request.contextPath}/cafeitemupload/${item.ITEM_IMG_PATH}" alt="${item.ITEM_NAME}" class="item-link" data-id="${item.ITEM_UID}">
+                <div class="menu-item-name">
+                    <a href="#" class="item-link" data-id="${item.ITEM_UID}">${item.ITEM_NAME}</a>
+                </div>
+                <div class="menu-item-price">
+                    <a href="#" class="item-link" data-id="${item.ITEM_UID}">${item.ITEM_PRICE}</a>
+                </div>
+            </div>
         </c:forEach>
-    </table>
+    </div>
 
     <h3>장바구니</h3>
     <table class="cart-table">

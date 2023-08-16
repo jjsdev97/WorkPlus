@@ -7,7 +7,7 @@
 <style>
 	
 	body {
-		background-color: #D9D9D9;
+		background-color: #FFFFFF;
 	}
 	
 	h1{font-size: 1.5rem; text-align: center; color: #353535}
@@ -15,6 +15,7 @@
 	.container {
 		width: 60%
 	}
+	
 	
 	.btn-primary {
 		background-color: #3C6E71;

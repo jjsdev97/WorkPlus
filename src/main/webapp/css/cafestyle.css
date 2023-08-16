@@ -138,6 +138,60 @@ table td {
 	margin-left: 60px;
 }
 
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin: 10;  /* 간격을 없애기 위해 수정 */
+    border-radius: 5px;
+    width: 215px; /* 여기에 폭과 높이를 동일한 값으로 설정 */
+    height: 160px; /* 여기에 폭과 높이를 동일한 값으로 설정 */
+}
+
+/* 
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D9D9D9;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    flex-basis: calc(33.33% - 20px);  3개의 아이템이 한 행에 있을 경우 
+} 
+*/
+
+.menu-item-container {
+	width: 1250px; /* 원하는 크기로 설정 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* 아이템들을 왼쪽으로 정렬하기 위해 수정 */
+}
+
+/* 아이템 이미지 스타일 */
+.menu-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+/* 아이템 이름 스타일 */
+.menu-item-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 아이템 가격 스타일 */
+.menu-item-price {
+    font-size: 14px;
+    color: #3C6E71;
+    margin-top: 5px;
+}
+
+
 /* 아이템 선택시 밑줄 */
 .item-link {
     display: block; 
