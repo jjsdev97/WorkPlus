@@ -82,3 +82,16 @@ from ( select rownum rnum, j.*
 			where rownum <= ?
 		 )
 where rnum>=? and rnum<=?;
+
+
+select count(*) from member 
+left join dept on member.d_num = dept.d_num 
+where M_NAME like '%홍%'  
+AND R_ADMIT = '1';
+
+
+
+
+select * from POSITION;
+select * from MEMBER;
+select * from dept;

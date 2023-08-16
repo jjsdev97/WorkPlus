@@ -292,7 +292,7 @@ ul.tabs li.current{
 	margin-top:5px;
 }
 
-.admitbtn{
+.admitbtn, .undoblockbtn{
 	margin: auto;
 	border: none;
  	display: inline-block; 
@@ -300,6 +300,15 @@ ul.tabs li.current{
  	border-radius: 5px;
  	height:30px;
 }
+.blockbtn{
+	margin: auto;
+	border: none;
+ 	display: inline-block; 
+ 	background-color: #CAD5BD;
+ 	border-radius: 5px;
+ 	height:30px;
+}
+
 .rejectbtn{
 	margin: auto;
 	border: none;
@@ -308,7 +317,7 @@ ul.tabs li.current{
  	border-radius: 5px;
  	height:30px;
 }
-.blockbtn{
+.deletebtn{
 	margin: auto;
 	border: none;
  	display: inline-block; 
@@ -324,7 +333,6 @@ ul.tabs li.current{
  	border-radius: 5px;
  	height:30px;
 }
-
 
 
 
