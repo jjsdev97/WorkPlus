@@ -23,7 +23,7 @@ $(document).ready(function() {
     var user = $("#user");
     var message = $("#textMessage");
     messageTextArea.val(messageTextArea.val() + user.val() + "(me) => " + message.val() + "\n");
-    webSocket.send("{{" + user.val() + "}}" + message.val());
+    webSocket.send("{{" + user.val() + "}}" + message.val() );
     message.val("");
   });
 

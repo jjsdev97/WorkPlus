@@ -226,14 +226,21 @@ public class ChatDAO {
 		return null;
 	}
 	
-//
-//	public void createRoom(String id, String f_id) {
+
+//	public int createRoom(String id, String f_id) {
 //		int result = 0;
-//		String max_sql = "(select nvl(max(m_num),0)+1 from chat)";
+//		String max_sql = "select nvl(max(m_num),0)+1 from chat";
 //		
+//		//0. 두 사람에 관련된 방이 있는지 확인
+//		//	(1)있으면 해당 번호 return
+//		//  (2) 없으면 추가 return = max_sql
+//		
+//		//1.  max_sql 구하기
+//		
+//		//2.  insert 구하기
 //		String sql = "insert into chat  "
 //				+ "(CHAT_ID, CHAT_FROM, CHAT_TO) "
-//				+ "values (1,  ?, ? )";
+//				+ "values (" + max_sql + ",  ?, ? )";
 //		
 //		try( Connection con = ds.getConnection();
 //				 PreparedStatement pstmt = con.prepareStatement(sql);) {
@@ -249,6 +256,7 @@ public class ChatDAO {
 //					
 //		
 //	}
+	
 	//친구 즐겨찾기 삭제
 	public Member removeFBookMark(String id, String f_id) {
 	int result = 0;

@@ -37,7 +37,7 @@ public class ChatListAction implements Action {
         System.out.println("createRoom을 위한 f_id =" + f_id);
         
 		
-// 		chatdao.createRoom(id, f_id);
+ 		//chatdao.createRoom(id, f_id);
 		
 		
 		//채팅방 리스트
