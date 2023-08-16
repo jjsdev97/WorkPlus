@@ -1,0 +1,37 @@
+/* css/style.css */
+/* 선택자종류
+아이디선택자 #id
+클래스선택자 .id
+속성선택자   id[src]
+ */
+
+.basic {
+	margin-top:20px;
+	margin-left:80px
+}
+
+.B-inline {
+	display:inline-block;
+}
+.container {
+	margin-bottom: 30px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    border-width: 0px 0px 1px 0px;
+    width: 70%;
+}
+
+#V-content {
+	width: 70%;
+    height: 300px;
+    border-width: 0px 0px 1px 0px;
+}
+
+.last-line-container {
+	width:100%;
+	display:flex;
+}
+
+#V-file{
+	margin-right: 56%;
+}

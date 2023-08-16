@@ -16,7 +16,7 @@
 	<div class="main">
 		<!-- BoardWrite.bo로 넘어감 (frontcont에서 받음) -->
 		<!-- 입력된 값을 액션 서블릿으로 넘김 -->
-		<form action="BoardAddAction.bo" method="post"
+		<form id="B-main" action="BoardAddAction.bo" method="post"
 			enctype="multipart/form-data" name="boardform">
 			<div class="board_drop" id="board_type">
 				<div class="board_select">
@@ -48,8 +48,7 @@
 
 			<!-- 글씨체, 폰트, 등 조절하는 라벨 한줄 끌어올 예정 -->
 
-			<textarea id="board_content" name="BOARD_CONTENT" cols="60" rows="30">
-			</textarea>
+			<textarea id="board_content" name="BOARD_CONTENT" cols="60" rows="30"></textarea>
             
 			
             <div class="file_select">

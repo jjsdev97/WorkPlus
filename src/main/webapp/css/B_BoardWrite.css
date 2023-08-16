@@ -6,7 +6,7 @@
  */
 
 /*전체 위,왼쪽 여백주기*/
-form {
+#B-main {
 	margin-top:20px;
 	margin-left:80px
 }
@@ -44,7 +44,7 @@ form {
 	font-size: 16px;
 	height:30px;
 }
-textarea {
+#board_content {
 	border-radius:5px;
 	border:1px solid black;
 	background-color:white;
