@@ -79,7 +79,7 @@
 					<div></div>
 				</c:if>
 
-				<div class="last-line">
+				<div class="last-line"> 작성일자 : 
 					<!-- 작성일자 -->
 					<c:out value="${boarddata.BOARD_DATE}" />
 				</div>
