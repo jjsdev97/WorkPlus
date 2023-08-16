@@ -14,17 +14,19 @@
 	</div>
 	<div class="navbar-nav">
 		<div class="nav-item">
-			<a href="logout.et" id="logout">로그아웃</a>
-		</div>
-		<div class="nav-item">
 			<a href="#"><img src="${pageContext.request.contextPath}/img/header-alarm.png" id="header-alarm"></a>
 		</div>
 		<div class="nav-item">
-			<a href="profileUpdate.et" id="profile"><img src="${pageContext.request.contextPath}/img/navprofile.png" id="navprofile" alt="">홍길동</a>
+			<a href="profileUpdate.et" id="navprofile"><img src="${pageContext.request.contextPath}/img/navprofile.png" class="navprofile" alt="">&nbsp;홍길동</a>
 		</div>
+		<div class="nav-item">
+			<a href="logout.et" id="navlogout"><img src="${pageContext.request.contextPath}/img/logout.png" class="navlogout"></a>
+		</div>
+		<%-- setting icon
 		<div class="nav-item">
 			<a href="#"><img src="${pageContext.request.contextPath}/img/header-setting.png" id="header-setting"></a>
 		</div>
+		--%>
 	</div>
 </nav>
 

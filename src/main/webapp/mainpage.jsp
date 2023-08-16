@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>main page</title>
 
 <jsp:include page="/header.jsp" />
 <style>
@@ -12,7 +12,6 @@
   height: auto;
   display: block;
   margin: 0;
-  
 }
 
 </style>

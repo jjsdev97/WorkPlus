@@ -128,8 +128,8 @@
 								</td>
 								<td>${m.VERIFY_EMAIL}</td>
 								<td>${m.m_HIREDATE}</td>
-								<td><button class="okbtn"><span class="admit" style="color: blue;">가입승인</span></button>&nbsp;
-									<button class="cancelbtn"><a href="memberDelete.et?id=${m.m_ID}&tab=1">
+								<td><button class=""><span class="admit" style="color: blue;">가입승인</span></button>&nbsp;
+									<button class=""><a href="memberDelete.et?id=${m.m_ID}&tab=1">
 									<span class="reject" style="color: red;">가입거절</span></a></button></td>
 							  </tr>
 							</c:forEach>
