@@ -77,11 +77,13 @@
 	<h3>Coffee</h3>
     <table>
         <tr>
+        	<th></th>
             <th>메뉴</th>
             <th>가격</th>
         </tr>
         <c:forEach items="${coffeeItemList}" var="item">
             <tr class="item" data-id="${item.ITEM_UID}"> <!-- data-id 속성과 .item 클래스를 추가 -->
+            	<td><img src="${item.ITEM_IMG_PATH}" alt="${item.ITEM_NAME}" width="100" height="100"></td> <!-- 이미지 추가 -->
             	<td><a href="#" class="item-link" data-id="${item.ITEM_UID}">${item.ITEM_NAME}</a></td>
             	<td><a href="#" class="item-link" data-id="${item.ITEM_UID}">${item.ITEM_PRICE}</a></td>
             </tr>

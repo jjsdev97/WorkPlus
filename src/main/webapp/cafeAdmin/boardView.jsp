@@ -38,7 +38,7 @@
                     <td><div>첨부파일</div></td>
                     <c:if test="${!empty boarddata.ITEM_IMG_PATH}">
                         <td>
-                            <img src="image/down.png" width="10px">
+                            <img src="img/down.png" width="10px">
                             <a href="ItemFileDown.ca?filename=${boarddata.ITEM_IMG_PATH}">
                                 파일 다운로드
                             </a>
