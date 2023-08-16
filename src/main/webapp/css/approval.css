@@ -1,27 +1,33 @@
 .approval-header {
-	margin: 10px;
-	width: 70%;
-	
+	margin: 30px;
+	width: 75%;
+	height: 50px;
+	background-color: #A0C1B9;
+	line-height: 50px;
+}
+
+.approval-select {
+	width: 100px;
+	height: 30px;
 }
 
 .approval-container {
+	margin: 10px;
 	width: 100%;
 	height: 400px;
-	background-color: skyblue;
 }
 
 .approval-header-select {
-	display:inline-block;
-	margin-left:20px;
+	display: inline-block;
+	margin-left: 20px;
 }
+
 .approval-line-container {
-	width: 70%;
+	width: 75%;
 	height: 40%;
 }
 
-
 /* 작성창 결재선 테이블 시작 */
-
 .approval-line {
 	margin: 20px;
 	width: 700px;
@@ -29,6 +35,7 @@
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	text-align: center;
+	border-collapse: collapse;
 }
 
 .approval-line tbody td, th {
@@ -48,9 +55,7 @@
 	height: 40%;
 }
 
-
 /* 작성창 결재선 테이블 끝 */
-
 .modal-subject {
 	background-color: #A0C1B9;
 	font-weight: bold;
@@ -108,18 +113,24 @@
 }
 
 .modal-member-list-subject, .modal-approval-line-subject {
+	padding-left: 5px;
 	width: 100%;
 	height: 7%;
 	background-color: #A0C1B9;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-sizing: border-box;
 }
 
 .modal-member-list {
 	max-width: 100%;
 	height: 93%;
-	background-color: gray;
+	background-color: #D9D9D9;
 	box-sizing: border-box;
 	overflow-x: hidden;
 	overflow-y: scroll;
+	border-bottom-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 .modal-member-item {
@@ -133,14 +144,16 @@
 	float: right;
 	width: 68%;
 	height: 100%;
-	background-color: gray;
+	background-color: #D9D9D9;
+	border-radius: 5px;
 }
 
 .modal-approval-line {
 	width: 100%;
 	height: 93%;
-	background-color: gray;
+	background-color: #D9D9D9;
 	box-sizing: border-box;
+	border-radius: 5px;
 }
 
 ul {
@@ -148,17 +161,18 @@ ul {
 }
 
 .modal-approval-line-type {
-	border: 1px solid blue;
+	border: 1px solid #D9D9D9;
 	margin: 1%;
 	width: 98%;
 	height: 30%;
-	background-color: green;
+	background-color: #FFFFFF;
 	box-sizing: bordering-box;
+	border-radius: 5px;
 }
 
 .modal-approval-line-type-subject {
 	float: left;
-	border: 1px solid black;
+	border: 1px solid #D9D9D9;
 	display: flex;
 	text-align: center;
 	align-items: center;
@@ -170,29 +184,34 @@ ul {
 	float: left;
 	width: 13.2%;
 	height: 100%;
-	border: 1px solid red;
+	border: 1px solid #D9D9D9;
+}
+
+.modal-approval-line-item:last-child {
+	border-right: 0px;
 }
 
 .approval-reference-container, .approval-reciever-container {
-	background-color: gray;
+	background-color: #A0C1B9;
 	width: 100%;
 	height: 35%;
 	margin: 20px;
 }
 
 .modal-start-btn-container {
-	width: 70%;
+	width: 100%;
 	height: 10%;
 	padding-left: 20px;
 }
 
 .modal-approval-reference, .modal-approval-reciever {
 	width: 98%;
-	height: 25%;
+	height: 30%;
 	margin: 1%;
 	margin-top: 10px;
 	background-color: white;
-	display:flex;
+	display: flex;
+	border-radius: 5px;
 }
 
 .modal-approval-type-btn-container {
@@ -203,32 +222,117 @@ ul {
 .modal-approval-type-btn {
 	font-size: 10px;
 	padding: 0px;
+	background-color: #A0C1B9;
+	border: 0px;
+	border-radius: 2px;
+	margin: 1px;
+}
+
+.modal-approval-type-btn:hover {
+	cursor: pointer;
 }
 
 .approval-content-container { /* 결재선 본문 컨테이너*/
-	width: 100%;
+	margin: 30px;
+	width: 75%;
 	height: 650px;
-	background-color: skyblue;
 	margin-top: 30px;
+	padding: 30px;
+	background-color: #D9D9D9;
+	box-sizing: border-box;
+	background-color: #D9D9D9;
 }
 
 .approval-btn-container {
-	width: 70%;
+	margin: 30px;
+	width: 75%;
 	height: 50px;
-	background-color: skyblue;
 	margin-top: 30px;
+}
+
+/* 결재선 input 관련 */
+#input-ref-item, #input-rec-item {
+	width: 50px;
+	text-align: center;
+	border: 0px;
+	background-color: #A0C1B9;
+}
+
+#input-approval-item {
+	width: 50px;
+	text-align: center;
+	border: 0px;
+}
+/* 결재선 input 관련 */
+#approval-line-type {
+	background-color: #A0C1B9;
+}
+
+.modal-btn {
+	float: right;
+	background-color: #A0C1B9;
+	width: 100px;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
 }
 
 .approval-submitbtn {
 	float: right;
+	background-color: #A0C1B9;
+	width: 100px;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
 }
 
-/* 결재선 input 관련 */
-
-#input-ref-item, #input-rec-item {
+.approval-content-subject {
+	width: 75%;
+	height: 50px;
+	margin: 30px;
 }
 
-#input-approval-item {
-	width:50px;
+#approval-subject {
+	padding-left: 10px;
+	width: 99%;
+	height: 80%;
+	background-color: #D9D9D9;
+	border: 0px;
+	font-size: 15pt;
 }
-/* 결재선 input 관련 */
+
+.approval-content-item {
+	margin-bottom: 10px;
+}
+
+#approval-content-item-input {
+	margin-left: 10px;
+	background-color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+}
+
+.approval-line-item-refrec {
+	margin-right: 5px;
+}
+
+.item-mname, .restore-member-btn {
+	display: inline-block;
+}
+
+.restore-member-btn {
+	height: 20px;
+	color: red;
+	font-size: 5pt;
+	border: 0px;
+	padding-bottom: 5px;
+	background-color: #FFFFFF;
+}
+
+.restore-member-btn:hover {
+	cursor: pointer;
+}
+
+.deptname {
+	padding-left: 3px;
+	box-sizing: border-box;
+}
