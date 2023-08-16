@@ -61,7 +61,16 @@
 
 
 
-		<h3>사용자 관리</h3><hr>
+		<h3>사용자 관리</h3>
+		
+		<div class="container">
+			<%-- tab container--%>
+			<ul class="tabs">
+				<li class="tab-link current" id="wait" data-tab="tab-1">가입대기[${listcount.wait }]</li>
+				<li class="tab-link" id="stop" data-tab="tab-2">이용중지[${listcount.stop}]</li>
+				<li class="tab-link" id="complete" data-tab="tab-3">승인완료[${listcount.complete }]</li>
+			</ul>
+		</div>
 		
 		<%-- 검색 --%>
 		<form action="memberList.et" method="post" name="memberlist"
@@ -74,20 +83,12 @@
 					<option value="1">사원번호</option>
 					<option value="2">부서</option>
 				</select> 
-				<input name="search_word" type="text" name="search_word"
+				<input name="search_word" type="text" id="search_word"
 					class="form-control" value="${search_word}">
 				<button class="search_btn" type="submit">검색</button>
 			</div>
 		</form>
 
-		<div class="container">
-			<%-- tab container--%>
-			<ul class="tabs">
-				<li class="tab-link current" id="wait" data-tab="tab-1">가입대기[${listcount.wait }]</li>
-				<li class="tab-link" id="stop" data-tab="tab-2">이용중지[${listcount.stop}]</li>
-				<li class="tab-link" id="complete" data-tab="tab-3">승인완료[${listcount.complete }]</li>
-			</ul>
-		</div>
 
 
 			<%-- 표시내용 --%>
@@ -133,7 +134,7 @@
 								<td>${m.m_HIREDATE}</td>
 								<td><button class="admitbtn"><span class="admit" style="color: white;">가입승인</span></button>&nbsp;
 									<button class="rejectbtn"><a href="memberDelete.et?id=${m.m_ID}&tab=1">
-									<span class="reject" style="color: red;">가입거절</span></a></button></td>
+									<span class="reject" style="color: black;">가입거절</span></a></button></td>
 							  </tr>
 							</c:forEach>
 					</tbody>
@@ -233,7 +234,7 @@
 									<button class="undoblockbtn"><a href="memberClearblock.et?id=${m.m_ID}&tab=2">
 									<span class="clear" style="color: white;">중지해제</span></a></button>&nbsp; 
 									<button class="deletebtn"><a href="memberDelete.et?id=${m.m_ID}&tab=2"><span
-											class="delete" style="color: red;">계정삭제</span></a></button></td>
+											class="delete" style="color: black;">계정삭제</span></a></button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -323,9 +324,9 @@
 									<td>${m.m_HIREDATE}</td>
 									<td><input type="hidden" name="dnum" id="hiddnum" class="hiddnum" value="${m.d_NUM}"> 
 									<input type="hidden" name="pnum" id="hidpnum" class="hidpnum" value="${m.p_NUM}"> 
-									<button class="modifybtn"><span class="update" style="color: white;">수정</span></button>&nbsp; 
+									<button class="modifybtn"><span class="update" style="color: white;">수정</span></button> 
 									<button class="blockbtn"><a href="memberBlock.et?id=${m.m_ID}&tab=3"><span class="block"style="color: white;">이용중지</span></a></button>
-									<button class="rejectbtn"><a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: red;">계정삭제</span></a></button></td>
+									<button class="rejectbtn"><a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: black;">계정삭제</span></a></button></td>
 								</tr>
 							</c:forEach>
 						</tbody>

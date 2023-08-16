@@ -46,7 +46,7 @@
 	</div>
  </form>
  <div class="cafe_login_container">
-		<a href="#" class="cafe_logo"><img src="img/cafe_icon.png" id="cafe_logo"></a>
+		<a href="login.cnet" class="cafe_logo"><img src="img/cafe_icon.png" id="cafe_logo"></a>
  </div>
 </div>
 

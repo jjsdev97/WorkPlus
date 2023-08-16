@@ -27,7 +27,7 @@ $(function(){
   <form name="find_idresultform"  method="post" class="find_idresultform" >
   <h3>아이디 찾기 결과</h3>
   	<div class="result_id">
-  		${member.m_NAME} 님의 아이디는<span id="idresult">${member.m_ID}</span> 입니다.
+  		${member.m_NAME} 님의 아이디는<span id="idresult">${member.m_ID}</span>입니다.
    </div>
 	
  	<div class="clearfix_id">
