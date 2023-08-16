@@ -1,4 +1,4 @@
-package et.member.action;
+package net.member.action;
 
 import java.io.IOException;
 
@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("*.et")
+
+//@WebServlet("")
 public class MemberFrontController extends javax.servlet.http.HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -40,95 +41,9 @@ public class MemberFrontController extends javax.servlet.http.HttpServlet {
 		Action action = null;
 		
 		switch(command) {
-		case "/login.et" :
-			action = new MemberLoginAction();
-			break;
+			
+			
 		
-		case "/logout.et" :
-			action = new MemberLogoutAction();
-			break;
-			
-		case "/join.et" :
-			action = new MemberJoinAction();
-			break;
-			
-		case "/loginProcess.et" :
-			action = new MemberLoginProcessAction();
-			break;
-			
-		case "/joinProcess.et" :
-			action = new MemberJoinProcessAction();
-			break;
-			
-		case "/idcheck.et" :
-			action = new MemberIdCheckAction();
-			break;	
-			
-		case "/empnumcheck.et" :
-			action = new MemberEmpnumCheckAction();
-			break;	
-			
-		case "/findid.et" :
-			action = new MemberFindIdAction();
-			break;
-			
-		case "/findidprocess.et" :
-			action = new MemberFindIdProcessAction();
-			break;
-			
-		case "/findpass.et" :
-			action = new MemberFindPassAction();
-			break;
-			
-		case "/verifyemail.et" :
-			action = new MemberverifyEmailAction();
-			break;
-			
-		case "/joinverifyemail.et" :
-			action = new MemberJoinverifyEmailAction();
-			break;
-			
-		case "/findpassprocess.et" :
-			action = new MemberFindpassProcessAction();
-			break;
-			
-		case "/passreset.et" :
-			action = new MemberpassResetAction();
-			break;
-			
-		case "/memberList.et" :
-			action = new MemberListAction();
-			break;
-			
-		case "/memberConfirm.et" :
-			action = new MemberConfirmAction();
-			break;
-			
-		case "/memberDelete.et" :
-			action = new MemberDeleteAction();
-			break;
-			
-		case "/memberClearblock.et" :
-			action = new MemberClearblockAction();
-			break;
-			
-		case "/memberBlock.et" :
-			action = new MemberBlockAction();
-			break;
-			
-		case "/profileUpdate.et" :
-			action = new MemberprofileUpdateAction();
-			break;
-			
-		case "/profileUpdateProcess.et" :
-			action = new MemberUpdateProcessAction();
-			break;
-			
-		case "/adminModify.et" :
-			action = new MemberAdminModifyAction();
-			break;
-			
-			
 		} //switch end
 		
 		forward = action.execute(request, response);
