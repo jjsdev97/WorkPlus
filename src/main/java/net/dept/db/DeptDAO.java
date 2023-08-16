@@ -180,7 +180,8 @@ public class DeptDAO {
 		
 		String sql = "SELECT M_NAME, D_NUM, POSITION.M_JOB, M_ID "
 				+ "FROM MEMBER LEFT JOIN POSITION "
-				+ "ON MEMBER.P_NUM = POSITION.P_NUM";
+				+ "ON MEMBER.P_NUM = POSITION.P_NUM "
+				+ "WHERE MEMBER.R_ADMIT = '2' AND MEMBER.M_STATUS = '1'";
 		
 		try(Connection conn = ds.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -217,6 +218,7 @@ public class DeptDAO {
 	
 		String sql = "SELECT D.D_NUM, D.D_NAME, COUNT(M.M_NUM) AS MEMBER_COUNT "
 					+"FROM DEPT D LEFT JOIN MEMBER M ON D.D_NUM = M.D_NUM "
+					+"WHERE M.R_ADMIT = '2' AND M.M_STATUS = '1' "
 					+"GROUP BY D.D_NUM, D.D_NAME "
 					+"ORDER BY D.D_NUM ";
 		

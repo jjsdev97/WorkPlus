@@ -1,0 +1,20 @@
+.approval-table {
+	border-collapse: collapse;
+	width:100%;
+	text-align:center;
+}
+
+.approval-table th {
+	border-top:1px solid black;
+}
+.approval-table tr:last-child {
+	border-bottom:1px solid black;
+}
+
+.approval-table-container {
+	margin: 50px;
+	background-color: skyblue;
+	width: 70%;
+	height: 600px;
+	padding: 10px;	
+}
