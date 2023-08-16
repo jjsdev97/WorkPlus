@@ -372,7 +372,7 @@ public class MemberDAO {
 
 	public int getListCount(String field, String search_word, String tabsql) {
 		int x = 0;
-		String sql = "select count(*) from member join dept "
+		String sql = "select count(*) from member left join dept "
 				+ "on member.d_num = dept.d_num where " + field + " like ?  AND " + tabsql ;
 		
 		System.out.println(sql);

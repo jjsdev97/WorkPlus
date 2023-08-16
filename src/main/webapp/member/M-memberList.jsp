@@ -94,6 +94,9 @@
 			<div id="tab-1" class="tab-content current">
 				<%-- 가입 대기 --%>
 				<c:if test="${listcount.wait > 0 }">
+				<c:if test="${ !empty searchlist && tab==1 }">
+						<c:set var="totallist1" value="${searchlist }" />
+					</c:if>
 					<table class="table table-striped">
 					<thead>
 							<tr>
@@ -128,8 +131,8 @@
 								</td>
 								<td>${m.VERIFY_EMAIL}</td>
 								<td>${m.m_HIREDATE}</td>
-								<td><button class=""><span class="admit" style="color: blue;">가입승인</span></button>&nbsp;
-									<button class=""><a href="memberDelete.et?id=${m.m_ID}&tab=1">
+								<td><button class="admitbtn"><span class="admit" style="color: white;">가입승인</span></button>&nbsp;
+									<button class="rejectbtn"><a href="memberDelete.et?id=${m.m_ID}&tab=1">
 									<span class="reject" style="color: red;">가입거절</span></a></button></td>
 							  </tr>
 							</c:forEach>
@@ -202,6 +205,9 @@
 			<div id="tab-2" class="tab-content">
 				<%-- 이용 중지 --%>
 				<c:if test="${listcount.stop > 0 }">
+				<c:if test="${ !empty searchlist && tab ==2 }">
+						<c:set var="totallist2" value="${searchlist }" />
+					</c:if>
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -224,9 +230,9 @@
 									<td>${m.VERIFY_EMAIL}</td>
 									<td>${m.m_HIREDATE}</td>
 									<td>
-									<button class=""><a href="memberClearblock.et?id=${m.m_ID}&tab=2">
-									<span class="clear" style="color: blue;">중지해제</span></a></button>&nbsp; 
-									<button class=""><a href="memberDelete.et?id=${m.m_ID}&tab=2"><span
+									<button class="undoblockbtn"><a href="memberClearblock.et?id=${m.m_ID}&tab=2">
+									<span class="clear" style="color: white;">중지해제</span></a></button>&nbsp; 
+									<button class="deletebtn"><a href="memberDelete.et?id=${m.m_ID}&tab=2"><span
 											class="delete" style="color: red;">계정삭제</span></a></button></td>
 								</tr>
 							</c:forEach>
@@ -291,7 +297,7 @@
 			<div id="tab-3" class="tab-content">
 				<%-- 승인 완료 --%>
 				<c:if test="${listcount.complete > 0 }">
-					<c:if test="${ !empty searchlist }">
+					<c:if test="${ !empty searchlist && tab==3 }">
 						<c:set var="totallist3" value="${searchlist }" />
 					</c:if>
 					<table class="table table-striped">
@@ -317,9 +323,9 @@
 									<td>${m.m_HIREDATE}</td>
 									<td><input type="hidden" name="dnum" id="hiddnum" class="hiddnum" value="${m.d_NUM}"> 
 									<input type="hidden" name="pnum" id="hidpnum" class="hidpnum" value="${m.p_NUM}"> 
-									<button class=""><span class="update" style="color: blue;">수정</span></button>&nbsp; 
-									<button class=""><a href="memberBlock.et?id=${m.m_ID}&tab=3"><span class="block"style="color: black;">이용중지</span></a></button>
-									<button class=""><a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: red;">계정삭제</span></a></button></td>
+									<button class="modifybtn"><span class="update" style="color: white;">수정</span></button>&nbsp; 
+									<button class="blockbtn"><a href="memberBlock.et?id=${m.m_ID}&tab=3"><span class="block"style="color: white;">이용중지</span></a></button>
+									<button class="rejectbtn"><a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: red;">계정삭제</span></a></button></td>
 								</tr>
 							</c:forEach>
 						</tbody>

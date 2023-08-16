@@ -19,6 +19,7 @@ public class MemberConfirmAction implements Action {
 		String id = request.getParameter("id");
 		String tab = request.getParameter("tab");
 		int dnum = Integer.parseInt(request.getParameter("dnum"));
+		System.out.println("부서번호는 " + dnum);
 		String pnum = request.getParameter("pnum");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();

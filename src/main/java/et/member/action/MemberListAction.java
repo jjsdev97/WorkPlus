@@ -32,6 +32,7 @@ public class MemberListAction implements Action {
 		int page3 = 1;
 		int limit = 10;
 		
+		
 		if(request.getParameter("page1")!=null) {
 			page1 = Integer.parseInt(request.getParameter("page1"));
 		}
@@ -46,6 +47,14 @@ public class MemberListAction implements Action {
 		System.out.println("넘어온 페이지2 = " + page2);
 		System.out.println("넘어온 페이지3 = " + page3);
 		
+		
+		String tab = request.getParameter("tab");
+		int tab_int = 0;
+		if(tab != null && !tab.equals("")) {
+			tab_int = Integer.parseInt(tab)-1;
+		}
+		
+		System.out.println("tab_int=" + tab_int);
 		int listcount_search = 0;
 		int index = -1;   //search_field에 존재하지 않는 값으로 초기화
 		
@@ -59,15 +68,12 @@ public class MemberListAction implements Action {
 		ArrayList<Member>  list3 = null;
 		ArrayList<Dept> deptlist = null;
 		ArrayList<Position> position = null;
-		int listcount1 = 0;
-		int listcount2 = 0;
-		int listcount3 = 0;
 		
 		
+		map = mdao.getListCountAdmit();
 		// 1)관리자 페이지 - 사용자 관리 클릭한 경우(가입대기인 회원목록 표시)
-		if(request.getParameter("search_word") == null || request.getParameter("search_word").equals("")){
+		
 			//가입대기인 회원 목록 표시
-			map = mdao.getListCountAdmit();
 			list1 = mdao.getList1(page1, 10, "R_ADMIT = '1' ");  //가입승인
 			list2 = mdao.getList1(page2, 10, "M_STATUS = '2' and R_ADMIT= '2' "); //이용중지
 			list3 = mdao.getList1(page3, 10, "R_ADMIT = '2' and M_STATUS = '1' ");  //승인완료
@@ -75,17 +81,17 @@ public class MemberListAction implements Action {
 			deptlist = mdao.deptinfo();
 			position = mdao.jobinfo();
 			
-		} else {  //검색을 클릭한 경우 
+			if(request.getParameter("search_word") != null && !request.getParameter("search_word").equals("")) {  //검색을 클릭한 경우 
 			
 			index = Integer.parseInt(request.getParameter("search_field")); //목록의 값 index로 가져오기
 			String[] search_field = new String[] {"M_NAME", "E_NUM" , "D_NAME"};
 			String[] status = new String[] {"R_ADMIT = '1'",  "M_STATUS = '2'", "R_ADMIT = '2'" };
 			search_word = request.getParameter("search_word");
-			String tab = request.getParameter("tab");
-			int tab_int = Integer.parseInt(tab)-1;
+			
 			listcount_search = mdao.getListCount(search_field[index], search_word, status[tab_int] );
-			map = new HashMap<String, Integer> ();
+			
 		    String[] key={"wait", "stop", "complete"};
+		    
 		    map.put(key[tab_int], listcount_search);
 		    searchlist = mdao.getList(search_field[index], search_word, page1, limit,  status[tab_int]);
 		}
@@ -139,7 +145,7 @@ public class MemberListAction implements Action {
 		request.setAttribute("listcount", map);
 		request.setAttribute("deptlist", deptlist);
 		request.setAttribute("position", position);
-		request.setAttribute("tab", request.getParameter("tab"));
+		request.setAttribute("tab", tab_int+1);
 		actionforward.setPath("member/M-memberList.jsp");
 		actionforward.setRedirect(false);
 		
