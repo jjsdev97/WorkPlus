@@ -43,7 +43,9 @@ table div {
 .board_subject {
 	border:1px solid black;
 }
-
+thead>tr {
+	border:1px solid black;
+}
 .pagination {
     display: -ms-flexbox;
     display: flex;
@@ -84,5 +86,4 @@ margin-top: 0;
     color: #007bff;
     background-color: #fff;
     border: 1px solid #dee2e6;
-    
 }
