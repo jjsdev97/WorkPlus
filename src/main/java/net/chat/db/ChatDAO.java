@@ -13,10 +13,6 @@ import javax.sql.DataSource;
 
 import net.member.db.Member;
 
-
-
-
-
 public class ChatDAO {
 	private DataSource ds;
 	
@@ -29,7 +25,7 @@ public class ChatDAO {
 		}
 	}
 	
-	//chatstatus
+	//내 상태(chatstatus) 업데이트
 	public Member memberStatusUpdate(String id, String status) {
 		int result = 0;
 		String sql = "update member set CHAT_STATUS = ? "
@@ -50,7 +46,7 @@ public class ChatDAO {
 		return null;
 	}
 
-	
+	//사원 목록
 	public List<Member> getMemberList(String id) {
 		
 		String member_list_sql = "SELECT m_profilefile, m_name, chat_status, d_name, m_job, m_id, c_object, "
@@ -105,7 +101,8 @@ public class ChatDAO {
 		
 		return list;
 	}
-
+	
+	//내 프로필
 	public Member memberinfo(String id) {
 		Member m = null;
 		String member_list_sql = "select m_profilefile, m_name, chat_status, d_name, m_job, m_id "
@@ -146,19 +143,30 @@ public class ChatDAO {
 			return m;
 		}
 
+	//사원 목록 검색
 	public List<Member> getMemberList(String id, String search_word) {
-		String member_list_sql = "select m_profilefile, m_name, chat_status, d_name, m_job "
-				+ "from member "
-				+ "left join dept on member.d_num = dept.d_num "
-				+ "left join position on member.p_num = position.p_num "
-				+ "where m_name like ?";
+		String member_list_sql = "SELECT m_profilefile, m_name, chat_status, d_name, m_job, m_id, c_object, "
+				+ " c_subject, m_status, r_admit "
+				+ "FROM member "
+				+ "LEFT JOIN dept ON member.d_num = dept.d_num "
+				+ "LEFT JOIN position ON member.p_num = position.p_num "
+				+ "FULL OUTER JOIN CHAT_FRIEND_BOOKMARK ON member.m_id = CHAT_FRIEND_BOOKMARK.c_object "
+				+ "                                      AND c_subject = ? "
+				+ "WHERE member.m_id != 'admin' "
+				+ "AND member.m_id != ?  "
+				+ "AND r_admit = '2' "
+				+ "AND m_status = '1' "
+				+ "and member.m_name like ?";
 		
 		List<Member> list = new ArrayList<Member>();
-		
+		System.out.println(member_list_sql);
 		try (Connection con = ds.getConnection(); 
 			PreparedStatement pstmt = con.prepareStatement(member_list_sql);){
 			
-			pstmt.setString(1, "%" + search_word + "%");
+			pstmt.setString(1, id);
+			pstmt.setString(2, id);
+			pstmt.setString(3, "%" + search_word + "%");
+			
 			try(ResultSet rs = pstmt.executeQuery()){
 				
 				while(rs.next()) {
@@ -168,6 +176,9 @@ public class ChatDAO {
 					m.setCHAT_STATUS(rs.getString(3));
 					m.setD_NAME(rs.getString(4));
 					m.setM_JOB(rs.getString(5));
+					m.setM_ID(rs.getString(6));
+					m.setC_object(rs.getString(7));
+					m.setC_subject(rs.getString(8));
 					
 					list.add(m);
 				}
@@ -185,7 +196,6 @@ public class ChatDAO {
 		return list;
 	}
 
-	
 	//친구 즐겨찾기
 	public Member addFBookMark(String id, String f_id) {
 		int result = 0;

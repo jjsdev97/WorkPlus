@@ -32,7 +32,6 @@ public class ChatMainAction implements Action {
 		String search_word = "";
 
 		if (request.getParameter("search_word") == null || request.getParameter("search_word").equals("")) {
-
 			// 전체 멤버 리스트
 			memberlist = chatdao.getMemberList(id);
 		} else {// 검색을 클릭한 경우

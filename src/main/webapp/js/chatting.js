@@ -1,11 +1,9 @@
 $(document).ready(function() {
-	var roomNo = 123;//입장하고자 하는 방 번호
-    var webSocket = new WebSocket("ws://localhost:8088/WorkPlus/chat/" + roomNo);
-  	var messageTextArea = $("#messageTextArea");
+	var webSocket = new WebSocket("ws://localhost:8088/WorkPlus/broadsocket");
+	var messageTextArea = $("#messageTextArea");
 
   webSocket.onopen = function() {
-	  console.log("WebSocket connected to room " + roomNo);
-    messageTextArea.val(messageTextArea.val() + "Server connect...\n");
+	  messageTextArea.val(messageTextArea.val() + "Server connect...\n");
   };
 
   webSocket.onclose = function() {

@@ -37,37 +37,7 @@ fbookmark_seq.nextva
 select fbookmark_seq.currval from CHAT_FRIEND_BOOKMARK
 TRUNCATE table CHAT_FRIEND_BOOKMARK;
 
-select m_profilefile, m_name, chat_status, d_name, m_job, m_id , c_object, c_subject
-from member 
-left join dept on member.d_num = dept.d_num 
-left join position on member.p_num = position.p_num
-full outer join CHAT_FRIEND_BOOKMARK on member.m_id = CHAT_FRIEND_BOOKMARK.c_object 
-and c_subject = 'gwono12'
-where member.m_id != 'admin'
-and member.m_id != 'gwono12'
-and r_admit='2'
-and m_status='1'
-order by M_NAME;
-
-select m_profilefile, m_name, chat_status, d_name, m_job, m_id , c_object
-from member 
-left join dept on member.d_num = dept.d_num 
-left join position on member.p_num = position.p_num
-full outer join CHAT_FRIEND_BOOKMARK on member.m_id = CHAT_FRIEND_BOOKMARK.c_object 
-where member.m_id != 'admin'
-and member.m_id != 'gjs12'
-order by M_NAME;
-
-
-select m_profilefile, m_name, chat_status, d_name, m_job, m_id , c_object
-from member 
-left join dept on member.d_num = dept.d_num 
-left join position on member.p_num = position.p_num
-full outer join CHAT_FRIEND_BOOKMARK on member.m_id = CHAT_FRIEND_BOOKMARK.c_object 
-where member.m_id != 'admin'
-and member.m_id != 'gjs12'
-order by M_NAME;
-
+--ㅡ전체 MemberList 쿼리: 나, adim 제외
 SELECT m_profilefile, m_name, chat_status, d_name, m_job, m_id, c_object,
  c_subject, m_status, r_admit
 FROM member
@@ -82,6 +52,20 @@ AND m_status = '1'
 ORDER BY
  c_subject NULLS LAST, 
  m_name;
+ 
+ --검색 MemberList
+SELECT m_profilefile, m_name, chat_status, d_name, m_job, m_id, c_object,
+ c_subject, m_status, r_admit
+FROM member
+LEFT JOIN dept ON member.d_num = dept.d_num
+LEFT JOIN position ON member.p_num = position.p_num
+FULL OUTER JOIN CHAT_FRIEND_BOOKMARK ON member.m_id = CHAT_FRIEND_BOOKMARK.c_object
+                                      AND c_subject = 'choichoi98'
+WHERE member.m_id != 'admin'
+AND member.m_id != 'choichoi98'
+AND r_admit = '2'
+AND m_status = '1'
+and member.m_name like '노홍렬';
 
 TRUNCATE table CHAT_FRIEND_BOOKMARK;
 
