@@ -10,14 +10,13 @@
 <title>Insert title here</title>
 
 <jsp:include page="../header.jsp" />
-<link href="css/B_BoardWrite.css" rel="stylesheet">
+<link href="css/B_BoardModify.css" rel="stylesheet">
 </head>
 <body>
 	<div class="main">
 		<!-- BoardWrite.bo로 넘어감 (frontcont에서 받음) -->
 		<!-- 입력된 값을 액션 서블릿으로 넘김 -->
-
-		<form action="BoardModifyAction.bo" method="post"
+		<form id="B-main" action="BoardModifyAction.bo" method="post"
 			enctype="multipart/form-data" name="boardform">
 			<input type="hidden" name="board_num" value="${boarddata.BOARD_NUM}">
 
@@ -42,9 +41,10 @@
 			</div>
 			<div>
 				<div>
-					<div class="board_subject">제 목</div>
+					<div class="board_subject">제 목
 					<input class="board_subject_main" type="text" id="board_subject"
 						name="BOARD_SUBJECT" value="${boarddata.BOARD_SUBJECT }">
+				</div>
 				</div>
 			</div>
 
@@ -53,17 +53,17 @@
 			<textarea id="board_content" name="BOARD_CONTENT" cols="60" rows="30">${boarddata.BOARD_CONTENT}</textarea>
 
 			<div>
-				<label> 파일 첨부 <img src="image/attach.png" alt="파일첨부">
+				<label>
 					<input type="file" id="upfile" name="board_file">
 				</label> <span id="filevalue">${boarddata.BOARD_FILE}</span>
 			</div>
 
 			<div class="board_main_buttons">
-				<button onclick="board_noti()" type="submit" id="board_notification">공지로
+				<button class="B_button" onclick="board_noti()" type="submit" id="board_notification" style="background-color:#cad5bd;">공지로
 					등록</button>
-				<button type="reset" id="board_cancel">취소</button>
+				<button class="B_button" type="reset" id="board_cancel">취소</button>
 				<!-- <button type=submit id="sub_save">임시보관</button> -->
-				<button type="submit" id="board_save">수정</button>
+				<button class="B_button" type="submit" id="board_save">수정</button>
 			</div>
 		</form>
 	</div>

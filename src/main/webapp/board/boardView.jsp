@@ -20,7 +20,7 @@
 			<input type="hidden" id="loginid" value="${session_id}"
 				name="loginid">
 			<div class="container">
-				<div>
+				<div id="V-subject">
 					<!-- 제목 -->
 					<c:out value="${boarddata.BOARD_SUBJECT}" />
 				</div>
@@ -40,23 +40,20 @@
 					조회수 :
 					<c:out value="${boarddata.BOARD_READCOUNT}" />
 				</div>
-
-				<form class="B-inline" name="deleteForm"
-					action="BoardDeleteAction.bo" method="post">
-					<input type="hidden" name="delete-num"
-						value="${boarddata.BOARD_NUM}" id="comment_board_num">
-					<button type="submit" class="btn btn-primary">삭제</button>
-				</form>
 				<form class="B-inline" name="modifyForm" action="BoardModifyView.bo"
 					method="post">
 					<input type="hidden" name="modify-num"
 						value="${boarddata.BOARD_NUM}" id="comment_board_num">
-					<button type="submit" class="btn btn-primary">수정</button>
+					<button type="submit" class="btn btn-primary" id="V-button1">수정</button>
+				</form>
+				<form class="B-inline" name="deleteForm"
+					action="BoardDeleteAction.bo" method="post">
+					<input type="hidden" name="delete-num"
+						value="${boarddata.BOARD_NUM}" id="comment_board_num">
+					<button type="submit" class="btn btn-primary" id="V-button2">삭제</button>
 				</form>
 			</div>
 			<!-- container end -->
-
-
 
 			<div>
 				<!-- 내용 -->
@@ -69,61 +66,66 @@
 				<div class="last-line" id="V-file">첨부파일</div>
 
 				<c:if test="${!empty boarddata.BOARD_FILE}">
-					<div>
+					<div class="last-line">
 						<img src="image/down.png" width="10px"> <a
-							href="BoardFileDown.bo?filename=${boarddata.BOARD_FILE}">${boarddata.BOARD_FILE}</a>
+							href="BoardFileDown.bo?filename=${boarddata.BOARD_FILE}"
+							id="image_blank">${boarddata.BOARD_FILE}</a>
 					</div>
 				</c:if>
 
 				<c:if test="${empty boarddata.BOARD_FILE}">
-					<div></div>
+					<<div class="last-line">></div>
 				</c:if>
 
-				<div class="last-line"> 작성일자 : 
+				<div class="last-line">
+					작성일자 :
 					<!-- 작성일자 -->
 					<c:out value="${boarddata.BOARD_DATE}" />
 				</div>
 			</div>
 			<!-- Last-line end -->
 
-			<div>
+			<div class='boardlist-btn-container'>
 				<a href="BoardList.bo">
-					<button class="btn btn-warning">목록</button>
+					<button class="listbtn">목록</button>
 				</a>
 			</div>
 			<%-- 게시판 view  end --%>
 
-			<div class="comment-area">
-				<div class="comment-head">
-					<h3 class="comment-count">
-						댓글 <sup id="count"></sup>
-						<%--superscript(윗첨자) --%>
-					</h3>
-					<div class="comment-order">
-						<ul class="comment-order-list">
-						</ul>
-					</div>
-				</div>
-				<%-- comment-head end--%>
-				<ul class="comment-list">
-				</ul>
-				<div class="comment-write">
-					<div class="comment-write-area">
-						<b class="comment-write-area-name">${session_id}</b> <span
-							class="comment-write-area-count">0/200</span>
-						<textarea placeholder="댓글을 남겨보세요" rows="1"
-							class="comment-write-area-text" maxLength="200"></textarea>
-					</div>
-					<div class="register-box">
-						<div class="button btn-cancel">취소</div>
-						<%-- 댓글의 취소는 display:none, 등록만 보이도록 합니다.--%>
-						<div class="button btn-register">등록</div>
-					</div>
-				</div>
-				<%--comment-write end--%>
-			</div>
-			<%-- comment-area end--%>
+
 		</div>
+
+		<div class="comment-area">
+			<div class="comment-head">
+				<h3 class="comment-count">
+					<%--superscript(윗첨자) --%>
+				</h3>
+				<div class="comment-order">
+					<ul class="comment-order-list">
+					</ul>
+				</div>
+			</div>
+			<%-- comment-head end--%>
+			<ul class="comment-list">
+			</ul>
+			<div class="comment-write">
+				<div class="comment-write-area">
+					<b class="comment-write-area-name">${session_id}</b>
+					
+					<span class="comment-write-area-count">0/200</span>
+					<textarea placeholder="댓글을 작성하세요" rows="1"
+						class="comment-write-area-text" maxLength="200"></textarea>
+				</div>
+				<div class="register-box">
+					<div class="button btn-cancel">취소</div>
+					<%-- 댓글의 취소는 display:none, 등록만 보이도록 합니다.--%>
+					<div class="button btn-register">등록</div>
+				</div>
+			</div>
+			<%--comment-write end--%>
+		</div>
+		<%-- comment-area end--%>
+
 		<!-- basic end -->
 	</div>
 	<!-- 총묶음 -->
