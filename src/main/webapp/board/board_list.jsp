@@ -13,10 +13,12 @@
 </head>
 <body>
 	<div class="main">
+	<form>
+	<div class="board_recent"> 최근게시물</div>
 	<table class="table table-striped">
 	   <thead>
-	     <tr>
-	      <th><div>별</div></th>
+	     <tr class="List_subject">
+	      <th><div class="list">★</div></th>
 	      <th><div>순번</div></th>
 	      <th><div>제목</div></th>
 	      <th><div>작성자</div></th>
@@ -28,7 +30,7 @@
 	   <c:set var="num" value="${listcount-(page-1)*limit}"/> 
 	   <c:forEach var="b" items="${boardlist}">  <!-- DB에서 데이터를 뽑아오는 과정 반복-->
        <tr>
-        <td>★
+        <td>☆
        </td>
 	   <td><%--번호 --%>
 		 <c:out value="${num}"/><%-- num 출력 --%>		
@@ -53,6 +55,11 @@
 	  </c:forEach>
 	 </tbody>	
 	</table>
+		
+		<div class="List-end">
+		<div><button type="button" id="board_write">글 쓰 기</button></div>
+		<div class="sc">검색</div>
+		</div>
 		
 	<div class="center-block">
 		  <ul class="pagination">		
@@ -95,6 +102,7 @@
 			</c:if>
 		 </ul>
 	</div>
+	</form>
  <%-- <c:if test="${listcount > 0 }"> end --%>
 	
  <%-- 게시글이 없는 경우--%>
@@ -102,7 +110,7 @@
 	<h3 style="text-align:center">등록된 글이 없습니다.</h3>
  </c:if>
 
-<button type="button" id="board_write">글 쓰 기</button>
+
 </div>  <%-- <div class="container"> end --%>
 <script>
 $('#board_write').click(function(){
@@ -111,5 +119,6 @@ location.href = "BoardWrite.bo";
 
 /* 버튼을 누르면 액션이 일어나도록 */
 </script>
+
 </body>
 </html>
