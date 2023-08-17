@@ -95,7 +95,7 @@
 			<div id="tab-1" class="tab-content current">
 				<%-- 가입 대기 --%>
 				<c:if test="${listcount.wait > 0 }">
-				<c:if test="${ !empty searchlist && tab==1 }">
+					<c:if test="${ !empty searchlist && tab==1 }">
 						<c:set var="totallist1" value="${searchlist }" />
 					</c:if>
 					<table class="table table-striped">
@@ -194,19 +194,23 @@
 								<li class="page-item"><a href="${next}" class="page-link">&nbsp;다음</a>
 								</li>
 							</c:if>
-							</c:if>
 						</ul>
-					</div>
-				
+					</div> <%-- 페이지 end --%>
+					</c:if> <%-- listcount > 0 end --%>
+					
 				<c:if test="${listcount.wait == 0 }">
-     			<span class="nodata">데이터가 존재하지 않습니다.</span>  
+     				<span class="nodata">데이터가 존재하지 않습니다.</span>  
  				</c:if>
+			
+			</div> <%--tab1 표시내용 끝 --%>
+		
+		
+		
 
-			</div>
+			<%-- tab2 내용 --%> 	<%-- 이용 중지 --%>
 			<div id="tab-2" class="tab-content">
-				<%-- 이용 중지 --%>
 				<c:if test="${listcount.stop > 0 }">
-				<c:if test="${ !empty searchlist && tab ==2 }">
+					<c:if test="${ !empty searchlist && tab ==2 }">
 						<c:set var="totallist2" value="${searchlist }" />
 					</c:if>
 					<table class="table table-striped">
@@ -239,8 +243,8 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					
 					<%-- 페이지 이전 다음 --%>
-
 					<div>
 						<ul class="pagination justify-content-center">
 							<c:if test="${page2 <= 1}">
@@ -286,17 +290,24 @@
 								<li class="page-item"><a href="${next}" class="page-link">&nbsp;다음</a>
 								</li>
 							</c:if>
-						</ul>
-					</div>
-				</c:if>
+							</ul>
+						</div> <%-- 페이지 end --%>
+					</c:if><%-- listcount >0 end --%>
+				
 				<c:if test="${listcount.stop == 0 }">
 		   			  <span class="nodata">데이터가 존재하지 않습니다. </span> 
 		 		</c:if>
-			</div>
+		 		
+			</div><%-- tab2 내용 end --%>
 
 
+
+
+
+
+
+			<%--tab3 표시 내용 --%>	<%-- 승인 완료 --%>
 			<div id="tab-3" class="tab-content">
-				<%-- 승인 완료 --%>
 				<c:if test="${listcount.complete > 0 }">
 					<c:if test="${ !empty searchlist && tab==3 }">
 						<c:set var="totallist3" value="${searchlist }" />
@@ -326,7 +337,7 @@
 									<input type="hidden" name="pnum" id="hidpnum" class="hidpnum" value="${m.p_NUM}"> 
 									<button class="modifybtn"><span class="update" style="color: white;">수정</span></button> 
 									<button class="blockbtn"><a href="memberBlock.et?id=${m.m_ID}&tab=3"><span class="block"style="color: white;">이용중지</span></a></button>
-									<button class="rejectbtn"><a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: black;">계정삭제</span></a></button></td>
+									<button class="deletebtn"><a href="memberDelete.et?id=${m.m_ID}&tab=3"><span class="delete" style="color: black;">계정삭제</span></a></button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -382,15 +393,13 @@
 								</li>
 							</c:if>
 						</ul>
-					</div>
-				</c:if>
+					</div> <%-- 페이지 end --%>
+				</c:if> <%-- listcount > 0 end --%>
+				
 				<c:if test="${listcount.complete == 0 }">
     				 <span class="nodata">데이터가 존재하지 않습니다.</span>
  				</c:if>
-			</div>
-		</div>
-	</div>
-	<%-- container end --%>
+			</div> <%-- tab3 표시내용 end --%>
 	</div>
 	<%-- main end --%>
 	<script>
