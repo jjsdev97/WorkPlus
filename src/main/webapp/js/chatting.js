@@ -3,6 +3,7 @@ $(document).ready(function() {
 	var messageTextArea = $("#messageTextArea");
 
   webSocket.onopen = function() {
+	  //유저가 접속하면(웹소켓 연결시) 나오는 메시지 
 	  messageTextArea.val(messageTextArea.val() + "Server connect...\n");
   };
 
