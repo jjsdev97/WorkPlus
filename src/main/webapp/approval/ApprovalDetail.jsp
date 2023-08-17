@@ -13,26 +13,25 @@
 </head>
 <body>
 	<div class="main">
-		${app.approval_template_str}
+		양식 : ${app.approval_template_str}
 		<br>
-		${app.approval_period}
+		보관 기간 : ${app.approval_period}
 		<br>
-		${app.approval_document}
+		문서 번호 : ${app.approval_document}
 		<br>
-		${app.approval_writer}
+		기안자 : ${app.approval_writer}
 		<br>
-		${app.approval_subject}
+		문서 제목 : ${app.approval_subject}
 		<br>
-		${app.approval_date}
+		작성 날짜 : ${app.approval_date}
 		<br>
-		${app.approval_content}
+		본문 : ${app.approval_content}
 		<br>
 
 		<hr>
 
-
 		<c:forEach var="line" items="${alList}">
-			${line.a_line_target} - ${line.a_line_type } - ${line.a_line_check} <br>
+			결재선 : ${line.a_line_target} | ${line.a_line_type } | ${line.a_line_check} <br>
 		</c:forEach>
 
 	</div>
