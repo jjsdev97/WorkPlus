@@ -67,7 +67,7 @@
 
 				<c:if test="${!empty boarddata.BOARD_FILE}">
 					<div class="last-line">
-						<img src="image/down.png" width="10px"> <a
+						<img src="img/attach.png" width="15px"> <a
 							href="BoardFileDown.bo?filename=${boarddata.BOARD_FILE}"
 							id="image_blank">${boarddata.BOARD_FILE}</a>
 					</div>

@@ -1,4 +1,3 @@
-css/style.css
 /* 선택자종류
 아이디선택자 #id
 클래스선택자 .id
@@ -40,6 +39,10 @@ h4 {
 .List-end div {
 	display:inline-block;
 	margin:-30px;
+}
+
+#B_title {
+	color:black;
 }
 
 #board_write {

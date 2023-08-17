@@ -27,7 +27,7 @@ public class BoardDAO {
 	 
 	public boolean boardInsert(BoardBean board) {
 		int result=0;
-		String max_sql = "(select nvl(max(board_num),0)+1 from board)";
+		String max_sql = "(select nvl(max(board_num),0)+1 from board)"; //nvl:값이 0이면 뒤에값을 0이아니면 max(board_num)의 값을
 		
 		//원문글의 BOARD_RE_REF 필드는 자신의 글번호입니다.
 		String sql = "insert into board "   //내가 값을 넣을 모든 컬럼을 기재 insert into쿼리문 사용

@@ -48,7 +48,7 @@
 	border-radius:5px;
 	border:1px solid black;
 	background-color:white;
-	width : 65%;
+	width : 68%;
 	height : 60%;
 }
 .board_main_buttons {
@@ -71,7 +71,7 @@
 }
 
 #board_cancel {
-	margin-left:960px;
+	margin-left:620px;
 }
 
 

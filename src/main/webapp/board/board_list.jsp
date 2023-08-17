@@ -38,7 +38,7 @@
 	   </td>
 	   <td><%--제목 --%>
 	     <div>			
-			<a href="BoardDetailAction.bo?num=${b.BOARD_NUM}" style ="text-decoration:none"> <!-- 엥커태그 위치 프론트컨트롤러 이동 -->
+			<a href="BoardDetailAction.bo?num=${b.BOARD_NUM}" style ="text-decoration:none" id="B_title"> <!-- 엥커태그 위치 프론트컨트롤러 이동 -->
 			   <c:if test="${b.BOARD_SUBJECT.length()>=20}">
 				 <c:out value="${b.BOARD_SUBJECT.substring(0,20)}..." />
 			   </c:if>

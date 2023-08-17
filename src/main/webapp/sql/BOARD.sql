@@ -23,7 +23,7 @@ CREATE TABLE BOARD(
 
 -- 게시글이 달린 댓글의 갯수를 구하기 위한 과정입니다.
 select*from board;
-delete from board;
+delete from board where BOARD_NUM=6;
 select * from comm;
 
 insert into board (BOARD_NUM, BOARD_SUBJECT, BOARD_NAME, BOARD_RE_REF)
