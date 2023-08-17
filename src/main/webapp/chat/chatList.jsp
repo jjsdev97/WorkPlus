@@ -41,9 +41,9 @@
 
 			<div class="profiles" style="flex: 1">
 
-				<div class="container">
+				<div class="container" style="width: 350px;">
 					<div class="header">
-					이곳은 WorkPlus 직원들을 위한 익명의 채팅 공간입니다.
+					이곳은 WorkPlus 직원들을 위한 <br> 익명의 채팅 공간입니다.
 					</div>
 					<div>
 					쾌적한 채팅 환경을 위해 다음과 같은 금지 사항을 준수해야 함을 알려드립니다.					

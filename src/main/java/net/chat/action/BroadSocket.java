@@ -16,12 +16,12 @@ import javax.websocket.server.ServerEndpoint;
 //WebSocket 호스트 설정
 @ServerEndpoint("/broadsocket")
 public class BroadSocket {
-// 접속 된 클라이언트 WebSocket session 관리 리스트
+	// 접속 된 클라이언트 WebSocket session 관리 리스트
 	private static List<Session> sessionUsers = Collections.synchronizedList(new ArrayList<>());
-// 메시지에서 유저 명을 취득하기 위한 정규식 표현
+	// 메시지에서 유저 명을 취득하기 위한 정규식 표현
 	private static Pattern pattern = Pattern.compile("^\\{\\{.*?\\}\\}");
 
-// WebSocket으로 브라우저가 접속하면 요청되는 함수	
+	// WebSocket으로 브라우저가 접속하면 요청되는 함수	
 	@OnOpen
 	public void handleOpen(Session userSession) {
 		// 클라이언트가 접속하면 WebSocket세션을 리스트에 저장한다.
@@ -30,7 +30,7 @@ public class BroadSocket {
 		System.out.println("client is now connected...");
 	}
 
-// WebSocket으로 메시지가 오면 요청되는 함수
+	// WebSocket으로 메시지가 오면 요청되는 함수
 	@OnMessage
 	public void handleMessage(String message, Session userSession) throws IOException {
 		// 메시지 내용을 콘솔에 출력한다.
@@ -63,7 +63,7 @@ public class BroadSocket {
 		});
 	}
 
-// WebSocket과 브라우저가 접속이 끊기면 요청되는 함수
+	// WebSocket과 브라우저가 접속이 끊기면 요청되는 함수
 	@OnClose
 	public void handleClose(Session userSession) {
 		// session 리스트로 접속 끊은 세션을 제거한다.
