@@ -5,20 +5,19 @@
 <meta charset="UTF-8">
 <title>main page</title>
 
-<jsp:include page="/header.jsp" />
+<jsp:include page="/header_btstrap.jsp" />
 <style>
-.fakemain{
- max-width: 80%;
-  height: auto;
-  display: block;
-  margin: 0;
+.fakemain {
+	max-width: 80%;
+	height: auto;
+	display: block;
+	margin: 0;
 }
-
 </style>
 </head>
 <body>
-	<div class="main">
+	<main>
 		<img src="img/fakemain.png" class="fakemain" id="fakemain">
-	</div>
+	</main>
 </body>
 </html>

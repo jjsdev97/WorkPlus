@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<jsp:include page="/header.jsp" />
+<jsp:include page="/header_btstrap.jsp" />
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -20,7 +20,7 @@
 <link href="css/dept.css" rel="stylesheet">
 </head>
 <body>
-	<div class='main'>
+	<main>
 
 		<ul id="organisation">
 		</ul>
@@ -65,6 +65,6 @@
 				</c:if>
 			</c:forEach>
 		</div>
-	</div>
+	</main>
 </body>
 </html>
